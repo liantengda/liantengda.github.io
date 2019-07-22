@@ -57,8 +57,6 @@
 	        
 				<li><a href="/photos/">相册</a></li>
 	        
-				<li><a href="/archives/index.html">归档</a></li>
-	        
 			</ul>
 		</nav>
 		<nav class="header-smart-menu">
@@ -86,6 +84,16 @@
 					<a class="zhihu" target="_blank" href="https://www.zhihu.com/" title="zhihu"><i class="icon-zhihu"></i></a>
 		        
 					<a class="bilibili" target="_blank" href="https://www.bilibili.com/" title="bilibili"><i class="icon-bilibili"></i></a>
+		        
+					<a class="acfun" target="_blank" href="https://www.acfun.com/" title="acfun"><i class="icon-acfun"></i></a>
+		        
+					<a class="mail" target="_blank" href="/1666893831@qq.com" title="mail"><i class="icon-mail"></i></a>
+		        
+					<a class="facebook" target="_blank" href="https://www.facebook.com/" title="facebook"><i class="icon-facebook"></i></a>
+		        
+					<a class="google" target="_blank" href="https://www.google.com/" title="google"><i class="icon-google"></i></a>
+		        
+					<a class="twitter" target="_blank" href="https://www.twitter.com/" title="twitter"><i class="icon-twitter"></i></a>
 		        
 			</div>
 		</nav>
@@ -115,8 +123,6 @@
 			
 				
 			
-				
-			
 			
 			
 			<nav class="header-nav">
@@ -130,18 +136,26 @@
 			        
 						<a class="bilibili" target="_blank" href="https://www.bilibili.com/" title="bilibili"><i class="icon-bilibili"></i></a>
 			        
+						<a class="acfun" target="_blank" href="https://www.acfun.com/" title="acfun"><i class="icon-acfun"></i></a>
+			        
+						<a class="mail" target="_blank" href="/1666893831@qq.com" title="mail"><i class="icon-mail"></i></a>
+			        
+						<a class="facebook" target="_blank" href="https://www.facebook.com/" title="facebook"><i class="icon-facebook"></i></a>
+			        
+						<a class="google" target="_blank" href="https://www.google.com/" title="google"><i class="icon-google"></i></a>
+			        
+						<a class="twitter" target="_blank" href="https://www.twitter.com/" title="twitter"><i class="icon-twitter"></i></a>
+			        
 				</div>
 			</nav>
 
 			<nav class="header-menu js-header-menu">
-				<ul style="width: 70%">
+				<ul style="width: 50%">
 				
 				
-					<li style="width: 33.333333333333336%"><a href="/">主页</a></li>
+					<li style="width: 50%"><a href="/">主页</a></li>
 		        
-					<li style="width: 33.333333333333336%"><a href="/photos/">相册</a></li>
-		        
-					<li style="width: 33.333333333333336%"><a href="/archives/index.html">归档</a></li>
+					<li style="width: 50%"><a href="/photos/">相册</a></li>
 		        
 				</ul>
 			</nav>
@@ -180,29 +194,6 @@
       
         <p>自己跟着程序羊的从0到1无坑版个人博客搭建视屏操作了一遍，在github上运行起了自己的博客。但是博客显得过于单调，于是再去看了目前程序羊的博客，感觉还是少了很多东西。因此开始了摸索yilia主题个性化设置之路。此处附上程序羊bilibili无坑版视屏链接。</p>
 <iframe src="//player.bilibili.com/player.html?aid=44544186&cid=77981994&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
-
-<p>第一处修改 我先要更改自己的博客名字。于是打开了程序羊所说的最重要的那个配置文件，_config.yml文件。</p>
-<h1 id="Site"><a href="#Site" class="headerlink" title="Site"></a>Site</h1><p>title: 活死宅的博客<br>subtitle:<br>description:<br>keywords:<br>author: 纷飞落叶<br>language:<br>timezone:<br>其中title是用来表示网页主题名称的，author是用来表示博主昵称的。</p>
-<p>第二处修改 我想要把右边栏的超链接都奏效。根据百度结果，我需要更改对应主题的_config.yml文件。SubNav子导航。</p>
-<h1 id="SubNav"><a href="#SubNav" class="headerlink" title="SubNav"></a>SubNav</h1><p>subnav:<br>  github: “<a href="https://github.com/&quot;" target="_blank" rel="noopener">https://github.com/&quot;</a><br>  weibo: “<a href="https://weibo.com/&quot;" target="_blank" rel="noopener">https://weibo.com/&quot;</a></p>
-<p>  #rss: “#”<br>  zhihu: “<a href="https://www.zhihu.com/&quot;" target="_blank" rel="noopener">https://www.zhihu.com/&quot;</a></p>
-<p>  #qq: “#”</p>
-<p>  #weixin: “#”</p>
-<p>  #jianshu: “#”</p>
-<p>  #douban: “#”</p>
-<p>  #segmentfault: “#”<br>  bilibili: “<a href="https://www.bilibili.com/&quot;" target="_blank" rel="noopener">https://www.bilibili.com/&quot;</a></p>
-<p>  #acfun: “#”</p>
-<p>  #mail: “mailto:<a href="mailto:litten225@qq.com" target="_blank" rel="noopener">litten225@qq.com</a>“</p>
-<p>  #facebook: “#”</p>
-<p>  #google: “#”</p>
-<p>  #twitter: “#”</p>
-<p>  #linkedin: “#”</p>
-<p>接下来，我继续对比我的博客和大佬们博客的区别</p>
-<p>第三处修改 我的头像，我想要一个卡哇伊的头像，于是我百度了一下，发现其实这个根路径就是source，资源文件夹。然后发现yilia里面有个img文件，于是我就把自己的头像图标复制到这个文件夹中。支付宝和微信的二维码也复制到了这个文件夹中。</p>
-<p>#你的头像url<br>avatar: /img/ico.png</p>
-<h1 id="支付宝二维码图片地址"><a href="#支付宝二维码图片地址" class="headerlink" title="支付宝二维码图片地址"></a>支付宝二维码图片地址</h1><p>alipay: /img/支付宝支付.png</p>
-<h1 id="微信二维码图片地址"><a href="#微信二维码图片地址" class="headerlink" title="微信二维码图片地址"></a>微信二维码图片地址</h1><p>weixin: /img/微信支付.png</p>
-<p>第四处修改 我发现我的文章都是全文显示，即使在主页中，这简直太难受了。于是百度后，发现，只需要在自己想要截取的地方加上这句话就可以了。
         
           <a class="article-more-a" href="/2019/07/20/如何优化自己的yilia主题/#more">more >></a>
         
