@@ -8,14 +8,20 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>JavaScript的getElementById函数 | 活死宅的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="article">
+  <meta name="description" content="getElementById函数html中，每个标签都有一个唯一的id。通过这个id，就可以精准定位到某个标签，然后操作这个标签。">
+<meta property="og:type" content="article">
 <meta property="og:title" content="JavaScript的getElementById函数">
 <meta property="og:url" content="http://yoursite.com/2019/08/03/JavaScript的getElementById函数/index.html">
 <meta property="og:site_name" content="活死宅的博客">
+<meta property="og:description" content="getElementById函数html中，每个标签都有一个唯一的id。通过这个id，就可以精准定位到某个标签，然后操作这个标签。">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-08-03T14:16:25.451Z">
+<meta property="og:image" content="http://musictail.club/2019/08/03/JavaScript%E7%9A%84getElementById%E5%87%BD%E6%95%B0/1.jpg">
+<meta property="og:image" content="http://musictail.club/2019/08/03/JavaScript%E7%9A%84getElementById%E5%87%BD%E6%95%B0/2.jpg">
+<meta property="og:updated_time" content="2019-08-04T02:34:00.457Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JavaScript的getElementById函数">
+<meta name="twitter:description" content="getElementById函数html中，每个标签都有一个唯一的id。通过这个id，就可以精准定位到某个标签，然后操作这个标签。">
+<meta name="twitter:image" content="http://musictail.club/2019/08/03/JavaScript%E7%9A%84getElementById%E5%87%BD%E6%95%B0/1.jpg">
   
     <link rel="alternative" href="/atom.xml" title="活死宅的博客" type="application/atom+xml">
   
@@ -191,7 +197,45 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <h1 id="getElementById函数"><a href="#getElementById函数" class="headerlink" title="getElementById函数"></a>getElementById函数</h1><p>html中，每个标签都有一个唯一的id。通过这个id，就可以精准定位到某个标签，然后操作这个标签。</p>
+<a id="more"></a>
+<h1 id="网页换肤实现"><a href="#网页换肤实现" class="headerlink" title="网页换肤实现"></a>网页换肤实现</h1><p>首先需要两个样式表，我们先创建两个样式表css1.css,css2.css。然后使用link链接，找到对应的样式表。当点击按钮时，我们就通过id操作link标签，将它的href超链接值改变。</p>
+<h1 id="css代码"><a href="#css代码" class="headerlink" title="css代码"></a>css代码</h1><h2 id="css1-css"><a href="#css1-css" class="headerlink" title="css1.css"></a>css1.css</h2><blockquote>
+<p>@charset “utf-8”;<br>/<em>CSS Document</em>/<br>body{background: yellow;}<br>input{width: 200px; height: 100px;background: green;}</p>
+</blockquote>
+<h2 id="css2-css"><a href="#css2-css" class="headerlink" title="css2.css"></a>css2.css</h2><blockquote>
+<p>@charset “utf-8”;<br>/<em>CSS Document</em>/<br>body{background: purple;}<br>input{width: 300px;height: 200px;background: red;}</p>
+</blockquote>
+<h1 id="网页换肤代码"><a href="#网页换肤代码" class="headerlink" title="网页换肤代码"></a>网页换肤代码</h1><pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;title&gt;&lt;/title&gt;
+    &lt;link id=&quot;l1&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;css1.css&quot;/&gt;
+    &lt;script type=&quot;text/javascript&quot;&gt;
+        function skin1(){
+            var oL=document.getElementById(&apos;l1&apos;);
+            oL.href=&apos;css1.css&apos;;
+        }
+        function skin2(){
+            var oL=document.getElementById(&apos;l1&apos;);
+            oL.href=&apos;css2.css&apos;;
+        }
+    &lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;input type=&quot;button&quot; name=&quot;&quot; id=&quot;&quot; value=&quot;skin1&quot; onclick=&quot;skin1()&quot;/&gt;
+    &lt;input type=&quot;button&quot; name=&quot;&quot; id=&quot;&quot; value=&quot;skin2&quot; onclick=&quot;skin2()&quot;/&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre><h1 id="效果如下"><a href="#效果如下" class="headerlink" title="效果如下"></a>效果如下</h1><p>skin1效果<br><img src="//musictail.club/2019/08/03/JavaScript%E7%9A%84getElementById%E5%87%BD%E6%95%B0/1.jpg" alt="JavaScript的getElementById函数"><br>skin2效果<br><img src="//musictail.club/2019/08/03/JavaScript%E7%9A%84getElementById%E5%87%BD%E6%95%B0/2.jpg" alt="JavaScript的getElementById函数"></p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>从以上操作中，我们可以得知，任何标签都是有独立的id的，我们可以通过getElementById对任意标签进行操作。连html标签也不例外。</p>
+<h1 id="演示过程中出现的问题"><a href="#演示过程中出现的问题" class="headerlink" title="演示过程中出现的问题"></a>演示过程中出现的问题</h1><p>在换肤过程中发生了一些小差池。<br>原因是原来的代码是这样写的</p>
+<link id="l1" type="text/css" href="css1.css">
+结果访问浏览器时，样式表并没有发挥作用。显示的是找不到css属性。
+![JavaScript的getElementById函数](//musictail.club/2019/08/03/JavaScript的getElementById函数/3.jpg)
+然后从网上找到这段话
+>rel这个属性规定当前文档与被链接文档之间的关系。只有"stylesheet" 得到了所有浏览器的支持。其他值只得到了部分地支持。在head标签中的<link rel="stylesheet" type="text/css" href="*.css"> ,其中rel="stylesheet"表示被链接的文档是一个样式表文件
+
       
 
       
@@ -357,7 +401,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    目录，不存在的…
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#getElementById函数"><span class="toc-number">1.</span> <span class="toc-text">getElementById函数</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#网页换肤实现"><span class="toc-number">2.</span> <span class="toc-text">网页换肤实现</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#css代码"><span class="toc-number">3.</span> <span class="toc-text">css代码</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#css1-css"><span class="toc-number">3.1.</span> <span class="toc-text">css1.css</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#css2-css"><span class="toc-number">3.2.</span> <span class="toc-text">css2.css</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#网页换肤代码"><span class="toc-number">4.</span> <span class="toc-text">网页换肤代码</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#效果如下"><span class="toc-number">5.</span> <span class="toc-text">效果如下</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#总结"><span class="toc-number">6.</span> <span class="toc-text">总结</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#演示过程中出现的问题"><span class="toc-number">7.</span> <span class="toc-text">演示过程中出现的问题</span></a></li></ol>
                     </div>
                 </span>
             </div>
