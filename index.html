@@ -193,38 +193,9 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h1 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h1><p>innerHTML其实就是某个标签内部的值。这个东西还可以显示html。</p>
-<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><pre><code>&lt;!DOCTYPE html&gt;
-&lt;html&gt;
-&lt;head&gt;
-    &lt;meta charset=&quot;UTF-8&quot;&gt;
-    &lt;title&gt;&lt;/title&gt;
-    &lt;style type=&quot;text/css&quot;&gt;
-        #div1{width: 200px;height: 150px;border: 1px solid black;}
-    &lt;/style&gt;
-    &lt;script type=&quot;text/javascript&quot;&gt;
-        window.onload=function()
-        {
-            var oTxt=document.getElementById(&apos;text1&apos;);
-            var oBtn = document.getElementById(&apos;btn1&apos;);
-            var oDiv = document.getElementById(&apos;div1&apos;);
-            oBtn.onclick = function()
-            {
-                oDiv.innerHTML = oTxt.value;
-                /*这个innerHTML中也可以放html*/
-            }
-        }
-    &lt;/script&gt;
-&lt;/head&gt;
-&lt;body&gt;
-    &lt;input type=&quot;text&quot; name=&quot;&quot; id=&quot;text1&quot; value=&quot;&quot; /&gt;
-    &lt;input type=&quot;button&quot; name=&quot;&quot; id=&quot;btn1&quot; value=&quot;设置文字&quot; /&gt;
-    &lt;div id=&quot;div1&quot;&gt;
-
-    &lt;/div&gt;
-&lt;/body&gt;
-&lt;/html&gt;</code></pre><h1 id="示例图片"><a href="#示例图片" class="headerlink" title="示例图片"></a>示例图片</h1><p>我们先向文本框中输入文字，然后点击按钮，这些文字就出现在了div中。而且是以html的格式展现出来。</p>
-<p><img src="//musictail.club/2019/08/03/innerHTML%E4%BB%8B%E7%BB%8D/1.jpg" alt="innerHTML"></p>
-
+        
+          <a class="article-more-a" href="/2019/08/03/innerHTML介绍/#more">more >></a>
+        
       
 
       
@@ -423,27 +394,9 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h1 id="getElementsByTagName函数介绍"><a href="#getElementsByTagName函数介绍" class="headerlink" title="getElementsByTagName函数介绍"></a>getElementsByTagName函数介绍</h1><p>这个函数可以获取指定标签内部的同一类元素的所有对象，存储在一个数组中。</p>
-<h1 id="为什么需要这个函数"><a href="#为什么需要这个函数" class="headerlink" title="为什么需要这个函数"></a>为什么需要这个函数</h1><p>如下图所示，每一个邮件都是一个input元素，而且每一个框都有类似的鼠标事件，如果每个框都需要加入onclick，那会很麻烦，而且触发事件写在行间不安全，还有我们根本不知道这个地方会产生多少封邮件，这个事件肯定是自动赋予每个标签的。<br><img src="//musictail.club/2019/08/03/%E6%89%B9%E9%87%8F%E8%8E%B7%E5%8F%96%E5%85%83%E7%B4%A0getElementsByTagName/1.jpg" alt="邮件"></p>
-<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><p>给标签改变颜色<br>    <!DOCTYPE html><br>    <html><br>    <head><meta name="generator" content="Hexo 3.9.0"><br>        <meta charset="UTF-8"><br>        <title></title><br>    <style type="text/css"><br>        div{width: 200px;height: 200px;float: left;border: 1px solid black; margin: 10px;}<br>    </style><br>    <script type="text/javascript"><br>        window.onload=function()<br>        {<br>            var oBtn = document.getElementById('btn1');<br>            oBtn.onclick = function()<br>            {<br>                var aDiv = document.getElementsByTagName('div');<br>                for(i=0;i<aDiv.length;i++)<br>                {<br>                    aDiv[i].style.background='red';<br>                }<br>            }</p>
-<pre><code>    }
-&lt;/script&gt;
-&lt;/head&gt;
-&lt;body&gt;
-    &lt;input type=&quot;button&quot; name=&quot;btn1&quot; id=&quot;btn1&quot; value=&quot;全体变色&quot; /&gt;
-    &lt;div id=&quot;&quot;&gt;
-
-    &lt;/div&gt;
-    &lt;div id=&quot;&quot;&gt;
-
-    &lt;/div&gt;
-    &lt;div id=&quot;&quot;&gt;
-
-    &lt;/div&gt;
-    &lt;div id=&quot;&quot;&gt;
-
-    &lt;/div&gt;
-&lt;/body&gt;
-&lt;/html&gt;</code></pre></script></head></html></p>
+        
+          <a class="article-more-a" href="/2019/08/03/批量获取元素getElementsByTagName/#more">more >></a>
+        
       
 
       
