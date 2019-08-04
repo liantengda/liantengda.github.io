@@ -8,14 +8,17 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>innerHTML介绍 | 活死宅的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="article">
+  <meta name="description" content="innerHTML其实就是某个标签内部的值。这个东西还可以显示html。 简单的例子：   &amp;lt;html&amp;gt; &amp;lt;head&amp;gt;     &amp;lt;meta charset=&amp;quot;UTF-8&amp;quot;&amp;gt;     &amp;lt;title&amp;gt;&amp;lt;/title&amp;gt;     &amp;lt;style type=&amp;quot;text/css&amp;quot;&amp;gt;         #">
+<meta property="og:type" content="article">
 <meta property="og:title" content="innerHTML介绍">
 <meta property="og:url" content="http://yoursite.com/2019/08/03/innerHTML介绍/index.html">
 <meta property="og:site_name" content="活死宅的博客">
+<meta property="og:description" content="innerHTML其实就是某个标签内部的值。这个东西还可以显示html。 简单的例子：   &amp;lt;html&amp;gt; &amp;lt;head&amp;gt;     &amp;lt;meta charset=&amp;quot;UTF-8&amp;quot;&amp;gt;     &amp;lt;title&amp;gt;&amp;lt;/title&amp;gt;     &amp;lt;style type=&amp;quot;text/css&amp;quot;&amp;gt;         #">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-08-03T14:20:59.276Z">
+<meta property="og:updated_time" content="2019-08-04T00:34:53.405Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="innerHTML介绍">
+<meta name="twitter:description" content="innerHTML其实就是某个标签内部的值。这个东西还可以显示html。 简单的例子：   &amp;lt;html&amp;gt; &amp;lt;head&amp;gt;     &amp;lt;meta charset=&amp;quot;UTF-8&amp;quot;&amp;gt;     &amp;lt;title&amp;gt;&amp;lt;/title&amp;gt;     &amp;lt;style type=&amp;quot;text/css&amp;quot;&amp;gt;         #">
   
     <link rel="alternative" href="/atom.xml" title="活死宅的博客" type="application/atom+xml">
   
@@ -191,7 +194,39 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <p>innerHTML其实就是某个标签内部的值。这个东西还可以显示html。</p>
+<p>简单的例子：</p>
+<blockquote>
+<!DOCTYPE html>
+<pre><code>&lt;html&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;title&gt;&lt;/title&gt;
+    &lt;style type=&quot;text/css&quot;&gt;</code></pre></blockquote>
+<pre><code>        #div1{width: 200px;height: 150px;border: 1px solid black;}
+    &lt;/style&gt;
+    &lt;script type=&quot;text/javascript&quot;&gt;
+        window.onload=function()
+        {
+            var oTxt=document.getElementById(&apos;text1&apos;);
+            var oBtn = document.getElementById(&apos;btn1&apos;);
+            var oDiv = document.getElementById(&apos;div1&apos;);
+            oBtn.onclick = function()
+            {
+                oDiv.innerHTML = oTxt.value;
+                /*这个innerHTML中也可以放html*/
+            }
+        }
+    &lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;input type=&quot;text&quot; name=&quot;&quot; id=&quot;text1&quot; value=&quot;&quot; /&gt;
+    &lt;input type=&quot;button&quot; name=&quot;&quot; id=&quot;btn1&quot; value=&quot;设置文字&quot; /&gt;
+    &lt;div id=&quot;div1&quot;&gt;
+
+    &lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
       
 
       

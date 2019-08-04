@@ -16,7 +16,7 @@
 <meta property="og:description" content="行间事件首先，行间，就是一个标签两个尖括号之间。行间事件一般指的是鼠标点击或者移动等所触发的事件。">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://musictail.club/2019/08/03/%E6%8F%90%E5%8F%96%E8%A1%8C%E9%97%B4%E4%BA%8B%E4%BB%B6/1.jpg">
-<meta property="og:updated_time" content="2019-08-03T14:44:19.122Z">
+<meta property="og:updated_time" content="2019-08-03T15:02:19.656Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="提取行间事件">
 <meta name="twitter:description" content="行间事件首先，行间，就是一个标签两个尖括号之间。行间事件一般指的是鼠标点击或者移动等所触发的事件。">
@@ -201,7 +201,7 @@
 <h1 id="为什么要提取行间事件"><a href="#为什么要提取行间事件" class="headerlink" title="为什么要提取行间事件"></a>为什么要提取行间事件</h1><p>因为有些功能极其相似的标签，会有很多事件也十分相似，如果每个行间事件都要一个个添加，那估计会累死，比如邮箱的右键，鼠标移上去都会变色。还有这些标签数量并不固定，是动态改变的，所以不能提前获取到该加几个。<br><img src="//musictail.club/2019/08/03/%E6%8F%90%E5%8F%96%E8%A1%8C%E9%97%B4%E4%BA%8B%E4%BB%B6/1.jpg" alt="1图"></p>
 <h1 id="如何提取"><a href="#如何提取" class="headerlink" title="如何提取"></a>如何提取</h1><p>getElementById可以提取到元素标签，而通过提取到的元素变量，我们可以对该元素的属性进行操作，onclick和value一样，也是该元素的属性，那么onclick应该也可以被操控。其实这是一种JavaScript的编码规范。提取了行间事件之后，行为，样式，结构。三者就实现了分离。</p>
 <h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><blockquote>
-<!DOCTYPE html>
+   <!DOCTYPE html>
 <html>
    <head><meta name="generator" content="Hexo 3.9.0">
        <meta charset="UTF-8">
