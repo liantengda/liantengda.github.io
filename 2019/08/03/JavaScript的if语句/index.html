@@ -8,14 +8,21 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>JavaScript的if语句 | 活死宅的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="article">
+  <meta name="description" content="if语句这个就不说了，肯定时if else 的格式">
+<meta property="og:type" content="article">
 <meta property="og:title" content="JavaScript的if语句">
 <meta property="og:url" content="http://yoursite.com/2019/08/03/JavaScript的if语句/index.html">
 <meta property="og:site_name" content="活死宅的博客">
+<meta property="og:description" content="if语句这个就不说了，肯定时if else 的格式">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-08-03T14:17:08.182Z">
+<meta property="og:image" content="http://musictail.club/2019/08/03/JavaScript%E7%9A%84if%E8%AF%AD%E5%8F%A5/1.jpg">
+<meta property="og:image" content="http://musictail.club/2019/08/03/JavaScript%E7%9A%84if%E8%AF%AD%E5%8F%A5/2.jpg">
+<meta property="og:image" content="http://musictail.club/2019/08/03/JavaScript%E7%9A%84if%E8%AF%AD%E5%8F%A5/3.jpg">
+<meta property="og:updated_time" content="2019-08-04T02:15:23.946Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JavaScript的if语句">
+<meta name="twitter:description" content="if语句这个就不说了，肯定时if else 的格式">
+<meta name="twitter:image" content="http://musictail.club/2019/08/03/JavaScript%E7%9A%84if%E8%AF%AD%E5%8F%A5/1.jpg">
   
     <link rel="alternative" href="/atom.xml" title="活死宅的博客" type="application/atom+xml">
   
@@ -191,7 +198,39 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <h1 id="if语句"><a href="#if语句" class="headerlink" title="if语句"></a>if语句</h1><p>这个就不说了，肯定时if else 的格式</p>
+<a id="more"></a>
+<h1 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h1><p>鼠标点击后，显示，再次点击后隐藏。一般的菜单功能都是这样。判断逻辑，就是如果是显示状态，那么就隐藏，否则就显示。</p>
+<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;title&gt;&lt;/title&gt;
+    &lt;style type=&quot;text/css&quot;&gt;
+        #div1{width: 400px;height: 200px;background: pink;display: none;}
+    &lt;/style&gt;
+    &lt;script type=&quot;text/javascript&quot;&gt;
+        function disappearOrAppear(){
+            var oDiv=document.getElementById(&apos;div1&apos;);
+            if(oDiv.style.display==&apos;block&apos;)
+            {
+                oDiv.style.display=&apos;none&apos;;
+            }
+            else
+            {
+                oDiv.style.display=&apos;block&apos;;
+            }
+        }
+    &lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;input type=&quot;button&quot; name=&quot;&quot; id=&quot;&quot; value=&quot;appear or disappear&quot; onclick=&quot;disappearOrAppear()&quot;/&gt;
+    &lt;div id=&quot;div1&quot;&gt;
+
+    &lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre><h1 id="效果"><a href="#效果" class="headerlink" title="效果"></a>效果</h1><p>JavaScript的if语句<br><img src="//musictail.club/2019/08/03/JavaScript%E7%9A%84if%E8%AF%AD%E5%8F%A5/1.jpg" alt="JavaScript的if语句"><br><img src="//musictail.club/2019/08/03/JavaScript%E7%9A%84if%E8%AF%AD%E5%8F%A5/2.jpg" alt="JavaScript的if语句"><br><img src="//musictail.club/2019/08/03/JavaScript%E7%9A%84if%E8%AF%AD%E5%8F%A5/3.jpg" alt="JavaScript的if语句"></p>
+
       
 
       
@@ -357,7 +396,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    目录，不存在的…
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#if语句"><span class="toc-number">1.</span> <span class="toc-text">if语句</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#示例"><span class="toc-number">2.</span> <span class="toc-text">示例</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#代码"><span class="toc-number">3.</span> <span class="toc-text">代码</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#效果"><span class="toc-number">4.</span> <span class="toc-text">效果</span></a></li></ol>
                     </div>
                 </span>
             </div>
