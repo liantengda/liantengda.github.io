@@ -8,14 +8,19 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>批量获取元素getElementByTagName | 活死宅的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="article">
+  <meta name="description" content="getElementsByTagName函数介绍这个函数可以获取指定标签内部的同一类元素的所有对象，存储在一个数组中。 为什么需要这个函数如下图所示，每一个邮件都是一个input元素，而且每一个框都有类似的鼠标事件，如果每个框都需要加入onclick，那会很麻烦，而且触发事件写在行间不安全，还有我们根本不知道这个地方会产生多少封邮件，这个事件肯定是自动赋予每个标签的。 代码给标签改变颜色">
+<meta property="og:type" content="article">
 <meta property="og:title" content="批量获取元素getElementByTagName">
-<meta property="og:url" content="http://yoursite.com/2019/08/03/批量获取元素getElementByTagName/index.html">
+<meta property="og:url" content="http://yoursite.com/2019/08/03/批量获取元素getElementsByTagName/index.html">
 <meta property="og:site_name" content="活死宅的博客">
+<meta property="og:description" content="getElementsByTagName函数介绍这个函数可以获取指定标签内部的同一类元素的所有对象，存储在一个数组中。 为什么需要这个函数如下图所示，每一个邮件都是一个input元素，而且每一个框都有类似的鼠标事件，如果每个框都需要加入onclick，那会很麻烦，而且触发事件写在行间不安全，还有我们根本不知道这个地方会产生多少封邮件，这个事件肯定是自动赋予每个标签的。 代码给标签改变颜色">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-08-03T14:20:03.781Z">
+<meta property="og:image" content="http://musictail.club/2019/08/03/%E6%89%B9%E9%87%8F%E8%8E%B7%E5%8F%96%E5%85%83%E7%B4%A0getElementsByTagName/1.jpg">
+<meta property="og:updated_time" content="2019-08-04T01:03:46.769Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="批量获取元素getElementByTagName">
+<meta name="twitter:description" content="getElementsByTagName函数介绍这个函数可以获取指定标签内部的同一类元素的所有对象，存储在一个数组中。 为什么需要这个函数如下图所示，每一个邮件都是一个input元素，而且每一个框都有类似的鼠标事件，如果每个框都需要加入onclick，那会很麻烦，而且触发事件写在行间不安全，还有我们根本不知道这个地方会产生多少封邮件，这个事件肯定是自动赋予每个标签的。 代码给标签改变颜色">
+<meta name="twitter:image" content="http://musictail.club/2019/08/03/%E6%89%B9%E9%87%8F%E8%8E%B7%E5%8F%96%E5%85%83%E7%B4%A0getElementsByTagName/1.jpg">
   
     <link rel="alternative" href="/atom.xml" title="活死宅的博客" type="application/atom+xml">
   
@@ -171,7 +176,7 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-批量获取元素getElementByTagName" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-批量获取元素getElementsByTagName" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
@@ -183,7 +188,7 @@
   
 
         
-        <a href="/2019/08/03/批量获取元素getElementByTagName/" class="archive-article-date">
+        <a href="/2019/08/03/批量获取元素getElementsByTagName/" class="archive-article-date">
   	<time datetime="2019-08-03T14:20:03.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-03</time>
 </a>
         
@@ -191,7 +196,28 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <h1 id="getElementsByTagName函数介绍"><a href="#getElementsByTagName函数介绍" class="headerlink" title="getElementsByTagName函数介绍"></a>getElementsByTagName函数介绍</h1><p>这个函数可以获取指定标签内部的同一类元素的所有对象，存储在一个数组中。</p>
+<h1 id="为什么需要这个函数"><a href="#为什么需要这个函数" class="headerlink" title="为什么需要这个函数"></a>为什么需要这个函数</h1><p>如下图所示，每一个邮件都是一个input元素，而且每一个框都有类似的鼠标事件，如果每个框都需要加入onclick，那会很麻烦，而且触发事件写在行间不安全，还有我们根本不知道这个地方会产生多少封邮件，这个事件肯定是自动赋予每个标签的。<br><img src="//musictail.club/2019/08/03/%E6%89%B9%E9%87%8F%E8%8E%B7%E5%8F%96%E5%85%83%E7%B4%A0getElementsByTagName/1.jpg" alt="邮件"></p>
+<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><p>给标签改变颜色<br>    <!DOCTYPE html><br>    <html><br>    <head><meta name="generator" content="Hexo 3.9.0"><br>        <meta charset="UTF-8"><br>        <title></title><br>    <style type="text/css"><br>        div{width: 200px;height: 200px;float: left;border: 1px solid black; margin: 10px;}<br>    </style><br>    <script type="text/javascript"><br>        window.onload=function()<br>        {<br>            var oBtn = document.getElementById('btn1');<br>            oBtn.onclick = function()<br>            {<br>                var aDiv = document.getElementsByTagName('div');<br>                for(i=0;i<aDiv.length;i++)<br>                {<br>                    aDiv[i].style.background='red';<br>                }<br>            }</p>
+<pre><code>    }
+&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;input type=&quot;button&quot; name=&quot;btn1&quot; id=&quot;btn1&quot; value=&quot;全体变色&quot; /&gt;
+    &lt;div id=&quot;&quot;&gt;
+
+    &lt;/div&gt;
+    &lt;div id=&quot;&quot;&gt;
+
+    &lt;/div&gt;
+    &lt;div id=&quot;&quot;&gt;
+
+    &lt;/div&gt;
+    &lt;div id=&quot;&quot;&gt;
+
+    &lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre></script></head></html></p>
       
 
       
@@ -280,7 +306,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/08/03/批量获取元素getElementByTagName/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/08/03/批量获取元素getElementsByTagName/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -357,7 +383,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    目录，不存在的…
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#getElementsByTagName函数介绍"><span class="toc-number">1.</span> <span class="toc-text">getElementsByTagName函数介绍</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#为什么需要这个函数"><span class="toc-number">2.</span> <span class="toc-text">为什么需要这个函数</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#代码"><span class="toc-number">3.</span> <span class="toc-text">代码</span></a></li></ol>
                     </div>
                 </span>
             </div>
