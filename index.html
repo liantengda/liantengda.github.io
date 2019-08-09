@@ -399,7 +399,63 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <h1 id="选项卡"><a href="#选项卡" class="headerlink" title="选项卡"></a>选项卡</h1><p>什么是选项卡。比如我们常见的网页菜单。点击对应按钮，弹出对应的菜单栏，其余的按钮对应的菜单栏都消失。<br>下图就是选项卡。<br><img src="//musictail.club/2019/08/03/%E9%80%89%E9%A1%B9%E5%8D%A1%E5%8A%9F%E8%83%BD%E5%AE%9E%E7%8E%B0/1.jpg" alt="选项卡"></p>
+<h1 id="实现思路"><a href="#实现思路" class="headerlink" title="实现思路"></a>实现思路</h1><p>首先我们需要若干个按钮，来触发点击事件。还需要若干个div，来展示对应的触发事件<br><img src="//musictail.club/2019/08/03/%E9%80%89%E9%A1%B9%E5%8D%A1%E5%8A%9F%E8%83%BD%E5%AE%9E%E7%8E%B0/2.jpg" alt="选项卡"><br>然后我们需要显示那个按钮被点击，那个div展示这个按钮的事件。而其余的我们都需要隐藏掉。<br>因此我们先把所有的按钮都置为未选择状态，所有的div都先隐藏起来。使页面恢复清零状态。然后再把点击的按钮标记，再把对应的div显示出来。<br>这个时候，我们就需要知道到底是哪个按钮被点击了。this就是指当前被点击的按钮。而index是我们自定义的变量。用来存储每个按钮的索引。进而展示对应索引的div。</p>
+<h1 id="代码如下"><a href="#代码如下" class="headerlink" title="代码如下"></a>代码如下</h1><pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;title&gt;&lt;/title&gt;
+    &lt;style type=&quot;text/css&quot;&gt;
+        #div1 .active{background: yellow;}//这个类样式，给点击按钮添加颜色。
+        #div1 div{width: 200px;height: 200px; background: #CCC; border: 1px solid black;display: none;}
+    &lt;/style&gt;
+    &lt;script type=&quot;text/javascript&quot;&gt;
+        window.onload=function()
+        {
+            var oDiv1 = document.getElementById(&apos;div1&apos;);
+            var aBtn = oDiv1.getElementsByTagName(&apos;input&apos;);
+            var aDiv = oDiv1.getElementsByTagName(&apos;div&apos;);
+            for(var i =0;i&lt;aBtn.length;i++)
+            {
+                /*自定义属性index*/
+                aBtn[i].index = i;
+                aBtn[i].onclick=function()
+                {
+                    for(var i=0;i&lt;aBtn.length;i++)
+                    {
+                        aBtn[i].className=&apos;&apos;;/*先把所有的按钮都去掉颜色*/
+                        aDiv[i].style.display=&apos;none&apos;;/*先把所有的div都隐藏了*/
+                    }
+                    this.className=&apos;active&apos;;/*这个this就是你现在触发事件的按钮，*/
+                    aDiv[this.index].style.display = &apos;block&apos;;
+                }
+            }
+        }
+
+    &lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;div id=&quot;div1&quot;&gt;
+        &lt;input class=&quot;active&quot; type=&quot;button&quot; name=&quot;&quot; id=&quot;&quot; value=&quot;教育&quot; /&gt;
+        &lt;input type=&quot;button&quot; name=&quot;&quot; id=&quot;&quot; value=&quot;培训&quot; /&gt;
+        &lt;input type=&quot;button&quot; name=&quot;&quot; id=&quot;&quot; value=&quot;招生&quot; /&gt;
+        &lt;input type=&quot;button&quot; name=&quot;&quot; id=&quot;&quot; value=&quot;出国&quot; /&gt;
+        &lt;div id=&quot;&quot; style=&quot;display: block;&quot;&gt;
+            1111
+        &lt;/div&gt;
+        &lt;div id=&quot;&quot;&gt;
+            2222
+        &lt;/div&gt;
+        &lt;div id=&quot;&quot;&gt;
+            3333
+        &lt;/div&gt;
+        &lt;div id=&quot;&quot;&gt;
+            4444
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
       
 
       
@@ -465,7 +521,79 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <h1 id="全选"><a href="#全选" class="headerlink" title="全选"></a>全选</h1><p>点击一个全选按钮，然后实现某一类标签全部变为被选中状态。</p>
+<h1 id="实现过程中的问题"><a href="#实现过程中的问题" class="headerlink" title="实现过程中的问题"></a>实现过程中的问题</h1><p>问题代码如下<br>    <!DOCTYPE html><br>    <html><br>    <head><meta name="generator" content="Hexo 3.9.0"><br>        <meta charset="UTF-8"><br>        <title></title><br>        <script type="text/javascript"><br>            window.onload=function()<br>            {<br>                var oBtn1=document.getElementById('btn1');<br>                oBtn1.onclick=function()<br>                {<br>                    var aCh=document.getElementsByTagName('input');<br>                    for(i=0;i<aCh.length;i++)<br>                    {<br>                        aCh[i].checked = true;<br>                    }<br>                }<br>            };<br>        </script><br>    </head><br>    <body><br>        <input type="button" name id="btn1" value="全选"><br><br>        <input type="checkbox" name id value><br><br>        <input type="checkbox" name id value><br></body></html></p>
+<pre><code>    &lt;input type=&quot;checkbox&quot; name=&quot;&quot; id=&quot;&quot; value=&quot;&quot; /&gt;&lt;br&gt;
+
+    &lt;input type=&quot;checkbox&quot; name=&quot;&quot; id=&quot;&quot; value=&quot;&quot; /&gt;&lt;br&gt;
+
+    &lt;input type=&quot;checkbox&quot; name=&quot;&quot; id=&quot;&quot; value=&quot;&quot; /&gt;&lt;br&gt;
+
+    &lt;input type=&quot;checkbox&quot; name=&quot;&quot; id=&quot;&quot; value=&quot;&quot; /&gt;&lt;br&gt;
+
+    &lt;input type=&quot;checkbox&quot; name=&quot;&quot; id=&quot;&quot; value=&quot;&quot; /&gt;&lt;br&gt;
+
+    &lt;input type=&quot;checkbox&quot; name=&quot;&quot; id=&quot;&quot; value=&quot;&quot; /&gt;&lt;br&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;</code></pre><p>这个代码中明显存在问题，会把不是指定的选择框也选择上，遇到这种情况，我们通常需要使用一个div将我们指定的选择框框选起来，在指定的div标签下才能起作用。</p>
+<h1 id="更改后的代码"><a href="#更改后的代码" class="headerlink" title="更改后的代码"></a>更改后的代码</h1><p>我把同一类选择框用div1包围了起来。<br>    <!DOCTYPE html><br>    <html><br>    <head><meta name="generator" content="Hexo 3.9.0"><br>        <meta charset="UTF-8"><br>        <title></title><br>        <script type="text/javascript"><br>            window.onload=function()<br>            {<br>                var oBtn1=document.getElementById('btn1');<br>                var oBtn2=document.getElementById('btn2');<br>                var oBtn3=document.getElementById('btn3');</p>
+<pre><code>            var oDiv1 = document.getElementById(&apos;div1&apos;);
+
+
+            oBtn1.onclick=function()
+            {
+                var aCh=oDiv1.getElementsByTagName(&apos;input&apos;);
+                for(i=0;i&lt;aCh.length;i++)
+                {
+                    aCh[i].checked = true;
+                }
+            }
+
+            oBtn2.onclick=function()
+            {
+                var aCh=oDiv1.getElementsByTagName(&apos;input&apos;);
+                for(i=0;i&lt;aCh.length;i++)
+                {
+                    aCh[i].checked = false;
+                }
+            }
+
+            oBtn3.onclick=function()
+            {
+                var aCh=oDiv1.getElementsByTagName(&apos;input&apos;);
+                for(i=0;i&lt;aCh.length;i++)
+                {
+                    if(aCh[i].checked==true)
+                    {
+                        aCh[i].checked=false;
+                    }
+                    else
+                    {
+                        aCh[i].checked=true
+                    }
+                }
+            }
+        };
+    &lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;input type=&quot;button&quot; name=&quot;&quot; id=&quot;btn1&quot; value=&quot;全选&quot; /&gt;&lt;br&gt;
+    &lt;input type=&quot;button&quot; name=&quot;btn2&quot; id=&quot;btn2&quot; value=&quot;不选&quot; /&gt;&lt;br&gt;
+    &lt;input type=&quot;button&quot; name=&quot;btn3&quot; id=&quot;btn3&quot; value=&quot;反选&quot; /&gt;
+    &lt;div id=&quot;div1&quot;&gt;
+        &lt;input type=&quot;checkbox&quot; name=&quot;&quot; id=&quot;&quot; value=&quot;&quot; /&gt;&lt;br&gt;
+        &lt;input type=&quot;checkbox&quot; name=&quot;&quot; id=&quot;&quot; value=&quot;&quot; /&gt;&lt;br&gt;
+        &lt;input type=&quot;checkbox&quot; name=&quot;&quot; id=&quot;&quot; value=&quot;&quot; /&gt;&lt;br&gt;
+        &lt;input type=&quot;checkbox&quot; name=&quot;&quot; id=&quot;&quot; value=&quot;&quot; /&gt;&lt;br&gt;
+        &lt;input type=&quot;checkbox&quot; name=&quot;&quot; id=&quot;&quot; value=&quot;&quot; /&gt;&lt;br&gt;
+        &lt;input type=&quot;checkbox&quot; name=&quot;&quot; id=&quot;&quot; value=&quot;&quot; /&gt;&lt;br&gt;
+        &lt;input type=&quot;checkbox&quot; name=&quot;&quot; id=&quot;&quot; value=&quot;&quot; /&gt;&lt;br&gt;
+        &lt;input type=&quot;checkbox&quot; name=&quot;&quot; id=&quot;&quot; value=&quot;&quot; /&gt;&lt;br&gt;
+    &lt;/div&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;</code></pre></script></head></html></p>
       
 
       
@@ -600,7 +728,35 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <h1 id="网页中有什么"><a href="#网页中有什么" class="headerlink" title="网页中有什么"></a>网页中有什么</h1><h2 id="HTML代码"><a href="#HTML代码" class="headerlink" title="HTML代码"></a>HTML代码</h2><p>贯穿整个页面。</p>
+<h2 id="CSS代码"><a href="#CSS代码" class="headerlink" title="CSS代码"></a>CSS代码</h2><p>三种声明方式。</p>
+<blockquote>
+<p>外联样式表：在head标签中，用link标签的href属性来引用后缀名为.css的css样式文件。<br>内联样式表：在head标签下的style标签中，选择器+样式声明。<br>内部样式表：在标签的style属性中添加css样式声明。いわゆる——–行间样式。</p>
+</blockquote>
+<h2 id="JavaScript代码"><a href="#JavaScript代码" class="headerlink" title="JavaScript代码"></a>JavaScript代码</h2><p>在<script>标签中，可以在head标签中，也可以在body标签中。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>整个网页中可以写HTML标签，css样式，js脚本语言。html贯穿整个页面，css可以定义在head中，也可以定义在行间。js定义在<script>中，而<script>标签既可以在head中，也可以在body中。</p>
+<h1 id="网页中的代码如何被解析。"><a href="#网页中的代码如何被解析。" class="headerlink" title="网页中的代码如何被解析。"></a>网页中的代码如何被解析。</h1><p>首先，应该从上往下解析。先是head中的内容，如果head中包含一些外部引用的文件，那么会先下载这些被引用的外部文件。<br>然后，当遇到script标签时，浏览器暂停解析，将控制权较给JavaScript引擎（解释器）。如果script引用了外部脚本，那么就下载该脚本。否则直接执行，执行完毕后，将控制权交给浏览器渲染引擎。<br>在head中的代码被解析完毕后，就开始解析body中的代码。<br>如果head中引用的外部文件未下载完成，那么就会继续下载。<br>body中的元素，会按照head中声明的部分样式去解析，但是碰到行间样式，那么就是行间样式优先，按照行间样式解析。如果在body中碰到了JavaScript代码，同样会交给JavaScript引擎解析。解析完毕继续将控制权较给浏览器渲染。<br>当body中的代码全部执行完毕，并且整个css页面的样式加载完毕，css会重新渲染整个页面的HTML元素。</p>
+<h1 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h1><p>由于浏览器解析网页是从上到下执行的，当js操作元素时，元素们都还未加载进来，所以就会解析失败终止，造成JavaScript找不到页面元素。所以按照道理，将js代码块写到body标签靠后的位置比较好。但是由于为了body中结构清晰，各个代码块结构可以分开。我们使用window.onload：等待页面所有内容加载完毕后才执行。</p>
+<h1 id="实例代码"><a href="#实例代码" class="headerlink" title="实例代码"></a>实例代码</h1><h2 id="含有bug的代码"><a href="#含有bug的代码" class="headerlink" title="含有bug的代码"></a>含有bug的代码</h2><pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;title&gt;&lt;/title&gt;
+    &lt;script type=&quot;text/javascript&quot;&gt;
+
+        var oBtn = document.getElementById(&apos;btn1&apos;);
+
+        oBtn.onclick = function(){alert(&apos;aaaaaaaaaaa&apos;);}
+    &lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;input type=&quot;button&quot; name=&quot;btn1&quot; id=&quot;btn1&quot; value=&quot;按钮&quot; /&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre><p>点击按钮查看控制台，报错。这个按钮不存在。这个按钮确实不存在，在加载这个js代码块的时候。<br><img src="//musictail.club/2019/08/03/%E7%BD%91%E9%A1%B5%E5%8A%A0%E8%BD%BD%E9%A1%BA%E5%BA%8F/1.jpg" alt="网页加载顺序"></p>
+<h2 id="更改后的代码"><a href="#更改后的代码" class="headerlink" title="更改后的代码"></a>更改后的代码</h2><p>代码更改后，如下所示。就可以使用了。因为这个window.onload在页面加载完成之后才会执行。<br>    <!DOCTYPE html><br>    <html><br>    <head><br>        <meta charset="UTF-8"><br>        <title></title><br>        <script type="text/javascript"><br>            window.onload=function()<br>            {<br>                var oBtn=document.getElementById('btn1');<br>                oBtn.onclick=function()<br>                {<br>                    alert('aaaaaa')<br>                }<br>            }<br>        </script><br>    <br>    <body><br>        <input type="button" name="btn1" id="btn1" value="按钮"></body></p>
+<pre><code>&lt;/body&gt;
+&lt;/html&gt;</code></pre><p>正常结果就可以看到了<br><img src="//musictail.club/2019/08/03/%E7%BD%91%E9%A1%B5%E5%8A%A0%E8%BD%BD%E9%A1%BA%E5%BA%8F/2.jpg" alt="网页加载顺序"></p>
+
       
 
       
