@@ -15,10 +15,12 @@
 <meta property="og:site_name" content="活死宅的博客">
 <meta property="og:description" content="网页中有什么HTML代码贯穿整个页面。">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-08-10T01:05:03.825Z">
+<meta property="og:image" content="http://musictail.club/2019/08/03/%E7%BD%91%E9%A1%B5%E5%8A%A0%E8%BD%BD%E9%A1%BA%E5%BA%8F/1.jpg">
+<meta property="og:updated_time" content="2019-08-10T01:11:04.497Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="网页加载顺序">
 <meta name="twitter:description" content="网页中有什么HTML代码贯穿整个页面。">
+<meta name="twitter:image" content="http://musictail.club/2019/08/03/%E7%BD%91%E9%A1%B5%E5%8A%A0%E8%BD%BD%E9%A1%BA%E5%BA%8F/1.jpg">
   
     <link rel="alternative" href="/atom.xml" title="活死宅的博客" type="application/atom+xml">
   
@@ -200,12 +202,12 @@
 <blockquote>
 <p>外联样式表：在head标签中，用link标签的href属性来引用后缀名为.css的css样式文件。<br>内联样式表：在head标签下的style标签中，选择器+样式声明。<br>内部样式表：在标签的style属性中添加css样式声明。いわゆる——–行间样式。</p>
 </blockquote>
-<h2 id="JavaScript代码"><a href="#JavaScript代码" class="headerlink" title="JavaScript代码"></a>JavaScript代码</h2><p>在<script>标签中，可以在head标签中，也可以在body标签中。</p>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>整个网页中可以写HTML标签，css样式，js脚本语言。html贯穿整个页面，css可以定义在head中，也可以定义在行间。js定义在<script>中，而<script>标签既可以在head中，也可以在body中。</p>
+<h2 id="JavaScript代码"><a href="#JavaScript代码" class="headerlink" title="JavaScript代码"></a>JavaScript代码</h2><p>在script标签中，可以在head标签中，也可以在body标签中。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>整个网页中可以写HTML标签，css样式，js脚本语言。html贯穿整个页面，css可以定义在head中，也可以定义在行间。js定义在script中，而script标签既可以在head中，也可以在body中。</p>
 <h1 id="网页中的代码如何被解析。"><a href="#网页中的代码如何被解析。" class="headerlink" title="网页中的代码如何被解析。"></a>网页中的代码如何被解析。</h1><p>首先，应该从上往下解析。先是head中的内容，如果head中包含一些外部引用的文件，那么会先下载这些被引用的外部文件。<br>然后，当遇到script标签时，浏览器暂停解析，将控制权较给JavaScript引擎（解释器）。如果script引用了外部脚本，那么就下载该脚本。否则直接执行，执行完毕后，将控制权交给浏览器渲染引擎。<br>在head中的代码被解析完毕后，就开始解析body中的代码。<br>如果head中引用的外部文件未下载完成，那么就会继续下载。<br>body中的元素，会按照head中声明的部分样式去解析，但是碰到行间样式，那么就是行间样式优先，按照行间样式解析。如果在body中碰到了JavaScript代码，同样会交给JavaScript引擎解析。解析完毕继续将控制权较给浏览器渲染。<br>当body中的代码全部执行完毕，并且整个css页面的样式加载完毕，css会重新渲染整个页面的HTML元素。</p>
 <h1 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h1><p>由于浏览器解析网页是从上到下执行的，当js操作元素时，元素们都还未加载进来，所以就会解析失败终止，造成JavaScript找不到页面元素。所以按照道理，将js代码块写到body标签靠后的位置比较好。但是由于为了body中结构清晰，各个代码块结构可以分开。我们使用window.onload：等待页面所有内容加载完毕后才执行。</p>
 <h1 id="实例代码"><a href="#实例代码" class="headerlink" title="实例代码"></a>实例代码</h1><h2 id="含有bug的代码"><a href="#含有bug的代码" class="headerlink" title="含有bug的代码"></a>含有bug的代码</h2><blockquote>
-   <!DOCTYPE html>
+<!DOCTYPE html>
 <pre><code>&lt;html&gt;
 &lt;head&gt;
     &lt;meta charset=&quot;UTF-8&quot;&gt;
@@ -219,13 +221,13 @@
 &lt;body&gt;
     &lt;input type=&quot;button&quot; name=&quot;btn1&quot; id=&quot;btn1&quot; value=&quot;按钮&quot; /&gt;
 &lt;/body&gt;</code></pre><blockquote>
-  </html>
+
 </blockquote>
 <hr>
 <p>点击按钮查看控制台，报错。这个按钮不存在。这个按钮确实不存在，在加载这个js代码块的时候。<br><img src="//musictail.club/2019/08/03/%E7%BD%91%E9%A1%B5%E5%8A%A0%E8%BD%BD%E9%A1%BA%E5%BA%8F/1.jpg" alt="网页加载顺序"></p>
 <h2 id="更改后的代码"><a href="#更改后的代码" class="headerlink" title="更改后的代码"></a>更改后的代码</h2><p>代码更改后，如下所示。就可以使用了。因为这个window.onload在页面加载完成之后才会执行。</p>
 <blockquote>
-   <!DOCTYPE html>
+<!DOCTYPE html>
 <pre><code>&lt;html&gt;
 &lt;head&gt;
     &lt;meta charset=&quot;UTF-8&quot;&gt;
@@ -244,10 +246,10 @@
 &lt;body&gt;
     &lt;input type=&quot;button&quot; name=&quot;btn1&quot; id=&quot;btn1&quot; value=&quot;按钮&quot;  /&gt;</code></pre></blockquote>
 <pre><code>&lt;/body&gt;</code></pre><blockquote>
-   </html>
+
 正常结果就可以看到了
 ![网页加载顺序](//musictail.club/2019/08/03/网页加载顺序/2.jpg)</blockquote>
-</script></p>
+
       
 
       
@@ -413,7 +415,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#网页中有什么"><span class="toc-number">1.</span> <span class="toc-text">网页中有什么</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#HTML代码"><span class="toc-number">1.1.</span> <span class="toc-text">HTML代码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CSS代码"><span class="toc-number">1.2.</span> <span class="toc-text">CSS代码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#JavaScript代码"><span class="toc-number">1.3.</span> <span class="toc-text">JavaScript代码</span></a></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#网页中有什么"><span class="toc-number">1.</span> <span class="toc-text">网页中有什么</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#HTML代码"><span class="toc-number">1.1.</span> <span class="toc-text">HTML代码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CSS代码"><span class="toc-number">1.2.</span> <span class="toc-text">CSS代码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#JavaScript代码"><span class="toc-number">1.3.</span> <span class="toc-text">JavaScript代码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#总结"><span class="toc-number">1.4.</span> <span class="toc-text">总结</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#网页中的代码如何被解析。"><span class="toc-number">2.</span> <span class="toc-text">网页中的代码如何被解析。</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#注意事项"><span class="toc-number">3.</span> <span class="toc-text">注意事项</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#实例代码"><span class="toc-number">4.</span> <span class="toc-text">实例代码</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#含有bug的代码"><span class="toc-number">4.1.</span> <span class="toc-text">含有bug的代码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#更改后的代码"><span class="toc-number">4.2.</span> <span class="toc-text">更改后的代码</span></a></li></ol></li></ol>
                     </div>
                 </span>
             </div>
