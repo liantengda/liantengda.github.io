@@ -8,14 +8,17 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>匿名函数 | 活死宅的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="article">
+  <meta name="description" content="匿名函数从字面理解，就是没有名字的函数，有了这种给函数，就不用再烦心去给函数起名字了。">
+<meta property="og:type" content="article">
 <meta property="og:title" content="匿名函数">
 <meta property="og:url" content="http://yoursite.com/2019/08/03/匿名函数/index.html">
 <meta property="og:site_name" content="活死宅的博客">
+<meta property="og:description" content="匿名函数从字面理解，就是没有名字的函数，有了这种给函数，就不用再烦心去给函数起名字了。">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-08-03T14:19:02.721Z">
+<meta property="og:updated_time" content="2019-08-10T03:53:40.206Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="匿名函数">
+<meta name="twitter:description" content="匿名函数从字面理解，就是没有名字的函数，有了这种给函数，就不用再烦心去给函数起名字了。">
   
     <link rel="alternative" href="/atom.xml" title="活死宅的博客" type="application/atom+xml">
   
@@ -191,7 +194,43 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <h1 id="匿名函数"><a href="#匿名函数" class="headerlink" title="匿名函数"></a>匿名函数</h1><p>从字面理解，就是没有名字的函数，有了这种给函数，就不用再烦心去给函数起名字了。</p>
+<a id="more"></a>
+<h1 id="未实现匿名函数的代码，"><a href="#未实现匿名函数的代码，" class="headerlink" title="未实现匿名函数的代码，"></a>未实现匿名函数的代码，</h1><pre><code>&lt;html&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;title&gt;&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;input type=&quot;button&quot; name=&quot;b&quot; id=&quot;btn1&quot; value=&quot;按钮&quot; /&gt;
+
+    &lt;script type=&quot;text/javascript&quot;&gt;
+        var oBtn = document.getElementById(&apos;btn1&apos;);
+        //此处还必须给函数起名字。
+        function abd()
+        {
+            alert(&apos;abs&apos;);
+        }
+
+        oBtn.onclick=abd;
+    &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre><h1 id="实现了匿名函数的代码"><a href="#实现了匿名函数的代码" class="headerlink" title="实现了匿名函数的代码"></a>实现了匿名函数的代码</h1><pre><code>&lt;html&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;title&gt;&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;input type=&quot;button&quot; name=&quot;b&quot; id=&quot;btn1&quot; value=&quot;按钮&quot; /&gt;
+
+    &lt;script type=&quot;text/javascript&quot;&gt;
+        var oBtn = document.getElementById(&apos;btn1&apos;);
+
+        //直接在使用的地方声明。而且没有名字。
+        oBtn.onclick=function(){alert(&apos;aaaaaa&apos;)}
+    &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
       
 
       
@@ -357,7 +396,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    目录，不存在的…
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#匿名函数"><span class="toc-number">1.</span> <span class="toc-text">匿名函数</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#未实现匿名函数的代码，"><span class="toc-number">2.</span> <span class="toc-text">未实现匿名函数的代码，</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#实现了匿名函数的代码"><span class="toc-number">3.</span> <span class="toc-text">实现了匿名函数的代码</span></a></li></ol>
                     </div>
                 </span>
             </div>

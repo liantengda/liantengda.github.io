@@ -8,14 +8,20 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>js实现鼠标提示框 | 活死宅的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="article">
+  <meta name="description" content="鼠标提示框鼠标提示框就是，当鼠标移动到某个地方时，会弹出提示框，再移开这个地方，提示框会消失。 代码如下&amp;lt;html&amp;gt; &amp;lt;head&amp;gt;     &amp;lt;meta charset=&amp;quot;UTF-8&amp;quot;&amp;gt;     &amp;lt;title&amp;gt;&amp;lt;/title&amp;gt;     &amp;lt;style type=&amp;quot;text/css&amp;quot;&amp;gt;">
+<meta property="og:type" content="article">
 <meta property="og:title" content="js实现鼠标提示框">
 <meta property="og:url" content="http://yoursite.com/2019/08/03/js实现鼠标提示框/index.html">
 <meta property="og:site_name" content="活死宅的博客">
+<meta property="og:description" content="鼠标提示框鼠标提示框就是，当鼠标移动到某个地方时，会弹出提示框，再移开这个地方，提示框会消失。 代码如下&amp;lt;html&amp;gt; &amp;lt;head&amp;gt;     &amp;lt;meta charset=&amp;quot;UTF-8&amp;quot;&amp;gt;     &amp;lt;title&amp;gt;&amp;lt;/title&amp;gt;     &amp;lt;style type=&amp;quot;text/css&amp;quot;&amp;gt;">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-08-03T14:13:45.908Z">
+<meta property="og:image" content="http://musictail.club/2019/08/03/js%E5%AE%9E%E7%8E%B0%E9%BC%A0%E6%A0%87%E6%8F%90%E7%A4%BA%E6%A1%86/1.jpg">
+<meta property="og:image" content="http://musictail.club/2019/08/03/js%E5%AE%9E%E7%8E%B0%E9%BC%A0%E6%A0%87%E6%8F%90%E7%A4%BA%E6%A1%86/3.jpg">
+<meta property="og:updated_time" content="2019-08-10T04:11:34.614Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="js实现鼠标提示框">
+<meta name="twitter:description" content="鼠标提示框鼠标提示框就是，当鼠标移动到某个地方时，会弹出提示框，再移开这个地方，提示框会消失。 代码如下&amp;lt;html&amp;gt; &amp;lt;head&amp;gt;     &amp;lt;meta charset=&amp;quot;UTF-8&amp;quot;&amp;gt;     &amp;lt;title&amp;gt;&amp;lt;/title&amp;gt;     &amp;lt;style type=&amp;quot;text/css&amp;quot;&amp;gt;">
+<meta name="twitter:image" content="http://musictail.club/2019/08/03/js%E5%AE%9E%E7%8E%B0%E9%BC%A0%E6%A0%87%E6%8F%90%E7%A4%BA%E6%A1%86/1.jpg">
   
     <link rel="alternative" href="/atom.xml" title="活死宅的博客" type="application/atom+xml">
   
@@ -191,7 +197,39 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <h1 id="鼠标提示框"><a href="#鼠标提示框" class="headerlink" title="鼠标提示框"></a>鼠标提示框</h1><p>鼠标提示框就是，当鼠标移动到某个地方时，会弹出提示框，再移开这个地方，提示框会消失。</p>
+<h1 id="代码如下"><a href="#代码如下" class="headerlink" title="代码如下"></a>代码如下</h1><pre><code>&lt;html&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;title&gt;&lt;/title&gt;
+    &lt;style type=&quot;text/css&quot;&gt;
+        #div1{width: 200px; height: 200px; display: none;}
+    &lt;/style&gt;
+    &lt;script type=&quot;text/javascript&quot;&gt;
+        window.onload = function()
+        {
+            var oBtn = document.getElementById(&apos;btn1&apos;);
+            var oDiv = document.getElementById(&apos;div1&apos;);
+            oBtn.onmouseover = function()
+            {
+                oDiv.style.display = &apos;block&apos;;
+            }
+
+            oBtn.onmouseout = function()
+            {
+                oDiv.style.display = &apos;none&apos;;
+            }
+        }
+    &lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;input type=&quot;button&quot; name=&quot;btn1&quot; id=&quot;btn1&quot; value=&quot;放火&quot;/&gt;
+    &lt;div id=&quot;div1&quot;&gt;
+        请不要玩火，谢谢
+    &lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre><h1 id="效果如下"><a href="#效果如下" class="headerlink" title="效果如下"></a>效果如下</h1><p><img src="//musictail.club/2019/08/03/js%E5%AE%9E%E7%8E%B0%E9%BC%A0%E6%A0%87%E6%8F%90%E7%A4%BA%E6%A1%86/1.jpg" alt="js实现鼠标提示框"><br><img src="//musictail.club/2019/08/03/js%E5%AE%9E%E7%8E%B0%E9%BC%A0%E6%A0%87%E6%8F%90%E7%A4%BA%E6%A1%86/3.jpg" alt="js实现鼠标提示框"></p>
+
       
 
       
@@ -357,7 +395,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    目录，不存在的…
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#鼠标提示框"><span class="toc-number">1.</span> <span class="toc-text">鼠标提示框</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#代码如下"><span class="toc-number">2.</span> <span class="toc-text">代码如下</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#效果如下"><span class="toc-number">3.</span> <span class="toc-text">效果如下</span></a></li></ol>
                     </div>
                 </span>
             </div>
