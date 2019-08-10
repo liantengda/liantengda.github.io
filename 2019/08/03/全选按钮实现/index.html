@@ -15,7 +15,7 @@
 <meta property="og:site_name" content="活死宅的博客">
 <meta property="og:description" content="全选点击一个全选按钮，然后实现某一类标签全部变为被选中状态。">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-08-10T01:11:29.016Z">
+<meta property="og:updated_time" content="2019-08-10T01:18:06.120Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="全选按钮实现">
 <meta name="twitter:description" content="全选点击一个全选按钮，然后实现某一类标签全部变为被选中状态。">
@@ -229,7 +229,7 @@
     &lt;input type=&quot;checkbox&quot; name=&quot;&quot; id=&quot;&quot; value=&quot;&quot; /&gt;&lt;br&gt;
     &lt;input type=&quot;checkbox&quot; name=&quot;&quot; id=&quot;&quot; value=&quot;&quot; /&gt;&lt;br&gt;
     &lt;input type=&quot;checkbox&quot; name=&quot;&quot; id=&quot;&quot; value=&quot;&quot; /&gt;&lt;br&gt;
-&lt;/body&gt;</code></pre>
+&lt;/body&gt;</code></pre>  
 </blockquote>
 <hr>
 <p>这个代码中明显存在问题，会把不是指定的选择框也选择上，遇到这种情况，我们通常需要使用一个div将我们指定的选择框框选起来，在指定的div标签下才能起作用。</p>
@@ -247,7 +247,6 @@
             var oBtn2=document.getElementById(&apos;btn2&apos;);
             var oBtn3=document.getElementById(&apos;btn3&apos;);</code></pre></blockquote>
 <pre><code>            var oDiv1 = document.getElementById(&apos;div1&apos;);
-
 
             oBtn1.onclick=function()
             {
@@ -300,7 +299,7 @@
         &lt;input type=&quot;checkbox&quot; name=&quot;&quot; id=&quot;&quot; value=&quot;&quot; /&gt;&lt;br&gt;
     &lt;/div&gt;
 &lt;/body&gt;</code></pre><blockquote>
-
+  
 </blockquote>
 
       
