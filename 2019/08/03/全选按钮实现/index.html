@@ -15,7 +15,7 @@
 <meta property="og:site_name" content="活死宅的博客">
 <meta property="og:description" content="全选点击一个全选按钮，然后实现某一类标签全部变为被选中状态。">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-08-10T02:08:20.045Z">
+<meta property="og:updated_time" content="2019-08-10T02:14:47.405Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="全选按钮实现">
 <meta name="twitter:description" content="全选点击一个全选按钮，然后实现某一类标签全部变为被选中状态。">
@@ -229,68 +229,8 @@
     &lt;input type=&quot;checkbox&quot; name=&quot;&quot; id=&quot;&quot; value=&quot;&quot; /&gt;&lt;br&gt;
 &lt;/body&gt;
 &lt;/html&gt;</code></pre><p>这个代码中明显存在问题，会把不是指定的选择框也选择上，遇到这种情况，我们通常需要使用一个div将我们指定的选择框框选起来，在指定的div标签下才能起作用。</p>
-<h1 id="更改后的代码"><a href="#更改后的代码" class="headerlink" title="更改后的代码"></a>更改后的代码</h1><p>我把同一类选择框用div1包围了起来。</p>
-<pre><code> &lt;html&gt;
-&lt;head&gt;
-    &lt;meta charset=&quot;UTF-8&quot;&gt;
-    &lt;title&gt;&lt;/title&gt;
-    &lt;script type=&quot;text/javascript&quot;&gt;
-        window.onload=function()
-        {
-            var oBtn1=document.getElementById(&apos;btn1&apos;);
-            var oBtn2=document.getElementById(&apos;btn2&apos;);
-            var oBtn3=document.getElementById(&apos;btn3&apos;);
-            var oDiv1 = document.getElementById(&apos;div1&apos;);
-            oBtn1.onclick=function()
-            {
-                var aCh=oDiv1.getElementsByTagName(&apos;input&apos;);
-                for(i=0;i&lt;aCh.length;i++)
-                {
-                    aCh[i].checked = true;
-                }
-            }
-            oBtn2.onclick=function()
-            {
-                var aCh=oDiv1.getElementsByTagName(&apos;input&apos;);
-                for(i=0;i&lt;aCh.length;i++)
-                {
-                    aCh[i].checked = false;
-                }
-            }
-            oBtn3.onclick=function()
-            {
-                var aCh=oDiv1.getElementsByTagName(&apos;input&apos;);
-                for(i=0;i&lt;aCh.length;i++)
-                {
-                    if(aCh[i].checked==true)
-                    {
-                        aCh[i].checked=false;
-                    }
-                    else
-                    {
-                        aCh[i].checked=true
-                    }
-                }
-            }
-        };
-    &lt;/script&gt;
-&lt;/head&gt;
-&lt;body&gt;
-    &lt;input type=&quot;button&quot; name=&quot;&quot; id=&quot;btn1&quot; value=&quot;全选&quot; /&gt;&lt;br&gt;
-    &lt;input type=&quot;button&quot; name=&quot;btn2&quot; id=&quot;btn2&quot; value=&quot;不选&quot; /&gt;&lt;br&gt;
-    &lt;input type=&quot;button&quot; name=&quot;btn3&quot; id=&quot;btn3&quot; value=&quot;反选&quot; /&gt;
-    &lt;div id=&quot;div1&quot;&gt;
-        &lt;input type=&quot;checkbox&quot; name=&quot;&quot; id=&quot;&quot; value=&quot;&quot; /&gt;&lt;br&gt;
-        &lt;input type=&quot;checkbox&quot; name=&quot;&quot; id=&quot;&quot; value=&quot;&quot; /&gt;&lt;br&gt;
-        &lt;input type=&quot;checkbox&quot; name=&quot;&quot; id=&quot;&quot; value=&quot;&quot; /&gt;&lt;br&gt;
-        &lt;input type=&quot;checkbox&quot; name=&quot;&quot; id=&quot;&quot; value=&quot;&quot; /&gt;&lt;br&gt;
-        &lt;input type=&quot;checkbox&quot; name=&quot;&quot; id=&quot;&quot; value=&quot;&quot; /&gt;&lt;br&gt;
-        &lt;input type=&quot;checkbox&quot; name=&quot;&quot; id=&quot;&quot; value=&quot;&quot; /&gt;&lt;br&gt;
-        &lt;input type=&quot;checkbox&quot; name=&quot;&quot; id=&quot;&quot; value=&quot;&quot; /&gt;&lt;br&gt;
-        &lt;input type=&quot;checkbox&quot; name=&quot;&quot; id=&quot;&quot; value=&quot;&quot; /&gt;&lt;br&gt;
-    &lt;/div&gt;
-&lt;/body&gt;
-&lt;/html&gt;</code></pre>
+<h1 id="更改后的代码"><a href="#更改后的代码" class="headerlink" title="更改后的代码"></a>更改后的代码</h1><p>我把同一类选择框用div1包围了起来。<br>     <html><br>    <head><meta name="generator" content="Hexo 3.9.0"><br>        <meta charset="UTF-8"><br>        <title></title><br>        <script type="text/javascript"><br>            window.onload=function()<br>            {<br>                var oBtn1=document.getElementById('btn1');<br>                var oBtn2=document.getElementById('btn2');<br>                var oBtn3=document.getElementById('btn3');<br>                var oDiv1 = document.getElementById('div1');<br>                oBtn1.onclick=function()<br>                {<br>                    var aCh=oDiv1.getElementsByTagName('input');<br>                    for(i=0;i<aCh.length;i++)<br>                    {<br>                        aCh[i].checked = true;<br>                    }<br>                }<br>                oBtn2.onclick=function()<br>                {<br>                    var aCh=oDiv1.getElementsByTagName('input');<br>                    for(i=0;i<aCh.length;i++)<br>                    {<br>                        aCh[i].checked = false;<br>                    }<br>                }<br>                oBtn3.onclick=function()<br>                {<br>                    var aCh=oDiv1.getElementsByTagName('input');<br>                    for(i=0;i<aCh.length;i++)<br>                    {<br>                        if(aCh[i].checked==true)<br>                        {<br>                            aCh[i].checked=false;<br>                        }<br>                        else<br>                        {<br>                            aCh[i].checked=true<br>                        }<br>                    }<br>                }<br>            };<br>        </script><br>    </head><br>    <body><br>        <input type="button" name id="btn1" value="全选"><br><br>        <input type="button" name="btn2" id="btn2" value="不选"><br><br>        <input type="button" name="btn3" id="btn3" value="反选"><br>        <div id="div1"><br>            <input type="checkbox" name id value><br><br>            <input type="checkbox" name id value><br><br>            <input type="checkbox" name id value><br><br>            <input type="checkbox" name id value><br><br>            <input type="checkbox" name id value><br><br>            <input type="checkbox" name id value><br><br>            <input type="checkbox" name id value><br><br>            <input type="checkbox" name id value><br><br>        </div><br>    </body><br>    </html></p>
+
       
 
       
