@@ -8,14 +8,17 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>className这个特例 | 活死宅的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="article">
+  <meta name="description" content="className是什么className就是js在操作标签class属性时，需要引用的名称，一般html中标签的属性怎么写，js中引入的时候就怎么写，唯独class属性需要写成className。">
+<meta property="og:type" content="article">
 <meta property="og:title" content="className这个特例">
 <meta property="og:url" content="http://yoursite.com/2019/08/03/className这个特例/index.html">
 <meta property="og:site_name" content="活死宅的博客">
+<meta property="og:description" content="className是什么className就是js在操作标签class属性时，需要引用的名称，一般html中标签的属性怎么写，js中引入的时候就怎么写，唯独class属性需要写成className。">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-08-03T14:18:09.391Z">
+<meta property="og:updated_time" content="2019-08-10T06:24:37.231Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="className这个特例">
+<meta name="twitter:description" content="className是什么className就是js在操作标签class属性时，需要引用的名称，一般html中标签的属性怎么写，js中引入的时候就怎么写，唯独class属性需要写成className。">
   
     <link rel="alternative" href="/atom.xml" title="活死宅的博客" type="application/atom+xml">
   
@@ -191,7 +194,32 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <h1 id="className是什么"><a href="#className是什么" class="headerlink" title="className是什么"></a>className是什么</h1><p>className就是js在操作标签class属性时，需要引用的名称，一般html中标签的属性怎么写，js中引入的时候就怎么写，唯独class属性需要写成className。</p>
+<a id="more"></a>
+<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;title&gt;&lt;/title&gt;
+    &lt;style type=&quot;text/css&quot;&gt;
+        #div1{width: 400px;height: 300px;border: 1px solid black;}
+        .box{background: red;}
+    &lt;/style&gt;
+    &lt;script type=&quot;text/javascript&quot;&gt;
+        function toRed(){
+            var oDiv=document.getElementById(&apos;div1&apos;);
+            oDiv.className=&apos;box&apos;;
+        }
+    &lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;input type=&quot;button&quot; name=&quot;&quot; id=&quot;&quot; value=&quot;变色&quot; onclick=&quot;toRed()&quot;/&gt;
+
+    &lt;div id=&quot;div1&quot;&gt;
+
+    &lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
       
 
       
@@ -357,7 +385,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    目录，不存在的…
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#className是什么"><span class="toc-number">1.</span> <span class="toc-text">className是什么</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#代码"><span class="toc-number">2.</span> <span class="toc-text">代码</span></a></li></ol>
                     </div>
                 </span>
             </div>
