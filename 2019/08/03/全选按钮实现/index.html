@@ -15,7 +15,7 @@
 <meta property="og:site_name" content="活死宅的博客">
 <meta property="og:description" content="全选点击一个全选按钮，然后实现某一类标签全部变为被选中状态。">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-08-10T01:18:06.120Z">
+<meta property="og:updated_time" content="2019-08-10T01:22:30.191Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="全选按钮实现">
 <meta name="twitter:description" content="全选点击一个全选按钮，然后实现某一类标签全部变为被选中状态。">
@@ -198,8 +198,6 @@
 <a id="more"></a>
 
 <h1 id="实现过程中的问题"><a href="#实现过程中的问题" class="headerlink" title="实现过程中的问题"></a>实现过程中的问题</h1><p>问题代码如下</p>
-<blockquote>
-<!DOCTYPE html>
 <pre><code>&lt;html&gt;
 &lt;head&gt;
     &lt;meta charset=&quot;UTF-8&quot;&gt;
@@ -229,26 +227,10 @@
     &lt;input type=&quot;checkbox&quot; name=&quot;&quot; id=&quot;&quot; value=&quot;&quot; /&gt;&lt;br&gt;
     &lt;input type=&quot;checkbox&quot; name=&quot;&quot; id=&quot;&quot; value=&quot;&quot; /&gt;&lt;br&gt;
     &lt;input type=&quot;checkbox&quot; name=&quot;&quot; id=&quot;&quot; value=&quot;&quot; /&gt;&lt;br&gt;
-&lt;/body&gt;</code></pre>  
-</blockquote>
-<hr>
-<p>这个代码中明显存在问题，会把不是指定的选择框也选择上，遇到这种情况，我们通常需要使用一个div将我们指定的选择框框选起来，在指定的div标签下才能起作用。</p>
-<h1 id="更改后的代码"><a href="#更改后的代码" class="headerlink" title="更改后的代码"></a>更改后的代码</h1><p>我把同一类选择框用div1包围了起来。</p>
-<blockquote>
-<!DOCTYPE html>
-<pre><code>&lt;html&gt;
-&lt;head&gt;
-    &lt;meta charset=&quot;UTF-8&quot;&gt;
-    &lt;title&gt;&lt;/title&gt;
-    &lt;script type=&quot;text/javascript&quot;&gt;
-        window.onload=function()
-        {
-            var oBtn1=document.getElementById(&apos;btn1&apos;);
-            var oBtn2=document.getElementById(&apos;btn2&apos;);
-            var oBtn3=document.getElementById(&apos;btn3&apos;);</code></pre></blockquote>
-<pre><code>            var oDiv1 = document.getElementById(&apos;div1&apos;);
-
-            oBtn1.onclick=function()
+&lt;/body&gt;
+&lt;/html&gt;</code></pre><p>这个代码中明显存在问题，会把不是指定的选择框也选择上，遇到这种情况，我们通常需要使用一个div将我们指定的选择框框选起来，在指定的div标签下才能起作用。</p>
+<h1 id="更改后的代码"><a href="#更改后的代码" class="headerlink" title="更改后的代码"></a>更改后的代码</h1><p>我把同一类选择框用div1包围了起来。<br>    <html><br>    <head><meta name="generator" content="Hexo 3.9.0"><br>        <meta charset="UTF-8"><br>        <title></title><br>        <script type="text/javascript"><br>            window.onload=function()<br>            {<br>                var oBtn1=document.getElementById('btn1');<br>                var oBtn2=document.getElementById('btn2');<br>                var oBtn3=document.getElementById('btn3');<br>                var oDiv1 = document.getElementById('div1');</p>
+<pre><code>            oBtn1.onclick=function()
             {
                 var aCh=oDiv1.getElementsByTagName(&apos;input&apos;);
                 for(i=0;i&lt;aCh.length;i++)
@@ -298,10 +280,8 @@
         &lt;input type=&quot;checkbox&quot; name=&quot;&quot; id=&quot;&quot; value=&quot;&quot; /&gt;&lt;br&gt;
         &lt;input type=&quot;checkbox&quot; name=&quot;&quot; id=&quot;&quot; value=&quot;&quot; /&gt;&lt;br&gt;
     &lt;/div&gt;
-&lt;/body&gt;</code></pre><blockquote>
-  
-</blockquote>
-
+&lt;/body&gt;
+&lt;/html&gt;</code></pre></script></head></html></p>
       
 
       
