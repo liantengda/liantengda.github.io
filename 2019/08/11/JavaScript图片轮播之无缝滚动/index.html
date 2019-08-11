@@ -20,7 +20,7 @@
 <meta property="og:image" content="http://musictail.club/2019/08/11/JavaScript%E5%9B%BE%E7%89%87%E8%BD%AE%E6%92%AD%E4%B9%8B%E6%97%A0%E7%BC%9D%E6%BB%9A%E5%8A%A8/3.jpg">
 <meta property="og:image" content="http://musictail.club/2019/08/11/JavaScript%E5%9B%BE%E7%89%87%E8%BD%AE%E6%92%AD%E4%B9%8B%E6%97%A0%E7%BC%9D%E6%BB%9A%E5%8A%A8/4.jpg">
 <meta property="og:image" content="http://musictail.club/2019/08/11/JavaScript%E5%9B%BE%E7%89%87%E8%BD%AE%E6%92%AD%E4%B9%8B%E6%97%A0%E7%BC%9D%E6%BB%9A%E5%8A%A8/5.jpg">
-<meta property="og:updated_time" content="2019-08-11T05:38:00.134Z">
+<meta property="og:updated_time" content="2019-08-11T06:19:35.715Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JavaScript图片轮播之无缝滚动">
 <meta name="twitter:description" content="无缝滚动这里需要来张图片说明一下。从京东上截了张图。">
@@ -298,7 +298,7 @@
 <p>#div1{width: 800px;height: 200px;margin: 100px auto;position: relative;background: pink;overflow: hidden;}这个div，我们让她允许容纳四张图片，所以应该是800宽。然后高就是按照图片的高设定的，这个margin是为了将div离开浏览器顶部，往下靠一点。然后position是相对定位，相对定位就是指相对自己的正常位置进行移动。绝对定位，是指相对于 static 定位以外的第一个父元素进行定位。overflow，就是超出这个div的部分，属性hidden就是隐藏掉。</p>
 <p>#div1 ul{position: absolute ;left: 0;top: 0;margin: 0;}这是ul的样式，这里的绝对位置是相对于div的绝对位置。这个div1中的margin按道理已经初始化为0了，可是没有起作用，所以我给强制置零了。不然如下图，总是有个和div顶部有个间距.<br><img src="//musictail.club/2019/08/11/JavaScript%E5%9B%BE%E7%89%87%E8%BD%AE%E6%92%AD%E4%B9%8B%E6%97%A0%E7%BC%9D%E6%BB%9A%E5%8A%A8/4.jpg" alt="JavaScript图片轮播之无缝滚动"></p>
 <h2 id="JavaScript代码"><a href="#JavaScript代码" class="headerlink" title="JavaScript代码"></a>JavaScript代码</h2><p>获取各个标签。<br>var oDiv = document.getElementById(‘div1’);<br>var oUl = oDiv.getElementsByTagName(‘ul’)[0];<br>var aLi = oUl.getElementsByTagName(‘li’);<br>设置定时器，开始每三十毫秒移动一次，左边距每次减少2.<br>setInterval(function(){<br>        //将ul的左边距不断减小，开始向左运动，每30毫秒运动一次<br>        oUl.style.left = oUl.offsetLeft-2+’px’;<br>    },30);</p>
-<p>下遍这段代码复制了一遍ul的内容，相当于两倍的图片，为了消除图片不足填满div的空缺。<br>oUl.innerHTML = oUl.innerHTML+oUl.innerHTML;<br>如果不加这段代码，会如下图所示。<br><img src="//musictail.club/2019/08/11/JavaScript%E5%9B%BE%E7%89%87%E8%BD%AE%E6%92%AD%E4%B9%8B%E6%97%A0%E7%BC%9D%E6%BB%9A%E5%8A%A8/5.jpg" alt="JavaScript图片轮播之无缝滚动"><br>如下这段代码，是为了让轮播首尾相连。当过了ul左边距减少一半时，再重新设定ul左边距，相当于从头开始。而由于oUl.innerHTML = oUl.innerHTML+oUl.innerHTML;这段代码的作用，使得ul左边距减少一半时，刚好处于这一组图片的第一个位置。相当于无缝衔接。<br>if(oUl.offsetLeft&lt;-oUl.offsetWidth/2)<br>    {<br>        oUl.style.left=’0’;<br>    }</p>
+<p>下遍这段代码复制了一遍ul的内容，相当于两倍的图片，为了消除图片不足填满div的空缺。<br>oUl.innerHTML = oUl.innerHTML+oUl.innerHTML;<br>如果不加这段代码，会如下图所示。<br><img src="//musictail.club/2019/08/11/JavaScript%E5%9B%BE%E7%89%87%E8%BD%AE%E6%92%AD%E4%B9%8B%E6%97%A0%E7%BC%9D%E6%BB%9A%E5%8A%A8/5.jpg" alt="JavaScript图片轮播之无缝滚动"><br>如下这段代码，是为了让轮播首尾相连。当过了ul左边距减少一半时，再重新设定ul左边距，相当于从头开始。而由于oUl.innerHTML = oUl.innerHTML+oUl.innerHTML;这段代码的作用，使得ul左边距减少一半时，刚好处于这一组图片的第一个位置。相当于无缝衔接。此处有个坑，首先ul的左边距早都是负数了，而宽度是个正数，所以肯定就不动了。因此我们要给宽度也加个负号。<br>if(oUl.offsetLeft&lt;-oUl.offsetWidth/2)<br>    {<br>        oUl.style.left=’0’;<br>    }</p>
 
       
 
