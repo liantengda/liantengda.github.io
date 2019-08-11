@@ -20,7 +20,7 @@
 <meta property="og:image" content="http://musictail.club/2019/08/11/JavaScript%E5%9B%BE%E7%89%87%E8%BD%AE%E6%92%AD%E4%B9%8B%E6%97%A0%E7%BC%9D%E6%BB%9A%E5%8A%A8/3.jpg">
 <meta property="og:image" content="http://musictail.club/2019/08/11/JavaScript%E5%9B%BE%E7%89%87%E8%BD%AE%E6%92%AD%E4%B9%8B%E6%97%A0%E7%BC%9D%E6%BB%9A%E5%8A%A8/4.jpg">
 <meta property="og:image" content="http://musictail.club/2019/08/11/JavaScript%E5%9B%BE%E7%89%87%E8%BD%AE%E6%92%AD%E4%B9%8B%E6%97%A0%E7%BC%9D%E6%BB%9A%E5%8A%A8/5.jpg">
-<meta property="og:updated_time" content="2019-08-11T06:19:35.715Z">
+<meta property="og:updated_time" content="2019-08-11T06:47:57.930Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JavaScript图片轮播之无缝滚动">
 <meta name="twitter:description" content="无缝滚动这里需要来张图片说明一下。从京东上截了张图。">
@@ -299,7 +299,87 @@
 <p>#div1 ul{position: absolute ;left: 0;top: 0;margin: 0;}这是ul的样式，这里的绝对位置是相对于div的绝对位置。这个div1中的margin按道理已经初始化为0了，可是没有起作用，所以我给强制置零了。不然如下图，总是有个和div顶部有个间距.<br><img src="//musictail.club/2019/08/11/JavaScript%E5%9B%BE%E7%89%87%E8%BD%AE%E6%92%AD%E4%B9%8B%E6%97%A0%E7%BC%9D%E6%BB%9A%E5%8A%A8/4.jpg" alt="JavaScript图片轮播之无缝滚动"></p>
 <h2 id="JavaScript代码"><a href="#JavaScript代码" class="headerlink" title="JavaScript代码"></a>JavaScript代码</h2><p>获取各个标签。<br>var oDiv = document.getElementById(‘div1’);<br>var oUl = oDiv.getElementsByTagName(‘ul’)[0];<br>var aLi = oUl.getElementsByTagName(‘li’);<br>设置定时器，开始每三十毫秒移动一次，左边距每次减少2.<br>setInterval(function(){<br>        //将ul的左边距不断减小，开始向左运动，每30毫秒运动一次<br>        oUl.style.left = oUl.offsetLeft-2+’px’;<br>    },30);</p>
 <p>下遍这段代码复制了一遍ul的内容，相当于两倍的图片，为了消除图片不足填满div的空缺。<br>oUl.innerHTML = oUl.innerHTML+oUl.innerHTML;<br>如果不加这段代码，会如下图所示。<br><img src="//musictail.club/2019/08/11/JavaScript%E5%9B%BE%E7%89%87%E8%BD%AE%E6%92%AD%E4%B9%8B%E6%97%A0%E7%BC%9D%E6%BB%9A%E5%8A%A8/5.jpg" alt="JavaScript图片轮播之无缝滚动"><br>如下这段代码，是为了让轮播首尾相连。当过了ul左边距减少一半时，再重新设定ul左边距，相当于从头开始。而由于oUl.innerHTML = oUl.innerHTML+oUl.innerHTML;这段代码的作用，使得ul左边距减少一半时，刚好处于这一组图片的第一个位置。相当于无缝衔接。此处有个坑，首先ul的左边距早都是负数了，而宽度是个正数，所以肯定就不动了。因此我们要给宽度也加个负号。<br>if(oUl.offsetLeft&lt;-oUl.offsetWidth/2)<br>    {<br>        oUl.style.left=’0’;<br>    }</p>
+<h1 id="最后优化"><a href="#最后优化" class="headerlink" title="最后优化"></a>最后优化</h1><p>向其中加了两个按钮，然后使图片可以左右轮播，并且可以自由改变速度。超链接中的href内容指的是，点击超链接，执行js代码。</p>
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;title&gt;&lt;/title&gt;
+    &lt;style type=&quot;text/css&quot;&gt;
+        //初始化?
+        *{margin: 0px; padding: 0px;}
+        #div1{width: 800px;height: 200px;margin: 150px auto;position: relative;background: pink;overflow: hidden;}
+        #div2{width:40px;height: 200px;margin: 100px auto;position: relative;float: left ;}
+        #div3{width:40px;height:200px;margin: 100px auto;position:relative;float:right;}
+        #div1 ul{position: absolute ;left: 0;top: 0;margin: 0;}
+        #div1 ul li{float: left; width:200px ;height: 200px;list-style: none;}
+    &lt;/style&gt;
 
+    &lt;script type=&quot;text/javascript&quot;&gt;
+        window.onload = function()
+        {
+            var oDiv = document.getElementById(&apos;div1&apos;);
+            var oUl = oDiv.getElementsByTagName(&apos;ul&apos;)[0];
+            var aLi = oUl.getElementsByTagName(&apos;li&apos;);
+            var timer = null;
+            var speed =-2;
+            oUl.innerHTML = oUl.innerHTML+oUl.innerHTML;
+
+            oUl.style.width = aLi[0].offsetWidth*aLi.length+&apos;px&apos;;
+
+            function move(){
+                if(oUl.offsetLeft&lt;-oUl.offsetWidth/2)
+                {
+                    oUl.style.left=&apos;0&apos;;
+                }
+                oUl.style.left = oUl.offsetLeft+speed+&apos;px&apos;;
+            }
+
+            timer = setInterval(move,30);
+
+            oDiv.onmouseover=function()
+            {
+                clearTimeout(timer);
+            }
+
+            oDiv.onmouseout=function()
+            {
+                timer = setInterval(move,30);
+            }
+            //向左
+            document.getElementsByTagName(&apos;a&apos;)[0].onclick=function()
+            {
+                speed=-2;
+            }
+            //向右
+            document.getElementsByTagName(&apos;a&apos;)[1].onclick=function()
+            {
+                speed=2;
+            }
+        }
+    &lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;div id=&quot;div2&quot;&gt;
+        &lt;a href=&quot;javascript:;&quot;&gt;向左&lt;/a&gt;
+    &lt;/div&gt;
+        &lt;div id=&quot;div3&quot;&gt;
+        &lt;a href=&quot;javascript:;&quot;&gt;向右&lt;/a&gt;
+    &lt;/div&gt;
+    &lt;div id=&quot;div1&quot;&gt;
+        &lt;ul&gt;
+            &lt;li&gt;&lt;img src=&quot;../img/无缝滚动/1.jpg&quot;/&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;img src=&quot;../img/无缝滚动/2.jpg&quot;/&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;img src=&quot;../img/无缝滚动/3.jpg&quot;/&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;img src=&quot;../img/无缝滚动/4.jpg&quot;/&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;img src=&quot;../img/无缝滚动/5.jpg&quot;/&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;img src=&quot;../img/无缝滚动/6.jpg&quot;/&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;img src=&quot;../img/无缝滚动/7.jpg&quot;/&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;img src=&quot;../img/无缝滚动/8.jpg&quot;/&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
       
 
       
@@ -456,7 +536,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#无缝滚动"><span class="toc-number">1.</span> <span class="toc-text">无缝滚动</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#js物体运动基础"><span class="toc-number">2.</span> <span class="toc-text">js物体运动基础</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#无缝滚动代码"><span class="toc-number">3.</span> <span class="toc-text">无缝滚动代码</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#代码解析"><span class="toc-number">4.</span> <span class="toc-text">代码解析</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#html代码"><span class="toc-number">4.1.</span> <span class="toc-text">html代码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CSS代码"><span class="toc-number">4.2.</span> <span class="toc-text">CSS代码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#JavaScript代码"><span class="toc-number">4.3.</span> <span class="toc-text">JavaScript代码</span></a></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#无缝滚动"><span class="toc-number">1.</span> <span class="toc-text">无缝滚动</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#js物体运动基础"><span class="toc-number">2.</span> <span class="toc-text">js物体运动基础</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#无缝滚动代码"><span class="toc-number">3.</span> <span class="toc-text">无缝滚动代码</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#代码解析"><span class="toc-number">4.</span> <span class="toc-text">代码解析</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#html代码"><span class="toc-number">4.1.</span> <span class="toc-text">html代码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CSS代码"><span class="toc-number">4.2.</span> <span class="toc-text">CSS代码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#JavaScript代码"><span class="toc-number">4.3.</span> <span class="toc-text">JavaScript代码</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#最后优化"><span class="toc-number">5.</span> <span class="toc-text">最后优化</span></a></li></ol>
                     </div>
                 </span>
             </div>
