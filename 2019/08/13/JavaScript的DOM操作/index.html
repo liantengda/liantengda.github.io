@@ -15,10 +15,19 @@
 <meta property="og:site_name" content="纷飞落叶的博客">
 <meta property="og:description" content="DOM是啥DOM的全称是Document Object Model，即文档对象模型。所有对页面的操作都是通过document来进行的。DOM是一个接口，一个规范，程序和脚本可以通过这个接口动态的访问和修改文档的内容，结构和样式。（HTML和xml）。 DOM和JavaScript的关系如果没有DOM，js就无法操作网页，JavaScript对网页的所有操作，都是通过DOM进行的。如下代码就是Jav">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-08-13T13:21:33.193Z">
+<meta property="og:image" content="http://musictail.club/2019/08/13/JavaScript%E7%9A%84DOM%E6%93%8D%E4%BD%9C/1.jpg">
+<meta property="og:image" content="http://musictail.club/2019/08/13/JavaScript%E7%9A%84DOM%E6%93%8D%E4%BD%9C/2.jpg">
+<meta property="og:image" content="http://musictail.club/2019/08/13/JavaScript%E7%9A%84DOM%E6%93%8D%E4%BD%9C/2.jpg">
+<meta property="og:image" content="http://musictail.club/2019/08/13/JavaScript%E7%9A%84DOM%E6%93%8D%E4%BD%9C/3.jpg">
+<meta property="og:image" content="http://musictail.club/2019/08/13/JavaScript%E7%9A%84DOM%E6%93%8D%E4%BD%9C/4.jpg">
+<meta property="og:image" content="http://musictail.club/2019/08/13/JavaScript%E7%9A%84DOM%E6%93%8D%E4%BD%9C/5.jpg">
+<meta property="og:image" content="http://musictail.club/2019/08/13/JavaScript%E7%9A%84DOM%E6%93%8D%E4%BD%9C/6.jpg">
+<meta property="og:image" content="http://musictail.club/2019/08/13/JavaScript%E7%9A%84DOM%E6%93%8D%E4%BD%9C/7.jpg">
+<meta property="og:updated_time" content="2019-08-13T14:29:15.641Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JavaScript的DOM操作">
 <meta name="twitter:description" content="DOM是啥DOM的全称是Document Object Model，即文档对象模型。所有对页面的操作都是通过document来进行的。DOM是一个接口，一个规范，程序和脚本可以通过这个接口动态的访问和修改文档的内容，结构和样式。（HTML和xml）。 DOM和JavaScript的关系如果没有DOM，js就无法操作网页，JavaScript对网页的所有操作，都是通过DOM进行的。如下代码就是Jav">
+<meta name="twitter:image" content="http://musictail.club/2019/08/13/JavaScript%E7%9A%84DOM%E6%93%8D%E4%BD%9C/1.jpg">
   
     <link rel="alternative" href="/atom.xml" title="纷飞落叶的博客" type="application/atom+xml">
   
@@ -195,11 +204,11 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h1 id="DOM是啥"><a href="#DOM是啥" class="headerlink" title="DOM是啥"></a>DOM是啥</h1><p>DOM的全称是Document Object Model，即文档对象模型。所有对页面的操作都是通过document来进行的。DOM是一个接口，一个规范，程序和脚本可以通过这个接口动态的访问和修改文档的内容，结构和样式。（HTML和xml）。</p>
-<h1 id="DOM和JavaScript的关系"><a href="#DOM和JavaScript的关系" class="headerlink" title="DOM和JavaScript的关系"></a>DOM和JavaScript的关系</h1><p>如果没有DOM，js就无法操作网页，JavaScript对网页的所有操作，都是通过DOM进行的。如下代码就是JavaScript和DOM的区别。</p>
+<h1 id="DOM和JavaScript的关系"><a href="#DOM和JavaScript的关系" class="headerlink" title="DOM和JavaScript的关系"></a>DOM和JavaScript的关系</h1><p>如果没有DOM，js就无法操作网页，JavaScript对网页的所有操作，都是通过DOM进行的。如下代码就是JavaScript和DOM的区别。其中document.getElementById(‘div6’)这就是dom。以此类推。</p>
 <pre><code>&lt;script type=&quot;text/javascript&quot;&gt;
     window.onload=function()
     {
-        var oDiv = **document.getElementById(&apos;div6&apos;);**
+        var oDiv = document.getElementById(&apos;div6&apos;);
         var oBtn = oDiv.getElementsByTagName(&apos;input&apos;)[0];
 
         oBtn.onclick=function()
@@ -208,7 +217,191 @@
             document.documentElement.scrollTop=0;
         };
     }
-&lt;/script&gt;</code></pre>
+&lt;/script&gt;</code></pre><h1 id="兼容问题"><a href="#兼容问题" class="headerlink" title="兼容问题"></a>兼容问题</h1><p>IE，火狐，谷歌。这三者对dom的支持都有很大差别。尤其是IE6-8和火狐，有很多操作完全不一样，导致程序员写代码时都要写个选择，兼容两者。近些年来慢慢变得统一了。IE9和火狐差不多了。</p>
+<h1 id="DOM节点"><a href="#DOM节点" class="headerlink" title="DOM节点"></a>DOM节点</h1><p>子节点和父节点一半都是按照离自己最近的上一级节点或下一级节点来定义。</p>
+<h2 id="文本节点和元素节点"><a href="#文本节点和元素节点" class="headerlink" title="文本节点和元素节点"></a>文本节点和元素节点</h2><p>如下代码，输出的结果为7，按照我们的视觉来讲，我们会想当然的认为是三个节点，就是那三对li标签。然而其中还夹杂着文本节点，li是元素节点。如下图所示。箭头所指的地方就是文本节点。到ul结束之前有四个这样的文本节点。IE7使用childNodes这个dom操作是正常的。文本节点是没有style属性的。通过这种dom获取节点，修改元素样式，在火狐上是会报错的。</p>
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;title&gt;&lt;/title&gt;
+    &lt;script type=&quot;text/javascript&quot;&gt;
+        window.onload=function()
+        {
+            var oUl = document.getElementById(&apos;ul1&apos;);
+            alert(oUl.childNodes.length);
+
+        }
+    &lt;/script&gt;        
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;ul id=&quot;ul1&quot;&gt;
+        &lt;li&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre><p><img src="//musictail.club/2019/08/13/JavaScript%E7%9A%84DOM%E6%93%8D%E4%BD%9C/1.jpg" alt="JavaScript的DOM操作"></p>
+<h2 id="获取节点类型操作"><a href="#获取节点类型操作" class="headerlink" title="获取节点类型操作"></a>获取节点类型操作</h2><p>每个节点都有自己的类型，每种类型都对应唯一的值。获取节点类型代码如下，其中文本节点对应的数字是3，元素节点对应的值为1.</p>
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;title&gt;&lt;/title&gt;
+    &lt;script type=&quot;text/javascript&quot;&gt;
+        window.onload=function()
+        {
+            var oUl = document.getElementById(&apos;ul1&apos;);
+            alert(oUl.childNodes.length);
+            for(var i=0;i&lt;oUl.childNodes.length;i++)
+            {
+                //nodeType可以查看节点类型。3代表文本节点，1代表元素节点。
+                alert(oUl.childNodes[i].nodeType);
+            }
+        }
+    &lt;/script&gt;        
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;ul id=&quot;ul1&quot;&gt;
+        &lt;li&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre><p>我们可以通过节点类型判断是不是元素节点，从而只对元素节点进行操作。</p>
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;title&gt;&lt;/title&gt;
+    &lt;script type=&quot;text/javascript&quot;&gt;
+        window.onload=function()
+        {
+            var oUl = document.getElementById(&apos;ul1&apos;);
+            alert(oUl.childNodes.length);
+            for(var i=0;i&lt;oUl.childNodes.length;i++)
+            {
+                //nodeType可以查看节点类型。3代表文本节点，1代表元素节点。
+                alert(oUl.childNodes[i].nodeType);
+
+                if(oUl.childNodes[i].nodeType==1)
+                {
+                    oUl.childNodes[i].style.background=&apos;red&apos;;
+                }
+            }
+        }
+    &lt;/script&gt;        
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;ul id=&quot;ul1&quot;&gt;
+        &lt;li&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre><p>结果如下所示，正常操作成功。<br><img src="//musictail.club/2019/08/13/JavaScript%E7%9A%84DOM%E6%93%8D%E4%BD%9C/2.jpg" alt="JavaScript的DOM操作"></p>
+<h2 id="children操作"><a href="#children操作" class="headerlink" title="children操作"></a>children操作</h2><p>大部分时候我们看到好多人用childNodes，其实有个更好用的children操作。结果同上。而且兼容低版本IE。</p>
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;title&gt;&lt;/title&gt;
+    &lt;script type=&quot;text/javascript&quot;&gt;
+        window.onload=function()
+        {
+            var oUl = document.getElementById(&apos;ul1&apos;);
+            for(var i=0;i&lt;oUl.children.length;i++)
+            {
+                oUl.children[i].style.background=&apos;red&apos;;
+            }
+        }
+    &lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;ul id=&quot;ul1&quot;&gt;
+        &lt;li&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre><p><img src="//musictail.club/2019/08/13/JavaScript%E7%9A%84DOM%E6%93%8D%E4%BD%9C/2.jpg" alt="JavaScript的DOM操作"></p>
+<h2 id="父节点parentNode"><a href="#父节点parentNode" class="headerlink" title="父节点parentNode"></a>父节点parentNode</h2><p>代码如下</p>
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;title&gt;&lt;/title&gt;
+    &lt;script type=&quot;text/javascript&quot;&gt;
+        window.onload=function()
+        {
+            var oUl = document.getElementById(&apos;ul1&apos;);
+            alert(oUl.parentNode);
+        }
+    &lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;ul id=&quot;ul1&quot;&gt;
+        &lt;li&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre><p>结果如下<br><img src="//musictail.club/2019/08/13/JavaScript%E7%9A%84DOM%E6%93%8D%E4%BD%9C/3.jpg" alt="JavaScript的DOM操作"></p>
+<p>父节点小应用的代码，点击超链接隐藏，就会隐藏li标签。这个li标签就是a标签的父节点。</p>
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;title&gt;&lt;/title&gt;
+    &lt;script type=&quot;text/javascript&quot;&gt;
+        window.onload=function()
+        {
+            var oUl = document.getElementById(&apos;ul1&apos;);
+            var aA = document.getElementsByTagName(&apos;a&apos;);
+            for(var i=0;i&lt;aA.length;i++)
+            {
+                aA[i].onclick=function()
+                {
+                    this.parentNode.style.display=&apos;none&apos;;
+                }
+            }
+        }
+    &lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;ul id=&quot;ul1&quot;&gt;
+        &lt;li&gt;你好&lt;a href=&quot;javascript:;&quot;&gt;隐藏&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;我是渣渣辉&lt;a href=&quot;javascript:;&quot;&gt;隐藏&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre><p>结果如下，点击前和点击后。<br><img src="//musictail.club/2019/08/13/JavaScript%E7%9A%84DOM%E6%93%8D%E4%BD%9C/4.jpg" alt="JavaScript的DOM操作"><br><img src="//musictail.club/2019/08/13/JavaScript%E7%9A%84DOM%E6%93%8D%E4%BD%9C/5.jpg" alt="JavaScript的DOM操作"></p>
+<h2 id="offsetParent操作"><a href="#offsetParent操作" class="headerlink" title="offsetParent操作"></a>offsetParent操作</h2><p>在CSS定位哲学中，绝对定位是根据直接父级来定位的，如果直接父级没有定位，就会往上找，直到找到body为止。而offsetParent就是用来寻找某个元素直接用来定位的父级。<br>代码如下</p>
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;title&gt;&lt;/title&gt;
+    &lt;style type=&quot;text/css&quot;&gt;
+        #div1{width: 200px;height: 200px;background: #CCC;}
+        #div2{width: 50px;height: 50px;position: absolute;margin: 50px; background: red;}
+    &lt;/style&gt;
+    &lt;script type=&quot;text/javascript&quot;&gt;
+        window.onload=function()
+        {
+            var oDiv1 = document.getElementById(&apos;div1&apos;);
+            var oDiv2 = document.getElementById(&apos;div2&apos;);
+            alert(oDiv2.offsetParent);
+            alert(oDiv2.parentNode);
+        }
+    &lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;div id=&quot;div1&quot;&gt;
+        &lt;div id=&quot;div2&quot;&gt;
+
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre><p>结果如下，可以看到div2的父级为div类型，而定位父级为body<br><img src="//musictail.club/2019/08/13/JavaScript%E7%9A%84DOM%E6%93%8D%E4%BD%9C/6.jpg" alt="JavaScript的DOM操作"><br><img src="//musictail.club/2019/08/13/JavaScript%E7%9A%84DOM%E6%93%8D%E4%BD%9C/7.jpg" alt="JavaScript的DOM操作"></p>
+
       
 
       
@@ -365,7 +558,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#DOM是啥"><span class="toc-number">1.</span> <span class="toc-text">DOM是啥</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#DOM和JavaScript的关系"><span class="toc-number">2.</span> <span class="toc-text">DOM和JavaScript的关系</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#DOM是啥"><span class="toc-number">1.</span> <span class="toc-text">DOM是啥</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#DOM和JavaScript的关系"><span class="toc-number">2.</span> <span class="toc-text">DOM和JavaScript的关系</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#兼容问题"><span class="toc-number">3.</span> <span class="toc-text">兼容问题</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#DOM节点"><span class="toc-number">4.</span> <span class="toc-text">DOM节点</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#文本节点和元素节点"><span class="toc-number">4.1.</span> <span class="toc-text">文本节点和元素节点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#获取节点类型操作"><span class="toc-number">4.2.</span> <span class="toc-text">获取节点类型操作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#children操作"><span class="toc-number">4.3.</span> <span class="toc-text">children操作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#父节点parentNode"><span class="toc-number">4.4.</span> <span class="toc-text">父节点parentNode</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#offsetParent操作"><span class="toc-number">4.5.</span> <span class="toc-text">offsetParent操作</span></a></li></ol></li></ol>
                     </div>
                 </span>
             </div>
