@@ -194,22 +194,19 @@
       
         <h1 id="DOM是啥"><a href="#DOM是啥" class="headerlink" title="DOM是啥"></a>DOM是啥</h1><p>DOM的全称是Document Object Model，即文档对象模型。所有对页面的操作都是通过document来进行的。DOM是一个接口，一个规范，程序和脚本可以通过这个接口动态的访问和修改文档的内容，结构和样式。（HTML和xml）。</p>
 <h1 id="DOM和JavaScript的关系"><a href="#DOM和JavaScript的关系" class="headerlink" title="DOM和JavaScript的关系"></a>DOM和JavaScript的关系</h1><p>如果没有DOM，js就无法操作网页，JavaScript对网页的所有操作，都是通过DOM进行的。如下代码就是JavaScript和DOM的区别。</p>
-<blockquote>
-  <script type="text/javascript">
-        window.onload=function()
-        {
-            var oDiv = **document.getElementById('div6');**
-            var oBtn = oDiv.getElementsByTagName('input')[0];
-</blockquote>
-<pre><code>    oBtn.onclick=function()
+<pre><code>&lt;script type=&quot;text/javascript&quot;&gt;
+    window.onload=function()
     {
-        document.body.scrollTop=0;
-        document.documentElement.scrollTop=0;
-    };
-}</code></pre><blockquote>
-<p>   </script><p></p>
-</blockquote>
+        var oDiv = **document.getElementById(&apos;div6&apos;);**
+        var oBtn = oDiv.getElementsByTagName(&apos;input&apos;)[0];
 
+        oBtn.onclick=function()
+        {
+            document.body.scrollTop=0;
+            document.documentElement.scrollTop=0;
+        };
+    }
+&lt;/script&gt;</code></pre>
       
 
       
