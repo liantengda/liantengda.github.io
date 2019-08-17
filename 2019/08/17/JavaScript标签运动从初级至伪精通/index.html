@@ -22,7 +22,8 @@
 <meta property="og:image" content="http://musictail.club/2019/08/17/JavaScript%E6%A0%87%E7%AD%BE%E8%BF%90%E5%8A%A8%E4%BB%8E%E5%88%9D%E7%BA%A7%E8%87%B3%E4%BC%AA%E7%B2%BE%E9%80%9A/4.jpg">
 <meta property="og:image" content="http://musictail.club/2019/08/17/JavaScript%E6%A0%87%E7%AD%BE%E8%BF%90%E5%8A%A8%E4%BB%8E%E5%88%9D%E7%BA%A7%E8%87%B3%E4%BC%AA%E7%B2%BE%E9%80%9A/5.jpg">
 <meta property="og:image" content="http://musictail.club/2019/08/17/JavaScript%E6%A0%87%E7%AD%BE%E8%BF%90%E5%8A%A8%E4%BB%8E%E5%88%9D%E7%BA%A7%E8%87%B3%E4%BC%AA%E7%B2%BE%E9%80%9A/6.jpg">
-<meta property="og:updated_time" content="2019-08-17T08:35:29.452Z">
+<meta property="og:image" content="http://musictail.club/2019/08/17/JavaScript%E6%A0%87%E7%AD%BE%E8%BF%90%E5%8A%A8%E4%BB%8E%E5%88%9D%E7%BA%A7%E8%87%B3%E4%BC%AA%E7%B2%BE%E9%80%9A/7.jpg">
+<meta property="og:updated_time" content="2019-08-17T11:22:32.235Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JavaScript标签运动从初级至伪精通">
 <meta name="twitter:description" content="一、运动初级基础————运动的必需品第一步 先让它动起来。我们首先添加一个div，一个启动按钮。div要有定位position。然后设定一个定时器，每30ms让div的左边距加上10个像素。点击按钮就开始运动了。">
@@ -601,7 +602,7 @@
 
     &lt;/div&gt;
 &lt;/body&gt;
-&lt;/html&gt;</code></pre><h1 id="三、运动高级————缓冲运动"><a href="#三、运动高级————缓冲运动" class="headerlink" title="三、运动高级————缓冲运动"></a>三、运动高级————缓冲运动</h1><h2 id="简易缓冲运动"><a href="#简易缓冲运动" class="headerlink" title="简易缓冲运动"></a>简易缓冲运动</h2><p>当标签不断的靠近终点时，速度应该越来越慢。如下代码为简易的缓冲运动示例。</p>
+&lt;/html&gt;</code></pre><h2 id="3-缓冲运动"><a href="#3-缓冲运动" class="headerlink" title="3.缓冲运动"></a>3.缓冲运动</h2><h3 id="简易缓冲运动"><a href="#简易缓冲运动" class="headerlink" title="简易缓冲运动"></a>简易缓冲运动</h3><p>当标签不断的靠近终点时，速度应该越来越慢。如下代码为简易的缓冲运动示例。</p>
 <pre><code>&lt;!DOCTYPE html&gt;
 &lt;html&gt;
 &lt;head&gt;
@@ -627,7 +628,7 @@
 
     &lt;/div&gt;
 &lt;/body&gt;
-&lt;/html&gt;</code></pre><h2 id="缓冲运动bug"><a href="#缓冲运动bug" class="headerlink" title="缓冲运动bug"></a>缓冲运动bug</h2><p>如上代码，并不能保证最后的终点十分准确到达300px.是有误差的。我们可以用如下代码检测一下。在300px处树立一根标杆。</p>
+&lt;/html&gt;</code></pre><h3 id="缓冲运动bug"><a href="#缓冲运动bug" class="headerlink" title="缓冲运动bug"></a>缓冲运动bug</h3><p>如上代码，并不能保证最后的终点十分准确到达300px.是有误差的。我们可以用如下代码检测一下。在300px处树立一根标杆。</p>
 <pre><code>&lt;!DOCTYPE html&gt;
 &lt;html&gt;
 &lt;head&gt;
@@ -658,7 +659,7 @@
     &lt;/div&gt;
 &lt;/body&gt;
 &lt;/html&gt;</code></pre><p>结果如下图所示，这主要是因为，计算机接收的像素最小单位是1，如果像素不是整数，计算机会自动向下取整，这个时候就需要js中的Math类来解决了。<br><img src="//musictail.club/2019/08/17/JavaScript%E6%A0%87%E7%AD%BE%E8%BF%90%E5%8A%A8%E4%BB%8E%E5%88%9D%E7%BA%A7%E8%87%B3%E4%BC%AA%E7%B2%BE%E9%80%9A/3.jpg" alt="JavaScript标签运动从初级至伪精通"></p>
-<h2 id="Math类"><a href="#Math类" class="headerlink" title="Math类"></a>Math类</h2><p>Math.ceil()向上取整，Math.floor()向下取整。加入Math的向上取整函数后，代码如下：</p>
+<h3 id="Math类"><a href="#Math类" class="headerlink" title="Math类"></a>Math类</h3><p>Math.ceil()向上取整，Math.floor()向下取整。加入Math的向上取整函数后，代码如下：</p>
 <pre><code>&lt;!DOCTYPE html&gt;
 &lt;html&gt;
 &lt;head&gt;
@@ -723,7 +724,7 @@
     &lt;/div&gt;
 &lt;/body&gt;
 &lt;/html&gt;</code></pre><p>如下图所示，向左走。<br><img src="//musictail.club/2019/08/17/JavaScript%E6%A0%87%E7%AD%BE%E8%BF%90%E5%8A%A8%E4%BB%8E%E5%88%9D%E7%BA%A7%E8%87%B3%E4%BC%AA%E7%B2%BE%E9%80%9A/5.jpg" alt="JavaScript标签运动从初级至伪精通"><br><img src="//musictail.club/2019/08/17/JavaScript%E6%A0%87%E7%AD%BE%E8%BF%90%E5%8A%A8%E4%BB%8E%E5%88%9D%E7%BA%A7%E8%87%B3%E4%BC%AA%E7%B2%BE%E9%80%9A/6.jpg" alt="JavaScript标签运动从初级至伪精通"></p>
-<h2 id="缓冲运动案例————右侧悬浮框"><a href="#缓冲运动案例————右侧悬浮框" class="headerlink" title="缓冲运动案例————右侧悬浮框"></a>缓冲运动案例————右侧悬浮框</h2><h3 id="简易悬浮框"><a href="#简易悬浮框" class="headerlink" title="简易悬浮框"></a>简易悬浮框</h3><p>如下为简易悬浮框的代码，其中的scrollTop可以获取一个元素的内容垂直滚动的像素数。在我的另一篇博客中有讲。例如下面的scrollTop就是指整个页面顶端到可视化窗口顶端的距离，也就是隐藏掉的页面的高度。因此隐藏的高度加上可视化窗口的高度再减去div的高度就是目前div真实的top。但是这个div再滚动条快速滚动时会抖动的很厉害。</p>
+<h3 id="缓冲运动案例————右侧悬浮框"><a href="#缓冲运动案例————右侧悬浮框" class="headerlink" title="缓冲运动案例————右侧悬浮框"></a>缓冲运动案例————右侧悬浮框</h3><h4 id="简易悬浮框"><a href="#简易悬浮框" class="headerlink" title="简易悬浮框"></a>简易悬浮框</h4><p>如下为简易悬浮框的代码，其中的scrollTop可以获取一个元素的内容垂直滚动的像素数。在我的另一篇博客中有讲。例如下面的scrollTop就是指整个页面顶端到可视化窗口顶端的距离，也就是隐藏掉的页面的高度。因此隐藏的高度加上可视化窗口的高度再减去div的高度就是目前div真实的top。但是这个div再滚动条快速滚动时会抖动的很厉害。</p>
 <pre><code>&lt;!DOCTYPE html&gt;
 &lt;html&gt;
 &lt;head&gt;
@@ -746,7 +747,7 @@
 
     &lt;/div&gt;
 &lt;/body&gt;
-&lt;/html&gt;</code></pre><h3 id="缓冲悬浮框"><a href="#缓冲悬浮框" class="headerlink" title="缓冲悬浮框"></a>缓冲悬浮框</h3><p>如下是带有缓冲的悬浮框，每次滚动条改变，iTartget就会发生变化，那么目前的offsetTop就会和改变后的iTarget产生距离。div就需要移动。屠龙宝刀点击就送，一刀999。</p>
+&lt;/html&gt;</code></pre><h4 id="缓冲悬浮框"><a href="#缓冲悬浮框" class="headerlink" title="缓冲悬浮框"></a>缓冲悬浮框</h4><p>如下是带有缓冲的悬浮框，每次滚动条改变，iTartget就会发生变化，那么目前的offsetTop就会和改变后的iTarget产生距离。div就需要移动。屠龙宝刀点击就送，一刀999。</p>
 <pre><code>&lt;!DOCTYPE html&gt;
 &lt;html&gt;
 &lt;head&gt;
@@ -761,6 +762,7 @@
             var oDiv =document.getElementById(&apos;div1&apos;);
             var scrollTop = document.documentElement.scrollTop||document.body.scrollTop;
             var iTarget = document.documentElement.clientHeight-oDiv.offsetHeight+scrollTop;
+
             startMove(iTarget);
         }
 
@@ -790,35 +792,36 @@
 
     &lt;/div&gt;
 &lt;/body&gt;
-&lt;/html&gt;</code></pre><h3 id="缓冲bug"><a href="#缓冲bug" class="headerlink" title="缓冲bug"></a>缓冲bug</h3><p>如果传入进来的iTarget不是一个整数，那么就会出现抖动的问题。因为目标在前方，而自己一动就是一个像素，所以又会回退，而回退也是一个像素，所以就会在这个小数点左右两边的整数位置抖动。这个时候就需要取整。</p>
-<h2 id="缓冲运动匀速运动停止条件"><a href="#缓冲运动匀速运动停止条件" class="headerlink" title="缓冲运动匀速运动停止条件"></a>缓冲运动匀速运动停止条件</h2><p>这个问题的由来就是和上个问题一样，标签总是在目标位置左右抖动。如下所示。<br><!DOCTYPE html></p>
-<html>
-    <head><meta name="generator" content="Hexo 3.9.0">
-        <meta charset="UTF-8">
-        <title></title>
-        <style type="text/css">
-            #div1{width: 1px;height: 300px;position: absolute;left: 100px;top: 0;background: black;}
-            #div2{width: 1px;height: 300px;position: absolute;left: 300px;top: 0;background: black;}
-            #div3{width: 50px;height: 50px;position: absolute;left: 600px;top: 50px;background: red;}
-        </style>
-        <script type="text/javascript">
-            var timer=null;
-            function startMove(iTarget)
-            {
-                var oDiv = document.getElementById('div3');
-                clearInterval(timer);
-                timer=setInterval(function(){
-                    var speed = 0;
-                    if(oDiv.offsetLeft<iTarget)
-                    {
-                        speed=7;
-                    }
-                    else
-                    {
-                        speed=-7;
-                    }
+&lt;/html&gt;</code></pre><h4 id="缓冲bug"><a href="#缓冲bug" class="headerlink" title="缓冲bug"></a>缓冲bug</h4><p>如果传入进来的iTarget不是一个整数，那么就会出现抖动的问题。因为目标在前方，而自己一动就是一个像素，所以又会回退，而回退也是一个像素，所以就会在这个小数点左右两边的整数位置抖动。这个时候就需要取整。</p>
+<h4 id="缓冲运动匀速运动停止条件"><a href="#缓冲运动匀速运动停止条件" class="headerlink" title="缓冲运动匀速运动停止条件"></a>缓冲运动匀速运动停止条件</h4><p>这个问题的由来就是和上个问题一样，标签总是在目标位置左右抖动。如下所示。</p>
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;title&gt;&lt;/title&gt;
+    &lt;style type=&quot;text/css&quot;&gt;
+        #div1{width: 1px;height: 300px;position: absolute;left: 100px;top: 0;background: black;}
+        #div2{width: 1px;height: 300px;position: absolute;left: 300px;top: 0;background: black;}
+        #div3{width: 50px;height: 50px;position: absolute;left: 600px;top: 50px;background: red;}
+    &lt;/style&gt;
+    &lt;script type=&quot;text/javascript&quot;&gt;
+        var timer=null;
+        function startMove(iTarget)
+        {
+            var oDiv = document.getElementById(&apos;div3&apos;);
+            clearInterval(timer);
+            timer=setInterval(function(){
+                var speed = 0;
+                if(oDiv.offsetLeft&lt;iTarget)
+                {
+                    speed=7;
+                }
+                else
+                {
+                    speed=-7;
+                }
 
-<pre><code>                oDiv.style.left=oDiv.offsetLeft+speed+&apos;px&apos;;
+                oDiv.style.left=oDiv.offsetLeft+speed+&apos;px&apos;;
             },30);
         }
     &lt;/script&gt;
@@ -835,8 +838,606 @@
     &lt;div id=&quot;div3&quot;&gt;
 
     &lt;/div&gt;
-&lt;/body&gt;</code></pre></html>
-</script></head></html>
+&lt;/body&gt;
+&lt;/html&gt;</code></pre><p>以下是解决掉抖动问题的代码。就是加了个条件，当标签距离目标很近时，取消定时器，然后直接将标签的对应边距值改为目标值。相当于一种眼睛看不到bug。</p>
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;title&gt;&lt;/title&gt;
+    &lt;style type=&quot;text/css&quot;&gt;
+        #div1{width: 1px;height: 300px;position: absolute;left: 100px;top: 0;background: black;}
+        #div2{width: 1px;height: 300px;position: absolute;left: 300px;top: 0;background: black;}
+        #div3{width: 50px;height: 50px;position: absolute;left: 600px;top: 50px;background: red;}
+    &lt;/style&gt;
+    &lt;script type=&quot;text/javascript&quot;&gt;
+        var timer=null;
+        function startMove(iTarget)
+        {
+            var oDiv = document.getElementById(&apos;div3&apos;);
+            clearInterval(timer);
+            timer=setInterval(function(){
+                var speed = 0;
+                if(oDiv.offsetLeft&lt;iTarget)
+                {
+                    speed=7;
+                }
+                else
+                {
+                    speed=-7;
+                }
+                //此处解决了抖动问题
+                if(Math.abs(iTarget-oDiv.offsetLeft)&lt;=7)
+                {
+                    clearInterval(timer);
+                    oDiv.style.left=iTarget+&apos;px&apos;;
+                }
+                else
+                {
+                    oDiv.style.left=oDiv.offsetLeft+speed+&apos;px&apos;;
+                }
+            },30);
+        }
+    &lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;input type=&quot;button&quot; name=&quot;&quot; id=&quot;&quot; value=&quot;to 100&quot; onclick=&quot;startMove(100)&quot; /&gt;
+    &lt;input type=&quot;button&quot; name=&quot;&quot; id=&quot;&quot; value=&quot;to 300&quot; onclick=&quot;startMove(300)&quot;/&gt;
+    &lt;div id=&quot;div1&quot;&gt;
+
+    &lt;/div&gt;
+    &lt;div id=&quot;div2&quot;&gt;
+
+    &lt;/div&gt;
+    &lt;div id=&quot;div3&quot;&gt;
+
+    &lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre><h1 id="运动高级————多物体运动"><a href="#运动高级————多物体运动" class="headerlink" title="运动高级————多物体运动"></a>运动高级————多物体运动</h1><h2 id="基础演示————多个物体尺寸变化"><a href="#基础演示————多个物体尺寸变化" class="headerlink" title="基础演示————多个物体尺寸变化"></a>基础演示————多个物体尺寸变化</h2><p>首先多个物体运动，运动函数中需要加入一个参数，obj来代表是哪个物体运动。之后便会出现些小问题。代码如下。</p>
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;title&gt;&lt;/title&gt;
+    &lt;style type=&quot;text/css&quot;&gt;
+        div {width: 100px;height: 50px;background: red;margin: 10px;}
+    &lt;/style&gt;
+    &lt;script type=&quot;text/javascript&quot;&gt;
+        window.onload=function()
+        {
+            var aDiv = document.getElementsByTagName(&apos;div&apos;);
+
+            for(var i=0;i&lt;aDiv.length;i++)
+            {
+
+                aDiv[i].onmouseover=function()
+                {
+                    startMove(this,400);
+                }
+
+                aDiv[i].onmouseout=function()
+                {
+                    startMove(this,100); 
+                }
+            }
+
+
+        }
+        var timer = null; //这种写法有问题，当其中一个未恢复时，立马启动另一个，则原来那个定时器已经关闭了，就无法回到原来的位置了。
+
+        function startMove(obj,iTarget)
+        {
+            clearInterval(timer);
+
+            timer= setInterval(function(){
+                var speed =(iTarget-obj.offsetWidth)/6;
+                speed=speed&gt;0?Math.ceil(speed):Math.floor(speed);
+
+                if(obj.offsetWidth==iTarget)
+                {
+                    clearInterval(timer);
+                }
+                else
+                {
+                    obj.style.width=obj.offsetWidth+speed+&apos;px&apos;;
+                }
+            },30);
+        }
+    &lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;div id=&quot;&quot;&gt;
+
+    &lt;/div&gt;
+    &lt;div id=&quot;&quot;&gt;
+
+    &lt;/div&gt;
+    &lt;div id=&quot;&quot;&gt;
+
+    &lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre><p>于是就出现了如下问题，在其他标签还没有复原时，如果直接开始另一个标签的运动，其他标签就会停止不动了。这主要是因为混用了定时器的问题，解决办法就是各自拥有各自的定时器，互不干扰。<br><img src="//musictail.club/2019/08/17/JavaScript%E6%A0%87%E7%AD%BE%E8%BF%90%E5%8A%A8%E4%BB%8E%E5%88%9D%E7%BA%A7%E8%87%B3%E4%BC%AA%E7%B2%BE%E9%80%9A/7.jpg" alt="JavaScript标签运动从初级至伪精通"><br>更改后的代码如下：提前给每个div定义一个自己的定时器。</p>
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;title&gt;&lt;/title&gt;
+    &lt;style type=&quot;text/css&quot;&gt;
+        div {width: 100px;height: 50px;background: red;margin: 10px;}
+    &lt;/style&gt;
+    &lt;script type=&quot;text/javascript&quot;&gt;
+        window.onload=function()
+        {
+            var aDiv = document.getElementsByTagName(&apos;div&apos;);
+
+            for(var i=0;i&lt;aDiv.length;i++)
+            {
+                //我们可以给每个div定义一个自己的定时器。
+                aDiv[i].timer = null
+                aDiv[i].onmouseover=function()
+                {
+                    startMove(this,400);
+                }
+
+                aDiv[i].onmouseout=function()
+                {
+                    startMove(this,100); 
+                }
+            }
+
+
+        }
+        //var timer = null; //这种写法有问题，当其中一个未恢复时，立马启动另一个，则原来那个定时器已经关闭了，就无法回到原来的位置了。
+
+        function startMove(obj,iTarget)
+        {
+            clearInterval(obj.timer);
+
+            obj.timer= setInterval(function(){
+                var speed =(iTarget-obj.offsetWidth)/6;
+                speed=speed&gt;0?Math.ceil(speed):Math.floor(speed);
+
+                if(obj.offsetWidth==iTarget)
+                {
+                    clearInterval(obj.timer);
+                }
+                else
+                {
+                    obj.style.width=obj.offsetWidth+speed+&apos;px&apos;;
+                }
+            },30);
+        }
+    &lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;div id=&quot;&quot;&gt;
+
+    &lt;/div&gt;
+    &lt;div id=&quot;&quot;&gt;
+
+    &lt;/div&gt;
+    &lt;div id=&quot;&quot;&gt;
+
+    &lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre><h2 id="基础演示————多个物体淡入淡出"><a href="#基础演示————多个物体淡入淡出" class="headerlink" title="基础演示————多个物体淡入淡出"></a>基础演示————多个物体淡入淡出</h2><p>多个物体淡入淡出，我们又需要一个变量存储alpha，于是出现了和多物体尺寸变化同样的问题，由于多个物体共用了alpha，导致每个alpha各不相同，混乱了。解决后的代码如下。因此，多物体运动一定要赋予每个物体独立的变量，大多数情况下都不可以混用。</p>
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;title&gt;&lt;/title&gt;
+    &lt;style type=&quot;text/css&quot;&gt;
+        /*alpha 是一个八位的灰度图像通道，该通道用256级灰度来记录图像中的透明度信息，定义透明，
+         * 不透明和半透明区域，选值0-100,0是完全透明,100是不透明.*/
+        div{width: 200px;height: 200px;margin: 20px;float: left;background: red;filter:alpha(opacity:30);opacity: 0.3;}
+    &lt;/style&gt;
+
+    &lt;script type=&quot;text/javascript&quot;&gt;
+        window.onload=function()
+        {
+            var aDiv = document.getElementsByTagName(&apos;div&apos;);
+
+            for(var i=0;i&lt;aDiv.length;i++)
+            {
+                aDiv[i].alpha=30;
+                aDiv[i].onmouseover=function()
+                {
+                    startMove(this,100);
+                }
+                aDiv[i].onmouseout= function()
+                {
+                    startMove(this,30);
+                }
+            }
+        }
+
+        //var alpha = 30;//多物体运动，任何变量都不要共用，不然很容易冲突。
+
+        function startMove(obj,iTarget)
+        {
+            clearInterval(obj.timer);
+            obj.timer=setInterval(function(){
+                var speed =(iTarget-obj.alpha)/6;
+                speed=speed&gt;0?Math.ceil(speed):Math.floor(speed);
+                if(obj.alpha==iTarget)
+                {
+                    clearInterval(obj.timer);
+                }
+                else
+                {
+                    obj.alpha+=speed;
+                    obj.style.filter=&apos;alpha(opacity:&apos;+obj.alpha+&apos;)&apos;;
+                    obj.style.opacity=obj.alpha/100;
+                }
+            },30);
+        }
+    &lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;div id=&quot;&quot;&gt;
+
+    &lt;/div&gt;        
+    &lt;div id=&quot;&quot;&gt;
+
+    &lt;/div&gt;    
+    &lt;div id=&quot;&quot;&gt;
+
+    &lt;/div&gt;    
+    &lt;div id=&quot;&quot;&gt;
+
+    &lt;/div&gt;    
+&lt;/body&gt;
+&lt;/html&gt;</code></pre><h2 id="运动框架演进————多个物体进行不一样的运动"><a href="#运动框架演进————多个物体进行不一样的运动" class="headerlink" title="运动框架演进————多个物体进行不一样的运动"></a>运动框架演进————多个物体进行不一样的运动</h2><p>如下为连个div运动，一个变宽，一个变高。如下是为改进的代码。我们会发现代码重复度很大。需要想办法合并</p>
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;title&gt;&lt;/title&gt;
+    &lt;style type=&quot;text/css&quot;&gt;
+        div{width: 200px;height: 200px;margin: 20px;float: left;background: red;}
+    &lt;/style&gt;
+
+    &lt;script type=&quot;text/javascript&quot;&gt;
+        window.onload=function()
+        {
+            var oDiv1 = document.getElementById(&apos;div1&apos;);
+            var oDiv2 = document.getElementById(&apos;div2&apos;);
+            oDiv1.onmouseover=function()
+            {
+                startMove(this,400);
+            }
+            oDiv1.onmouseout=function()
+            {
+                startMove(this,200);
+            }
+
+            oDiv2.onmouseover=function()
+            {
+                startMove2(this,400);
+            }
+            oDiv2.onmouseout=function()
+            {
+                startMove2(this,200);
+            }
+        }
+
+        //var alpha = 30;//多物体运动，任何变量都不要共用，不然很容易冲突。
+        function startMove(obj,iTarget)
+        {
+            clearInterval(obj.timer);
+            obj.timer=setInterval(function(){
+                var speed =(iTarget-obj.offsetHeight)/6;
+                speed=speed&gt;0?Math.ceil(speed):Math.floor(speed);
+                if(obj.offsetHeight==iTarget)
+                {
+                    clearInterval(obj.timer);
+                }
+                else
+                {
+                    obj.style.height=obj.offsetHeight+speed+&apos;px&apos;;
+                }
+            },30);
+        }
+
+        function startMove2(obj,iTarget)
+        {
+            clearInterval(obj.timer);
+            obj.timer=setInterval(function(){
+                var speed =(iTarget-obj.offsetWidth)/6;
+                speed=speed&gt;0?Math.ceil(speed):Math.floor(speed);
+                if(obj.offsetWidth==iTarget)
+                {
+                    clearInterval(obj.timer);
+                }
+                else
+                {
+                    obj.style.width=obj.offsetWidth+speed+&apos;px&apos;;
+                }
+            },30);
+        }
+    &lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;div id=&quot;div1&quot;&gt;
+        变高
+    &lt;/div&gt;        
+    &lt;div id=&quot;div2&quot;&gt;
+        变宽
+    &lt;/div&gt;    
+&lt;/body&gt;
+&lt;/html&gt;</code></pre><p>合并过程中，我们不再使用offsetXXX这种属性，而改用调用函数，取样式表样式。避免一些小bug出现。（虽然bug可能被修复了）。代码如下，但是主要是为了下一步合并而埋下的伏笔。在这段代码中，我们尤其需要注意这句代码，obj.style.width=cur+speed+’px’;由于只要带点的地方我们都可以使用这种方式替换obj.style[‘width’]=cur+speed+’px’;这么一写我们就可以用一个变量来存储这个字符串了。也就是可以传入参数来表明我们要对该物体进行什么样的运动。</p>
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;title&gt;&lt;/title&gt;
+    &lt;style type=&quot;text/css&quot;&gt;
+        div{width: 200px;height: 200px;margin: 20px;float: left;background: red;border: 10px solid;}
+    &lt;/style&gt;
+
+    &lt;script type=&quot;text/javascript&quot;&gt;
+        window.onload=function()
+        {
+            var oDiv1 = document.getElementById(&apos;div1&apos;);
+            var oDiv2 = document.getElementById(&apos;div2&apos;);
+            oDiv1.onmouseover=function()
+            {
+                startMove(this,400);
+            }
+            oDiv1.onmouseout=function()
+            {
+                startMove(this,200);
+            }
+
+            oDiv2.onmouseover=function()
+            {
+                startMove2(this,400);
+            }
+            oDiv2.onmouseout=function()
+            {
+                startMove2(this,200);
+            }
+        }
+        //获取样式表样式函数
+        function getStyle(obj,name)
+        {
+            if(obj.currentStyle)
+            {
+                return obj.currentStyle[name];
+            }
+            else
+            {
+                return getComputedStyle(obj,false)[name];
+            }
+        }
+
+        function startMove(obj,iTarget)
+        {
+            clearInterval(obj.timer);
+            obj.timer=setInterval(function(){
+                var cur = parseInt(getStyle(obj,&apos;height&apos;));
+                var speed =(iTarget-cur)/6;
+                speed=speed&gt;0?Math.ceil(speed):Math.floor(speed);
+                if(cur==iTarget)
+                {
+                    clearInterval(obj.timer);
+                }
+                else
+                {
+                    obj.style.height=cur+speed+&apos;px&apos;;
+                }
+            },30);
+        }
+
+        function startMove2(obj,iTarget)
+        {
+            clearInterval(obj.timer);
+            obj.timer=setInterval(function(){
+                var cur = parseInt(getStyle(obj,&apos;width&apos;));
+                var speed =(iTarget-cur)/6;
+                speed=speed&gt;0?Math.ceil(speed):Math.floor(speed);
+                if(cur==iTarget)
+                {
+                    clearInterval(obj.timer);
+                }
+                else
+                {
+                    obj.style.width=cur+speed+&apos;px&apos;;
+                }
+            },30);
+        }
+    &lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;div id=&quot;div1&quot;&gt;
+        变高
+    &lt;/div&gt;        
+    &lt;div id=&quot;div2&quot;&gt;
+        变宽
+    &lt;/div&gt;    
+&lt;/body&gt;
+&lt;/html&gt;</code></pre><p>合并完成后的代码如下。这个就是所说的任意值框架，可以达到更换运动标签，更换运动方式，更换运动尺度这三个功能。</p>
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;title&gt;&lt;/title&gt;
+    &lt;style type=&quot;text/css&quot;&gt;
+        div{width: 200px;height: 200px;margin: 20px;float: left;background: red;border: 10px solid;}
+    &lt;/style&gt;
+
+    &lt;script type=&quot;text/javascript&quot;&gt;
+        window.onload=function()
+        {
+            var oDiv1 = document.getElementById(&apos;div1&apos;);
+            var oDiv2 = document.getElementById(&apos;div2&apos;);
+            oDiv1.onmouseover=function()
+            {
+                startMove(this,&apos;height&apos;,400);
+            }
+            oDiv1.onmouseout=function()
+            {
+                startMove(this,&apos;height&apos;,200);
+            }
+
+            oDiv2.onmouseover=function()
+            {
+                startMove(this,&apos;width&apos;,400);
+            }
+            oDiv2.onmouseout=function()
+            {
+                startMove(this,&apos;width&apos;,200);
+            }
+        }
+        //获取样式表样式函数
+        function getStyle(obj,name)
+        {
+            if(obj.currentStyle)
+            {
+                return obj.currentStyle[name];
+            }
+            else
+            {
+                return getComputedStyle(obj,false)[name];
+            }
+        }
+
+        function startMove(obj,attr,iTarget)
+        {
+            clearInterval(obj.timer);
+            obj.timer=setInterval(function(){
+                var cur = parseInt(getStyle(obj,attr));
+                var speed =(iTarget-cur)/6;
+                speed=speed&gt;0?Math.ceil(speed):Math.floor(speed);
+                if(cur==iTarget)
+                {
+                    clearInterval(obj.timer);
+                }
+                else
+                {
+                    obj.style[attr]=cur+speed+&apos;px&apos;;
+                }
+            },30);
+        }
+    &lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;div id=&quot;div1&quot;&gt;
+        变高
+    &lt;/div&gt;        
+    &lt;div id=&quot;div2&quot;&gt;
+        变宽
+    &lt;/div&gt;    
+&lt;/body&gt;
+&lt;/html&gt;</code></pre><p>但是上边地代码却实现不了透明度地改变，因此还需要进一步进化框架。代码如下，加入判断条件，看是否是改变透明度。</p>
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;title&gt;&lt;/title&gt;
+    &lt;style type=&quot;text/css&quot;&gt;
+        div{width: 200px;height: 200px;margin: 20px;float: left;background: red;border: 10px solid;}
+
+        #div3{width: 200px;height: 200px;position: absolute;left: 500px;top: 50px;background: red; filter: alpha(opacity:30);opacity: 0.3;}
+    &lt;/style&gt;
+
+    &lt;script type=&quot;text/javascript&quot;&gt;
+        window.onload=function()
+        {
+            var oDiv1 = document.getElementById(&apos;div1&apos;);
+            var oDiv2 = document.getElementById(&apos;div2&apos;);
+            var oDiv3 = document.getElementById(&apos;div3&apos;);
+            oDiv1.onmouseover=function()
+            {
+                startMove(this,&apos;height&apos;,400);
+            }
+            oDiv1.onmouseout=function()
+            {
+                startMove(this,&apos;height&apos;,200);
+            }
+
+            oDiv2.onmouseover=function()
+            {
+                startMove(this,&apos;width&apos;,400);
+            }
+            oDiv2.onmouseout=function()
+            {
+                startMove(this,&apos;width&apos;,200);
+            }
+            oDiv3.onmouseover=function()
+            {
+                startMove(this,&apos;opacity&apos;,100);
+            }
+            oDiv3.onmouseout=function()
+            {
+                startMove(this,&apos;opacity&apos;,30);
+            }
+        }
+        //获取样式表样式函数
+        function getStyle(obj,name)
+        {
+            if(obj.currentStyle)
+            {
+                return obj.currentStyle[name];
+            }
+            else
+            {
+                return getComputedStyle(obj,false)[name];
+            }
+        }
+
+        function startMove(obj,attr,iTarget)
+        {
+            clearInterval(obj.timer);
+            obj.timer=setInterval(function(){
+                var cur = 0;
+                //透明度单独处理
+                if(attr==&apos;opacity&apos;)
+                {
+                    cur = parseFloat(getStyle(obj,attr))*100;
+                }
+                else
+                {
+                    cur = parseInt(getStyle(obj,attr));
+                }
+                var speed =(iTarget-cur)/6;
+                speed=speed&gt;0?Math.ceil(speed):Math.floor(speed);
+                if(cur==iTarget)
+                {
+                    clearInterval(obj.timer);
+                }
+                else
+                {
+                    if(attr==&apos;opacity&apos;)
+                    {
+                        obj.style.filter=&apos;alpha(opacity:&apos;+(cur+speed)+&apos;)&apos;;
+                        obj.style.opacity=(cur+speed)/100;
+                    }
+                    else
+                    {
+                        obj.style[attr]=cur+speed+&apos;px&apos;;
+                    }
+                }
+            },30);
+        }
+    &lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;div id=&quot;div1&quot;&gt;
+        变高
+    &lt;/div&gt;        
+    &lt;div id=&quot;div2&quot;&gt;
+        变宽
+    &lt;/div&gt;
+    &lt;div id=&quot;div3&quot;&gt;
+
+    &lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre><p>以上代码仍然还有些问题，可能会出现小数不精准地问题，出现小数在一个很小范围内波动。因此需要使用另一个函数Math.round()也就是四舍五入。</p>
+<blockquote>
+<p>   //透明度单独处理<br>    if(attr==’opacity’)<br>    {<br>        cur = Math.round(parseFloat(getStyle(obj,attr))*100);<br>    }<br>    else<br>    {<br>        cur = parseInt(getStyle(obj,attr));<br>   }</p>
+</blockquote>
+<h1 id="运动伪精通————图片轮播"><a href="#运动伪精通————图片轮播" class="headerlink" title="运动伪精通————图片轮播"></a>运动伪精通————图片轮播</h1>
       
 
       
@@ -993,7 +1594,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#一、运动初级基础————运动的必需品"><span class="toc-number">1.</span> <span class="toc-text">一、运动初级基础————运动的必需品</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#第一步-先让它动起来。"><span class="toc-number">1.1.</span> <span class="toc-text">第一步 先让它动起来。</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#第二步-设定终点"><span class="toc-number">1.2.</span> <span class="toc-text">第二步 设定终点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#第三步-设定速度"><span class="toc-number">1.3.</span> <span class="toc-text">第三步 设定速度</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#第四步-改进定时器"><span class="toc-number">1.4.</span> <span class="toc-text">第四步 改进定时器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#初级小结"><span class="toc-number">1.5.</span> <span class="toc-text">初级小结</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#二、运动中级————简易运动框架"><span class="toc-number">2.</span> <span class="toc-text">二、运动中级————简易运动框架</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-分享侧边栏示例"><span class="toc-number">2.1.</span> <span class="toc-text">1.分享侧边栏示例</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#分享侧边栏示例————初"><span class="toc-number">2.1.1.</span> <span class="toc-text">分享侧边栏示例————初</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#分享侧边栏示例————中————传递参数"><span class="toc-number">2.1.2.</span> <span class="toc-text">分享侧边栏示例————中————传递参数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#分享侧边栏示例————高————合并函数"><span class="toc-number">2.1.3.</span> <span class="toc-text">分享侧边栏示例————高————合并函数</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-图片的淡入淡出示例"><span class="toc-number">2.2.</span> <span class="toc-text">2.图片的淡入淡出示例</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#三、运动高级————缓冲运动"><span class="toc-number">3.</span> <span class="toc-text">三、运动高级————缓冲运动</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#简易缓冲运动"><span class="toc-number">3.1.</span> <span class="toc-text">简易缓冲运动</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#缓冲运动bug"><span class="toc-number">3.2.</span> <span class="toc-text">缓冲运动bug</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Math类"><span class="toc-number">3.3.</span> <span class="toc-text">Math类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#缓冲运动案例————右侧悬浮框"><span class="toc-number">3.4.</span> <span class="toc-text">缓冲运动案例————右侧悬浮框</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#简易悬浮框"><span class="toc-number">3.4.1.</span> <span class="toc-text">简易悬浮框</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#缓冲悬浮框"><span class="toc-number">3.4.2.</span> <span class="toc-text">缓冲悬浮框</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#缓冲bug"><span class="toc-number">3.4.3.</span> <span class="toc-text">缓冲bug</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#缓冲运动匀速运动停止条件"><span class="toc-number">3.5.</span> <span class="toc-text">缓冲运动匀速运动停止条件</span></a></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#一、运动初级基础————运动的必需品"><span class="toc-number">1.</span> <span class="toc-text">一、运动初级基础————运动的必需品</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#第一步-先让它动起来。"><span class="toc-number">1.1.</span> <span class="toc-text">第一步 先让它动起来。</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#第二步-设定终点"><span class="toc-number">1.2.</span> <span class="toc-text">第二步 设定终点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#第三步-设定速度"><span class="toc-number">1.3.</span> <span class="toc-text">第三步 设定速度</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#第四步-改进定时器"><span class="toc-number">1.4.</span> <span class="toc-text">第四步 改进定时器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#初级小结"><span class="toc-number">1.5.</span> <span class="toc-text">初级小结</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#二、运动中级————简易运动框架"><span class="toc-number">2.</span> <span class="toc-text">二、运动中级————简易运动框架</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-分享侧边栏示例"><span class="toc-number">2.1.</span> <span class="toc-text">1.分享侧边栏示例</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#分享侧边栏示例————初"><span class="toc-number">2.1.1.</span> <span class="toc-text">分享侧边栏示例————初</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#分享侧边栏示例————中————传递参数"><span class="toc-number">2.1.2.</span> <span class="toc-text">分享侧边栏示例————中————传递参数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#分享侧边栏示例————高————合并函数"><span class="toc-number">2.1.3.</span> <span class="toc-text">分享侧边栏示例————高————合并函数</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-图片的淡入淡出示例"><span class="toc-number">2.2.</span> <span class="toc-text">2.图片的淡入淡出示例</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-缓冲运动"><span class="toc-number">2.3.</span> <span class="toc-text">3.缓冲运动</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#简易缓冲运动"><span class="toc-number">2.3.1.</span> <span class="toc-text">简易缓冲运动</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#缓冲运动bug"><span class="toc-number">2.3.2.</span> <span class="toc-text">缓冲运动bug</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Math类"><span class="toc-number">2.3.3.</span> <span class="toc-text">Math类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#缓冲运动案例————右侧悬浮框"><span class="toc-number">2.3.4.</span> <span class="toc-text">缓冲运动案例————右侧悬浮框</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#简易悬浮框"><span class="toc-number">2.3.4.1.</span> <span class="toc-text">简易悬浮框</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#缓冲悬浮框"><span class="toc-number">2.3.4.2.</span> <span class="toc-text">缓冲悬浮框</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#缓冲bug"><span class="toc-number">2.3.4.3.</span> <span class="toc-text">缓冲bug</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#缓冲运动匀速运动停止条件"><span class="toc-number">2.3.4.4.</span> <span class="toc-text">缓冲运动匀速运动停止条件</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#运动高级————多物体运动"><span class="toc-number">3.</span> <span class="toc-text">运动高级————多物体运动</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#基础演示————多个物体尺寸变化"><span class="toc-number">3.1.</span> <span class="toc-text">基础演示————多个物体尺寸变化</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#基础演示————多个物体淡入淡出"><span class="toc-number">3.2.</span> <span class="toc-text">基础演示————多个物体淡入淡出</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#运动框架演进————多个物体进行不一样的运动"><span class="toc-number">3.3.</span> <span class="toc-text">运动框架演进————多个物体进行不一样的运动</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#运动伪精通————图片轮播"><span class="toc-number">4.</span> <span class="toc-text">运动伪精通————图片轮播</span></a></li></ol>
                     </div>
                 </span>
             </div>
