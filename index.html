@@ -172,6 +172,704 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-JavaScript标签运动从初级至伪精通" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/08/17/JavaScript标签运动从初级至伪精通/">JavaScript标签运动从初级至伪精通</a>
+    </h1>
+  
+
+        
+        <a href="/2019/08/17/JavaScript标签运动从初级至伪精通/" class="archive-article-date">
+  	<time datetime="2019-08-17T02:08:27.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-17</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="一、运动初级基础————运动的必需品"><a href="#一、运动初级基础————运动的必需品" class="headerlink" title="一、运动初级基础————运动的必需品"></a>一、运动初级基础————运动的必需品</h1><h2 id="第一步-先让它动起来。"><a href="#第一步-先让它动起来。" class="headerlink" title="第一步 先让它动起来。"></a>第一步 先让它动起来。</h2><p>我们首先添加一个div，一个启动按钮。div要有定位position。然后设定一个定时器，每30ms让div的左边距加上10个像素。点击按钮就开始运动了。</p>
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;title&gt;&lt;/title&gt;
+    &lt;style type=&quot;text/css&quot;&gt;
+        #div1{width: 200px;height: 200px;background: red;position: absolute;left: 50px;top: 50px;}
+    &lt;/style&gt;
+    &lt;script type=&quot;text/javascript&quot;&gt;
+        function startMove()
+        {
+            var oDiv = document.getElementById(&apos;div1&apos;);
+            //开启定时器
+            setInterval(function(){
+                oDiv.style.left=oDiv.offsetLeft+10+&apos;px&apos;;
+            },30);
+        }
+    &lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;input type=&quot;button&quot; name=&quot;btn1&quot; id=&quot;btn1&quot; value=&quot;start move&quot; onclick=&quot;startMove()&quot;/&gt;
+    &lt;div id=&quot;div1&quot;&gt;
+
+    &lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre><h2 id="第二步-设定终点"><a href="#第二步-设定终点" class="headerlink" title="第二步 设定终点"></a>第二步 设定终点</h2><p>我们让div运动到某一位置停止。我们只需要在标签移动过程中判断一下物体的某一边距是否超过了或者等于我们设定的终点值，然后就清除掉这个定时器。当然我们要提前将这个定时器存到一个变量中。达到条件就清除这个定时器。</p>
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;title&gt;&lt;/title&gt;
+    &lt;style type=&quot;text/css&quot;&gt;
+        #div1{width: 200px;height: 200px;background: red;position: absolute;left: 50px;top: 50px;}
+    &lt;/style&gt;
+    &lt;script type=&quot;text/javascript&quot;&gt;
+        var timer=null;
+        function startMove()
+        {
+            var oDiv = document.getElementById(&apos;div1&apos;);
+
+            timer = setInterval(function(){
+                //设定终点
+                if(oDiv.offsetLeft&gt;=300)
+                {
+                    clearInterval(timer);
+                }
+                oDiv.style.left=oDiv.offsetLeft+10+&apos;px&apos;;
+            },30);
+        }
+    &lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;input type=&quot;button&quot; name=&quot;btn1&quot; id=&quot;btn1&quot; value=&quot;start move&quot; onclick=&quot;startMove()&quot;/&gt;
+    &lt;div id=&quot;div1&quot;&gt;
+
+    &lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre><h2 id="第三步-设定速度"><a href="#第三步-设定速度" class="headerlink" title="第三步 设定速度"></a>第三步 设定速度</h2><p>想要改变标签运动速度，就需要从时间间隔和每次移动多少距离两个方面入手，而时间间隔30是经验得来的数字，这个数字对于人的眼睛过度的很好，所以我们从每次移动的距离入手。定义一个speed存起来，修改时也方便。</p>
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;title&gt;&lt;/title&gt;
+    &lt;style type=&quot;text/css&quot;&gt;
+        #div1{width: 200px;height: 200px;background: red;position: absolute;left: 50px;top: 50px;}
+    &lt;/style&gt;
+    &lt;script type=&quot;text/javascript&quot;&gt;
+        var timer=null;
+        function startMove()
+        {
+            var oDiv = document.getElementById(&apos;div1&apos;);
+
+            timer = setInterval(function(){
+                //设定速度
+                var speed = 10;
+                if(oDiv.offsetLeft&gt;=300)
+                {
+                    clearInterval(timer);
+                }
+                oDiv.style.left=oDiv.offsetLeft+speed+&apos;px&apos;;
+            },30);
+        }
+    &lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;input type=&quot;button&quot; name=&quot;btn1&quot; id=&quot;btn1&quot; value=&quot;start move&quot; onclick=&quot;startMove()&quot;/&gt;
+    &lt;div id=&quot;div1&quot;&gt;
+
+    &lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre><h2 id="第四步-改进定时器"><a href="#第四步-改进定时器" class="headerlink" title="第四步 改进定时器"></a>第四步 改进定时器</h2><p>当我们每次点击按钮的时候都会重新开启一个定时器，这样会使物体运动的越来越快，因为定时器可以加无数个，每个定时器每间隔一段时间都会触发运动函数。而且，当物体到达终点后点击运动按钮，标签还是会运动一个时间间隔，因为如上代码开启了定时器就会触发一次运动函数。所以我们需要每次开启定时器之前都要关闭上一个定时器，而且如果标签已经到达了终点，我们就需要加一个判断分支，直接进入关闭定时器的分支。一下代码已经快接近框架了。框架即前人已经总结出来的经验，按照这个编写就靠谱，直到后来可以直接拿来引用。自己只需要传入参数即可。</p>
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;title&gt;&lt;/title&gt;
+    &lt;style type=&quot;text/css&quot;&gt;
+        #div1{width: 200px;height: 200px;background: red;position: absolute;left: 50px;top: 50px;}
+    &lt;/style&gt;
+    &lt;script type=&quot;text/javascript&quot;&gt;
+        var timer=null;
+        function startMove()
+        {
+            var oDiv = document.getElementById(&apos;div1&apos;);
+            //提前关闭上一个定时器
+            clearInterval(timer);
+            //开启定时器（重新赋予一个定时器）
+            timer = setInterval(function(){
+                var speed = 10;
+                if(oDiv.offsetLeft&gt;=300)
+                {
+                    //如果达到条件就进入清除定时器分支
+                    clearInterval(timer);
+                }
+                else
+                {
+                    oDiv.style.left=oDiv.offsetLeft+speed+&apos;px&apos;;
+                }
+            },30);
+        }
+    &lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;input type=&quot;button&quot; name=&quot;btn1&quot; id=&quot;btn1&quot; value=&quot;start move&quot; onclick=&quot;startMove()&quot;/&gt;
+    &lt;div id=&quot;div1&quot;&gt;
+
+    &lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre><h2 id="初级小结"><a href="#初级小结" class="headerlink" title="初级小结"></a>初级小结</h2><p>1.对于一个标签，如果想运动，必须先有定位<br>2.在开始运动的时候，必须关闭原有定时器<br>3.运动功能和停止功能要用判断分支隔开。</p>
+<h1 id="二、运动中级————简易运动框架"><a href="#二、运动中级————简易运动框架" class="headerlink" title="二、运动中级————简易运动框架"></a>二、运动中级————简易运动框架</h1><h2 id="1-分享侧边栏示例"><a href="#1-分享侧边栏示例" class="headerlink" title="1.分享侧边栏示例"></a>1.分享侧边栏示例</h2><h3 id="分享侧边栏示例————初"><a href="#分享侧边栏示例————初" class="headerlink" title="分享侧边栏示例————初"></a>分享侧边栏示例————初</h3><p><img src="//musictail.club/2019/08/17/JavaScript%E6%A0%87%E7%AD%BE%E8%BF%90%E5%8A%A8%E4%BB%8E%E5%88%9D%E7%BA%A7%E8%87%B3%E4%BC%AA%E7%B2%BE%E9%80%9A/1.jpg" alt="JavaScript标签运动从初级至伪精通"><br> 如下代码定义了两个函数，当鼠标移动到div上时，div开始向右移动，展现出来。当鼠标移开div时，div向左移动，直到左边距为-200px.这里面用到了很多相对定位和绝对定位的东西，需要提前有所了解。我也写了这篇文章，有相应的演示。</p>
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;title&gt;&lt;/title&gt;
+    &lt;style type=&quot;text/css&quot;&gt;
+        #div1{width: 200px;height: 300px;background: yellow;position: absolute;left: -200px;top: 50px;}
+        #div1 span{position: absolute;width: 50px;height:100px;right: -50px;top: 50px;background: green;line-height: 50px;}
+    &lt;/style&gt;
+    &lt;script type=&quot;text/javascript&quot;&gt;
+        window.onload=function(){
+            var oDiv = document.getElementById(&apos;div1&apos;);
+            oDiv.onmouseover=startMove1;
+            oDiv.onmouseout = startMove2;
+        }
+
+        var timer = null;
+        function startMove1()
+        {
+            var oDiv = document.getElementById(&apos;div1&apos;);
+            //提前关闭上一个定时器
+            clearInterval(timer);
+            //开启定时器（重新赋予一个定时器）
+            timer = setInterval(function(){
+                var speed = 10;
+                if(oDiv.offsetLeft&gt;=0)
+                {
+                    //如果达到条件就进入清除定时器分支
+                    clearInterval(timer);
+                }
+                else
+                {
+                    oDiv.style.left=oDiv.offsetLeft+speed+&apos;px&apos;;
+                }
+            },30);
+        }
+        function startMove2()
+        {
+            var oDiv = document.getElementById(&apos;div1&apos;);
+            //提前关闭上一个定时器
+            clearInterval(timer);
+            //开启定时器（重新赋予一个定时器）
+            timer = setInterval(function(){
+                var speed = -10;
+                if(oDiv.offsetLeft&lt;=-200)
+                {
+                    //如果达到条件就进入清除定时器分支
+                    clearInterval(timer);
+                }
+                else
+                {
+                    oDiv.style.left=oDiv.offsetLeft+speed+&apos;px&apos;;
+                }
+            },30);
+        }
+    &lt;/script&gt;
+&lt;/head&gt;
+    &lt;div id=&quot;div1&quot;&gt;
+        &lt;span id=&quot;&quot;&gt;
+
+        &lt;/span&gt;            
+    &lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre><p>结果如下所示：<br><img src="//musictail.club/2019/08/17/JavaScript%E6%A0%87%E7%AD%BE%E8%BF%90%E5%8A%A8%E4%BB%8E%E5%88%9D%E7%BA%A7%E8%87%B3%E4%BC%AA%E7%B2%BE%E9%80%9A/0.jpg" alt="JavaScript标签运动从初级至伪精通"><img src="//musictail.club/2019/08/17/JavaScript%E6%A0%87%E7%AD%BE%E8%BF%90%E5%8A%A8%E4%BB%8E%E5%88%9D%E7%BA%A7%E8%87%B3%E4%BC%AA%E7%B2%BE%E9%80%9A/2.jpg" alt="JavaScript标签运动从初级至伪精通"></p>
+<h3 id="分享侧边栏示例————中————传递参数"><a href="#分享侧边栏示例————中————传递参数" class="headerlink" title="分享侧边栏示例————中————传递参数"></a>分享侧边栏示例————中————传递参数</h3><p>函数中变动的地方只有速度和终点位置，我们可以将这两个数变为两个参数传入。</p>
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;title&gt;&lt;/title&gt;
+    &lt;style type=&quot;text/css&quot;&gt;
+        #div1{width: 200px;height: 300px;background: yellow;position: absolute;left: -200px;top: 50px;}
+        #div1 span{position: absolute;width: 50px;height:100px;right: -50px;top: 50px;background: green;line-height: 50px;}
+    &lt;/style&gt;
+    &lt;script type=&quot;text/javascript&quot;&gt;
+        window.onload=function(){
+            var oDiv = document.getElementById(&apos;div1&apos;);
+            oDiv.onmouseover=function()
+            {
+                //传递参数
+                startMove1(10,0);
+            }
+            oDiv.onmouseout = function()
+            {
+                startMove2(-10,-200);
+            }
+        }
+
+        var timer = null;
+        //加入参数
+        function startMove1(speed,Target)
+        {
+            var oDiv = document.getElementById(&apos;div1&apos;);
+            clearInterval(timer);
+            timer = setInterval(function(){
+
+                if(oDiv.offsetLeft&gt;=Target)
+                {
+                    clearInterval(timer);
+                }
+                else
+                {
+                    oDiv.style.left=oDiv.offsetLeft+speed+&apos;px&apos;;
+                }
+            },30);
+        }
+            function startMove2(speed,Target)
+        {
+            var oDiv = document.getElementById(&apos;div1&apos;);
+            clearInterval(timer);
+            timer = setInterval(function(){
+
+                if(oDiv.offsetLeft&lt;=Target)
+                {
+                    clearInterval(timer);
+                }
+                else
+                {
+                    oDiv.style.left=oDiv.offsetLeft+speed+&apos;px&apos;;
+                }
+            },30);
+        }
+    &lt;/script&gt;
+&lt;/head&gt;
+    &lt;div id=&quot;div1&quot;&gt;
+        &lt;span id=&quot;&quot;&gt;
+
+        &lt;/span&gt;            
+    &lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre><h3 id="分享侧边栏示例————高————合并函数"><a href="#分享侧边栏示例————高————合并函数" class="headerlink" title="分享侧边栏示例————高————合并函数"></a>分享侧边栏示例————高————合并函数</h3><p>两个函数看上去基本上很相似。因为速度的正负和终点位置的不同，判断分支条件有些不同。我们可以想办法将他们合成一个框架。一下代码还是有好多可以合并的地方，此处我就不进一步简化了。</p>
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;title&gt;&lt;/title&gt;
+    &lt;style type=&quot;text/css&quot;&gt;
+        #div1{width: 200px;height: 300px;background: yellow;position: absolute;left: -200px;top: 50px;}
+        #div1 span{position: absolute;width: 50px;height:100px;right: -50px;top: 50px;background: green;line-height: 50px;}
+    &lt;/style&gt;
+    &lt;script type=&quot;text/javascript&quot;&gt;
+        window.onload=function(){
+            var oDiv = document.getElementById(&apos;div1&apos;);
+            oDiv.onmouseover=function()
+            {
+                //传递参数
+                startMove(0);
+            }
+            oDiv.onmouseout = function()
+            {
+                startMove(-200);
+            }
+        }
+
+        var timer = null;
+        //加入参数
+        function startMove(Target)
+        {
+            var oDiv = document.getElementById(&apos;div1&apos;);
+            var speed = 0;
+            var direction = 0;
+            direction=oDiv.offsetLeft;
+            if(direction&lt;Target)
+            {
+                speed =10
+
+                clearInterval(timer);
+                timer = setInterval(function(){
+
+                    if(oDiv.offsetLeft&gt;=Target)
+                    {
+
+                        clearInterval(timer);
+                    }
+                    else
+                    {
+                        oDiv.style.left=oDiv.offsetLeft+speed+&apos;px&apos;;
+                    }
+                },30);
+            }
+            else
+            {
+                speed=-10;
+                clearInterval(timer);
+                timer = setInterval(function(){
+
+                    if(oDiv.offsetLeft&lt;=Target)
+                    {
+
+                        clearInterval(timer);
+                    }
+                    else
+                    {
+                        oDiv.style.left=oDiv.offsetLeft+speed+&apos;px&apos;;
+                    }
+                },30);
+            }
+        }
+    &lt;/script&gt;
+&lt;/head&gt;
+    &lt;div id=&quot;div1&quot;&gt;
+        &lt;span id=&quot;&quot;&gt;
+
+        &lt;/span&gt;            
+    &lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre><h2 id="2-图片的淡入淡出示例"><a href="#2-图片的淡入淡出示例" class="headerlink" title="2.图片的淡入淡出示例"></a>2.图片的淡入淡出示例</h2><p>图片的淡入淡出，实际上修改的是图片的透明度，如下代码中，filter就是用来定义透明度的属性，其中alpha（opacity）是给IE用的，opacity：0.3是给火狐用的。由于alpha的值不太容易获取，我们使用了一个变量来存储透明度的变化。剩下的基本套用运动框架。</p>
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;title&gt;&lt;/title&gt;
+    &lt;style type=&quot;text/css&quot;&gt;
+        #div1{width: 200px;height: 200px;background: red;filter: alpha(opacity:30);opacity: 0.3;}
+    &lt;/style&gt;
+    &lt;script type=&quot;text/javascript&quot;&gt;
+        var timer = null;
+        var alpha = 30;//alpha不好取到，所以我们在此处根据div原本的透明度定义一个相同值的变量。
+        window.onload=function()
+        {
+            var oDiv = document.getElementById(&apos;div1&apos;);
+
+            oDiv.onmouseover=function()
+            {
+                startMove(100);
+            }
+            oDiv.onmouseout=function()
+            {
+                startMove(30);
+            }
+        }
+        function startMove(iTarget)
+        {
+            var oDiv = document.getElementById(&apos;div1&apos;);
+            clearInterval(timer);
+            timer = setInterval(function(){
+                var speed=0;
+                if(alpha&gt;iTarget)
+                {
+                    speed=-10;
+                }
+                else
+                {
+                    speed =10;
+                }
+
+                if(alpha==iTarget)
+                {
+                    clearInterval(timer);
+                }
+                else
+                {
+                    alpha+= speed;
+
+                    oDiv.style.filter=&apos;alpha(opacity:&apos;+alpha+&apos;)&apos;;//此处考虑IE7，下边考虑的火狐。
+                    oDiv.style.opacity = alpha/100;
+                }
+            },30)
+        }
+    &lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;div id=&quot;div1&quot;&gt;
+
+    &lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre><h1 id="三、运动高级————缓冲运动"><a href="#三、运动高级————缓冲运动" class="headerlink" title="三、运动高级————缓冲运动"></a>三、运动高级————缓冲运动</h1><h2 id="简易缓冲运动"><a href="#简易缓冲运动" class="headerlink" title="简易缓冲运动"></a>简易缓冲运动</h2><p>当标签不断的靠近终点时，速度应该越来越慢。如下代码为简易的缓冲运动示例。</p>
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;title&gt;&lt;/title&gt;
+    &lt;style type=&quot;text/css&quot;&gt;
+        #div1{width: 100px;height: 100px;background: red;position: absolute;left: 0;top: 50px;}
+    &lt;/style&gt;
+    &lt;script type=&quot;text/javascript&quot;&gt;
+        function startMove()
+        { 
+            var oDiv = document.getElementById(&apos;div1&apos;);
+            setInterval(function(){
+                var speed = (300-oDiv.offsetLeft)/10;
+                oDiv.style.left=oDiv.offsetLeft+speed+&apos;px&apos;;
+            },30);
+        }
+    &lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;input type=&quot;button&quot; name=&quot;&quot; id=&quot;&quot; value=&quot;start move&quot; onclick=&quot;startMove()&quot;/&gt;
+    &lt;div id=&quot;div1&quot;&gt;
+
+    &lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre><h2 id="缓冲运动bug"><a href="#缓冲运动bug" class="headerlink" title="缓冲运动bug"></a>缓冲运动bug</h2><p>如上代码，并不能保证最后的终点十分准确到达300px.是有误差的。我们可以用如下代码检测一下。在300px处树立一根标杆。</p>
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;title&gt;&lt;/title&gt;
+    &lt;style type=&quot;text/css&quot;&gt;
+        #div1{width: 100px;height: 100px;background: red;position: absolute;left: 0;top: 50px;}
+        #div2{width: 1px;height: 400px;background: black;position: absolute;left: 300px;top: 0;}
+    &lt;/style&gt;
+    &lt;script type=&quot;text/javascript&quot;&gt;
+        function startMove()
+        { 
+            var oDiv = document.getElementById(&apos;div1&apos;);
+            setInterval(function(){
+                var speed = (300-oDiv.offsetLeft)/10;
+                oDiv.style.left=oDiv.offsetLeft+speed+&apos;px&apos;;
+            },30);
+        }
+    &lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;input type=&quot;button&quot; name=&quot;&quot; id=&quot;&quot; value=&quot;start move&quot; onclick=&quot;startMove()&quot;/&gt;
+    &lt;div id=&quot;div1&quot;&gt;
+
+    &lt;/div&gt;
+    &lt;div id=&quot;div2&quot;&gt;
+
+    &lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre><p>结果如下图所示，这主要是因为，计算机接收的像素最小单位是1，如果像素不是整数，计算机会自动向下取整，这个时候就需要js中的Math类来解决了。<br><img src="//musictail.club/2019/08/17/JavaScript%E6%A0%87%E7%AD%BE%E8%BF%90%E5%8A%A8%E4%BB%8E%E5%88%9D%E7%BA%A7%E8%87%B3%E4%BC%AA%E7%B2%BE%E9%80%9A/3.jpg" alt="JavaScript标签运动从初级至伪精通"></p>
+<h2 id="Math类"><a href="#Math类" class="headerlink" title="Math类"></a>Math类</h2><p>Math.ceil()向上取整，Math.floor()向下取整。加入Math的向上取整函数后，代码如下：</p>
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;title&gt;&lt;/title&gt;
+    &lt;style type=&quot;text/css&quot;&gt;
+        #div1{width: 100px;height: 100px;background: red;position: absolute;left: 0;top: 50px;}
+        #div2{width: 1px;height: 400px;background: black;position: absolute;left: 300px;top: 0;}
+    &lt;/style&gt;
+    &lt;script type=&quot;text/javascript&quot;&gt;
+        function startMove()
+        { 
+            var oDiv = document.getElementById(&apos;div1&apos;);
+            setInterval(function(){
+                var speed = (300-oDiv.offsetLeft)/10;
+                speed=Math.ceil(speed);//向上取整
+                oDiv.style.left=oDiv.offsetLeft+speed+&apos;px&apos;;
+            },30);
+        }
+    &lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;input type=&quot;button&quot; name=&quot;&quot; id=&quot;&quot; value=&quot;start move&quot; onclick=&quot;startMove()&quot;/&gt;
+    &lt;div id=&quot;div1&quot;&gt;
+
+    &lt;/div&gt;
+    &lt;div id=&quot;div2&quot;&gt;
+
+    &lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre><p>结果如下：<br><img src="//musictail.club/2019/08/17/JavaScript%E6%A0%87%E7%AD%BE%E8%BF%90%E5%8A%A8%E4%BB%8E%E5%88%9D%E7%BA%A7%E8%87%B3%E4%BC%AA%E7%B2%BE%E9%80%9A/4.jpg" alt="JavaScript标签运动从初级至伪精通"></p>
+<p>如果往左走，那么就需要向下取整，需要-1.向右走需要向上取整，+1.因此代码速度代码如下。</p>
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;title&gt;&lt;/title&gt;
+    &lt;style type=&quot;text/css&quot;&gt;
+        #div1{width: 100px;height: 100px;background: red;position: absolute;left: 0;top: 50px;}
+        #div2{width: 1px;height: 400px;background: black;position: absolute;left: 300px;top: 0;}
+    &lt;/style&gt;
+    &lt;script type=&quot;text/javascript&quot;&gt;
+        function startMove()
+        { 
+            var oDiv = document.getElementById(&apos;div1&apos;);
+            setInterval(function(){
+                var speed = (300-oDiv.offsetLeft)/10;
+                //兼并向上向下。
+                speed = speed&gt;0?Math.ceil(speed):Math.floor(speed);
+                oDiv.style.left=oDiv.offsetLeft+speed+&apos;px&apos;;
+            },30);
+        }
+    &lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;input type=&quot;button&quot; name=&quot;&quot; id=&quot;&quot; value=&quot;start move&quot; onclick=&quot;startMove()&quot;/&gt;
+    &lt;div id=&quot;div1&quot;&gt;
+
+    &lt;/div&gt;
+    &lt;div id=&quot;div2&quot;&gt;
+
+    &lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre><p>如下图所示，向左走。<br><img src="//musictail.club/2019/08/17/JavaScript%E6%A0%87%E7%AD%BE%E8%BF%90%E5%8A%A8%E4%BB%8E%E5%88%9D%E7%BA%A7%E8%87%B3%E4%BC%AA%E7%B2%BE%E9%80%9A/5.jpg" alt="JavaScript标签运动从初级至伪精通"><br><img src="//musictail.club/2019/08/17/JavaScript%E6%A0%87%E7%AD%BE%E8%BF%90%E5%8A%A8%E4%BB%8E%E5%88%9D%E7%BA%A7%E8%87%B3%E4%BC%AA%E7%B2%BE%E9%80%9A/6.jpg" alt="JavaScript标签运动从初级至伪精通"></p>
+<h2 id="缓冲运动案例————右侧悬浮框"><a href="#缓冲运动案例————右侧悬浮框" class="headerlink" title="缓冲运动案例————右侧悬浮框"></a>缓冲运动案例————右侧悬浮框</h2><h3 id="简易悬浮框"><a href="#简易悬浮框" class="headerlink" title="简易悬浮框"></a>简易悬浮框</h3><p>如下为简易悬浮框的代码，其中的scrollTop可以获取一个元素的内容垂直滚动的像素数。在我的另一篇博客中有讲。例如下面的scrollTop就是指整个页面顶端到可视化窗口顶端的距离，也就是隐藏掉的页面的高度。因此隐藏的高度加上可视化窗口的高度再减去div的高度就是目前div真实的top。但是这个div再滚动条快速滚动时会抖动的很厉害。</p>
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;title&gt;&lt;/title&gt;
+    &lt;style type=&quot;text/css&quot;&gt;
+        #div1{width: 100px; height: 150px;background: red;position: absolute;right: 0;bottom: 0;}
+    &lt;/style&gt;
+    &lt;script type=&quot;text/javascript&quot;&gt;
+        window.onscroll=function()
+        {
+            var oDiv =document.getElementById(&apos;div1&apos;);
+            var scrollTop = document.documentElement.scrollTop||document.body.scrollTop;
+            oDiv.style.top=document.documentElement.clientHeight-oDiv.offsetHeight+scrollTop+&apos;px&apos;;
+        }
+    &lt;/script&gt;
+&lt;/head&gt;
+&lt;body style=&quot;height: 2000px;&quot;&gt;
+    &lt;div id=&quot;div1&quot;&gt;
+
+    &lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre><h3 id="缓冲悬浮框"><a href="#缓冲悬浮框" class="headerlink" title="缓冲悬浮框"></a>缓冲悬浮框</h3><p>如下是带有缓冲的悬浮框，每次滚动条改变，iTartget就会发生变化，那么目前的offsetTop就会和改变后的iTarget产生距离。div就需要移动。屠龙宝刀点击就送，一刀999。</p>
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;title&gt;&lt;/title&gt;
+    &lt;style type=&quot;text/css&quot;&gt;
+        #div1{width: 100px; height: 150px;background: red;position: absolute;right: 0;bottom: 0;}
+    &lt;/style&gt;
+    &lt;script type=&quot;text/javascript&quot;&gt;
+        window.onscroll=function()
+        {
+            var oDiv =document.getElementById(&apos;div1&apos;);
+            var scrollTop = document.documentElement.scrollTop||document.body.scrollTop;
+            var iTarget = document.documentElement.clientHeight-oDiv.offsetHeight+scrollTop;
+            startMove(iTarget);
+        }
+
+        var timer = null;
+        function startMove(iTarget)
+        {
+            var oDiv=document.getElementById(&apos;div1&apos;);
+
+            clearInterval(timer);
+            timer = setInterval(function(){
+                var speed=(iTarget-oDiv.offsetTop)/4;
+                speed=speed&gt;0?Math.ceil(speed):Math.floor(speed);
+                if(oDiv.offsetTop==iTarget)
+                {
+                    clearInterval(timer);
+                }
+                else
+                {
+                    oDiv.style.top=oDiv.offsetTop+speed+&apos;px&apos;;
+                }
+            },30);
+        }
+    &lt;/script&gt;
+&lt;/head&gt;
+&lt;body style=&quot;height: 2000px;&quot;&gt;
+    &lt;div id=&quot;div1&quot;&gt;
+
+    &lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre><h3 id="缓冲bug"><a href="#缓冲bug" class="headerlink" title="缓冲bug"></a>缓冲bug</h3><p>如果传入进来的iTarget不是一个整数，那么就会出现抖动的问题。因为目标在前方，而自己一动就是一个像素，所以又会回退，而回退也是一个像素，所以就会在这个小数点左右两边的整数位置抖动。这个时候就需要取整。</p>
+<h2 id="缓冲运动匀速运动停止条件"><a href="#缓冲运动匀速运动停止条件" class="headerlink" title="缓冲运动匀速运动停止条件"></a>缓冲运动匀速运动停止条件</h2><p>这个问题的由来就是和上个问题一样，标签总是在目标位置左右抖动。如下所示。</p>
+<pre><code>&lt;!DOCTYPE html&gt;</code></pre><html>
+    <head><meta name="generator" content="Hexo 3.9.0">
+        <meta charset="UTF-8">
+        <title></title>
+        <style type="text/css">
+            #div1{width: 1px;height: 300px;position: absolute;left: 100px;top: 0;background: black;}
+            #div2{width: 1px;height: 300px;position: absolute;left: 300px;top: 0;background: black;}
+            #div3{width: 50px;height: 50px;position: absolute;left: 600px;top: 50px;background: red;}
+        </style>
+        <script type="text/javascript">
+            var timer=null;
+            function startMove(iTarget)
+            {
+                var oDiv = document.getElementById('div3');
+                clearInterval(timer);
+                timer=setInterval(function(){
+                    var speed = 0;
+                    if(oDiv.offsetLeft<iTarget)
+                    {
+                        speed=7;
+                    }
+                    else
+                    {
+                        speed=-7;
+                    }
+
+<pre><code>                oDiv.style.left=oDiv.offsetLeft+speed+&apos;px&apos;;
+            },30);
+        }
+    &lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;input type=&quot;button&quot; name=&quot;&quot; id=&quot;&quot; value=&quot;to 100&quot; onclick=&quot;startMove(100)&quot; /&gt;
+    &lt;input type=&quot;button&quot; name=&quot;&quot; id=&quot;&quot; value=&quot;to 300&quot; onclick=&quot;startMove(300)&quot;/&gt;
+    &lt;div id=&quot;div1&quot;&gt;
+
+    &lt;/div&gt;
+    &lt;div id=&quot;div2&quot;&gt;
+
+    &lt;/div&gt;
+    &lt;div id=&quot;div3&quot;&gt;
+
+    &lt;/div&gt;
+&lt;/body&gt;</code></pre></html>
+</script></head></html>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/08/17/JavaScript标签运动从初级至伪精通/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-富有含义的English" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -760,75 +1458,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2019/08/03/innerHTML介绍/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-选项卡功能实现" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/08/03/选项卡功能实现/">选项卡功能实现</a>
-    </h1>
-  
-
-        
-        <a href="/2019/08/03/选项卡功能实现/" class="archive-article-date">
-  	<time datetime="2019-08-03T14:20:42.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-03</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="选项卡"><a href="#选项卡" class="headerlink" title="选项卡"></a>选项卡</h1><p>什么是选项卡。比如我们常见的网页菜单。点击对应按钮，弹出对应的菜单栏，其余的按钮对应的菜单栏都消失。<br>下图就是选项卡。</p>
-        
-          <a class="article-more-a" href="/2019/08/03/选项卡功能实现/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/08/03/选项卡功能实现/">展开全文 >></a>
         </p>
       
 
