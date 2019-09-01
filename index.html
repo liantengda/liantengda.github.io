@@ -172,6 +172,87 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-yilia主题添加访问量统计功能之修改不蒜子域名也没成功" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/09/01/yilia主题添加访问量统计功能之修改不蒜子域名也没成功/">yilia主题添加访问量统计功能之修改不蒜子域名也没成功</a>
+    </h1>
+  
+
+        
+        
+<a href="/2019/09/01/yilia主题添加访问量统计功能之修改不蒜子域名也没成功/" class="archive-article-date">
+  	<time datetime="2019-09-01T02:51:31.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-01</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="为yilia添加不蒜子网站访问统计功能"><a href="#为yilia添加不蒜子网站访问统计功能" class="headerlink" title="为yilia添加不蒜子网站访问统计功能"></a>为yilia添加不蒜子网站访问统计功能</h1><p>先别急，我们先按照大佬们说的来一遍。<br>首先去配置文件中添加一个功能themes/yilia/_config.yml</p>
+<h1 id="开启不算子访问统计"><a href="#开启不算子访问统计" class="headerlink" title="开启不算子访问统计"></a>开启不算子访问统计</h1><p>busuanzi:<br>    enable: true<br>此处放上我的配置图片<br><img src="//musictail.club/2019/09/01/yilia%E4%B8%BB%E9%A2%98%E6%B7%BB%E5%8A%A0%E8%AE%BF%E9%97%AE%E9%87%8F%E7%BB%9F%E8%AE%A1%E5%8A%9F%E8%83%BD%E4%B9%8B%E4%BF%AE%E6%94%B9%E4%B8%8D%E8%92%9C%E5%AD%90%E5%9F%9F%E5%90%8D%E4%B9%9F%E6%B2%A1%E6%88%90%E5%8A%9F/21.jpg" alt="yilia主题添加访问量统计功能之修改不蒜子域名也没成功"><br>按照大佬们说的，把下面代码复制到这个地方F:\blogproject\themes\yilia\layout_partial\footer.ejs的末尾，其实不是末尾，哈哈哈，新手总是意会不到大佬们的意思，好在学了两个月js后，回过头来发现，末尾原来是这个意思。</p>
+<pre><code>&lt;% if (theme.busuanzi &amp;&amp; theme.busuanzi.enable){ %&gt;
+    &lt;!-- 不蒜子统计 --&gt;
+    &lt;span id=&quot;busuanzi_container_site_pv&quot;&gt;
+            本站总访问量&lt;span id=&quot;busuanzi_value_site_pv&quot;&gt;&lt;/span&gt;次
+    &lt;/span&gt;
+    &lt;span class=&quot;post-meta-divider&quot;&gt;|&lt;/span&gt;
+    &lt;span id=&quot;busuanzi_container_site_uv&quot; style=&apos;display:none&apos;&gt;
+            本站访客数&lt;span id=&quot;busuanzi_value_site_uv&quot;&gt;&lt;/span&gt;人
+    &lt;/span&gt;
+    &lt;script async src=&quot;/busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js&quot;&gt;&lt;/script&gt;
+&lt;% } %&gt;</code></pre><p>位置如下<br><img src="//musictail.club/2019/09/01/yilia%E4%B8%BB%E9%A2%98%E6%B7%BB%E5%8A%A0%E8%AE%BF%E9%97%AE%E9%87%8F%E7%BB%9F%E8%AE%A1%E5%8A%9F%E8%83%BD%E4%B9%8B%E4%BF%AE%E6%94%B9%E4%B8%8D%E8%92%9C%E5%AD%90%E5%9F%9F%E5%90%8D%E4%B9%9F%E6%B2%A1%E6%88%90%E5%8A%9F/20.jpg" alt="yilia主题添加访问量统计功能之修改不蒜子域名也没成功"><br>然后在这个文件头部：themes/yilia/layout/_partial/post/date.ejs填入如下代码：<br>&lt;% if (theme.busuanzi &amp;&amp; theme.busuanzi.enable &amp;&amp; !index){ %&gt;<br>        <!-- 不蒜子统计 --><br>        <span id="busuanzi_container_page_pv" style="display:none" class="<%= class_name %>"><br>              <i class="icon-smile icon"></i> 阅读数：<span id="busuanzi_value_page_pv"></span>次<br>        </span><br>&lt;% } %&gt;<br>如下<br><img src="//musictail.club/2019/09/01/yilia%E4%B8%BB%E9%A2%98%E6%B7%BB%E5%8A%A0%E8%AE%BF%E9%97%AE%E9%87%8F%E7%BB%9F%E8%AE%A1%E5%8A%9F%E8%83%BD%E4%B9%8B%E4%BF%AE%E6%94%B9%E4%B8%8D%E8%92%9C%E5%AD%90%E5%9F%9F%E5%90%8D%E4%B9%9F%E6%B2%A1%E6%88%90%E5%8A%9F/22.jpg" alt="yilia主题添加访问量统计功能之修改不蒜子域名也没成功"></p>
+<h1 id="设置完成了"><a href="#设置完成了" class="headerlink" title="设置完成了"></a>设置完成了</h1><p>结果发现根本没有起效果。ctrl+u查看源代码，发现不蒜子的网址没有更改。<br><img src="//musictail.club/2019/09/01/yilia%E4%B8%BB%E9%A2%98%E6%B7%BB%E5%8A%A0%E8%AE%BF%E9%97%AE%E9%87%8F%E7%BB%9F%E8%AE%A1%E5%8A%9F%E8%83%BD%E4%B9%8B%E4%BF%AE%E6%94%B9%E4%B8%8D%E8%92%9C%E5%AD%90%E5%9F%9F%E5%90%8D%E4%B9%9F%E6%B2%A1%E6%88%90%E5%8A%9F/24.jpg" alt="yilia主题添加访问量统计功能之修改不蒜子域名也没成功"><br>点开之后长这样。<br><img src="//musictail.club/2019/09/01/yilia%E4%B8%BB%E9%A2%98%E6%B7%BB%E5%8A%A0%E8%AE%BF%E9%97%AE%E9%87%8F%E7%BB%9F%E8%AE%A1%E5%8A%9F%E8%83%BD%E4%B9%8B%E4%BF%AE%E6%94%B9%E4%B8%8D%E8%92%9C%E5%AD%90%E5%9F%9F%E5%90%8D%E4%B9%9F%E6%B2%A1%E6%88%90%E5%8A%9F/25.jpg" alt="yilia主题添加访问量统计功能之修改不蒜子域名也没成功"><br>大佬们一直在说不蒜子以前域名失效了，需要引入更改后的域名。但是我明明也更改了啊。实在不行，我再改成这样，写死。<br><img src="//musictail.club/2019/09/01/yilia%E4%B8%BB%E9%A2%98%E6%B7%BB%E5%8A%A0%E8%AE%BF%E9%97%AE%E9%87%8F%E7%BB%9F%E8%AE%A1%E5%8A%9F%E8%83%BD%E4%B9%8B%E4%BF%AE%E6%94%B9%E4%B8%8D%E8%92%9C%E5%AD%90%E5%9F%9F%E5%90%8D%E4%B9%9F%E6%B2%A1%E6%88%90%E5%8A%9F/26.jpg" alt="yilia主题添加访问量统计功能之修改不蒜子域名也没成功"><br>结果还是不可以，最后发现问题在这里<br><img src="//musictail.club/2019/09/01/yilia%E4%B8%BB%E9%A2%98%E6%B7%BB%E5%8A%A0%E8%AE%BF%E9%97%AE%E9%87%8F%E7%BB%9F%E8%AE%A1%E5%8A%9F%E8%83%BD%E4%B9%8B%E4%BF%AE%E6%94%B9%E4%B8%8D%E8%92%9C%E5%AD%90%E5%9F%9F%E5%90%8D%E4%B9%9F%E6%B2%A1%E6%88%90%E5%8A%9F/28.jpg" alt="yilia主题添加访问量统计功能之修改不蒜子域名也没成功"><br>找了好久才找到一个大佬的提示，剩下的基本都是解释域名变了。但是如果这个配置文件不改，脚本里的判断条件是false，就不会进入不蒜子的代码块了。尴尬<br><img src="//musictail.club/2019/09/01/yilia%E4%B8%BB%E9%A2%98%E6%B7%BB%E5%8A%A0%E8%AE%BF%E9%97%AE%E9%87%8F%E7%BB%9F%E8%AE%A1%E5%8A%9F%E8%83%BD%E4%B9%8B%E4%BF%AE%E6%94%B9%E4%B8%8D%E8%92%9C%E5%AD%90%E5%9F%9F%E5%90%8D%E4%B9%9F%E6%B2%A1%E6%88%90%E5%8A%9F/29.jpg" alt="yilia主题添加访问量统计功能之修改不蒜子域名也没成功"></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/09/01/yilia主题添加访问量统计功能之修改不蒜子域名也没成功/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-英语短语come-on的用法" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -770,76 +851,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2019/08/16/富有含义的English/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-JavaScript的DOM操作" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/08/13/JavaScript的DOM操作/">JavaScript的DOM操作</a>
-    </h1>
-  
-
-        
-        
-<a href="/2019/08/13/JavaScript的DOM操作/" class="archive-article-date">
-  	<time datetime="2019-08-13T12:39:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-13</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="DOM是啥"><a href="#DOM是啥" class="headerlink" title="DOM是啥"></a>DOM是啥</h1><p>DOM的全称是Document Object Model，即文档对象模型。所有对页面的操作都是通过document来进行的。DOM是一个接口，一个规范，程序和脚本可以通过这个接口动态的访问和修改文档的内容，结构和样式。（HTML和xml）。</p>
-        
-          <a class="article-more-a" href="/2019/08/13/JavaScript的DOM操作/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/08/13/JavaScript的DOM操作/">展开全文 >></a>
         </p>
       
 
