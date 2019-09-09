@@ -15,16 +15,16 @@
 <meta property="og:site_name" content="纷飞落叶的博客">
 <meta property="og:description" content="一、我为什么会接触docker公司最近有个大项目，使用的springboot相关的微服务框架，忽然被叫过去搞什么docker，说是部署微服务很方便。于是百度知乎简书各种网站上搜索，并亲自实践了一波，有感而发，写下这片文章。">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="http://musictail.club/2019/08/03/Docker%E6%98%AF%E5%95%A5/1.jpg">
-<meta property="og:image" content="http://musictail.club/2019/08/03/Docker%E6%98%AF%E5%95%A5/2.jpg">
-<meta property="og:image" content="http://musictail.club/2019/08/03/Docker%E6%98%AF%E5%95%A5/5.jpg">
-<meta property="og:image" content="http://musictail.club/2019/08/03/Docker%E6%98%AF%E5%95%A5/3.jpg">
-<meta property="og:image" content="http://musictail.club/2019/08/03/Docker%E6%98%AF%E5%95%A5/4.jpg">
-<meta property="og:updated_time" content="2019-09-09T08:49:13.240Z">
+<meta property="og:image" content="http://musictail.club/2019/09/08/Docker%E6%98%AF%E5%95%A5/1.jpg">
+<meta property="og:image" content="http://musictail.club/2019/09/08/Docker%E6%98%AF%E5%95%A5/2.jpg">
+<meta property="og:image" content="http://musictail.club/2019/09/08/Docker%E6%98%AF%E5%95%A5/5.jpg">
+<meta property="og:image" content="http://musictail.club/2019/09/08/Docker%E6%98%AF%E5%95%A5/3.jpg">
+<meta property="og:image" content="http://musictail.club/2019/09/08/Docker%E6%98%AF%E5%95%A5/4.jpg">
+<meta property="og:updated_time" content="2019-09-09T09:20:17.130Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Docker是啥">
 <meta name="twitter:description" content="一、我为什么会接触docker公司最近有个大项目，使用的springboot相关的微服务框架，忽然被叫过去搞什么docker，说是部署微服务很方便。于是百度知乎简书各种网站上搜索，并亲自实践了一波，有感而发，写下这片文章。">
-<meta name="twitter:image" content="http://musictail.club/2019/08/03/Docker%E6%98%AF%E5%95%A5/1.jpg">
+<meta name="twitter:image" content="http://musictail.club/2019/09/08/Docker%E6%98%AF%E5%95%A5/1.jpg">
   
     <link rel="alternative" href="/atom.xml" title="纷飞落叶的博客" type="application/atom+xml">
   
@@ -206,12 +206,12 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="一、我为什么会接触docker"><a href="#一、我为什么会接触docker" class="headerlink" title="一、我为什么会接触docker"></a>一、我为什么会接触docker</h1><p>公司最近有个大项目，使用的springboot相关的微服务框架，忽然被叫过去搞什么docker，说是部署微服务很方便。于是百度知乎简书各种网站上搜索，并亲自实践了一波，有感而发，写下这片文章。<br><img src="//musictail.club/2019/08/03/Docker%E6%98%AF%E5%95%A5/1.jpg" alt="Docker是啥"></p>
+        <h1 id="一、我为什么会接触docker"><a href="#一、我为什么会接触docker" class="headerlink" title="一、我为什么会接触docker"></a>一、我为什么会接触docker</h1><p>公司最近有个大项目，使用的springboot相关的微服务框架，忽然被叫过去搞什么docker，说是部署微服务很方便。于是百度知乎简书各种网站上搜索，并亲自实践了一波，有感而发，写下这片文章。<br><img src="//musictail.club/2019/09/08/Docker%E6%98%AF%E5%95%A5/1.jpg" alt="Docker是啥"></p>
 <a id="more"></a>
 <h1 id="二、为什么会有docker"><a href="#二、为什么会有docker" class="headerlink" title="二、为什么会有docker"></a>二、为什么会有docker</h1><h2 id="1-简介"><a href="#1-简介" class="headerlink" title="1.简介"></a>1.简介</h2><p>自从开始搞java，一旦遇到什么重复的东西，总想给他封装起来先，然后起个名字，以后就通过接口去调用这些重复的东西。既然开发可以把代码造成轮子，凭什么运维不可以把运行环境造成轮子。Docker就是用来解决微服务运行环境打包问题的。Docker是一个开源的容器引擎，可以将应用程序和运行程序所需要的运行环境隔离，并且将运行环境像程序一样进行管理。使用了Docker后，可以实现更快的打包，测试以及部署应用程序。</p>
-<h2 id="2-优势"><a href="#2-优势" class="headerlink" title="2.优势"></a>2.优势</h2><h1 id="三、物理机、虚拟机、容器的对比"><a href="#三、物理机、虚拟机、容器的对比" class="headerlink" title="三、物理机、虚拟机、容器的对比"></a>三、物理机、虚拟机、容器的对比</h1><h2 id="1-物理机"><a href="#1-物理机" class="headerlink" title="1.物理机"></a>1.物理机</h2><p>就是我们手可以摸到，眼睛可以看到的服务器设备。单个服务器，成本昂贵，并且现在的物理机性能已经远超于过去，我们实际使用到的物理机性能只占了一小部分，就像拿着外星人笔记本来玩俄罗斯方块，太浪费了。知乎引用过来的关于物理机的形象解释。如下图。<br><img src="//musictail.club/2019/08/03/Docker%E6%98%AF%E5%95%A5/2.jpg" alt="Docker是啥"></p>
-<h2 id="2-虚拟机"><a href="#2-虚拟机" class="headerlink" title="2.虚拟机"></a>2.虚拟机</h2><p>由于物理机性能得不到充分使用，于是出现了虚拟机技术，在一台物理机上部署十几台虚拟机，来当作十几台性能略差的物理机来用，当不需要时，又可以随便删除掉不需要的实例，同时回收这部分实例的资源，而且并不会影响到其他实例。虚拟机完美的模拟了一台物理机的所有资源，麻雀虽小五脏俱全。有cpu，有显卡，网卡。这些模拟出来的东西都是通过计算实现的，给物理机实体凭空增加了不少计算量。<br><img src="//musictail.club/2019/08/03/Docker%E6%98%AF%E5%95%A5/5.jpg" alt="Docker是啥"><br>虚拟机形象解释。如下图。<br><img src="//musictail.club/2019/08/03/Docker%E6%98%AF%E5%95%A5/3.jpg" alt="Docker是啥"></p>
-<h2 id="3-容器"><a href="#3-容器" class="headerlink" title="3.容器"></a>3.容器</h2><p>容器技术未火爆之前，大家用的都是虚拟机，VMware和OpenStack。虚拟机的cpu，显卡，网卡，都是通过物理机计算虚构出来的，增加了不少计算量，而容器仅仅在操作系统层面向上，对应用的所需各类资源进行了隔离。<br>容器的形象解释，如下图。<br><img src="//musictail.club/2019/08/03/Docker%E6%98%AF%E5%95%A5/4.jpg" alt="Docker是啥"></p>
+<h2 id="2-优势"><a href="#2-优势" class="headerlink" title="2.优势"></a>2.优势</h2><h1 id="三、物理机、虚拟机、容器的对比"><a href="#三、物理机、虚拟机、容器的对比" class="headerlink" title="三、物理机、虚拟机、容器的对比"></a>三、物理机、虚拟机、容器的对比</h1><h2 id="1-物理机"><a href="#1-物理机" class="headerlink" title="1.物理机"></a>1.物理机</h2><p>就是我们手可以摸到，眼睛可以看到的服务器设备。单个服务器，成本昂贵，并且现在的物理机性能已经远超于过去，我们实际使用到的物理机性能只占了一小部分，就像拿着外星人笔记本来玩俄罗斯方块，太浪费了。知乎引用过来的关于物理机的形象解释。如下图。<br><img src="//musictail.club/2019/09/08/Docker%E6%98%AF%E5%95%A5/2.jpg" alt="Docker是啥"></p>
+<h2 id="2-虚拟机"><a href="#2-虚拟机" class="headerlink" title="2.虚拟机"></a>2.虚拟机</h2><p>由于物理机性能得不到充分使用，于是出现了虚拟机技术，在一台物理机上部署十几台虚拟机，来当作十几台性能略差的物理机来用，当不需要时，又可以随便删除掉不需要的实例，同时回收这部分实例的资源，而且并不会影响到其他实例。虚拟机完美的模拟了一台物理机的所有资源，麻雀虽小五脏俱全。有cpu，有显卡，网卡。这些模拟出来的东西都是通过计算实现的，给物理机实体凭空增加了不少计算量。<br><img src="//musictail.club/2019/09/08/Docker%E6%98%AF%E5%95%A5/5.jpg" alt="Docker是啥"><br>虚拟机形象解释。如下图。<br><img src="//musictail.club/2019/09/08/Docker%E6%98%AF%E5%95%A5/3.jpg" alt="Docker是啥"></p>
+<h2 id="3-容器"><a href="#3-容器" class="headerlink" title="3.容器"></a>3.容器</h2><p>容器技术未火爆之前，大家用的都是虚拟机，VMware和OpenStack。虚拟机的cpu，显卡，网卡，都是通过物理机计算虚构出来的，增加了不少计算量，而容器仅仅在操作系统层面向上，对应用的所需各类资源进行了隔离。<br>容器的形象解释，如下图。<br><img src="//musictail.club/2019/09/08/Docker%E6%98%AF%E5%95%A5/4.jpg" alt="Docker是啥"></p>
 <h1 id="四、与docker相关得概念"><a href="#四、与docker相关得概念" class="headerlink" title="四、与docker相关得概念"></a>四、与docker相关得概念</h1><h2 id="1-镜像————image"><a href="#1-镜像————image" class="headerlink" title="1.镜像————image"></a>1.镜像————image</h2><h2 id="2-容器————container"><a href="#2-容器————container" class="headerlink" title="2.容器————container"></a>2.容器————container</h2><h2 id="3-仓库————repository"><a href="#3-仓库————repository" class="headerlink" title="3.仓库————repository"></a>3.仓库————repository</h2>
       
 
