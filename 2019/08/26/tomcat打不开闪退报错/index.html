@@ -15,13 +15,13 @@
 <meta property="og:site_name" content="纷飞落叶的博客">
 <meta property="og:description" content="如何引发的问题由于自己没有服务器，而且为了学个前端或者java也用不着专门买个服务器，因此就使用了好久以前安装后闲置的tomcat，在点击statup.bat之后，出现了以下两个bug。org.apache.catalina.LifecycleException: Protocol handler initialization failjava.net.BindException: Address">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="http://musictail.club/2019/08/26/tomcat%E6%89%93%E4%B8%8D%E5%BC%80%E9%97%AA%E9%80%80%E6%8A%A5%E9%94%99/1.jpg">
-<meta property="og:image" content="http://musictail.club/2019/08/26/tomcat%E6%89%93%E4%B8%8D%E5%BC%80%E9%97%AA%E9%80%80%E6%8A%A5%E9%94%99/2.jpg">
-<meta property="og:updated_time" content="2019-08-26T12:52:28.811Z">
+<meta property="og:image" content="http://luoyefubuki/2019/08/26/tomcat%E6%89%93%E4%B8%8D%E5%BC%80%E9%97%AA%E9%80%80%E6%8A%A5%E9%94%99/1.jpg">
+<meta property="og:image" content="http://luoyefubuki/2019/08/26/tomcat%E6%89%93%E4%B8%8D%E5%BC%80%E9%97%AA%E9%80%80%E6%8A%A5%E9%94%99/2.jpg">
+<meta property="og:updated_time" content="2019-09-14T06:04:01.592Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="tomcat打不开闪退报错">
 <meta name="twitter:description" content="如何引发的问题由于自己没有服务器，而且为了学个前端或者java也用不着专门买个服务器，因此就使用了好久以前安装后闲置的tomcat，在点击statup.bat之后，出现了以下两个bug。org.apache.catalina.LifecycleException: Protocol handler initialization failjava.net.BindException: Address">
-<meta name="twitter:image" content="http://musictail.club/2019/08/26/tomcat%E6%89%93%E4%B8%8D%E5%BC%80%E9%97%AA%E9%80%80%E6%8A%A5%E9%94%99/1.jpg">
+<meta name="twitter:image" content="http://luoyefubuki/2019/08/26/tomcat%E6%89%93%E4%B8%8D%E5%BC%80%E9%97%AA%E9%80%80%E6%8A%A5%E9%94%99/1.jpg">
   
     <link rel="alternative" href="/atom.xml" title="纷飞落叶的博客" type="application/atom+xml">
   
@@ -206,7 +206,7 @@
         <h1 id="如何引发的问题"><a href="#如何引发的问题" class="headerlink" title="如何引发的问题"></a>如何引发的问题</h1><p>由于自己没有服务器，而且为了学个前端或者java也用不着专门买个服务器，因此就使用了好久以前安装后闲置的tomcat，在点击statup.bat之后，出现了以下两个bug。<br>org.apache.catalina.LifecycleException: Protocol handler initialization fail<br>java.net.BindException: Address already in use: JVM_Bind</p>
 <a id="more"></a>
 <h1 id="分析问题"><a href="#分析问题" class="headerlink" title="分析问题"></a>分析问题</h1><p>上网百度发现是端口被占用了，我确实在以前学习java的时候，改过n多次端口号，而且下载了不止一个tomcat，思绪极其混乱。而且我经常在eclipse或者myeclipse服务启动状态直接对电脑关机处理，很可能这个进程没有关闭，端口号被占用了，此处仅仅修改端口号是没有用的。第二个异常仍然会出现。</p>
-<h1 id="解决问题"><a href="#解决问题" class="headerlink" title="解决问题"></a>解决问题</h1><p>于是跟着别人敲了如下命令<br>netstat -p tcp -ano | findstr :8888（此处写自己端口号）<br>然后很可能就会出现占用该端口号的那个进程，然后输入如下命令<br>tasklist | findstr 8548<br>然后就会出现进程名。接着强制终止进程，输入如下命令<br>taskkill -PID 8548 -F<br><img src="//musictail.club/2019/08/26/tomcat%E6%89%93%E4%B8%8D%E5%BC%80%E9%97%AA%E9%80%80%E6%8A%A5%E9%94%99/1.jpg" alt="tomcat打不开闪退报错"><br>然后就可以使用了，如下图所示<br><img src="//musictail.club/2019/08/26/tomcat%E6%89%93%E4%B8%8D%E5%BC%80%E9%97%AA%E9%80%80%E6%8A%A5%E9%94%99/2.jpg" alt="tomcat打不开闪退报错"></p>
+<h1 id="解决问题"><a href="#解决问题" class="headerlink" title="解决问题"></a>解决问题</h1><p>于是跟着别人敲了如下命令<br>netstat -p tcp -ano | findstr :8888（此处写自己端口号）<br>然后很可能就会出现占用该端口号的那个进程，然后输入如下命令<br>tasklist | findstr 8548<br>然后就会出现进程名。接着强制终止进程，输入如下命令<br>taskkill -PID 8548 -F<br><img src="//luoyefubuki/2019/08/26/tomcat%E6%89%93%E4%B8%8D%E5%BC%80%E9%97%AA%E9%80%80%E6%8A%A5%E9%94%99/1.jpg" alt="tomcat打不开闪退报错"><br>然后就可以使用了，如下图所示<br><img src="//luoyefubuki/2019/08/26/tomcat%E6%89%93%E4%B8%8D%E5%BC%80%E9%97%AA%E9%80%80%E6%8A%A5%E9%94%99/2.jpg" alt="tomcat打不开闪退报错"></p>
 
       
 
