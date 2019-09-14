@@ -15,13 +15,13 @@
 <meta property="og:site_name" content="纷飞落叶的博客">
 <meta property="og:description" content="选项卡什么是选项卡。比如我们常见的网页菜单。点击对应按钮，弹出对应的菜单栏，其余的按钮对应的菜单栏都消失。下图就是选项卡。">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="http://luoyefubuki/2019/08/03/%E9%80%89%E9%A1%B9%E5%8D%A1%E5%8A%9F%E8%83%BD%E5%AE%9E%E7%8E%B0/1.jpg">
-<meta property="og:image" content="http://luoyefubuki/2019/08/03/%E9%80%89%E9%A1%B9%E5%8D%A1%E5%8A%9F%E8%83%BD%E5%AE%9E%E7%8E%B0/2.jpg">
-<meta property="og:updated_time" content="2019-09-14T06:04:01.736Z">
+<meta property="og:image" content="http://luoyefubuki.com/2019/08/03/%E9%80%89%E9%A1%B9%E5%8D%A1%E5%8A%9F%E8%83%BD%E5%AE%9E%E7%8E%B0/1.jpg">
+<meta property="og:image" content="http://luoyefubuki.com/2019/08/03/%E9%80%89%E9%A1%B9%E5%8D%A1%E5%8A%9F%E8%83%BD%E5%AE%9E%E7%8E%B0/2.jpg">
+<meta property="og:updated_time" content="2019-09-14T06:42:25.012Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="选项卡功能实现">
 <meta name="twitter:description" content="选项卡什么是选项卡。比如我们常见的网页菜单。点击对应按钮，弹出对应的菜单栏，其余的按钮对应的菜单栏都消失。下图就是选项卡。">
-<meta name="twitter:image" content="http://luoyefubuki/2019/08/03/%E9%80%89%E9%A1%B9%E5%8D%A1%E5%8A%9F%E8%83%BD%E5%AE%9E%E7%8E%B0/1.jpg">
+<meta name="twitter:image" content="http://luoyefubuki.com/2019/08/03/%E9%80%89%E9%A1%B9%E5%8D%A1%E5%8A%9F%E8%83%BD%E5%AE%9E%E7%8E%B0/1.jpg">
   
     <link rel="alternative" href="/atom.xml" title="纷飞落叶的博客" type="application/atom+xml">
   
@@ -205,8 +205,8 @@
       
         <h1 id="选项卡"><a href="#选项卡" class="headerlink" title="选项卡"></a>选项卡</h1><p>什么是选项卡。比如我们常见的网页菜单。点击对应按钮，弹出对应的菜单栏，其余的按钮对应的菜单栏都消失。<br>下图就是选项卡。</p>
 <a id="more"></a>
-<p><img src="//luoyefubuki/2019/08/03/%E9%80%89%E9%A1%B9%E5%8D%A1%E5%8A%9F%E8%83%BD%E5%AE%9E%E7%8E%B0/1.jpg" alt="选项卡"></p>
-<h1 id="实现思路"><a href="#实现思路" class="headerlink" title="实现思路"></a>实现思路</h1><p>首先我们需要若干个按钮，来触发点击事件。还需要若干个div，来展示对应的触发事件<br><img src="//luoyefubuki/2019/08/03/%E9%80%89%E9%A1%B9%E5%8D%A1%E5%8A%9F%E8%83%BD%E5%AE%9E%E7%8E%B0/2.jpg" alt="选项卡"><br>然后我们需要显示那个按钮被点击，那个div展示这个按钮的事件。而其余的我们都需要隐藏掉。<br>因此我们先把所有的按钮都置为未选择状态，所有的div都先隐藏起来。使页面恢复清零状态。然后再把点击的按钮标记，再把对应的div显示出来。<br>这个时候，我们就需要知道到底是哪个按钮被点击了。this就是指当前被点击的按钮。而index是我们自定义的变量。用来存储每个按钮的索引。进而展示对应索引的div。</p>
+<p><img src="//luoyefubuki.com/2019/08/03/%E9%80%89%E9%A1%B9%E5%8D%A1%E5%8A%9F%E8%83%BD%E5%AE%9E%E7%8E%B0/1.jpg" alt="选项卡"></p>
+<h1 id="实现思路"><a href="#实现思路" class="headerlink" title="实现思路"></a>实现思路</h1><p>首先我们需要若干个按钮，来触发点击事件。还需要若干个div，来展示对应的触发事件<br><img src="//luoyefubuki.com/2019/08/03/%E9%80%89%E9%A1%B9%E5%8D%A1%E5%8A%9F%E8%83%BD%E5%AE%9E%E7%8E%B0/2.jpg" alt="选项卡"><br>然后我们需要显示那个按钮被点击，那个div展示这个按钮的事件。而其余的我们都需要隐藏掉。<br>因此我们先把所有的按钮都置为未选择状态，所有的div都先隐藏起来。使页面恢复清零状态。然后再把点击的按钮标记，再把对应的div显示出来。<br>这个时候，我们就需要知道到底是哪个按钮被点击了。this就是指当前被点击的按钮。而index是我们自定义的变量。用来存储每个按钮的索引。进而展示对应索引的div。</p>
 <h1 id="代码如下"><a href="#代码如下" class="headerlink" title="代码如下"></a>代码如下</h1><pre><code>&lt;!DOCTYPE html&gt;
 &lt;html&gt;
 &lt;head&gt;
