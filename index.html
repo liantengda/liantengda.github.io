@@ -178,6 +178,216 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-线索二叉树" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/09/15/线索二叉树/">线索二叉树</a>
+    </h1>
+  
+
+        
+        
+<a href="/2019/09/15/线索二叉树/" class="archive-article-date">
+  	<time datetime="2019-09-15T06:44:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-15</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="前提"><a href="#前提" class="headerlink" title="前提"></a>前提</h1><p>在学习线索二叉树之前，首先应该知道二叉树常用的几种存储结构以及二叉树的遍历方式。</p>
+        
+          <a class="article-more-a" href="/2019/09/15/线索二叉树/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/09/15/线索二叉树/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-完全二叉树" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/09/15/完全二叉树/">完全二叉树</a>
+    </h1>
+  
+
+        
+        
+<a href="/2019/09/15/完全二叉树/" class="archive-article-date">
+  	<time datetime="2019-09-15T06:01:35.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-15</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h1><p>对一棵有n个节点的二叉树按层序编号，如果编号为i（1&lt;=i&lt;=n）的节点与同样深度的满二叉树中编号为i的节点在二叉树中位置完全相同，则这棵树称为完全二叉树。</p>
+<h1 id="理解"><a href="#理解" class="headerlink" title="理解"></a>理解</h1><p>这个定义，我反正第一遍看过去没啥感觉。后来才知道，是这个意思。<br>每一层，从左到右，从碰到缺少子树的结点开始，左侧的兄弟节点一定是满的，右侧的兄弟节点一定是叶子节点，并且缺少子树的节点要么全都缺，要么只能缺右子树。如下图。树1就不符合完全二叉树，5号节点有右子树，没左子树。树3也不符合，5号节点缺枝少叶，但其右侧的兄弟节点却有孩子。而树2就符合完全二叉树。<br><img src="//luoyefubuki.com/2019/09/15/%E5%AE%8C%E5%85%A8%E4%BA%8C%E5%8F%89%E6%A0%91/1.jpg" alt="完全二叉树"><br>我们可以看到，按图中，给每个节点从左到右，从小到大，编号。那么完全二叉树的编号是连续的。不完全二叉树数字不连续。</p>
+<h1 id="为什么要这样定义"><a href="#为什么要这样定义" class="headerlink" title="为什么要这样定义"></a>为什么要这样定义</h1><p>可以看出来如果我们存储一棵这样的树，我们就可以按照从左到右从上到下的顺序，将每个节点存储到一段连续的存储空间中。虽然还不是很透彻，不过又是一个和“从哪里取，放到哪里”的故事。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/09/15/完全二叉树/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-满二叉树" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/09/15/满二叉树/">满二叉树</a>
+    </h1>
+  
+
+        
+        
+<a href="/2019/09/15/满二叉树/" class="archive-article-date">
+  	<time datetime="2019-09-15T05:52:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-15</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h1><p>在一棵二叉树种，如果所有分支节点都存在于左子树和右子树，并且所有叶子节点都在同一层上，这样的二叉树就是满二叉树。</p>
+        
+          <a class="article-more-a" href="/2019/09/15/满二叉树/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/09/15/满二叉树/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-有序树和无序树和二叉树的区分" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -200,13 +410,9 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h1 id="一、有序树概念"><a href="#一、有序树概念" class="headerlink" title="一、有序树概念"></a>一、有序树概念</h1><p>如果将树中结点的各子树看成从左至右是有次序的，不能互换的，则称该树为有序树。</p>
-<h1 id="二、无序树概念"><a href="#二、无序树概念" class="headerlink" title="二、无序树概念"></a>二、无序树概念</h1><p>树中任意节点的子节点之间没有顺序关系，这种树称为无序树，也称为自由树。</p>
-<h1 id="三、二叉树概念"><a href="#三、二叉树概念" class="headerlink" title="三、二叉树概念"></a>三、二叉树概念</h1><p>二叉树是n个节点的有限集合，该集合或者为空集，或者由一个根节点和两颗互不相交的，分别称为根节点的左子树和右子树的二叉树组成。左子树和右子树是有顺序的，次序不能任意颠倒。即使某个结点只有一个子树，也要区分出它是左子树还是右子树。</p>
-<h1 id="四、似懂非懂的例子"><a href="#四、似懂非懂的例子" class="headerlink" title="四、似懂非懂的例子"></a>四、似懂非懂的例子</h1><p>我们以三个节点可以构成多少种特定的树为例子</p>
-<h2 id="1-无序树"><a href="#1-无序树" class="headerlink" title="1.无序树"></a>1.无序树</h2><p>三个节点，父子之间有序，而兄弟之间无序。组成的树有多少种。<br>一个父节点，两个兄弟的情况下，只能改变父节点，那么就是三种情况，每个节点当一次父节点。如下图<br><img src="//luoyefubuki.com/2019/09/03/%E6%9C%89%E5%BA%8F%E6%A0%91%E5%92%8C%E6%97%A0%E5%BA%8F%E6%A0%91%E5%92%8C%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E5%8C%BA%E5%88%86/1.jpg" alt="有序树和无序树和二叉树的区分"><br>链式结构的情况下，因为不存在兄弟问题，根节点，三种情况，然后剩下两个节点，根的子节点，两种情况，然后剩下最后一个节点。就是3✖2✖1的情况，六种。如下图<br><img src="//luoyefubuki.com/2019/09/03/%E6%9C%89%E5%BA%8F%E6%A0%91%E5%92%8C%E6%97%A0%E5%BA%8F%E6%A0%91%E5%92%8C%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E5%8C%BA%E5%88%86/2.jpg" alt="有序树和无序树和二叉树的区分"><br>无序树一共有9种。</p>
-<h2 id="2-有序树"><a href="#2-有序树" class="headerlink" title="2.有序树"></a>2.有序树</h2><p>三个节点，父子之间有序，并且兄弟之间有序。组成的树有多少种。<br>一个父节点，两个兄弟的情况下，改变父节点按照无序树有三种方式，兄弟节点互换位置又是两种，2✖3=6。如下图<br><img src="//luoyefubuki.com/2019/09/03/%E6%9C%89%E5%BA%8F%E6%A0%91%E5%92%8C%E6%97%A0%E5%BA%8F%E6%A0%91%E5%92%8C%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E5%8C%BA%E5%88%86/3.jpg" alt="有序树和无序树和二叉树的区分"><br>链式结构的情况下，因为不存在兄弟问题，根节点，三种情况，然后剩下两个节点，根的子节点，两种情况，然后剩下最后一个节点。就是3✖2✖1的情况，六种。如下图<br><img src="//luoyefubuki.com/2019/09/03/%E6%9C%89%E5%BA%8F%E6%A0%91%E5%92%8C%E6%97%A0%E5%BA%8F%E6%A0%91%E5%92%8C%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E5%8C%BA%E5%88%86/4.jpg" alt="有序树和无序树和二叉树的区分"><br>有序树一共有12种。</p>
-<h2 id="3-二叉树"><a href="#3-二叉树" class="headerlink" title="3.二叉树"></a>3.二叉树</h2><p>到二叉树，就更麻烦了。因为有了左子树和右子树的概念。有序树中只是兄弟节点从左到右都遵循相同的顺序，但是没有兄弟节点的情况下，在左在右都一样。而二叉树在左边就是左子树，在右边就是右子树。左右子树不可颠倒。<br>一个父节点，两个兄弟节点的情况下，和有序树情况相同。一共六种。<br><a href="//luoyefubuki.com/2019/09/03/有序树和无序树和二叉树的区分/3.jpg">有序树和无序树和二叉树的区分</a><br>而链式结构下，二叉树是包含有序树的所有情况的。我们先把他们分成几种形态。如下图，一共四种形态。<br><a href="//luoyefubuki.com/2019/09/03/有序树和无序树和二叉树的区分/5.jpg">有序树和无序树和二叉树的区分</a><br>由有序树可知道，每一种形态都有六种排列组合方式。所以这个一共是24种二叉树。<br>二叉树一共有30种。</p>
-
+        
+          <a class="article-more-a" href="/2019/09/15/有序树和无序树和二叉树的区分/#more">more >></a>
+        
       
 
       
@@ -274,8 +480,9 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>立个flag，我要用半年时间用通俗的语言写下自己对树形结构的理解。さてと、始めましょう！</p>
-<h1 id="树"><a href="#树" class="headerlink" title="树"></a>树</h1><p>有序树，无序树，二叉树的区分。</p>
-<h1 id="二叉树"><a href="#二叉树" class="headerlink" title="二叉树"></a>二叉树</h1>
+<h1 id="树"><a href="#树" class="headerlink" title="树"></a>树</h1><p>有序树，无序树，二叉树的区分。<br><a href="//luoyefubuki.com/2019/09/15/有序树和无序树和二叉树的区分/">有序树和无序树和二叉树的区分</a></p>
+<h1 id="二叉树"><a href="#二叉树" class="headerlink" title="二叉树"></a>二叉树</h1><p><a href="//luoyefubuki.com/2019/09/15/满二叉树/">满二叉树</a>  <a href="//luoyefubuki.com/2019/09/15/完全二叉树/">完全二叉树</a><br><a href="//luoyefubuki.com/2019/09/15/线索二叉树/">线索二叉树</a></p>
+
       
 
       
@@ -669,217 +876,9 @@
 
 
   
-    <article id="post-java沙箱机制" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/09/09/java沙箱机制/">java沙箱机制</a>
-    </h1>
-  
-
-        
-        
-<a href="/2019/09/09/java沙箱机制/" class="archive-article-date">
-  	<time datetime="2019-09-09T08:55:47.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-09</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="我是怎么遇到这个名词的"><a href="#我是怎么遇到这个名词的" class="headerlink" title="我是怎么遇到这个名词的"></a>我是怎么遇到这个名词的</h1><p>在研究docker容器技术时，提到了虚拟机技术，虚拟机需要模拟整个操作系统，而docker这种容器技术，只需要虚拟出一个小规模环境，并不需要虚拟出整个操作系统。这个小规模环境类似“沙箱”；</p>
-        
-          <a class="article-more-a" href="/2019/09/09/java沙箱机制/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/09/09/java沙箱机制/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-自己的云服务器" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/09/08/自己的云服务器/">自己的云服务器</a>
-    </h1>
-  
-
-        
-        
-<a href="/2019/09/08/自己的云服务器/" class="archive-article-date">
-  	<time datetime="2019-09-08T06:17:21.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-08</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="为什么要买一个自己的云服务器"><a href="#为什么要买一个自己的云服务器" class="headerlink" title="为什么要买一个自己的云服务器"></a>为什么要买一个自己的云服务器</h1><p>其实，故事是这样的，自己搭建了一个hexo博客，托管在GitHub上，担心哪一天GitHub不能用了，就像自己买台服务器，把自己的网站挂上去。又因为腾讯云服务器有个1核1G新用户的活动，99块钱一年，于是就剁手买了一个。如下图所示：<br><img src="//luoyefubuki.com/2019/09/08/%E8%87%AA%E5%B7%B1%E7%9A%84%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8/1.jpg" alt="自己的云服务器"></p>
-<h1 id="云服务"><a href="#云服务" class="headerlink" title="云服务"></a>云服务</h1>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/09/08/自己的云服务器/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-十分易懂的英语介词at-on-in用法区别" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/09/08/十分易懂的英语介词at-on-in用法区别/">十分易懂的英语介词at on in用法区别</a>
-    </h1>
-  
-
-        
-        
-<a href="/2019/09/08/十分易懂的英语介词at-on-in用法区别/" class="archive-article-date">
-  	<time datetime="2019-09-08T02:03:07.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-08</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="问题出现"><a href="#问题出现" class="headerlink" title="问题出现"></a>问题出现</h1><p>这几个介词，从初中开始学英语到大学毕业，都是稀里糊涂的。偶然一天心血来潮，搜索了一下相关得语法，发现现在人们解决英语学习的手段越来越高明了。</p>
-        
-          <a class="article-more-a" href="/2019/09/08/十分易懂的英语介词at-on-in用法区别/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/09/08/十分易懂的英语介词at-on-in用法区别/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
     </nav>
   
 
