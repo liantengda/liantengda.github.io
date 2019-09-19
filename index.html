@@ -178,6 +178,243 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-Windows如何安装chocolatey" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/09/19/Windows如何安装chocolatey/">Windows如何安装chocolatey</a>
+    </h1>
+  
+
+        
+        
+<a href="/2019/09/19/Windows如何安装chocolatey/" class="archive-article-date">
+  	<time datetime="2019-09-19T08:16:26.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-19</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/09/19/Windows如何安装chocolatey/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-使用docker快速部署一个java项目" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/09/17/使用docker快速部署一个java项目/">使用docker快速部署一个java项目</a>
+    </h1>
+  
+
+        
+        
+<a href="/2019/09/17/使用docker快速部署一个java项目/" class="archive-article-date">
+  	<time datetime="2019-09-17T12:38:50.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-17</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="一、docker的安装"><a href="#一、docker的安装" class="headerlink" title="一、docker的安装"></a>一、docker的安装</h1><p>使用docker version查看docker是否安装成功。<br>systemctl status docker 查看docker服务是否启动成功。</p>
+<h1 id="二、指定docker仓库"><a href="#二、指定docker仓库" class="headerlink" title="二、指定docker仓库"></a>二、指定docker仓库</h1><p>hub.docker.com（国外，速度慢）<br>国内各个云家族都有自己的镜像仓库。<br>此处使用的是腾讯云。</p>
+<h1 id="二、镜像操作"><a href="#二、镜像操作" class="headerlink" title="二、镜像操作"></a>二、镜像操作</h1><p>拉取镜像<br>docker pull [OPTIONS] NAME [:TAG]</p>
+<p>从远程库拉取镜像</p>
+<p>NAME：镜像名称</p>
+<p>TAG：版本</p>
+<p>OPTIONS：拉取参数</p>
+<p>查看镜像</p>
+<p>docker images [OPTIONS] [REPOSITORY[:TAG]]</p>
+<p>查看本机都有哪些镜像，也可以用来验证pull是否成功</p>
+<p>REPOSITORY：指定镜像名称</p>
+<p>TAG：版本</p>
+<p>运行镜像</p>
+<p>docker run [OPTIONS] IMAGE[:TAG] [COMMAND] [ARG…]</p>
+<p>COMMAND：运行时，执行哪些命令</p>
+<p>ARG…：运行时，执行哪些参数</p>
+<p>docker ps</p>
+<p>查看正在这台机器上运行的容器</p>
+<p>docker stop 容器id名（简写也行）<br>停止容器</p>
+<h1 id="二、Dockerfile文件"><a href="#二、Dockerfile文件" class="headerlink" title="二、Dockerfile文件"></a>二、Dockerfile文件</h1><p>Dockerfile 是一个用来描述容器内部运行环境的文件，比如网络接口、磁盘驱动。这些环境和系统其他环境是隔离的。接下里已官网给出的一个例子为列。 官网例子是python的,这里另写了一个部署java应用的。</p>
+<h1 id="三、docker容器镜像删除操作"><a href="#三、docker容器镜像删除操作" class="headerlink" title="三、docker容器镜像删除操作"></a>三、docker容器镜像删除操作</h1><p>1.停止所有的container，这样才能够删除其中的images：<br>docker stop $(docker ps -a -q)<br>如果想要删除所有container的话再加一个指令：<br>docker rm $(docker ps -a -q)</p>
+<p>在我尝试的过程中，发现删除镜像得先删除使用这个镜像得所有容器，不然会报以下错误，并且删除失败。这个错误得大概意思就是镜像仍然在被已经停止运行得容器e64d0d7087be使用，无法删除<br>Error response from daemon: conflict: unable to delete 7cd3157f2ebf (must be forced) - image is being used by stopped container e64d0d7087be</p>
+<p>2.查看当前有些什么images<br>docker images</p>
+<p>3.删除images，通过image的id来指定删除谁</p>
+<p>docker rmi <image id></image></p>
+<p>想要删除untagged images，也就是那些id为<none>的image的话可以用</none></p>
+<p>docker rmi $(docker images | grep “^<none>“ | awk “{print $3}”)</none></p>
+<p>要删除全部image的话</p>
+<p>docker rmi $(docker images -q)</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/09/17/使用docker快速部署一个java项目/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-平衡二叉树" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/09/16/平衡二叉树/">平衡二叉树</a>
+    </h1>
+  
+
+        
+        
+<a href="/2019/09/16/平衡二叉树/" class="archive-article-date">
+  	<time datetime="2019-09-16T04:57:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-16</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="为什么要有平衡二叉树"><a href="#为什么要有平衡二叉树" class="headerlink" title="为什么要有平衡二叉树"></a>为什么要有平衡二叉树</h1><p>我们前边学习了二叉搜索树，解决一组有序数据集合数据插入和删除困难的问题。但是也碰到了一个问题，就是如果这棵二叉搜索树长得太歪了怎么办。如下图所示，这跟链表有啥区别。如果树长成这样，二叉搜索树还有什么意义。<br><img src="//luoyefubuki.com/2019/09/16/%E5%B9%B3%E8%A1%A1%E4%BA%8C%E5%8F%89%E6%A0%91/1.jpg" alt="平衡二叉树"></p>
+<p>所以，为了世界的和平，为了正义，我们需要解决这个问题。于是平衡二叉树出现了。</p>
+<h1 id="平衡二叉树定义"><a href="#平衡二叉树定义" class="headerlink" title="平衡二叉树定义"></a>平衡二叉树定义</h1><p>平衡二叉树也叫AVL树，由两个算法创造者命名。<br>首先它得是一个二叉排序树，其中每一个节点得左子树和右子树的高度差至多等于1。</p>
+<h1 id="平衡二叉树相关概念"><a href="#平衡二叉树相关概念" class="headerlink" title="平衡二叉树相关概念"></a>平衡二叉树相关概念</h1><h2 id="平衡因子（BF）"><a href="#平衡因子（BF）" class="headerlink" title="平衡因子（BF）"></a>平衡因子（BF）</h2><p>指定一个节点，用其左子树高度减去右子树高度得到的值就是该节点的平衡因子。<br>注意：读完概念，我们感觉很好理解，但是我们要记住平衡因子是相对节点而言的，每个节点都有自己的平衡因子。</p>
+<h2 id="最小不平衡子树"><a href="#最小不平衡子树" class="headerlink" title="最小不平衡子树"></a>最小不平衡子树</h2><p>距离插入节点最近的，且平衡因子的绝对值大于1的节点为根的子树，我们称为最小不平衡子树。<br>其实这个概念。在我看了好多棵平衡二叉树构造过程后，感觉应该有个前提，在插入节点前，这棵树应该首先是平衡的。不然这个最小总让人感觉有点不完全正确。（这只是我的感觉，按照人家的定义，确实也是对的）。</p>
+<h1 id="构造不平衡树"><a href="#构造不平衡树" class="headerlink" title="构造不平衡树"></a>构造不平衡树</h1><p>终于到了讲解例子的时候了，看完这个例子，应该就可以了解简单的平衡二叉树。我们还是引用大话数据结构的平衡二叉树例子。数组a[10]={3,2,1,4,5,6,7,10,9,8}。</p>
+<p>先是根3，然后2称为3的左孩子。此时3的平衡因子为1。此时树平衡。继续插入1，称为2的左孩子。此时3的平衡因子为2，如图1，以3为节点的子树为最小不平衡子树。平衡因子为正数，则顺时针旋转。旋转成符合二叉排序树规则的样子，如图2，树又恢复了平衡。此时插入4，节点的平衡因子跟着变化，但是-1的绝对值也不大于1，所以树平衡。<br><img src="//luoyefubuki.com/2019/09/16/%E5%B9%B3%E8%A1%A1%E4%BA%8C%E5%8F%89%E6%A0%91/2.jpg" alt="平衡二叉树"><br>接着插入5，应该插到4节点的右孩子处。这个时候根节点2平衡因子变为-2，3节点平衡因子也为-2，此时就要根据定义确定最小不平衡树，距离插入节点最近的平衡因子大于1的，那就是下图中的3节点了。然后因为是负的，所以逆时针旋转最小平衡树，还是转成符合二叉排序树的。<br><img src="//luoyefubuki.com/2019/09/16/%E5%B9%B3%E8%A1%A1%E4%BA%8C%E5%8F%89%E6%A0%91/3.jpg" alt="平衡二叉树"><br>接着插入6，发现根节点2，平衡因子为-2，此时逆时针旋转，发现4节点做了根，那么4节点的左孩子没地方放了。此时按照二叉排序树规则，把三重新插入一遍，于是就成了2节点的右孩子。<br><img src="//luoyefubuki.com/2019/09/16/%E5%B9%B3%E8%A1%A1%E4%BA%8C%E5%8F%89%E6%A0%91/4.jpg" alt="平衡二叉树"><br>此时再插入7，发现5的平衡因子变成了-2，那么这个5为根的子树就成了最小不平衡子树。现在开始逆时针旋转，使整棵树达到平衡。<br><img src="//luoyefubuki.com/2019/09/16/%E5%B9%B3%E8%A1%A1%E4%BA%8C%E5%8F%89%E6%A0%91/5.jpg" alt="平衡二叉树"><br>此时再插入10，发现树平衡。然后再插入9，发现以7为根节点的子树不平衡，逆时针旋转，发现不符合二叉排序树规则，10比9大，9不可以作为10的右子树。因此就需要对这棵子树做调整。我们发现原来需要调整的最小不平衡子树，都是一个方向排着，这样会导致一个结果，他们的平衡因子是一个符号的，而现在的节点7和节点10平衡因子符号相反。因此我们先将他们调整为一致的，我们把9和10进行顺时针旋转，和7的平衡因子符号一致。再整体左旋（逆时针），使树达到平衡。<br><img src="//luoyefubuki.com/2019/09/16/%E5%B9%B3%E8%A1%A1%E4%BA%8C%E5%8F%89%E6%A0%91/6.jpg" alt="平衡二叉树"><br>接着插入8，此时6节点的平衡因子为-2，和刚才情况一样，平衡因子符号不一致，因此先右旋9子树，再左旋6子树，使树达到平衡。<br><img src="//luoyefubuki.com/2019/09/16/%E5%B9%B3%E8%A1%A1%E4%BA%8C%E5%8F%89%E6%A0%91/7.jpg" alt="平衡二叉树"></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/09/16/平衡二叉树/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-二叉排序树" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -634,214 +871,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2019/09/15/计算机科学与技术中的树形结构大汇总/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-如何配置网关-适用于大多数场景的网关问题" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/09/14/如何配置网关-适用于大多数场景的网关问题/">如何配置网关----适用于大多数场景的网关问题</a>
-    </h1>
-  
-
-        
-        
-<a href="/2019/09/14/如何配置网关-适用于大多数场景的网关问题/" class="archive-article-date">
-  	<time datetime="2019-09-14T08:40:13.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-14</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="一、问题背景"><a href="#一、问题背景" class="headerlink" title="一、问题背景"></a>一、问题背景</h1><p>一个房间里有好多个组在用电脑工作。组内需要频繁传输文件，而组与组之间一般情况下是不能通信的。</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/09/14/如何配置网关-适用于大多数场景的网关问题/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-hexo博客中途换域名死活不成功问题" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/09/14/hexo博客中途换域名死活不成功问题/">hexo博客中途换域名死活不成功问题</a>
-    </h1>
-  
-
-        
-        
-<a href="/2019/09/14/hexo博客中途换域名死活不成功问题/" class="archive-article-date">
-  	<time datetime="2019-09-14T08:08:39.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-14</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="事件起因"><a href="#事件起因" class="headerlink" title="事件起因"></a>事件起因</h1><p>由于自己的域名快过期了，换了个域名，因为我是GitHub上部署的hexo，所以我去hexo仓库的settings里进行设置。</p>
-        
-          <a class="article-more-a" href="/2019/09/14/hexo博客中途换域名死活不成功问题/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/09/14/hexo博客中途换域名死活不成功问题/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-如何批量修改许多文件中同一句话" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/09/13/如何批量修改许多文件中同一句话/">如何批量修改许多文件中同一句话</a>
-    </h1>
-  
-
-        
-        
-<a href="/2019/09/13/如何批量修改许多文件中同一句话/" class="archive-article-date">
-  	<time datetime="2019-09-13T09:30:03.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-13</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="一、事件的起因"><a href="#一、事件的起因" class="headerlink" title="一、事件的起因"></a>一、事件的起因</h1><p>因为我在腾讯云上申请的域名快过期了，而我的域名关联了我的hexo博客，于是我新注册了一个域名，但是我用新注册的域名后，我的图片全都失效了，因为我的图片在文章中都是一个个网址。如下图所示。我要把musictail.club全部替换了，替换成我现在的域名luoyefubuki.com。如果只有一篇博客，我直接就用手了，然而我两个月已经写了89篇博客了。其实都是为了练习自己的写作水平的，真正能让人看下去的文章并不多。</p>
-        
-          <a class="article-more-a" href="/2019/09/13/如何批量修改许多文件中同一句话/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/09/13/如何批量修改许多文件中同一句话/">展开全文 >></a>
         </p>
       
 

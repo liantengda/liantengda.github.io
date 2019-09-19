@@ -6,15 +6,27 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>纷飞落叶的博客</title>
+  <title>平衡二叉树 | 纷飞落叶的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="纷飞落叶的博客">
-<meta property="og:url" content="http://yoursite.com/page/4/index.html">
+  <meta name="description" content="为什么要有平衡二叉树我们前边学习了二叉搜索树，解决一组有序数据集合数据插入和删除困难的问题。但是也碰到了一个问题，就是如果这棵二叉搜索树长得太歪了怎么办。如下图所示，这跟链表有啥区别。如果树长成这样，二叉搜索树还有什么意义。 所以，为了世界的和平，为了正义，我们需要解决这个问题。于是平衡二叉树出现了。 平衡二叉树定义平衡二叉树也叫AVL树，由两个算法创造者命名。首先它得是一个二叉排序树，其中每一个">
+<meta property="og:type" content="article">
+<meta property="og:title" content="平衡二叉树">
+<meta property="og:url" content="http://yoursite.com/2019/09/16/平衡二叉树/index.html">
 <meta property="og:site_name" content="纷飞落叶的博客">
+<meta property="og:description" content="为什么要有平衡二叉树我们前边学习了二叉搜索树，解决一组有序数据集合数据插入和删除困难的问题。但是也碰到了一个问题，就是如果这棵二叉搜索树长得太歪了怎么办。如下图所示，这跟链表有啥区别。如果树长成这样，二叉搜索树还有什么意义。 所以，为了世界的和平，为了正义，我们需要解决这个问题。于是平衡二叉树出现了。 平衡二叉树定义平衡二叉树也叫AVL树，由两个算法创造者命名。首先它得是一个二叉排序树，其中每一个">
 <meta property="og:locale" content="default">
+<meta property="og:image" content="http://luoyefubuki.com/2019/09/16/%E5%B9%B3%E8%A1%A1%E4%BA%8C%E5%8F%89%E6%A0%91/1.jpg">
+<meta property="og:image" content="http://luoyefubuki.com/2019/09/16/%E5%B9%B3%E8%A1%A1%E4%BA%8C%E5%8F%89%E6%A0%91/2.jpg">
+<meta property="og:image" content="http://luoyefubuki.com/2019/09/16/%E5%B9%B3%E8%A1%A1%E4%BA%8C%E5%8F%89%E6%A0%91/3.jpg">
+<meta property="og:image" content="http://luoyefubuki.com/2019/09/16/%E5%B9%B3%E8%A1%A1%E4%BA%8C%E5%8F%89%E6%A0%91/4.jpg">
+<meta property="og:image" content="http://luoyefubuki.com/2019/09/16/%E5%B9%B3%E8%A1%A1%E4%BA%8C%E5%8F%89%E6%A0%91/5.jpg">
+<meta property="og:image" content="http://luoyefubuki.com/2019/09/16/%E5%B9%B3%E8%A1%A1%E4%BA%8C%E5%8F%89%E6%A0%91/6.jpg">
+<meta property="og:image" content="http://luoyefubuki.com/2019/09/16/%E5%B9%B3%E8%A1%A1%E4%BA%8C%E5%8F%89%E6%A0%91/7.jpg">
+<meta property="og:updated_time" content="2019-09-16T09:54:11.354Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="纷飞落叶的博客">
+<meta name="twitter:title" content="平衡二叉树">
+<meta name="twitter:description" content="为什么要有平衡二叉树我们前边学习了二叉搜索树，解决一组有序数据集合数据插入和删除困难的问题。但是也碰到了一个问题，就是如果这棵二叉搜索树长得太歪了怎么办。如下图所示，这跟链表有啥区别。如果树长成这样，二叉搜索树还有什么意义。 所以，为了世界的和平，为了正义，我们需要解决这个问题。于是平衡二叉树出现了。 平衡二叉树定义平衡二叉树也叫AVL树，由两个算法创造者命名。首先它得是一个二叉排序树，其中每一个">
+<meta name="twitter:image" content="http://luoyefubuki.com/2019/09/16/%E5%B9%B3%E8%A1%A1%E4%BA%8C%E5%8F%89%E6%A0%91/1.jpg">
   
     <link rel="alternative" href="/atom.xml" title="纷飞落叶的博客" type="application/atom+xml">
   
@@ -176,35 +188,73 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-    <article id="post-富有含义的English" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+            <article id="post-平衡二叉树" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/08/16/富有含义的English/">富有含义的English</a>
+    <h1 class="article-title" itemprop="name">
+      平衡二叉树
     </h1>
   
 
         
         
-<a href="/2019/08/16/富有含义的English/" class="archive-article-date">
-  	<time datetime="2019-08-16T12:46:16.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-16</time>
+        <!-- 不蒜子统计 -->
+        <span id="busuanzi_container_page_pv" style='display:none' class="archive-article-date">
+              <i class="icon-smile icon"></i> 阅读数：<span id="busuanzi_value_page_pv"></span>次
+        </span>
+
+<a href="/2019/09/16/平衡二叉树/" class="archive-article-date">
+  	<time datetime="2019-09-16T04:57:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-16</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="德爷挪威之行"><a href="#德爷挪威之行" class="headerlink" title="德爷挪威之行"></a>德爷挪威之行</h1><p>Life would be rubbish,wouldn’t it,if you just kept repeating the same thing day in day out.You need fresh challenges and you need to push yourself outside your comfort zone,because if you don’t grow do you?</p>
-        
-          <a class="article-more-a" href="/2019/08/16/富有含义的English/#more">more >></a>
-        
+        <h1 id="为什么要有平衡二叉树"><a href="#为什么要有平衡二叉树" class="headerlink" title="为什么要有平衡二叉树"></a>为什么要有平衡二叉树</h1><p>我们前边学习了二叉搜索树，解决一组有序数据集合数据插入和删除困难的问题。但是也碰到了一个问题，就是如果这棵二叉搜索树长得太歪了怎么办。如下图所示，这跟链表有啥区别。如果树长成这样，二叉搜索树还有什么意义。<br><img src="//luoyefubuki.com/2019/09/16/%E5%B9%B3%E8%A1%A1%E4%BA%8C%E5%8F%89%E6%A0%91/1.jpg" alt="平衡二叉树"></p>
+<p>所以，为了世界的和平，为了正义，我们需要解决这个问题。于是平衡二叉树出现了。</p>
+<h1 id="平衡二叉树定义"><a href="#平衡二叉树定义" class="headerlink" title="平衡二叉树定义"></a>平衡二叉树定义</h1><p>平衡二叉树也叫AVL树，由两个算法创造者命名。<br>首先它得是一个二叉排序树，其中每一个节点得左子树和右子树的高度差至多等于1。</p>
+<h1 id="平衡二叉树相关概念"><a href="#平衡二叉树相关概念" class="headerlink" title="平衡二叉树相关概念"></a>平衡二叉树相关概念</h1><h2 id="平衡因子（BF）"><a href="#平衡因子（BF）" class="headerlink" title="平衡因子（BF）"></a>平衡因子（BF）</h2><p>指定一个节点，用其左子树高度减去右子树高度得到的值就是该节点的平衡因子。<br>注意：读完概念，我们感觉很好理解，但是我们要记住平衡因子是相对节点而言的，每个节点都有自己的平衡因子。</p>
+<h2 id="最小不平衡子树"><a href="#最小不平衡子树" class="headerlink" title="最小不平衡子树"></a>最小不平衡子树</h2><p>距离插入节点最近的，且平衡因子的绝对值大于1的节点为根的子树，我们称为最小不平衡子树。<br>其实这个概念。在我看了好多棵平衡二叉树构造过程后，感觉应该有个前提，在插入节点前，这棵树应该首先是平衡的。不然这个最小总让人感觉有点不完全正确。（这只是我的感觉，按照人家的定义，确实也是对的）。</p>
+<h1 id="构造不平衡树"><a href="#构造不平衡树" class="headerlink" title="构造不平衡树"></a>构造不平衡树</h1><p>终于到了讲解例子的时候了，看完这个例子，应该就可以了解简单的平衡二叉树。我们还是引用大话数据结构的平衡二叉树例子。数组a[10]={3,2,1,4,5,6,7,10,9,8}。</p>
+<p>先是根3，然后2称为3的左孩子。此时3的平衡因子为1。此时树平衡。继续插入1，称为2的左孩子。此时3的平衡因子为2，如图1，以3为节点的子树为最小不平衡子树。平衡因子为正数，则顺时针旋转。旋转成符合二叉排序树规则的样子，如图2，树又恢复了平衡。此时插入4，节点的平衡因子跟着变化，但是-1的绝对值也不大于1，所以树平衡。<br><img src="//luoyefubuki.com/2019/09/16/%E5%B9%B3%E8%A1%A1%E4%BA%8C%E5%8F%89%E6%A0%91/2.jpg" alt="平衡二叉树"><br>接着插入5，应该插到4节点的右孩子处。这个时候根节点2平衡因子变为-2，3节点平衡因子也为-2，此时就要根据定义确定最小不平衡树，距离插入节点最近的平衡因子大于1的，那就是下图中的3节点了。然后因为是负的，所以逆时针旋转最小平衡树，还是转成符合二叉排序树的。<br><img src="//luoyefubuki.com/2019/09/16/%E5%B9%B3%E8%A1%A1%E4%BA%8C%E5%8F%89%E6%A0%91/3.jpg" alt="平衡二叉树"><br>接着插入6，发现根节点2，平衡因子为-2，此时逆时针旋转，发现4节点做了根，那么4节点的左孩子没地方放了。此时按照二叉排序树规则，把三重新插入一遍，于是就成了2节点的右孩子。<br><img src="//luoyefubuki.com/2019/09/16/%E5%B9%B3%E8%A1%A1%E4%BA%8C%E5%8F%89%E6%A0%91/4.jpg" alt="平衡二叉树"><br>此时再插入7，发现5的平衡因子变成了-2，那么这个5为根的子树就成了最小不平衡子树。现在开始逆时针旋转，使整棵树达到平衡。<br><img src="//luoyefubuki.com/2019/09/16/%E5%B9%B3%E8%A1%A1%E4%BA%8C%E5%8F%89%E6%A0%91/5.jpg" alt="平衡二叉树"><br>此时再插入10，发现树平衡。然后再插入9，发现以7为根节点的子树不平衡，逆时针旋转，发现不符合二叉排序树规则，10比9大，9不可以作为10的右子树。因此就需要对这棵子树做调整。我们发现原来需要调整的最小不平衡子树，都是一个方向排着，这样会导致一个结果，他们的平衡因子是一个符号的，而现在的节点7和节点10平衡因子符号相反。因此我们先将他们调整为一致的，我们把9和10进行顺时针旋转，和7的平衡因子符号一致。再整体左旋（逆时针），使树达到平衡。<br><img src="//luoyefubuki.com/2019/09/16/%E5%B9%B3%E8%A1%A1%E4%BA%8C%E5%8F%89%E6%A0%91/6.jpg" alt="平衡二叉树"><br>接着插入8，此时6节点的平衡因子为-2，和刚才情况一样，平衡因子符号不一致，因此先右旋9子树，再左旋6子树，使树达到平衡。<br><img src="//luoyefubuki.com/2019/09/16/%E5%B9%B3%E8%A1%A1%E4%BA%8C%E5%8F%89%E6%A0%91/7.jpg" alt="平衡二叉树"></p>
+
       
 
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/支付宝支付.png">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/微信支付.png">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
       
     </div>
     <div class="article-info article-info-index">
@@ -213,11 +263,58 @@
       
 
       
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/08/16/富有含义的English/">展开全文 >></a>
-        </p>
-      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/09/16/平衡二叉树/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
       
       <div class="clearfix"></div>
     </div>
@@ -225,7 +322,49 @@
 </article>
 
 
+  
+  <!-- ������City�氲װ���� -->
+<div id="lv-container" data-id="city" data-uid="MTAyMC80NTQ3Mi8yMTk4NA==">
+	<script type="text/javascript">
+   (function(d, s) {
+       var j, e = d.getElementsByTagName(s)[0];
 
+       if (typeof LivereTower === 'function') { return; }
+
+       j = d.createElement(s);
+       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+       j.async = true;
+
+       e.parentNode.insertBefore(j, e);
+   })(document, 'script');
+	</script>
+<noscript> Ϊ����ʹ�����������۹����뼤��JavaScript</noscript>
+</div>
+<!-- City�氲װ��������� -->
+  
+
+
+
+
+  
+<nav id="article-nav">
+  
+    <a href="/2019/09/17/使用docker快速部署一个java项目/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          使用docker快速部署一个java项目
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/09/15/二叉排序树/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">二叉排序树</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
 
 
 <aside class="wrap-side-operation">
@@ -241,647 +380,36 @@
         </div>
         
         
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-JavaScript的DOM操作" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/08/13/JavaScript的DOM操作/">JavaScript的DOM操作</a>
-    </h1>
-  
-
-        
-        
-<a href="/2019/08/13/JavaScript的DOM操作/" class="archive-article-date">
-  	<time datetime="2019-08-13T12:39:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-13</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="DOM是啥"><a href="#DOM是啥" class="headerlink" title="DOM是啥"></a>DOM是啥</h1><p>DOM的全称是Document Object Model，即文档对象模型。所有对页面的操作都是通过document来进行的。DOM是一个接口，一个规范，程序和脚本可以通过这个接口动态的访问和修改文档的内容，结构和样式。（HTML和xml）。</p>
-        
-          <a class="article-more-a" href="/2019/08/13/JavaScript的DOM操作/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/08/13/JavaScript的DOM操作/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#为什么要有平衡二叉树"><span class="toc-number">1.</span> <span class="toc-text">为什么要有平衡二叉树</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#平衡二叉树定义"><span class="toc-number">2.</span> <span class="toc-text">平衡二叉树定义</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#平衡二叉树相关概念"><span class="toc-number">3.</span> <span class="toc-text">平衡二叉树相关概念</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#平衡因子（BF）"><span class="toc-number">3.1.</span> <span class="toc-text">平衡因子（BF）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#最小不平衡子树"><span class="toc-number">3.2.</span> <span class="toc-text">最小不平衡子树</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#构造不平衡树"><span class="toc-number">4.</span> <span class="toc-text">构造不平衡树</span></a></li></ol>
+                    </div>
+                </span>
             </div>
         </div>
         
-        
     </div>
 </aside>
 
 
 
-
-  
-    <article id="post-CSS定位之相对定位和绝对定位及其他定位" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/08/11/CSS定位之相对定位和绝对定位及其他定位/">CSS定位之相对定位和绝对定位及其他定位</a>
-    </h1>
   
 
-        
-        
-<a href="/2019/08/11/CSS定位之相对定位和绝对定位及其他定位/" class="archive-article-date">
-  	<time datetime="2019-08-11T06:51:01.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-11</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="CSS定位"><a href="#CSS定位" class="headerlink" title="CSS定位"></a>CSS定位</h1><p>CSS定位就是，标签在浏览器中显示的位置如何确定。在CSS中一共有四种定位，静态定位，相对定位，绝对定位和固定定位。其中静态定位是元素的默认定位方式，不能使用top，bottom，left，right和z-index属性。其他三种则可以由我们来更改这些属性来操作元素的位置。</p>
-        
-          <a class="article-more-a" href="/2019/08/11/CSS定位之相对定位和绝对定位及其他定位/#more">more >></a>
-        
-      
+  
+  
 
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/08/11/CSS定位之相对定位和绝对定位及其他定位/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
+  
 
 
 
 
   
-    <article id="post-JavaScript图片轮播之无缝滚动" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/08/11/JavaScript图片轮播之无缝滚动/">JavaScript图片轮播之无缝滚动</a>
-    </h1>
-  
 
-        
-        
-<a href="/2019/08/11/JavaScript图片轮播之无缝滚动/" class="archive-article-date">
-  	<time datetime="2019-08-11T02:50:38.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-11</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="无缝滚动"><a href="#无缝滚动" class="headerlink" title="无缝滚动"></a>无缝滚动</h1><p>这里需要来张图片说明一下。从京东上截了张图。<br><img src="//luoyefubuki.com/2019/08/11/JavaScript%E5%9B%BE%E7%89%87%E8%BD%AE%E6%92%AD%E4%B9%8B%E6%97%A0%E7%BC%9D%E6%BB%9A%E5%8A%A8/1.jpg" alt="JavaScript图片轮播之无缝滚动"></p>
-        
-          <a class="article-more-a" href="/2019/08/11/JavaScript图片轮播之无缝滚动/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/08/11/JavaScript图片轮播之无缝滚动/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-js代码简化之连等于" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/08/10/js代码简化之连等于/">js代码简化之连等于</a>
-    </h1>
-  
-
-        
-        
-<a href="/2019/08/10/js代码简化之连等于/" class="archive-article-date">
-  	<time datetime="2019-08-10T15:19:42.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-10</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="连等于"><a href="#连等于" class="headerlink" title="连等于"></a>连等于</h1><p>当发现两个及以上的标签，所触发的事件大致一样时，就可以将这两个事件用等于号连接，这样就只用写一个函数了。</p>
-        
-          <a class="article-more-a" href="/2019/08/10/js代码简化之连等于/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/08/10/js代码简化之连等于/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-如何在hexo博客中嵌入多段html代码" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/08/10/如何在hexo博客中嵌入多段html代码/">如何在hexo博客中嵌入多段html代码</a>
-    </h1>
-  
-
-        
-        
-<a href="/2019/08/10/如何在hexo博客中嵌入多段html代码/" class="archive-article-date">
-  	<time datetime="2019-08-10T01:50:21.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-10</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="问题发现"><a href="#问题发现" class="headerlink" title="问题发现"></a>问题发现</h1><p>当我第一次hexo博客中嵌入html代码时，发现我的html标签中的按钮居然直接起作用了，而且还可以点击产生正确的效果，但是我的本意是想展示代码，而不是效果的。于是我再网上得知，将两个html标签前边空四个格子，就可以达到效果了。然后果然成功了。但是随着博客数量的增多，我开始对比错误代码和正确代码，这意味着我至少需要贴两段代码。这个时候问题出现了。其实，一开始连这个画面都没有。这是我复现bug的时候，偶尔碰到的。原来的bug复现不了了。</p>
-        
-          <a class="article-more-a" href="/2019/08/10/如何在hexo博客中嵌入多段html代码/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/08/10/如何在hexo博客中嵌入多段html代码/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-羊皮卷" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/08/09/羊皮卷/">羊皮卷</a>
-    </h1>
-  
-
-        
-        
-<a href="/2019/08/09/羊皮卷/" class="archive-article-date">
-  	<time datetime="2019-08-09T13:41:56.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-09</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>我在拼夕夕上花了五毛钱买了一本书。根据这本书的介绍，好像是一本会影响全世界的书籍。这本书被誉为“全球成功人士的启示录”。被译成数十种语言，风靡全球，影响和改变了无数人的命运。我擦，这么牛逼，五毛钱就可以买到这种书。而且居然免费给我邮回来了，而且居然还是新的，外边还有塑料包装袋。这本书就是大名鼎鼎的</p>
-        
-          <a class="article-more-a" href="/2019/08/09/羊皮卷/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/08/09/羊皮卷/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-python处理图片" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/08/04/python处理图片/">python处理图片</a>
-    </h1>
-  
-
-        
-        
-<a href="/2019/08/04/python处理图片/" class="archive-article-date">
-  	<time datetime="2019-08-04T13:08:53.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-04</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="为什么要用python。"><a href="#为什么要用python。" class="headerlink" title="为什么要用python。"></a>为什么要用python。</h1><p>在创建个人hexo博客的时候，看到大佬们每个人的博客都各有特色，然后发现许多大佬的博客都含有个人相册，记录自己多年的生活场景，不禁有些感慨。所以就想要有一个自己的相册，但是个人相册的图片都需要经过图片处理，而大佬们都选择的是python语言，所以我也就琢磨了半天，把自己琢磨出来的东西写出来。因为大佬们并没有交我怎么用它的脚本，因此我踩了许多的坑。<br>首先我把大佬的脚本和我踩完坑的文件夹集合到了一块，放在自己的仓库里了。哈哈哈，太不要脸了。</p>
-        
-          <a class="article-more-a" href="/2019/08/04/python处理图片/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/08/04/python处理图片/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-innerHTML介绍" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/08/03/innerHTML介绍/">innerHTML介绍</a>
-    </h1>
-  
-
-        
-        
-<a href="/2019/08/03/innerHTML介绍/" class="archive-article-date">
-  	<time datetime="2019-08-03T14:20:59.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-03</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h1><p>innerHTML其实就是某个标签内部的值。这个东西还可以显示html。</p>
-        
-          <a class="article-more-a" href="/2019/08/03/innerHTML介绍/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/08/03/innerHTML介绍/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-选项卡功能实现" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/08/03/选项卡功能实现/">选项卡功能实现</a>
-    </h1>
-  
-
-        
-        
-<a href="/2019/08/03/选项卡功能实现/" class="archive-article-date">
-  	<time datetime="2019-08-03T14:20:42.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-03</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="选项卡"><a href="#选项卡" class="headerlink" title="选项卡"></a>选项卡</h1><p>什么是选项卡。比如我们常见的网页菜单。点击对应按钮，弹出对应的菜单栏，其余的按钮对应的菜单栏都消失。<br>下图就是选项卡。</p>
-        
-          <a class="article-more-a" href="/2019/08/03/选项卡功能实现/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/08/03/选项卡功能实现/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-  
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/3/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/5/">Next &raquo;</a>
-    </nav>
   
 
 
@@ -917,8 +445,8 @@
     <script>
 	var yiliaConfig = {
 		mathjax: false,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
