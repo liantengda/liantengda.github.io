@@ -8,12 +8,12 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>平衡二叉树 | 纷飞落叶的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="为什么要有平衡二叉树我们前边学习了二叉搜索树，解决一组有序数据集合数据插入和删除困难的问题。但是也碰到了一个问题，就是如果这棵二叉搜索树长得太歪了怎么办。如下图所示，这跟链表有啥区别。如果树长成这样，二叉搜索树还有什么意义。 所以，为了世界的和平，为了正义，我们需要解决这个问题。于是平衡二叉树出现了。 平衡二叉树定义平衡二叉树也叫AVL树，由两个算法创造者命名。首先它得是一个二叉排序树，其中每一个">
+  <meta name="description" content="为什么要有平衡二叉树我们前边学习了二叉搜索树，解决一组有序数据集合数据插入和删除困难的问题。但是也碰到了一个问题，就是如果这棵二叉搜索树长得太歪了怎么办。如下图所示，这跟链表有啥区别。如果树长成这样，二叉搜索树还有什么意义。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="平衡二叉树">
 <meta property="og:url" content="http://yoursite.com/2019/09/16/平衡二叉树/index.html">
 <meta property="og:site_name" content="纷飞落叶的博客">
-<meta property="og:description" content="为什么要有平衡二叉树我们前边学习了二叉搜索树，解决一组有序数据集合数据插入和删除困难的问题。但是也碰到了一个问题，就是如果这棵二叉搜索树长得太歪了怎么办。如下图所示，这跟链表有啥区别。如果树长成这样，二叉搜索树还有什么意义。 所以，为了世界的和平，为了正义，我们需要解决这个问题。于是平衡二叉树出现了。 平衡二叉树定义平衡二叉树也叫AVL树，由两个算法创造者命名。首先它得是一个二叉排序树，其中每一个">
+<meta property="og:description" content="为什么要有平衡二叉树我们前边学习了二叉搜索树，解决一组有序数据集合数据插入和删除困难的问题。但是也碰到了一个问题，就是如果这棵二叉搜索树长得太歪了怎么办。如下图所示，这跟链表有啥区别。如果树长成这样，二叉搜索树还有什么意义。">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://luoyefubuki.com/2019/09/16/%E5%B9%B3%E8%A1%A1%E4%BA%8C%E5%8F%89%E6%A0%91/1.jpg">
 <meta property="og:image" content="http://luoyefubuki.com/2019/09/16/%E5%B9%B3%E8%A1%A1%E4%BA%8C%E5%8F%89%E6%A0%91/2.jpg">
@@ -22,10 +22,10 @@
 <meta property="og:image" content="http://luoyefubuki.com/2019/09/16/%E5%B9%B3%E8%A1%A1%E4%BA%8C%E5%8F%89%E6%A0%91/5.jpg">
 <meta property="og:image" content="http://luoyefubuki.com/2019/09/16/%E5%B9%B3%E8%A1%A1%E4%BA%8C%E5%8F%89%E6%A0%91/6.jpg">
 <meta property="og:image" content="http://luoyefubuki.com/2019/09/16/%E5%B9%B3%E8%A1%A1%E4%BA%8C%E5%8F%89%E6%A0%91/7.jpg">
-<meta property="og:updated_time" content="2019-09-16T09:54:11.354Z">
+<meta property="og:updated_time" content="2019-09-19T12:31:34.196Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="平衡二叉树">
-<meta name="twitter:description" content="为什么要有平衡二叉树我们前边学习了二叉搜索树，解决一组有序数据集合数据插入和删除困难的问题。但是也碰到了一个问题，就是如果这棵二叉搜索树长得太歪了怎么办。如下图所示，这跟链表有啥区别。如果树长成这样，二叉搜索树还有什么意义。 所以，为了世界的和平，为了正义，我们需要解决这个问题。于是平衡二叉树出现了。 平衡二叉树定义平衡二叉树也叫AVL树，由两个算法创造者命名。首先它得是一个二叉排序树，其中每一个">
+<meta name="twitter:description" content="为什么要有平衡二叉树我们前边学习了二叉搜索树，解决一组有序数据集合数据插入和删除困难的问题。但是也碰到了一个问题，就是如果这棵二叉搜索树长得太歪了怎么办。如下图所示，这跟链表有啥区别。如果树长成这样，二叉搜索树还有什么意义。">
 <meta name="twitter:image" content="http://luoyefubuki.com/2019/09/16/%E5%B9%B3%E8%A1%A1%E4%BA%8C%E5%8F%89%E6%A0%91/1.jpg">
   
     <link rel="alternative" href="/atom.xml" title="纷飞落叶的博客" type="application/atom+xml">
@@ -215,6 +215,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h1 id="为什么要有平衡二叉树"><a href="#为什么要有平衡二叉树" class="headerlink" title="为什么要有平衡二叉树"></a>为什么要有平衡二叉树</h1><p>我们前边学习了二叉搜索树，解决一组有序数据集合数据插入和删除困难的问题。但是也碰到了一个问题，就是如果这棵二叉搜索树长得太歪了怎么办。如下图所示，这跟链表有啥区别。如果树长成这样，二叉搜索树还有什么意义。<br><img src="//luoyefubuki.com/2019/09/16/%E5%B9%B3%E8%A1%A1%E4%BA%8C%E5%8F%89%E6%A0%91/1.jpg" alt="平衡二叉树"></p>
+<a id="more"></a>
 <p>所以，为了世界的和平，为了正义，我们需要解决这个问题。于是平衡二叉树出现了。</p>
 <h1 id="平衡二叉树定义"><a href="#平衡二叉树定义" class="headerlink" title="平衡二叉树定义"></a>平衡二叉树定义</h1><p>平衡二叉树也叫AVL树，由两个算法创造者命名。<br>首先它得是一个二叉排序树，其中每一个节点得左子树和右子树的高度差至多等于1。</p>
 <h1 id="平衡二叉树相关概念"><a href="#平衡二叉树相关概念" class="headerlink" title="平衡二叉树相关概念"></a>平衡二叉树相关概念</h1><h2 id="平衡因子（BF）"><a href="#平衡因子（BF）" class="headerlink" title="平衡因子（BF）"></a>平衡因子（BF）</h2><p>指定一个节点，用其左子树高度减去右子树高度得到的值就是该节点的平衡因子。<br>注意：读完概念，我们感觉很好理解，但是我们要记住平衡因子是相对节点而言的，每个节点都有自己的平衡因子。</p>
