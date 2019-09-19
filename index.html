@@ -602,35 +602,9 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h1 id="一、docker的安装"><a href="#一、docker的安装" class="headerlink" title="一、docker的安装"></a>一、docker的安装</h1><p>使用docker version查看docker是否安装成功。<br>systemctl status docker 查看docker服务是否启动成功。</p>
-<h1 id="二、指定docker仓库"><a href="#二、指定docker仓库" class="headerlink" title="二、指定docker仓库"></a>二、指定docker仓库</h1><p>hub.docker.com（国外，速度慢）<br>国内各个云家族都有自己的镜像仓库。<br>此处使用的是腾讯云。</p>
-<h1 id="二、镜像操作"><a href="#二、镜像操作" class="headerlink" title="二、镜像操作"></a>二、镜像操作</h1><p>拉取镜像<br>docker pull [OPTIONS] NAME [:TAG]</p>
-<p>从远程库拉取镜像</p>
-<p>NAME：镜像名称</p>
-<p>TAG：版本</p>
-<p>OPTIONS：拉取参数</p>
-<p>查看镜像</p>
-<p>docker images [OPTIONS] [REPOSITORY[:TAG]]</p>
-<p>查看本机都有哪些镜像，也可以用来验证pull是否成功</p>
-<p>REPOSITORY：指定镜像名称</p>
-<p>TAG：版本</p>
-<p>运行镜像</p>
-<p>docker run [OPTIONS] IMAGE[:TAG] [COMMAND] [ARG…]</p>
-<p>COMMAND：运行时，执行哪些命令</p>
-<p>ARG…：运行时，执行哪些参数</p>
-<p>docker ps</p>
-<p>查看正在这台机器上运行的容器</p>
-<p>docker stop 容器id名（简写也行）<br>停止容器</p>
-<h1 id="二、Dockerfile文件"><a href="#二、Dockerfile文件" class="headerlink" title="二、Dockerfile文件"></a>二、Dockerfile文件</h1><p>Dockerfile 是一个用来描述容器内部运行环境的文件，比如网络接口、磁盘驱动。这些环境和系统其他环境是隔离的。接下里已官网给出的一个例子为列。 官网例子是python的,这里另写了一个部署java应用的。</p>
-<h1 id="三、docker容器镜像删除操作"><a href="#三、docker容器镜像删除操作" class="headerlink" title="三、docker容器镜像删除操作"></a>三、docker容器镜像删除操作</h1><p>1.停止所有的container，这样才能够删除其中的images：<br>docker stop $(docker ps -a -q)<br>如果想要删除所有container的话再加一个指令：<br>docker rm $(docker ps -a -q)</p>
-<p>在我尝试的过程中，发现删除镜像得先删除使用这个镜像得所有容器，不然会报以下错误，并且删除失败。这个错误得大概意思就是镜像仍然在被已经停止运行得容器e64d0d7087be使用，无法删除<br>Error response from daemon: conflict: unable to delete 7cd3157f2ebf (must be forced) - image is being used by stopped container e64d0d7087be</p>
-<p>2.查看当前有些什么images<br>docker images</p>
-<p>3.删除images，通过image的id来指定删除谁</p>
-<p>docker rmi <image id></image></p>
-<p>想要删除untagged images，也就是那些id为<none>的image的话可以用</none></p>
-<p>docker rmi $(docker images | grep “^<none>“ | awk “{print $3}”)</none></p>
-<p>要删除全部image的话</p>
-<p>docker rmi $(docker images -q)</p>
-
+        
+          <a class="article-more-a" href="/2019/09/17/使用docker快速部署一个java项目/#more">more >></a>
+        
       
 
       
