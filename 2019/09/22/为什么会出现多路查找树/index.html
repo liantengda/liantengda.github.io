@@ -6,15 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives: 2019 | 纷飞落叶的博客</title>
+  <title>为什么会出现多路查找树 | 纷飞落叶的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="纷飞落叶的博客">
-<meta property="og:url" content="http://yoursite.com/archives/2019/page/6/index.html">
+  <meta name="description" content="多路查找树出现的背景不论什么东西被创造，都是因为有人感觉到某件事很麻烦，需要一种东西去解决麻烦。我们平时使用的数据库，数据都是存储在硬盘上的（数据量过大，内存装不下）。因此，当我们需要硬盘中的数据时，我们理所当然要去硬盘中定位到数据，然后取出来。磁盘读取数据是以盘块 (block) 为基本单位的，位于同一盘块中的所有数据都能被一次性全部读取出来。单就时间成本而言，读取物理地址连续的 1000 个字">
+<meta property="og:type" content="article">
+<meta property="og:title" content="为什么会出现多路查找树">
+<meta property="og:url" content="http://yoursite.com/2019/09/22/为什么会出现多路查找树/index.html">
 <meta property="og:site_name" content="纷飞落叶的博客">
+<meta property="og:description" content="多路查找树出现的背景不论什么东西被创造，都是因为有人感觉到某件事很麻烦，需要一种东西去解决麻烦。我们平时使用的数据库，数据都是存储在硬盘上的（数据量过大，内存装不下）。因此，当我们需要硬盘中的数据时，我们理所当然要去硬盘中定位到数据，然后取出来。磁盘读取数据是以盘块 (block) 为基本单位的，位于同一盘块中的所有数据都能被一次性全部读取出来。单就时间成本而言，读取物理地址连续的 1000 个字">
 <meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-09-22T07:39:34.122Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="纷飞落叶的博客">
+<meta name="twitter:title" content="为什么会出现多路查找树">
+<meta name="twitter:description" content="多路查找树出现的背景不论什么东西被创造，都是因为有人感觉到某件事很麻烦，需要一种东西去解决麻烦。我们平时使用的数据库，数据都是存储在硬盘上的（数据量过大，内存装不下）。因此，当我们需要硬盘中的数据时，我们理所当然要去硬盘中定位到数据，然后取出来。磁盘读取数据是以盘块 (block) 为基本单位的，位于同一盘块中的所有数据都能被一次性全部读取出来。单就时间成本而言，读取物理地址连续的 1000 个字">
   
     <link rel="alternative" href="/atom.xml" title="纷飞落叶的博客" type="application/atom+xml">
   
@@ -176,305 +180,217 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-为什么会出现多路查找树" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      为什么会出现多路查找树
+    </h1>
+  
+
+        
+        
+        <!-- 不蒜子统计 -->
+        <span id="busuanzi_container_page_pv" style='display:none' class="archive-article-date">
+              <i class="icon-smile icon"></i> 阅读数：<span id="busuanzi_value_page_pv"></span>次
+        </span>
+
+<a href="/2019/09/22/为什么会出现多路查找树/" class="archive-article-date">
+  	<time datetime="2019-09-22T06:49:36.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-22</time>
+</a>
+        
+      </header>
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="多路查找树出现的背景"><a href="#多路查找树出现的背景" class="headerlink" title="多路查找树出现的背景"></a>多路查找树出现的背景</h1><p>不论什么东西被创造，都是因为有人感觉到某件事很麻烦，需要一种东西去解决麻烦。<br>我们平时使用的数据库，数据都是存储在硬盘上的（数据量过大，内存装不下）。因此，当我们需要硬盘中的数据时，我们理所当然要去硬盘中定位到数据，然后取出来。磁盘读取数据是以盘块 (block) 为基本单位的，位于同一盘块中的所有数据都能被一次性全部读取出来。单就时间成本而言，读取物理地址连续的 1000 个字节，与读取单个字节几乎没有区别，磁盘IO主要花费都在寻找数据上。</p>
+<a id="more"></a>
+<p>我们不用了解磁盘结构，但是我们需要记住，去硬盘中找数据是很费时间的，去硬盘中找数据是很费时间的，去硬盘中找数据是很费时间。然后就是万事万物都是有联系的，就好比我们虽然不知道下一秒我们会干什么，但是把时间段拉长，我们每到工作日，9点就要到公司附近打卡，晚上12点左右就要睡觉，放假了要么打游戏，要么看电视，要么出去吃火锅，而且火锅的价格也会限定在一个价格之内，大概率不会超过三百。数据也一样，我们处理一件事情不可能只用到一个数据，肯定是用到一组数据，用到A数据的同时，B数据被用到的可能性也很大，这样我们就把A数据和B数据编为一组。由于磁盘IO是以盘块为单位，如果我们把A数据和B数据放在一起，那么在我们去磁盘中查找A数据的时候，就可以顺便把B数据一起取出来。然后放到内存中，再次查找B时，就直接去内存中取，不用再磁盘IO了。<br>那么主题来了。多路查找树就是为了把相关性强的数据放到一块的数据结构。</p>
+<h1 id="与普通二叉树的比较"><a href="#与普通二叉树的比较" class="headerlink" title="与普通二叉树的比较"></a>与普通二叉树的比较</h1><p>我们前边所讲的普通二叉树，二叉搜索树，二叉平衡树。一个节点一个数据，当数据量大时，就会增加树的高度，显然会增加查找次数，如果在内存中，多查找几次也没啥关系。但是当数据量十分庞大时，内存中装不下这棵树，就需要持久化到硬盘中，这个时候查找次数增加简直就是灾难。而B树一个节点可以有多个数据，可以有效降低树的的高度，而且还可以把相关数据放到一起。一并带走。</p>
+<h1 id="多路查找树概念"><a href="#多路查找树概念" class="headerlink" title="多路查找树概念"></a>多路查找树概念</h1><p>每个结点孩子个数可以 &gt; 2，多路就是指子树超过 2 个；<br>每个结点可以存储多个数据元素，即容纳多个值；<br>除非数据已经填满，否则不会增加新的层。也就是说，多路查找树追求”层”越少越好。<br>子结点中的值，与父结点中的值，有严格的大小对应关系。一般来说，如果父结点有a个值，那么就有a+1个子结点。比如，父节点有两个值（7和16），就对应三个子结点，第一个子结点都是小于7的值，最后一个子结点都是大于16的值，中间的结节点就是7和16之间的值。</p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/支付宝支付.png">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/微信支付.png">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2019/08/03/匿名函数/" class="archive-article-date">
-  	<time datetime="2019-08-03T14:19:02.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-03</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/08/03/匿名函数/">匿名函数</a>
-    </h1>
-  
+      
 
-        <div class="article-info info-on-right">
-          
-          
+      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/09/22/为什么会出现多路查找树/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2019/08/03/提取行间事件/" class="archive-article-date">
-  	<time datetime="2019-08-03T14:18:51.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-03</time>
-</a>
+  <!-- ������City�氲װ���� -->
+<div id="lv-container" data-id="city" data-uid="MTAyMC80NTQ3Mi8yMTk4NA==">
+	<script type="text/javascript">
+   (function(d, s) {
+       var j, e = d.getElementsByTagName(s)[0];
+
+       if (typeof LivereTower === 'function') { return; }
+
+       j = d.createElement(s);
+       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+       j.async = true;
+
+       e.parentNode.insertBefore(j, e);
+   })(document, 'script');
+	</script>
+<noscript> Ϊ����ʹ�����������۹����뼤��JavaScript</noscript>
+</div>
+<!-- City�氲װ��������� -->
+  
+
+
+
+
+  
+<nav id="article-nav">
+  
+  
+    <a href="/2019/09/22/没有看到文件打开，却显示文件夹正在使用，请关闭后重试，修改文件夹名不成功/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">没有看到文件打开，却显示文件夹正在使用，请关闭后重试，修改文件夹名不成功</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/08/03/提取行间事件/">提取行间事件</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#多路查找树出现的背景"><span class="toc-number">1.</span> <span class="toc-text">多路查找树出现的背景</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#与普通二叉树的比较"><span class="toc-number">2.</span> <span class="toc-text">与普通二叉树的比较</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#多路查找树概念"><span class="toc-number">3.</span> <span class="toc-text">多路查找树概念</span></a></li></ol>
+                    </div>
+                </span>
+            </div>
         </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2019/08/03/行间样式和样式表样式/" class="archive-article-date">
-  	<time datetime="2019-08-03T14:18:31.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-03</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/08/03/行间样式和样式表样式/">行间样式和样式表样式</a>
-    </h1>
+        
+    </div>
+</aside>
+
+
+
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2019/08/03/className这个特例/" class="archive-article-date">
-  	<time datetime="2019-08-03T14:18:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-03</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/08/03/className这个特例/">className这个特例</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2019/08/03/给a标签中加入JavaScript代码/" class="archive-article-date">
-  	<time datetime="2019-08-03T14:17:44.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-03</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/08/03/给a标签中加入JavaScript代码/">给a标签中加入JavaScript代码</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2019/08/03/JavaScript的if语句/" class="archive-article-date">
-  	<time datetime="2019-08-03T14:17:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-03</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/08/03/JavaScript的if语句/">JavaScript的if语句</a>
-    </h1>
+
+
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2019/08/03/JavaScript的getElementById函数/" class="archive-article-date">
-  	<time datetime="2019-08-03T14:16:25.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-03</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/08/03/JavaScript的getElementById函数/">JavaScript的getElementById函数</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2019/08/03/JavaScript设定变量/" class="archive-article-date">
-  	<time datetime="2019-08-03T14:15:54.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-03</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/08/03/JavaScript设定变量/">JavaScript设定变量</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2019/08/03/JavaScript的function函数/" class="archive-article-date">
-  	<time datetime="2019-08-03T14:15:13.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-03</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/08/03/JavaScript的function函数/">JavaScript的function函数</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2019/08/03/js实现鼠标提示框/" class="archive-article-date">
-  	<time datetime="2019-08-03T14:13:45.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-03</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/08/03/js实现鼠标提示框/">js实现鼠标提示框</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/archives/2019/page/5/">&laquo; Prev</a><a class="page-number" href="/archives/2019/">1</a><span class="space">&hellip;</span><a class="page-number" href="/archives/2019/page/4/">4</a><a class="page-number" href="/archives/2019/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/archives/2019/page/7/">7</a><a class="extend next" rel="next" href="/archives/2019/page/7/">Next &raquo;</a>
-    </nav>
   
 
 
@@ -511,8 +427,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,

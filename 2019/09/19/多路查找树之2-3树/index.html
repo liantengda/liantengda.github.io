@@ -8,14 +8,30 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>多路查找树之2-3树 | 纷飞落叶的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="article">
+  <meta name="description" content="出现的原因我们前边学了二叉排序树，如果碰都的数据比较理想，{35，17，39，9，28，65}会长得像一棵树。如果碰到的数据，排序是单调变化的话，比如{9，17，28，35，39，65}可想而知，这棵树会变成一棵斜树，和链表没啥区别了。">
+<meta property="og:type" content="article">
 <meta property="og:title" content="多路查找树之2-3树">
 <meta property="og:url" content="http://yoursite.com/2019/09/19/多路查找树之2-3树/index.html">
 <meta property="og:site_name" content="纷飞落叶的博客">
+<meta property="og:description" content="出现的原因我们前边学了二叉排序树，如果碰都的数据比较理想，{35，17，39，9，28，65}会长得像一棵树。如果碰到的数据，排序是单调变化的话，比如{9，17，28，35，39，65}可想而知，这棵树会变成一棵斜树，和链表没啥区别了。">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-09-19T12:50:22.491Z">
+<meta property="og:image" content="http://luoyefubuki.com/2019/09/22/%E5%A4%9A%E8%B7%AF%E6%9F%A5%E6%89%BE%E6%A0%91%E4%B9%8B2-3%E6%A0%91/1.jpg">
+<meta property="og:image" content="http://luoyefubuki.com/2019/09/22/%E5%A4%9A%E8%B7%AF%E6%9F%A5%E6%89%BE%E6%A0%91%E4%B9%8B2-3%E6%A0%91/2.jpg">
+<meta property="og:image" content="http://luoyefubuki.com/2019/09/22/%E5%A4%9A%E8%B7%AF%E6%9F%A5%E6%89%BE%E6%A0%91%E4%B9%8B2-3%E6%A0%91/3.jpg">
+<meta property="og:image" content="http://luoyefubuki.com/2019/09/22/%E5%A4%9A%E8%B7%AF%E6%9F%A5%E6%89%BE%E6%A0%91%E4%B9%8B2-3%E6%A0%91/4.jpg">
+<meta property="og:image" content="http://luoyefubuki.com/2019/09/22/%E5%A4%9A%E8%B7%AF%E6%9F%A5%E6%89%BE%E6%A0%91%E4%B9%8B2-3%E6%A0%91/5.jpg">
+<meta property="og:image" content="http://luoyefubuki.com/2019/09/22/%E5%A4%9A%E8%B7%AF%E6%9F%A5%E6%89%BE%E6%A0%91%E4%B9%8B2-3%E6%A0%91/6.jpg">
+<meta property="og:image" content="http://luoyefubuki.com/2019/09/22/%E5%A4%9A%E8%B7%AF%E6%9F%A5%E6%89%BE%E6%A0%91%E4%B9%8B2-3%E6%A0%91/7.jpg">
+<meta property="og:image" content="http://luoyefubuki.com/2019/09/22/%E5%A4%9A%E8%B7%AF%E6%9F%A5%E6%89%BE%E6%A0%91%E4%B9%8B2-3%E6%A0%91/8.jpg">
+<meta property="og:image" content="http://luoyefubuki.com/2019/09/22/%E5%A4%9A%E8%B7%AF%E6%9F%A5%E6%89%BE%E6%A0%91%E4%B9%8B2-3%E6%A0%91/9.jpg">
+<meta property="og:image" content="http://luoyefubuki.com/2019/09/22/%E5%A4%9A%E8%B7%AF%E6%9F%A5%E6%89%BE%E6%A0%91%E4%B9%8B2-3%E6%A0%91/10.jpg">
+<meta property="og:image" content="http://luoyefubuki.com/2019/09/22/%E5%A4%9A%E8%B7%AF%E6%9F%A5%E6%89%BE%E6%A0%91%E4%B9%8B2-3%E6%A0%91/11.jpg">
+<meta property="og:image" content="http://luoyefubuki.com/2019/09/22/%E5%A4%9A%E8%B7%AF%E6%9F%A5%E6%89%BE%E6%A0%91%E4%B9%8B2-3%E6%A0%91/12.jpg">
+<meta property="og:updated_time" content="2019-09-22T10:09:10.849Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="多路查找树之2-3树">
+<meta name="twitter:description" content="出现的原因我们前边学了二叉排序树，如果碰都的数据比较理想，{35，17，39，9，28，65}会长得像一棵树。如果碰到的数据，排序是单调变化的话，比如{9，17，28，35，39，65}可想而知，这棵树会变成一棵斜树，和链表没啥区别了。">
+<meta name="twitter:image" content="http://luoyefubuki.com/2019/09/22/%E5%A4%9A%E8%B7%AF%E6%9F%A5%E6%89%BE%E6%A0%91%E4%B9%8B2-3%E6%A0%91/1.jpg">
   
     <link rel="alternative" href="/atom.xml" title="纷飞落叶的博客" type="application/atom+xml">
   
@@ -203,7 +219,15 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <h1 id="出现的原因"><a href="#出现的原因" class="headerlink" title="出现的原因"></a>出现的原因</h1><p>我们前边学了二叉排序树，如果碰都的数据比较理想，{35，17，39，9，28，65}会长得像一棵树。如果碰到的数据，排序是单调变化的话，比如{9，17，28，35，39，65}可想而知，这棵树会变成一棵斜树，和链表没啥区别了。<br><img src="//luoyefubuki.com/2019/09/22/%E5%A4%9A%E8%B7%AF%E6%9F%A5%E6%89%BE%E6%A0%91%E4%B9%8B2-3%E6%A0%91/1.jpg" alt="多路查找树之2-3树"></p>
+<a id="more"></a>
+<p>然后就出现了平衡二叉树，当树的平衡因子绝对值大于1时，进行旋转调整，使得树不再长歪。但是普通二叉树只能一个节点存一个数据，当数据多时，树的高度就会增加。<br>为了解决二叉查找树的不平衡，2-3树孕育而生，2-3树能够很好的实现树的平衡。<br>2-3树的节点不再是单一的2节点，节点可能是2节点、3节点。</p>
+<h1 id="2-3树概念"><a href="#2-3树概念" class="headerlink" title="2-3树概念"></a>2-3树概念</h1><p>每个节点都具有两个孩子或者三个孩子，其中拥有两个孩子的节点称为二节点，拥有三个孩子的节点称为三节点。<br>二节点要么有两个孩子要么没有孩子，不允许只有一个孩子。<br>三节点要么有三个孩子要么没有孩子，类比二节点不允许其他情况。<br>而且还有一点我们很多人会忽略的，那就是2-3树的叶子节点必须都在同一层上，这一点导致了2-3树是向上生长的。普通的二叉树都是向下生长的。当2-3的根节点由3树生长为2节点，树的高度增加。<br><img src="//luoyefubuki.com/2019/09/22/%E5%A4%9A%E8%B7%AF%E6%9F%A5%E6%89%BE%E6%A0%91%E4%B9%8B2-3%E6%A0%91/2.jpg" alt="多路查找树之2-3树"></p>
+<h1 id="2-3树操作"><a href="#2-3树操作" class="headerlink" title="2-3树操作"></a>2-3树操作</h1><h2 id="查找"><a href="#查找" class="headerlink" title="查找"></a>查找</h2><p>树的查找大多数都是递归，然后比较值，相同则返回，不同则继续递归。递归原则，就是和节点值比较，小了向左，大了向右，不大不小走中间。</p>
+<h2 id="插入"><a href="#插入" class="headerlink" title="插入"></a>插入</h2><p>我们以{1，2，3，4，5，6，7，8，9，10}为例子。<br>一开始数为空。插入节点为根节点。并且是两节点。<br><img src="//luoyefubuki.com/2019/09/22/%E5%A4%9A%E8%B7%AF%E6%9F%A5%E6%89%BE%E6%A0%91%E4%B9%8B2-3%E6%A0%91/3.jpg" alt="多路查找树之2-3树"><br>然后开始往根二节点中插入2，顺序左小右大。<br><img src="//luoyefubuki.com/2019/09/22/%E5%A4%9A%E8%B7%AF%E6%9F%A5%E6%89%BE%E6%A0%91%E4%B9%8B2-3%E6%A0%91/4.jpg" alt="多路查找树之2-3树"><br>然后开始往三节点中插入3，此时根据定义，2-3树最多到3节点。此时先虚拟出四节点。然后取中间值，上升为根节点，称为二节点，其余两个节点称为其左右孩子。因为根据2-3树定义，2节点要有孩子必须有两个。所以必须剩余两个数必须成为两个节点。<br><img src="//luoyefubuki.com/2019/09/22/%E5%A4%9A%E8%B7%AF%E6%9F%A5%E6%89%BE%E6%A0%91%E4%B9%8B2-3%E6%A0%91/5.jpg" alt="多路查找树之2-3树"><br>然后此时插入4，比二大，往右，直接和3组成三节点。<br><img src="//luoyefubuki.com/2019/09/22/%E5%A4%9A%E8%B7%AF%E6%9F%A5%E6%89%BE%E6%A0%91%E4%B9%8B2-3%E6%A0%91/6.jpg" alt="多路查找树之2-3树"><br>然后在插入5，从根往右，与3，4组成的三节点虚拟为4节点。然后中间的4上升与根节点2组成三节点。此时根据2-3树规则，三节点要么有三个孩子，要么没有。所以只能把1，3，5分成三个两节点。成为根的三个儿子。<br><img src="//luoyefubuki.com/2019/09/22/%E5%A4%9A%E8%B7%AF%E6%9F%A5%E6%89%BE%E6%A0%91%E4%B9%8B2-3%E6%A0%91/7.jpg" alt="多路查找树之2-3树"><br>然后在插入6.从根往右，与五组成了一个三节点<br><img src="//luoyefubuki.com/2019/09/22/%E5%A4%9A%E8%B7%AF%E6%9F%A5%E6%89%BE%E6%A0%91%E4%B9%8B2-3%E6%A0%91/8.jpg" alt="多路查找树之2-3树"><br>然后再插入7，从跟往右，与5，6构成虚拟四节点。于是将中间数6上升至根节点，与根节点再次虚拟成四节点，然后根节点需要挑出中间数4，再次上升，成为2节点，由于二节点要么有两个儿子，要么没有，所以2和6必须成为二节点，由于二节点要么有两个儿子，那么1，3，5，7就只能按下图摆放。<br><img src="//luoyefubuki.com/2019/09/22/%E5%A4%9A%E8%B7%AF%E6%9F%A5%E6%89%BE%E6%A0%91%E4%B9%8B2-3%E6%A0%91/9.jpg" alt="多路查找树之2-3树"><br>然后在插入8，继续向右，与7合为三节点。<br><img src="//luoyefubuki.com/2019/09/22/%E5%A4%9A%E8%B7%AF%E6%9F%A5%E6%89%BE%E6%A0%91%E4%B9%8B2-3%E6%A0%91/10.jpg" alt="多路查找树之2-3树"><br>然后插入9，继续向右，与7，8构成虚拟节点。挑出中间数8上升，与6构成三节点，而三节点要么有三个儿子，要么没有儿子，所以5，7，9必须成为6，8三节点的三个儿子。如下图。<br><img src="//luoyefubuki.com/2019/09/22/%E5%A4%9A%E8%B7%AF%E6%9F%A5%E6%89%BE%E6%A0%91%E4%B9%8B2-3%E6%A0%91/11.jpg" alt="多路查找树之2-3树"></p>
+<p>然后插入10，很简单，和9构成三节点。完成了。就这样一级一级往上长。<br><img src="//luoyefubuki.com/2019/09/22/%E5%A4%9A%E8%B7%AF%E6%9F%A5%E6%89%BE%E6%A0%91%E4%B9%8B2-3%E6%A0%91/12.jpg" alt="多路查找树之2-3树"></p>
+<h2 id="删除"><a href="#删除" class="headerlink" title="删除"></a>删除</h2><p>通过插入我们已经对2-3树有些了解了。了解到这里我感觉已经足够了。删除以后悠闲了，再仔细分析分析吧。</p>
+
       
 
       
@@ -369,7 +393,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    目录，不存在的…
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#出现的原因"><span class="toc-number">1.</span> <span class="toc-text">出现的原因</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-3树概念"><span class="toc-number">2.</span> <span class="toc-text">2-3树概念</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-3树操作"><span class="toc-number">3.</span> <span class="toc-text">2-3树操作</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#查找"><span class="toc-number">3.1.</span> <span class="toc-text">查找</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#插入"><span class="toc-number">3.2.</span> <span class="toc-text">插入</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#删除"><span class="toc-number">3.3.</span> <span class="toc-text">删除</span></a></li></ol></li></ol>
                     </div>
                 </span>
             </div>
