@@ -19,7 +19,8 @@
 <meta property="og:image" content="http://luoyefubuki.com/2019/09/19/%E5%A4%9A%E8%B7%AF%E6%9F%A5%E6%89%BE%E6%A0%91%E4%B9%8BB%E6%A0%91/2.jpg">
 <meta property="og:image" content="http://luoyefubuki.com/2019/09/19/%E5%A4%9A%E8%B7%AF%E6%9F%A5%E6%89%BE%E6%A0%91%E4%B9%8BB%E6%A0%91/3.jpg">
 <meta property="og:image" content="http://luoyefubuki.com/2019/09/19/%E5%A4%9A%E8%B7%AF%E6%9F%A5%E6%89%BE%E6%A0%91%E4%B9%8BB%E6%A0%91/4.jpg">
-<meta property="og:updated_time" content="2019-09-27T05:05:10.094Z">
+<meta property="og:image" content="http://luoyefubuki.com/2019/09/19/%E5%A4%9A%E8%B7%AF%E6%9F%A5%E6%89%BE%E6%A0%91%E4%B9%8BB%E6%A0%91/5.jpg">
+<meta property="og:updated_time" content="2019-09-27T10:16:46.236Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="多路查找树之B树">
 <meta name="twitter:description" content="B树的出现在看这篇文章之前，如果不知道2-3树，和2-3-4树的小伙伴，可以先通过以下这两篇文章，理解一下B树的特例。对理解B树十分有帮助。多路查找树之2-3树 多路查找树之2-3-4树">
@@ -217,8 +218,11 @@
 <h1 id="B树的概念"><a href="#B树的概念" class="headerlink" title="B树的概念"></a>B树的概念</h1><p>以下是维基百科关于B树的解释，感觉说的也十分明了。<br>在计算机科学中，B树（B-tree）是一种树状数据结构，它能够存储数据、对其进行排序并允许以O(log n)的时间复杂度运行进行查找、顺序读取、插入和删除的数据结构。B树，概括来说是一个节点可以拥有多于2个子节点的二叉查找树。与自平衡二叉查找树不同，B-树为系统最优化大块数据的读和写操作。B-tree算法减少定位记录时所经历的中间过程，从而加快存取速度。普遍运用在数据库和文件系统。</p>
 <h1 id="B树的特性"><a href="#B树的特性" class="headerlink" title="B树的特性"></a>B树的特性</h1><p>节点最大的孩子数目是B树的阶。这句话一定要先搞清楚。<br><img src="//luoyefubuki.com/2019/09/19/%E5%A4%9A%E8%B7%AF%E6%9F%A5%E6%89%BE%E6%A0%91%E4%B9%8BB%E6%A0%91/1.jpg" alt="多路查找树之B树"><br>看完这个B树的特性，回想自己对2-3树的理解以及对2-3-4树的理解，他们都是以最大的节点树命名的，2-3树中3节点最多可以有三个孩子。2-3-4树中，4节点最多可以有四个孩子。但是我从网上找到了一张图，如下，他说这是2阶B树，我一下子就懵逼了，因为我开始怀疑我以前分析的2-3树都是错的。然后百度百科说2-3树是最简单的B树，但是2-3树，不是3阶B树吗。难道不是按最大节点来算的吗。这下边好多节点都是3节点啊。而且，根节点是3节点，怎么会有两个孩子。不是说m节点只允许要么m个孩子，要么就没有孩子吗。<br><img src="//luoyefubuki.com/2019/09/19/%E5%A4%9A%E8%B7%AF%E6%9F%A5%E6%89%BE%E6%A0%91%E4%B9%8BB%E6%A0%91/2.jpg" alt="多路查找树之B树"><br>最后根据我的理解。2-3树确实是B树，但是B树中并没有定义：<strong>m节点只允许要么m个孩子，要么没有孩子</strong>，所以通过它去类推B树，挺摸不着头脑的。如果换个想法，2-3树也可以说是最简单的B树，因为它限定了每个节点孩子数量变化的范围，要么就全都有，要么都不在。确实相对来说简单了。<br>但是如果按照这幅图，阶数最低的B树并不是2-3树，而是2阶B树。（这是我目前的理解，我感觉不太对劲，要么是我理解错了，要么就是这图有问题）<br>再次搜索，得知m为2时就是二叉B树，也即平衡二叉树。可是这图上，明显是个三节点啊。蒙蔽了。<br>然后我看了下评论发现好多人也和我有同样的问题。我也感觉这图不对劲，附上链接。<br><a href="https://www.cnblogs.com/xiaoxi/p/6868087.html" target="_blank" rel="noopener">https://www.cnblogs.com/xiaoxi/p/6868087.html</a><br><img src="//luoyefubuki.com/2019/09/19/%E5%A4%9A%E8%B7%AF%E6%9F%A5%E6%89%BE%E6%A0%91%E4%B9%8BB%E6%A0%91/3.jpg" alt="多路查找树之B树"></p>
 <p>为了以防万一，我再找了张B树的图，进行比对比对。<br><img src="//luoyefubuki.com/2019/09/19/%E5%A4%9A%E8%B7%AF%E6%9F%A5%E6%89%BE%E6%A0%91%E4%B9%8BB%E6%A0%91/4.jpg" alt="多路查找树之B树"></p>
-<h1 id="B树操作"><a href="#B树操作" class="headerlink" title="B树操作"></a>B树操作</h1><p>此处先不讲B树操作，用2-3树和2-3-4树的操作大概理解下就行了。</p>
-
+<h1 id="B树操作"><a href="#B树操作" class="headerlink" title="B树操作"></a>B树操作</h1><h2 id="查找"><a href="#查找" class="headerlink" title="查找"></a>查找</h2><p>此处引用一张网上的图，其中节点中的17、35、8等等蓝色框里的数字表示文件名，蓝色框下边的是指针域，蓝色框中的红色方块表示存储数据的地址。<br><img src="//luoyefubuki.com/2019/09/19/%E5%A4%9A%E8%B7%AF%E6%9F%A5%E6%89%BE%E6%A0%91%E4%B9%8BB%E6%A0%91/5.jpg" alt="多路查找树之B树"></p>
+<p>假设每个存储块block正好可以存放一个三节点。那么树的根节点就代表一个盘块，其子树指针中存放的就是其子树盘块的地址。</p>
+<p>如果我们想要想寻找60文件。<br>我们先根据根节点指针找到存放文件目录根目录的根盘块1，将其中的信息导入内存。一次IO操作完成。<br>然后60比其他两个文件名都大，所以会找到指针p3，根据指针p3的指向，定位到盘块4。将其中的信息导入内存。第二次IO完成。<br>然后60小于65，所以会找到指针p1，根据指针p1的指向，定位到盘块9，将其中的信息导入内存，第三次IO完成。<br>然后根据算法，找到60文件名的节点，根据红色方块的内容，定位到该文件的磁盘地址。按道理这里应该也算一次IO。然后找到真正的数据。</p>
+<p>根据查找过程，我们可以看出，如果树的高度过高，就会导致IO次数增加。并且如果节点过小，每次只能读取少量数据到内存。如果继续查找36，我们发现它已经读取到内存中了，就不用再出去了。如果查找75，磁盘块10没有读取到内存中，所以还需要再次从根部遍历。再来一遍刚才的操作。如果我们的节点很大，一个节点可以存10个盘块，那么一次就可以将这10个盘块存下来，内存这点空间还是有的，所以一次读10个，对于这棵树来说，基本一次IO就能全读取到内存中。也就减少了IO的次数。</p>
+<h2 id="插入"><a href="#插入" class="headerlink" title="插入"></a>插入</h2><h2 id="删除"><a href="#删除" class="headerlink" title="删除"></a>删除</h2>
       
 
       
@@ -384,7 +388,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#B树的出现"><span class="toc-number">1.</span> <span class="toc-text">B树的出现</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#B树的概念"><span class="toc-number">2.</span> <span class="toc-text">B树的概念</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#B树的特性"><span class="toc-number">3.</span> <span class="toc-text">B树的特性</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#B树操作"><span class="toc-number">4.</span> <span class="toc-text">B树操作</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#B树的出现"><span class="toc-number">1.</span> <span class="toc-text">B树的出现</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#B树的概念"><span class="toc-number">2.</span> <span class="toc-text">B树的概念</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#B树的特性"><span class="toc-number">3.</span> <span class="toc-text">B树的特性</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#B树操作"><span class="toc-number">4.</span> <span class="toc-text">B树操作</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#查找"><span class="toc-number">4.1.</span> <span class="toc-text">查找</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#插入"><span class="toc-number">4.2.</span> <span class="toc-text">插入</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#删除"><span class="toc-number">4.3.</span> <span class="toc-text">删除</span></a></li></ol></li></ol>
                     </div>
                 </span>
             </div>
