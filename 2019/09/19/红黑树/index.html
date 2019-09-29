@@ -8,14 +8,17 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>红黑树 | 纷飞落叶的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="article">
+  <meta name="description" content="为何要分析红黑树jdk1.8版本对HashMap做了改进，在链表长度大于8时，将链表改组成为红黑树，来加快检索速度。其实也很好理解。如果数组后接续的链表过长，那么就和数据存取在链表中没什么区别，查询时间将会大大增加。为了面试的需要以及对java底层的深入理解，我想要分析红黑树。在了解红黑树之前，首先需要知道AVL树，即平衡二叉树。要知道平衡二叉树，需要知道二叉排序树（二叉搜索树）。要知道二叉排序树">
+<meta property="og:type" content="article">
 <meta property="og:title" content="红黑树">
 <meta property="og:url" content="http://yoursite.com/2019/09/19/红黑树/index.html">
 <meta property="og:site_name" content="纷飞落叶的博客">
+<meta property="og:description" content="为何要分析红黑树jdk1.8版本对HashMap做了改进，在链表长度大于8时，将链表改组成为红黑树，来加快检索速度。其实也很好理解。如果数组后接续的链表过长，那么就和数据存取在链表中没什么区别，查询时间将会大大增加。为了面试的需要以及对java底层的深入理解，我想要分析红黑树。在了解红黑树之前，首先需要知道AVL树，即平衡二叉树。要知道平衡二叉树，需要知道二叉排序树（二叉搜索树）。要知道二叉排序树">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-09-19T12:24:28.610Z">
+<meta property="og:updated_time" content="2019-09-27T10:44:16.124Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="红黑树">
+<meta name="twitter:description" content="为何要分析红黑树jdk1.8版本对HashMap做了改进，在链表长度大于8时，将链表改组成为红黑树，来加快检索速度。其实也很好理解。如果数组后接续的链表过长，那么就和数据存取在链表中没什么区别，查询时间将会大大增加。为了面试的需要以及对java底层的深入理解，我想要分析红黑树。在了解红黑树之前，首先需要知道AVL树，即平衡二叉树。要知道平衡二叉树，需要知道二叉排序树（二叉搜索树）。要知道二叉排序树">
   
     <link rel="alternative" href="/atom.xml" title="纷飞落叶的博客" type="application/atom+xml">
   
@@ -203,7 +206,8 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <h1 id="为何要分析红黑树"><a href="#为何要分析红黑树" class="headerlink" title="为何要分析红黑树"></a>为何要分析红黑树</h1><p>jdk1.8版本对HashMap做了改进，在链表长度大于8时，将链表改组成为红黑树，来加快检索速度。其实也很好理解。如果数组后接续的链表过长，那么就和数据存取在链表中没什么区别，查询时间将会大大增加。为了面试的需要以及对java底层的深入理解，我想要分析红黑树。在了解红黑树之前，首先需要知道AVL树，即平衡二叉树。要知道平衡二叉树，需要知道二叉排序树（二叉搜索树）。要知道二叉排序树，需要知道二叉树。哈哈哈哈哈。如果你知道2-3树怎么回事，那么红黑树就更简单了。下面附上链接：</p>
+<h1 id="红黑树的概念"><a href="#红黑树的概念" class="headerlink" title="红黑树的概念"></a>红黑树的概念</h1>
       
 
       
@@ -369,7 +373,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    目录，不存在的…
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#为何要分析红黑树"><span class="toc-number">1.</span> <span class="toc-text">为何要分析红黑树</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#红黑树的概念"><span class="toc-number">2.</span> <span class="toc-text">红黑树的概念</span></a></li></ol>
                     </div>
                 </span>
             </div>
