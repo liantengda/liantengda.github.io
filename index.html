@@ -200,23 +200,9 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h1 id="linux检测内存及系统运行状况的命令"><a href="#linux检测内存及系统运行状况的命令" class="headerlink" title="linux检测内存及系统运行状况的命令"></a>linux检测内存及系统运行状况的命令</h1><p>其实就和windows的任务管理器一样。可以查看内存使用，CPU使用率。只是windows有个图形化界面可以一目了然，linux还需要命令。</p>
-<h2 id="命令1-free"><a href="#命令1-free" class="headerlink" title="命令1  free"></a>命令1  free</h2><p>使用方法 free [-b -k -m] [-s time]   其中b,k,m分别代表B，KB，MB。s代表时间。<br>这个命令主要用来查看内存使用情况。其中total除去为硬件和操作系统保留的内存之后剩余的内存总量，因此会发现比我们所说的总内存要小。used就不用说了，使用了的。free指的是空闲的。shared指的共享的。buff/cache用于数据缓冲的。available，可以使用的。如下图<br><img src="//luoyefubuki.com/2019/09/29/linux%E6%A3%80%E6%B5%8B%E5%86%85%E5%AD%98%E7%B3%BB%E7%BB%9F%E8%BF%90%E8%A1%8C%E7%8A%B6%E5%86%B5/1.jpg" alt="linux检测内存系统运行状况"><br>其中我们需要解释一下为什么这个缓冲区存在。</p>
-<blockquote>
-<p>对于应用程序来说，buffers/cached 是等于可用的，因为buffer/cached是为了提高文件读取的性能，当应用程序需在用到内存的时候,buffer/ cached会很快地被回收。所以从应用程序的角度来说 可用内存=系统free memory+buffers+cached.<br>buffers是指用来给块设备做的缓冲大小，他只记录文件系统的metadata以及 tracking in-flight pages,cached是用来给文件做缓冲。<br>那就是说：buffers是用来存储，目录里面有什么内容，权限等等,而cached直接用来记忆我们打开的文件的。<br>关于为什么需要缓冲，这里简单解释以下：我们知道，在CPU，内存，外存的运行速度之间，存在这样的关系：<br>CPU比内存快100倍，内存比磁盘快十万倍，且他们之间的差距还在增大！<br>因此为了协调他们速度之间的不匹配，缓存就由此而生，在CPU内部的缓存，为了协调CPU和内存之间速度的不匹配，而内存的产生也是为了协调磁盘和CPU速度的不匹配。有个这样的一个形象的描述：把CPU的一个时钟周期看作一秒。那么，从L1 cache(CPU的一级缓存)读取信息就好像是拿起桌上的一张草稿纸（3秒）；从L2 cache(CPU的二级缓存)读取信息则是从身边的书架上取出一本书（14秒）；而从主存中读取信息则相当于走到办公楼下&gt;去买个零食（4分钟），而等待硬盘寻道的时间相当于离开办公大楼并开始长达一年零三个月的环球旅行，而这仅仅是寻道时间！</p>
-</blockquote>
-<h2 id="命令2-vmstat-Virtual-Memory-Statistics"><a href="#命令2-vmstat-Virtual-Memory-Statistics" class="headerlink" title="命令2 vmstat    Virtual Memory Statistics"></a>命令2 vmstat    Virtual Memory Statistics</h2><p>使用方法 vmstat 时间   每隔一定时间打印一次状态。</p>
-<p>选项参数:</p>
-<pre><code>-d:　　　　　　　　显示磁盘相关统计信息。
-
--a：　　　　　　    显示活跃和非活跃内存
-
--f：　　　　　　　  显示从系统启动至今的fork数量。
-
--p：　　　　　　    显示指定磁盘分区统计信息
-
--s：　　　　　　    显示内存相关统计信息及多种系统活动数量。
-
--m：　　　　　　  显示slabinfo</code></pre>
+        
+          <a class="article-more-a" href="/2019/09/29/linux检测内存系统运行状况/#more">more >></a>
+        
       
 
       
