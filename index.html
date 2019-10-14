@@ -178,6 +178,73 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-手把手教你构造一棵红黑树-java代码" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/10/14/手把手教你构造一棵红黑树-java代码/">手把手教你构造一棵红黑树-java代码</a>
+    </h1>
+  
+
+        
+        
+<a href="/2019/10/14/手把手教你构造一棵红黑树-java代码/" class="archive-article-date">
+  	<time datetime="2019-10-14T02:37:22.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-10-14</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/10/14/手把手教你构造一棵红黑树-java代码/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-The-dirty-secret-of-capitalism-and-a-new-way-forward" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -479,8 +546,12 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="为何要分析红黑树"><a href="#为何要分析红黑树" class="headerlink" title="为何要分析红黑树"></a>为何要分析红黑树</h1><p>jdk1.8版本对HashMap做了改进，在链表长度大于8时，将链表改组成为红黑树，来加快检索速度。其实也很好理解。如果数组后接续的链表过长，那么就和数据存取在链表中没什么区别，查询时间将会大大增加。为了面试的需要以及对java底层的深入理解，我想要分析红黑树。在了解红黑树之前，首先需要知道AVL树，即平衡二叉树。要知道平衡二叉树，需要知道二叉排序树（二叉搜索树）。要知道二叉排序树，需要知道二叉树。哈哈哈哈哈。如果你知道2-3树怎么回事，那么红黑树就更简单了。下面附上链接：</p>
-<h1 id="红黑树的概念"><a href="#红黑树的概念" class="headerlink" title="红黑树的概念"></a>红黑树的概念</h1>
+        <h1 id="红黑树的出现"><a href="#红黑树的出现" class="headerlink" title="红黑树的出现"></a>红黑树的出现</h1><p>据说是因为AVL树不好实现，然后出现了红黑树，容易用代码实现的平衡树。但是有好多人评论说这是胡诌。<br><img src="//luoyefubuki.com/2019/09/19/%E7%BA%A2%E9%BB%91%E6%A0%91/1.jpg" alt="红黑树"></p>
+<h1 id="为何要分析红黑树"><a href="#为何要分析红黑树" class="headerlink" title="为何要分析红黑树"></a>为何要分析红黑树</h1><p>jdk1.8版本对HashMap做了改进，在链表长度大于8时，将链表改组成为红黑树，来加快检索速度。其实也很好理解。如果数组后接续的链表过长，那么就和数据存取在链表中没什么区别，查询时间将会大大增加。为了面试的需要以及对java底层的深入理解，我想要分析红黑树。在了解红黑树之前，首先需要知道AVL树，即平衡二叉树。要知道平衡二叉树，需要知道二叉排序树（二叉搜索树）。要知道二叉排序树，需要知道二叉树。哈哈哈哈哈。如果你知道2-3树怎么回事，那么红黑树就更简单了。下面附上链接：<br><a href="//luoyefubuki.com/2019/09/15/满二叉树/">满二叉树</a><a href="//luoyefubuki.com/2019/09/15/完全二叉树/">完全二叉树</a><a href="//luoyefubuki.com/2019/09/15/线索二叉树/">线索二叉树</a><a href="//luoyefubuki.com/2019/09/15/二叉排序树/">二叉排序树</a><a href="//luoyefubuki.com/2019/09/16/平衡二叉树/">平衡二叉树</a><a href="//luoyefubuki.com/2019/09/19/多路查找树之2-3树/">多路查找树之2-3树</a><br><a href="//luoyefubuki.com/2019/09/19/多路查找树之2-3-4树/">多路查找树之2-3-4树</a></p>
+<h1 id="红黑树的概念"><a href="#红黑树的概念" class="headerlink" title="红黑树的概念"></a>红黑树的概念</h1><p>想要深入红黑树之前，我们必须要知道这棵树的规则。有的数据结构规则确实令人费解，但是当你操作完之后就会发现这么设计的道理。如果初识红黑树，红黑树的概念就比较令人费解。<br>1 任何一个节点都有颜色，黑色或者红色<br>2 首先红黑树的根节点必须是黑色的。<br>3 红黑树的父子节点之间不能两个同时为红色，如果有两个连续的红色节点，那么就需要调整树的结构了。<br>4 红黑树也要符合二叉搜索树的排序规则，左小右大根中间。<br>5 任何一个节点向下遍历到其子孙的叶子节点，所经过的黑节点个数必须相等。（就是这条规则最难搞）<br>6 空节点被认为是黑色的。空节点就是NIL节点，值为null。每个叶子节点都带有两个空节点。</p>
+<h1 id="红黑树操作"><a href="#红黑树操作" class="headerlink" title="红黑树操作"></a>红黑树操作</h1><p>在阐述操作之前，我必须说一点，如果哪步操作蒙蔽了，就看看红黑树的规则，使你懵逼的操作很可能是为了符合规则而做出来的。要么还有一点就是代码写错了。哈哈哈哈。我一开始根据别人的代码就输出了一棵四不像树。</p>
+<h2 id="构造红黑树"><a href="#构造红黑树" class="headerlink" title="构造红黑树"></a>构造红黑树</h2><p>首先我们需要构造一棵红黑树。引用链接。<br><a href="//luoyefubuki.com/2019/10/14/手把手教你构造一棵红黑树-java代码/">手把手教你构造一棵红黑树-java代码</a></p>
+
       
 
       
@@ -773,73 +844,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2019/09/19/多路查找树之2-3树/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Windows如何安装chocolatey" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/09/19/Windows如何安装chocolatey/">Windows如何安装chocolatey</a>
-    </h1>
-  
-
-        
-        
-<a href="/2019/09/19/Windows如何安装chocolatey/" class="archive-article-date">
-  	<time datetime="2019-09-19T08:16:26.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-19</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/09/19/Windows如何安装chocolatey/">展开全文 >></a>
         </p>
       
 
