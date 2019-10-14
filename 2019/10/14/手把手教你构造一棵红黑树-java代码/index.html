@@ -8,14 +8,64 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>手把手教你构造一棵红黑树-java代码 | 纷飞落叶的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="article">
+  <meta name="description" content="伪代码讲解我们先从形象的树形结构讲解红黑树的构造过程。如果我有一组数据{1，2，3，4，5，6，7，8，9，10，11，12，13，14，15，16，17，18}，从左到右，每个数字都是一个节点的值，我们先从简单的开始，节点值相同则覆盖的红黑树开始。当然这个例子里没有相同的节点值，那就更方便了。差点忘了一点，每次插入节点时，首先假定插入的新节点是红色的。这个目前我的感觉是，每次插入的节点是红色，就">
+<meta property="og:type" content="article">
 <meta property="og:title" content="手把手教你构造一棵红黑树-java代码">
 <meta property="og:url" content="http://yoursite.com/2019/10/14/手把手教你构造一棵红黑树-java代码/index.html">
 <meta property="og:site_name" content="纷飞落叶的博客">
+<meta property="og:description" content="伪代码讲解我们先从形象的树形结构讲解红黑树的构造过程。如果我有一组数据{1，2，3，4，5，6，7，8，9，10，11，12，13，14，15，16，17，18}，从左到右，每个数字都是一个节点的值，我们先从简单的开始，节点值相同则覆盖的红黑树开始。当然这个例子里没有相同的节点值，那就更方便了。差点忘了一点，每次插入节点时，首先假定插入的新节点是红色的。这个目前我的感觉是，每次插入的节点是红色，就">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-10-14T02:37:22.565Z">
+<meta property="og:image" content="http://luoyefubuki.com/2019/10/14/%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E4%BD%A0%E6%9E%84%E9%80%A0%E4%B8%80%E6%A3%B5%E7%BA%A2%E9%BB%91%E6%A0%91-java%E4%BB%A3%E7%A0%81/1.jpg">
+<meta property="og:image" content="http://luoyefubuki.com/2019/10/14/%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E4%BD%A0%E6%9E%84%E9%80%A0%E4%B8%80%E6%A3%B5%E7%BA%A2%E9%BB%91%E6%A0%91-java%E4%BB%A3%E7%A0%81/2.jpg">
+<meta property="og:image" content="http://luoyefubuki.com/2019/10/14/%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E4%BD%A0%E6%9E%84%E9%80%A0%E4%B8%80%E6%A3%B5%E7%BA%A2%E9%BB%91%E6%A0%91-java%E4%BB%A3%E7%A0%81/3.jpg">
+<meta property="og:image" content="http://luoyefubuki.com/2019/10/14/%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E4%BD%A0%E6%9E%84%E9%80%A0%E4%B8%80%E6%A3%B5%E7%BA%A2%E9%BB%91%E6%A0%91-java%E4%BB%A3%E7%A0%81/4.jpg">
+<meta property="og:image" content="http://luoyefubuki.com/2019/10/14/%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E4%BD%A0%E6%9E%84%E9%80%A0%E4%B8%80%E6%A3%B5%E7%BA%A2%E9%BB%91%E6%A0%91-java%E4%BB%A3%E7%A0%81/5.jpg">
+<meta property="og:image" content="http://luoyefubuki.com/2019/10/14/%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E4%BD%A0%E6%9E%84%E9%80%A0%E4%B8%80%E6%A3%B5%E7%BA%A2%E9%BB%91%E6%A0%91-java%E4%BB%A3%E7%A0%81/6.jpg">
+<meta property="og:image" content="http://luoyefubuki.com/2019/10/14/%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E4%BD%A0%E6%9E%84%E9%80%A0%E4%B8%80%E6%A3%B5%E7%BA%A2%E9%BB%91%E6%A0%91-java%E4%BB%A3%E7%A0%81/7.jpg">
+<meta property="og:image" content="http://luoyefubuki.com/2019/10/14/%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E4%BD%A0%E6%9E%84%E9%80%A0%E4%B8%80%E6%A3%B5%E7%BA%A2%E9%BB%91%E6%A0%91-java%E4%BB%A3%E7%A0%81/8.jpg">
+<meta property="og:image" content="http://luoyefubuki.com/2019/10/14/%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E4%BD%A0%E6%9E%84%E9%80%A0%E4%B8%80%E6%A3%B5%E7%BA%A2%E9%BB%91%E6%A0%91-java%E4%BB%A3%E7%A0%81/9.jpg">
+<meta property="og:image" content="http://luoyefubuki.com/2019/10/14/%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E4%BD%A0%E6%9E%84%E9%80%A0%E4%B8%80%E6%A3%B5%E7%BA%A2%E9%BB%91%E6%A0%91-java%E4%BB%A3%E7%A0%81/10.jpg">
+<meta property="og:image" content="http://luoyefubuki.com/2019/10/14/%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E4%BD%A0%E6%9E%84%E9%80%A0%E4%B8%80%E6%A3%B5%E7%BA%A2%E9%BB%91%E6%A0%91-java%E4%BB%A3%E7%A0%81/11.jpg">
+<meta property="og:image" content="http://luoyefubuki.com/2019/10/14/%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E4%BD%A0%E6%9E%84%E9%80%A0%E4%B8%80%E6%A3%B5%E7%BA%A2%E9%BB%91%E6%A0%91-java%E4%BB%A3%E7%A0%81/12.jpg">
+<meta property="og:image" content="http://luoyefubuki.com/2019/10/14/%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E4%BD%A0%E6%9E%84%E9%80%A0%E4%B8%80%E6%A3%B5%E7%BA%A2%E9%BB%91%E6%A0%91-java%E4%BB%A3%E7%A0%81/13.jpg">
+<meta property="og:image" content="http://luoyefubuki.com/2019/10/14/%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E4%BD%A0%E6%9E%84%E9%80%A0%E4%B8%80%E6%A3%B5%E7%BA%A2%E9%BB%91%E6%A0%91-java%E4%BB%A3%E7%A0%81/14.jpg">
+<meta property="og:image" content="http://luoyefubuki.com/2019/10/14/%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E4%BD%A0%E6%9E%84%E9%80%A0%E4%B8%80%E6%A3%B5%E7%BA%A2%E9%BB%91%E6%A0%91-java%E4%BB%A3%E7%A0%81/15.jpg">
+<meta property="og:image" content="http://luoyefubuki.com/2019/10/14/%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E4%BD%A0%E6%9E%84%E9%80%A0%E4%B8%80%E6%A3%B5%E7%BA%A2%E9%BB%91%E6%A0%91-java%E4%BB%A3%E7%A0%81/16.jpg">
+<meta property="og:image" content="http://luoyefubuki.com/2019/10/14/%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E4%BD%A0%E6%9E%84%E9%80%A0%E4%B8%80%E6%A3%B5%E7%BA%A2%E9%BB%91%E6%A0%91-java%E4%BB%A3%E7%A0%81/17.jpg">
+<meta property="og:image" content="http://luoyefubuki.com/2019/10/14/%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E4%BD%A0%E6%9E%84%E9%80%A0%E4%B8%80%E6%A3%B5%E7%BA%A2%E9%BB%91%E6%A0%91-java%E4%BB%A3%E7%A0%81/18.jpg">
+<meta property="og:image" content="http://luoyefubuki.com/2019/10/14/%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E4%BD%A0%E6%9E%84%E9%80%A0%E4%B8%80%E6%A3%B5%E7%BA%A2%E9%BB%91%E6%A0%91-java%E4%BB%A3%E7%A0%81/19.jpg">
+<meta property="og:image" content="http://luoyefubuki.com/2019/10/14/%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E4%BD%A0%E6%9E%84%E9%80%A0%E4%B8%80%E6%A3%B5%E7%BA%A2%E9%BB%91%E6%A0%91-java%E4%BB%A3%E7%A0%81/20.jpg">
+<meta property="og:image" content="http://luoyefubuki.com/2019/10/14/%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E4%BD%A0%E6%9E%84%E9%80%A0%E4%B8%80%E6%A3%B5%E7%BA%A2%E9%BB%91%E6%A0%91-java%E4%BB%A3%E7%A0%81/21.jpg">
+<meta property="og:image" content="http://luoyefubuki.com/2019/10/14/%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E4%BD%A0%E6%9E%84%E9%80%A0%E4%B8%80%E6%A3%B5%E7%BA%A2%E9%BB%91%E6%A0%91-java%E4%BB%A3%E7%A0%81/22.jpg">
+<meta property="og:image" content="http://luoyefubuki.com/2019/10/14/%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E4%BD%A0%E6%9E%84%E9%80%A0%E4%B8%80%E6%A3%B5%E7%BA%A2%E9%BB%91%E6%A0%91-java%E4%BB%A3%E7%A0%81/23.jpg">
+<meta property="og:image" content="http://luoyefubuki.com/2019/10/14/%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E4%BD%A0%E6%9E%84%E9%80%A0%E4%B8%80%E6%A3%B5%E7%BA%A2%E9%BB%91%E6%A0%91-java%E4%BB%A3%E7%A0%81/24.jpg">
+<meta property="og:image" content="http://luoyefubuki.com/2019/10/14/%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E4%BD%A0%E6%9E%84%E9%80%A0%E4%B8%80%E6%A3%B5%E7%BA%A2%E9%BB%91%E6%A0%91-java%E4%BB%A3%E7%A0%81/25.jpg">
+<meta property="og:image" content="http://luoyefubuki.com/2019/10/14/%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E4%BD%A0%E6%9E%84%E9%80%A0%E4%B8%80%E6%A3%B5%E7%BA%A2%E9%BB%91%E6%A0%91-java%E4%BB%A3%E7%A0%81/26.jpg">
+<meta property="og:image" content="http://luoyefubuki.com/2019/10/14/%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E4%BD%A0%E6%9E%84%E9%80%A0%E4%B8%80%E6%A3%B5%E7%BA%A2%E9%BB%91%E6%A0%91-java%E4%BB%A3%E7%A0%81/27.jpg">
+<meta property="og:image" content="http://luoyefubuki.com/2019/10/14/%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E4%BD%A0%E6%9E%84%E9%80%A0%E4%B8%80%E6%A3%B5%E7%BA%A2%E9%BB%91%E6%A0%91-java%E4%BB%A3%E7%A0%81/28.jpg">
+<meta property="og:image" content="http://luoyefubuki.com/2019/10/14/%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E4%BD%A0%E6%9E%84%E9%80%A0%E4%B8%80%E6%A3%B5%E7%BA%A2%E9%BB%91%E6%A0%91-java%E4%BB%A3%E7%A0%81/29.jpg">
+<meta property="og:image" content="http://luoyefubuki.com/2019/10/14/%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E4%BD%A0%E6%9E%84%E9%80%A0%E4%B8%80%E6%A3%B5%E7%BA%A2%E9%BB%91%E6%A0%91-java%E4%BB%A3%E7%A0%81/30.jpg">
+<meta property="og:image" content="http://luoyefubuki.com/2019/10/14/%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E4%BD%A0%E6%9E%84%E9%80%A0%E4%B8%80%E6%A3%B5%E7%BA%A2%E9%BB%91%E6%A0%91-java%E4%BB%A3%E7%A0%81/31.jpg">
+<meta property="og:image" content="http://luoyefubuki.com/2019/10/14/%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E4%BD%A0%E6%9E%84%E9%80%A0%E4%B8%80%E6%A3%B5%E7%BA%A2%E9%BB%91%E6%A0%91-java%E4%BB%A3%E7%A0%81/32.jpg">
+<meta property="og:image" content="http://luoyefubuki.com/2019/10/14/%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E4%BD%A0%E6%9E%84%E9%80%A0%E4%B8%80%E6%A3%B5%E7%BA%A2%E9%BB%91%E6%A0%91-java%E4%BB%A3%E7%A0%81/33.jpg">
+<meta property="og:image" content="http://luoyefubuki.com/2019/10/14/%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E4%BD%A0%E6%9E%84%E9%80%A0%E4%B8%80%E6%A3%B5%E7%BA%A2%E9%BB%91%E6%A0%91-java%E4%BB%A3%E7%A0%81/34.jpg">
+<meta property="og:image" content="http://luoyefubuki.com/2019/10/14/%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E4%BD%A0%E6%9E%84%E9%80%A0%E4%B8%80%E6%A3%B5%E7%BA%A2%E9%BB%91%E6%A0%91-java%E4%BB%A3%E7%A0%81/35.jpg">
+<meta property="og:image" content="http://luoyefubuki.com/2019/10/14/%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E4%BD%A0%E6%9E%84%E9%80%A0%E4%B8%80%E6%A3%B5%E7%BA%A2%E9%BB%91%E6%A0%91-java%E4%BB%A3%E7%A0%81/36.jpg">
+<meta property="og:image" content="http://luoyefubuki.com/2019/10/14/%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E4%BD%A0%E6%9E%84%E9%80%A0%E4%B8%80%E6%A3%B5%E7%BA%A2%E9%BB%91%E6%A0%91-java%E4%BB%A3%E7%A0%81/37.jpg">
+<meta property="og:image" content="http://luoyefubuki.com/2019/10/14/%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E4%BD%A0%E6%9E%84%E9%80%A0%E4%B8%80%E6%A3%B5%E7%BA%A2%E9%BB%91%E6%A0%91-java%E4%BB%A3%E7%A0%81/38.jpg">
+<meta property="og:image" content="http://luoyefubuki.com/2019/10/14/%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E4%BD%A0%E6%9E%84%E9%80%A0%E4%B8%80%E6%A3%B5%E7%BA%A2%E9%BB%91%E6%A0%91-java%E4%BB%A3%E7%A0%81/39.jpg">
+<meta property="og:image" content="http://luoyefubuki.com/2019/10/14/%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E4%BD%A0%E6%9E%84%E9%80%A0%E4%B8%80%E6%A3%B5%E7%BA%A2%E9%BB%91%E6%A0%91-java%E4%BB%A3%E7%A0%81/40.jpg">
+<meta property="og:image" content="http://luoyefubuki.com/2019/10/14/%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E4%BD%A0%E6%9E%84%E9%80%A0%E4%B8%80%E6%A3%B5%E7%BA%A2%E9%BB%91%E6%A0%91-java%E4%BB%A3%E7%A0%81/41.jpg">
+<meta property="og:image" content="http://luoyefubuki.com/2019/10/14/%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E4%BD%A0%E6%9E%84%E9%80%A0%E4%B8%80%E6%A3%B5%E7%BA%A2%E9%BB%91%E6%A0%91-java%E4%BB%A3%E7%A0%81/42.jpg">
+<meta property="og:image" content="http://luoyefubuki.com/2019/10/14/%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E4%BD%A0%E6%9E%84%E9%80%A0%E4%B8%80%E6%A3%B5%E7%BA%A2%E9%BB%91%E6%A0%91-java%E4%BB%A3%E7%A0%81/43.jpg">
+<meta property="og:image" content="http://luoyefubuki.com/2019/10/14/%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E4%BD%A0%E6%9E%84%E9%80%A0%E4%B8%80%E6%A3%B5%E7%BA%A2%E9%BB%91%E6%A0%91-java%E4%BB%A3%E7%A0%81/44.jpg">
+<meta property="og:image" content="http://luoyefubuki.com/2019/10/14/%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E4%BD%A0%E6%9E%84%E9%80%A0%E4%B8%80%E6%A3%B5%E7%BA%A2%E9%BB%91%E6%A0%91-java%E4%BB%A3%E7%A0%81/45.jpg">
+<meta property="og:image" content="http://luoyefubuki.com/2019/10/14/%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E4%BD%A0%E6%9E%84%E9%80%A0%E4%B8%80%E6%A3%B5%E7%BA%A2%E9%BB%91%E6%A0%91-java%E4%BB%A3%E7%A0%81/46.jpg">
+<meta property="og:updated_time" content="2019-10-14T09:20:49.305Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="手把手教你构造一棵红黑树-java代码">
+<meta name="twitter:description" content="伪代码讲解我们先从形象的树形结构讲解红黑树的构造过程。如果我有一组数据{1，2，3，4，5，6，7，8，9，10，11，12，13，14，15，16，17，18}，从左到右，每个数字都是一个节点的值，我们先从简单的开始，节点值相同则覆盖的红黑树开始。当然这个例子里没有相同的节点值，那就更方便了。差点忘了一点，每次插入节点时，首先假定插入的新节点是红色的。这个目前我的感觉是，每次插入的节点是红色，就">
+<meta name="twitter:image" content="http://luoyefubuki.com/2019/10/14/%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E4%BD%A0%E6%9E%84%E9%80%A0%E4%B8%80%E6%A3%B5%E7%BA%A2%E9%BB%91%E6%A0%91-java%E4%BB%A3%E7%A0%81/1.jpg">
   
     <link rel="alternative" href="/atom.xml" title="纷飞落叶的博客" type="application/atom+xml">
   
@@ -203,7 +253,502 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <h1 id="伪代码讲解"><a href="#伪代码讲解" class="headerlink" title="伪代码讲解"></a>伪代码讲解</h1><p>我们先从形象的树形结构讲解红黑树的构造过程。<br>如果我有一组数据{1，2，3，4，5，6，7，8，9，10，11，12，13，14，15，16，17，18}，从左到右，每个数字都是一个节点的值，我们先从简单的开始，节点值相同则覆盖的红黑树开始。当然这个例子里没有相同的节点值，那就更方便了。<br>差点忘了一点，每次插入节点时，首先假定插入的新节点是红色的。这个目前我的感觉是，每次插入的节点是红色，就会强迫红黑树进行平衡调节，此时违反了规则:<strong>父子节点不能同时为红色</strong>。这个规则被违反了可以递归解决。<br>而如果插入黑色节点，会违反规则:<strong>任何一个节点向下遍历到其子孙的叶子节点，所经过的黑节点个数必须相等。</strong>而解决这条规则的问题是很困难的。</p>
+<h2 id="插入节点1"><a href="#插入节点1" class="headerlink" title="插入节点1"></a>插入节点1</h2><p>由于根节点一定是黑色的，不用多说了。上图<br><img src="//luoyefubuki.com/2019/10/14/%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E4%BD%A0%E6%9E%84%E9%80%A0%E4%B8%80%E6%A3%B5%E7%BA%A2%E9%BB%91%E6%A0%91-java%E4%BB%A3%E7%A0%81/1.jpg" alt="手把手教你构造一棵红黑树-java代码"></p>
+<h2 id="插入节点2"><a href="#插入节点2" class="headerlink" title="插入节点2"></a>插入节点2</h2><p><img src="//luoyefubuki.com/2019/10/14/%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E4%BD%A0%E6%9E%84%E9%80%A0%E4%B8%80%E6%A3%B5%E7%BA%A2%E9%BB%91%E6%A0%91-java%E4%BB%A3%E7%A0%81/2.jpg" alt="手把手教你构造一棵红黑树-java代码"></p>
+<h2 id="插入节点3"><a href="#插入节点3" class="headerlink" title="插入节点3"></a>插入节点3</h2><p><img src="//luoyefubuki.com/2019/10/14/%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E4%BD%A0%E6%9E%84%E9%80%A0%E4%B8%80%E6%A3%B5%E7%BA%A2%E9%BB%91%E6%A0%91-java%E4%BB%A3%E7%A0%81/3.jpg" alt="手把手教你构造一棵红黑树-java代码"><br>然后我们发现违反了规则3，开始调整，对3节点的爷爷进行左旋操作。（如果你提前知道最小不平衡子树的概念，那就更好理解了，这个操作就是对最小不平衡子树的左旋操作）。对谁进行左旋，就是让谁降辈分。然后他的儿子们升辈分。左旋，就是降到左边。右旋就是降到右边。<br><img src="//luoyefubuki.com/2019/10/14/%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E4%BD%A0%E6%9E%84%E9%80%A0%E4%B8%80%E6%A3%B5%E7%BA%A2%E9%BB%91%E6%A0%91-java%E4%BB%A3%E7%A0%81/4.jpg" alt="手把手教你构造一棵红黑树-java代码"><br>然后需要进行调色，因为明显从根节点到右边叶子节点和到左边叶子节点，两条路径上黑色节点数量不一样。所以一般都会把左旋的节点变为红色。而根部节点变为黑色。<br><img src="//luoyefubuki.com/2019/10/14/%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E4%BD%A0%E6%9E%84%E9%80%A0%E4%B8%80%E6%A3%B5%E7%BA%A2%E9%BB%91%E6%A0%91-java%E4%BB%A3%E7%A0%81/5.jpg" alt="手把手教你构造一棵红黑树-java代码"></p>
+<h2 id="插入节点4"><a href="#插入节点4" class="headerlink" title="插入节点4"></a>插入节点4</h2><p>首先此处展示一下，4节点一开始为红色。<br><img src="//luoyefubuki.com/2019/10/14/%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E4%BD%A0%E6%9E%84%E9%80%A0%E4%B8%80%E6%A3%B5%E7%BA%A2%E9%BB%91%E6%A0%91-java%E4%BB%A3%E7%A0%81/6.jpg" alt="手把手教你构造一棵红黑树-java代码"><br>沿着根部遍历，大了向右走，小了向左走。知道孩子节点为空节点时，停止遍历，就找到了其爸爸节点，然后与爸爸建立父子关系。<br><img src="//luoyefubuki.com/2019/10/14/%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E4%BD%A0%E6%9E%84%E9%80%A0%E4%B8%80%E6%A3%B5%E7%BA%A2%E9%BB%91%E6%A0%91-java%E4%BB%A3%E7%A0%81/7.jpg" alt="手把手教你构造一棵红黑树-java代码"><br>如果叔叔存在，并且叔叔，和爸爸都是红色节点，那么就把爷爷节点变为红色，把叔叔和爸爸节点变为黑色。这样做相当于在该子树的每条路径上减少了一个黑色节点，又增加了一个黑色节点，保持了平衡。<br><img src="//luoyefubuki.com/2019/10/14/%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E4%BD%A0%E6%9E%84%E9%80%A0%E4%B8%80%E6%A3%B5%E7%BA%A2%E9%BB%91%E6%A0%91-java%E4%BB%A3%E7%A0%81/8.jpg" alt="手把手教你构造一棵红黑树-java代码"><br>然后根节点必须是黑色的，所以又把根节点变黑就可以了，非常像生物中曾经学过的顶端优势。顶端生长素浓度增高，过了一定的度，导致顶端生长变慢，从而让树向两侧生长，达到平衡。<br><img src="//luoyefubuki.com/2019/10/14/%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E4%BD%A0%E6%9E%84%E9%80%A0%E4%B8%80%E6%A3%B5%E7%BA%A2%E9%BB%91%E6%A0%91-java%E4%BB%A3%E7%A0%81/9.jpg" alt="手把手教你构造一棵红黑树-java代码"></p>
+<h2 id="插入节点5"><a href="#插入节点5" class="headerlink" title="插入节点5"></a>插入节点5</h2><p>沿着根向右寻找到自己的爸爸4节点。<br><img src="//luoyefubuki.com/2019/10/14/%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E4%BD%A0%E6%9E%84%E9%80%A0%E4%B8%80%E6%A3%B5%E7%BA%A2%E9%BB%91%E6%A0%91-java%E4%BB%A3%E7%A0%81/10.jpg" alt="手把手教你构造一棵红黑树-java代码"><br>左旋其爷爷节点3，爷爷变成爸爸的左儿子，爸爸坐上爷爷的宝座。<br><img src="//luoyefubuki.com/2019/10/14/%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E4%BD%A0%E6%9E%84%E9%80%A0%E4%B8%80%E6%A3%B5%E7%BA%A2%E9%BB%91%E6%A0%91-java%E4%BB%A3%E7%A0%81/11.jpg" alt="手把手教你构造一棵红黑树-java代码"><br>调节颜色。改变爷爷的颜色为红色，爸爸的颜色为黑色。<br><img src="//luoyefubuki.com/2019/10/14/%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E4%BD%A0%E6%9E%84%E9%80%A0%E4%B8%80%E6%A3%B5%E7%BA%A2%E9%BB%91%E6%A0%91-java%E4%BB%A3%E7%A0%81/12.jpg" alt="手把手教你构造一棵红黑树-java代码"></p>
+<h2 id="插入节点6"><a href="#插入节点6" class="headerlink" title="插入节点6"></a>插入节点6</h2><p>沿着根向右寻找到自己的爸爸5节点。<br><img src="//luoyefubuki.com/2019/10/14/%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E4%BD%A0%E6%9E%84%E9%80%A0%E4%B8%80%E6%A3%B5%E7%BA%A2%E9%BB%91%E6%A0%91-java%E4%BB%A3%E7%A0%81/13.jpg" alt="手把手教你构造一棵红黑树-java代码"><br>然后有一次碰到存在uncle为红色的情况，所以把uncle和爸爸都变为黑色，把爷爷节点4变为红色。平衡<br><img src="//luoyefubuki.com/2019/10/14/%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E4%BD%A0%E6%9E%84%E9%80%A0%E4%B8%80%E6%A3%B5%E7%BA%A2%E9%BB%91%E6%A0%91-java%E4%BB%A3%E7%A0%81/14.jpg" alt="手把手教你构造一棵红黑树-java代码"></p>
+<h2 id="插入节点7"><a href="#插入节点7" class="headerlink" title="插入节点7"></a>插入节点7</h2><p>沿着根向右寻找到自己的爸爸6节点。<br><img src="//luoyefubuki.com/2019/10/14/%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E4%BD%A0%E6%9E%84%E9%80%A0%E4%B8%80%E6%A3%B5%E7%BA%A2%E9%BB%91%E6%A0%91-java%E4%BB%A3%E7%A0%81/15.jpg" alt="手把手教你构造一棵红黑树-java代码"><br>然后对爷爷节点5进行左旋<br><img src="//luoyefubuki.com/2019/10/14/%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E4%BD%A0%E6%9E%84%E9%80%A0%E4%B8%80%E6%A3%B5%E7%BA%A2%E9%BB%91%E6%A0%91-java%E4%BB%A3%E7%A0%81/16.jpg" alt="手把手教你构造一棵红黑树-java代码"><br>调节颜色，还是一样的规则，爷爷变红，爸爸变黑，而我则继续晒太阳。<br><img src="//luoyefubuki.com/2019/10/14/%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E4%BD%A0%E6%9E%84%E9%80%A0%E4%B8%80%E6%A3%B5%E7%BA%A2%E9%BB%91%E6%A0%91-java%E4%BB%A3%E7%A0%81/17.jpg" alt="手把手教你构造一棵红黑树-java代码"></p>
+<h2 id="插入节点8"><a href="#插入节点8" class="headerlink" title="插入节点8"></a>插入节点8</h2><p>沿着根向右寻找到自己的爸爸7节点<br><img src="//luoyefubuki.com/2019/10/14/%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E4%BD%A0%E6%9E%84%E9%80%A0%E4%B8%80%E6%A3%B5%E7%BA%A2%E9%BB%91%E6%A0%91-java%E4%BB%A3%E7%A0%81/18.jpg" alt="手把手教你构造一棵红黑树-java代码"><br>叔叔和爸爸都是红色，然后叔叔和爸爸变黑，爷爷变红。然后此时情况开始和之前变得不一样了，爷爷和祖爷爷都是红色的<br><img src="//luoyefubuki.com/2019/10/14/%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E4%BD%A0%E6%9E%84%E9%80%A0%E4%B8%80%E6%A3%B5%E7%BA%A2%E9%BB%91%E6%A0%91-java%E4%BB%A3%E7%A0%81/19.jpg" alt="手把手教你构造一棵红黑树-java代码"><br>而此时爷爷的叔叔时黑色的，这个时候就需要对爷爷的爷爷进行左旋，也就是根。然后爷爷的爸爸将升级为根，而爷爷兄弟则需要换爸爸了，因为爷爷的爸爸当了根，而爷爷的兄弟原来在爷爷爸爸左侧，比爷爷的爸爸小，所以按照左小右大的原则，应该继续在爷爷爸爸的左侧，但是爷爷的爸爸的左二子已经被原来爷爷的爷爷占有了，所以需要将爷爷的兄弟放到爷爷的爷爷的右儿子那里，应为，原来爷爷的兄弟本来就在爷爷的爷爷的右侧。这样一来，位置就安排妥当了。<br><img src="//luoyefubuki.com/2019/10/14/%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E4%BD%A0%E6%9E%84%E9%80%A0%E4%B8%80%E6%A3%B5%E7%BA%A2%E9%BB%91%E6%A0%91-java%E4%BB%A3%E7%A0%81/20.jpg" alt="手把手教你构造一棵红黑树-java代码"><br>然后还是按照原则，旋转的爷爷的爷爷，那么就应该变红，爷爷的爸爸做了根，变黑。到这里，红黑树的基本操作已经大概全部有了。接下来再插入几个检测检测。<br><img src="//luoyefubuki.com/2019/10/14/%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E4%BD%A0%E6%9E%84%E9%80%A0%E4%B8%80%E6%A3%B5%E7%BA%A2%E9%BB%91%E6%A0%91-java%E4%BB%A3%E7%A0%81/21.jpg" alt="手把手教你构造一棵红黑树-java代码"></p>
+<h2 id="插入节点9"><a href="#插入节点9" class="headerlink" title="插入节点9"></a>插入节点9</h2><p>找爸爸<br><img src="//luoyefubuki.com/2019/10/14/%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E4%BD%A0%E6%9E%84%E9%80%A0%E4%B8%80%E6%A3%B5%E7%BA%A2%E9%BB%91%E6%A0%91-java%E4%BB%A3%E7%A0%81/22.jpg" alt="手把手教你构造一棵红黑树-java代码"><br>旋转，跳跃<br><img src="//luoyefubuki.com/2019/10/14/%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E4%BD%A0%E6%9E%84%E9%80%A0%E4%B8%80%E6%A3%B5%E7%BA%A2%E9%BB%91%E6%A0%91-java%E4%BB%A3%E7%A0%81/23.jpg" alt="手把手教你构造一棵红黑树-java代码"><br>变色龙<br><img src="//luoyefubuki.com/2019/10/14/%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E4%BD%A0%E6%9E%84%E9%80%A0%E4%B8%80%E6%A3%B5%E7%BA%A2%E9%BB%91%E6%A0%91-java%E4%BB%A3%E7%A0%81/24.jpg" alt="手把手教你构造一棵红黑树-java代码"></p>
+<h2 id="插入节点10"><a href="#插入节点10" class="headerlink" title="插入节点10"></a>插入节点10</h2><p>找爸爸，uncle和爸爸都是红色<br><img src="//luoyefubuki.com/2019/10/14/%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E4%BD%A0%E6%9E%84%E9%80%A0%E4%B8%80%E6%A3%B5%E7%BA%A2%E9%BB%91%E6%A0%91-java%E4%BB%A3%E7%A0%81/25.jpg" alt="手把手教你构造一棵红黑树-java代码"><br>变色，然后居然发现还有一个操作没说。这里根据规则，爷爷的uncle和爸爸是红色。<br><img src="//luoyefubuki.com/2019/10/14/%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E4%BD%A0%E6%9E%84%E9%80%A0%E4%B8%80%E6%A3%B5%E7%BA%A2%E9%BB%91%E6%A0%91-java%E4%BB%A3%E7%A0%81/26.jpg" alt="手把手教你构造一棵红黑树-java代码"><br>继续变色，跟变成红色的了。<br><img src="//luoyefubuki.com/2019/10/14/%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E4%BD%A0%E6%9E%84%E9%80%A0%E4%B8%80%E6%A3%B5%E7%BA%A2%E9%BB%91%E6%A0%91-java%E4%BB%A3%E7%A0%81/27.jpg" alt="手把手教你构造一棵红黑树-java代码"><br>本来应该完成了，但是这里是根，最后当然再来一步，把根变黑。顶端优势。<br><img src="//luoyefubuki.com/2019/10/14/%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E4%BD%A0%E6%9E%84%E9%80%A0%E4%B8%80%E6%A3%B5%E7%BA%A2%E9%BB%91%E6%A0%91-java%E4%BB%A3%E7%A0%81/28.jpg" alt="手把手教你构造一棵红黑树-java代码"></p>
+<h2 id="插入节点11"><a href="#插入节点11" class="headerlink" title="插入节点11"></a>插入节点11</h2><p>这个就不多讲了，常规操作。<br><img src="//luoyefubuki.com/2019/10/14/%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E4%BD%A0%E6%9E%84%E9%80%A0%E4%B8%80%E6%A3%B5%E7%BA%A2%E9%BB%91%E6%A0%91-java%E4%BB%A3%E7%A0%81/29.jpg" alt="手把手教你构造一棵红黑树-java代码"></p>
+<h2 id="插入节点12"><a href="#插入节点12" class="headerlink" title="插入节点12"></a>插入节点12</h2><p>变完色后出现了新情况。不过类似插入节点8的操作，只是此时不是根目录。<br><img src="//luoyefubuki.com/2019/10/14/%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E4%BD%A0%E6%9E%84%E9%80%A0%E4%B8%80%E6%A3%B5%E7%BA%A2%E9%BB%91%E6%A0%91-java%E4%BB%A3%E7%A0%81/30.jpg" alt="手把手教你构造一棵红黑树-java代码"><br>左旋6节点。<br><img src="//luoyefubuki.com/2019/10/14/%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E4%BD%A0%E6%9E%84%E9%80%A0%E4%B8%80%E6%A3%B5%E7%BA%A2%E9%BB%91%E6%A0%91-java%E4%BB%A3%E7%A0%81/31.jpg" alt="手把手教你构造一棵红黑树-java代码"><br>变色。好了。<br><img src="//luoyefubuki.com/2019/10/14/%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E4%BD%A0%E6%9E%84%E9%80%A0%E4%B8%80%E6%A3%B5%E7%BA%A2%E9%BB%91%E6%A0%91-java%E4%BB%A3%E7%A0%81/32.jpg" alt="手把手教你构造一棵红黑树-java代码"></p>
+<h2 id="插入节点13"><a href="#插入节点13" class="headerlink" title="插入节点13"></a>插入节点13</h2><p><img src="//luoyefubuki.com/2019/10/14/%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E4%BD%A0%E6%9E%84%E9%80%A0%E4%B8%80%E6%A3%B5%E7%BA%A2%E9%BB%91%E6%A0%91-java%E4%BB%A3%E7%A0%81/33.jpg" alt="手把手教你构造一棵红黑树-java代码"></p>
+<h2 id="插入节点14"><a href="#插入节点14" class="headerlink" title="插入节点14"></a>插入节点14</h2><p>第一轮操作后，变完色<br><img src="//luoyefubuki.com/2019/10/14/%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E4%BD%A0%E6%9E%84%E9%80%A0%E4%B8%80%E6%A3%B5%E7%BA%A2%E9%BB%91%E6%A0%91-java%E4%BB%A3%E7%A0%81/34.jpg" alt="手把手教你构造一棵红黑树-java代码"><br>第二波操作<br><img src="//luoyefubuki.com/2019/10/14/%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E4%BD%A0%E6%9E%84%E9%80%A0%E4%B8%80%E6%A3%B5%E7%BA%A2%E9%BB%91%E6%A0%91-java%E4%BB%A3%E7%A0%81/35.jpg" alt="手把手教你构造一棵红黑树-java代码"></p>
+<h2 id="插入节点15"><a href="#插入节点15" class="headerlink" title="插入节点15"></a>插入节点15</h2><p><img src="//luoyefubuki.com/2019/10/14/%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E4%BD%A0%E6%9E%84%E9%80%A0%E4%B8%80%E6%A3%B5%E7%BA%A2%E9%BB%91%E6%A0%91-java%E4%BB%A3%E7%A0%81/36.jpg" alt="手把手教你构造一棵红黑树-java代码"></p>
+<h2 id="插入节点16"><a href="#插入节点16" class="headerlink" title="插入节点16"></a>插入节点16</h2><p>第一波操作，变完色<br><img src="//luoyefubuki.com/2019/10/14/%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E4%BD%A0%E6%9E%84%E9%80%A0%E4%B8%80%E6%A3%B5%E7%BA%A2%E9%BB%91%E6%A0%91-java%E4%BB%A3%E7%A0%81/37.jpg" alt="手把手教你构造一棵红黑树-java代码"><br>第二波操作，左旋10节点<br><img src="//luoyefubuki.com/2019/10/14/%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E4%BD%A0%E6%9E%84%E9%80%A0%E4%B8%80%E6%A3%B5%E7%BA%A2%E9%BB%91%E6%A0%91-java%E4%BB%A3%E7%A0%81/38.jpg" alt="手把手教你构造一棵红黑树-java代码"><br>第三波操作，变色<br><img src="//luoyefubuki.com/2019/10/14/%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E4%BD%A0%E6%9E%84%E9%80%A0%E4%B8%80%E6%A3%B5%E7%BA%A2%E9%BB%91%E6%A0%91-java%E4%BB%A3%E7%A0%81/39.jpg" alt="手把手教你构造一棵红黑树-java代码"></p>
+<h2 id="插入节点17"><a href="#插入节点17" class="headerlink" title="插入节点17"></a>插入节点17</h2><p><img src="//luoyefubuki.com/2019/10/14/%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E4%BD%A0%E6%9E%84%E9%80%A0%E4%B8%80%E6%A3%B5%E7%BA%A2%E9%BB%91%E6%A0%91-java%E4%BB%A3%E7%A0%81/40.jpg" alt="手把手教你构造一棵红黑树-java代码"></p>
+<h2 id="插入节点18"><a href="#插入节点18" class="headerlink" title="插入节点18"></a>插入节点18</h2><p>第一波操作完成<br><img src="//luoyefubuki.com/2019/10/14/%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E4%BD%A0%E6%9E%84%E9%80%A0%E4%B8%80%E6%A3%B5%E7%BA%A2%E9%BB%91%E6%A0%91-java%E4%BB%A3%E7%A0%81/41.jpg" alt="手把手教你构造一棵红黑树-java代码"><br>第二波操作完成<br><img src="//luoyefubuki.com/2019/10/14/%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E4%BD%A0%E6%9E%84%E9%80%A0%E4%B8%80%E6%A3%B5%E7%BA%A2%E9%BB%91%E6%A0%91-java%E4%BB%A3%E7%A0%81/42.jpg" alt="手把手教你构造一棵红黑树-java代码"><br>这一次终于修整到根部了。此时需要对4节点左旋，8节点继承先帝遗志。至于8节点的左子树，和前边一样，先帝降了辈分，接到先帝的右孩子处。<br><img src="//luoyefubuki.com/2019/10/14/%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E4%BD%A0%E6%9E%84%E9%80%A0%E4%B8%80%E6%A3%B5%E7%BA%A2%E9%BB%91%E6%A0%91-java%E4%BB%A3%E7%A0%81/43.jpg" alt="手把手教你构造一棵红黑树-java代码"><br>然后变色处理，完结撒花。<br><img src="//luoyefubuki.com/2019/10/14/%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E4%BD%A0%E6%9E%84%E9%80%A0%E4%B8%80%E6%A3%B5%E7%BA%A2%E9%BB%91%E6%A0%91-java%E4%BB%A3%E7%A0%81/44.jpg" alt="手把手教你构造一棵红黑树-java代码"><br>最后这18节点的插入，使得树忽然变的平衡度更好了。</p>
+<h1 id="代码讲解"><a href="#代码讲解" class="headerlink" title="代码讲解"></a>代码讲解</h1><p>完成了以上伪代码操作，这里贴出来java实现代码，本来是从知乎复制过来的，结果发现里面有bug，然后改了改。不得不说，图上看的挺懂，到了代码，又是新一轮的懵逼，虽然将代码修正可以输出正确结果了。但是有些地方还是挺巧妙，一时半会靠自己是写不出来的。<br>首先碰到树，我们都要创建个树的节点类，然后再创建一个树的操作类。</p>
+<h2 id="节点类代码"><a href="#节点类代码" class="headerlink" title="节点类代码"></a>节点类代码</h2><pre><code>/**
+ * @author Ted
+ * @date 2019/10/13 - 10:23
+ */
+public class RBTreeNode&lt;T extends Comparable&lt;T&gt;&gt; {
+    //成员变量
+private T value;//node value
+    private RBTreeNode&lt;T&gt; left;//left child pointer
+    private RBTreeNode&lt;T&gt; right;//right child pointer
+    private RBTreeNode&lt;T&gt; parent;//parent pointer
+    private boolean red;//color is red or not red
+//构造方法
+    public RBTreeNode(){}
+    public RBTreeNode(T value){this.value=value;}
+    public RBTreeNode(T value,boolean isRed){this.value=value;this.red = isRed;}
+//get和set方法
+    public T getValue() {
+        return value;
+    }
+    void setValue(T value) {
+        this.value = value;
+    }
+    RBTreeNode&lt;T&gt; getLeft() {
+        return left;
+    }
+    void setLeft(RBTreeNode&lt;T&gt; left) {
+        this.left = left;
+    }
+    RBTreeNode&lt;T&gt; getRight() {
+        return right;
+    }
+    void setRight(RBTreeNode&lt;T&gt; right) {
+        this.right = right;
+    }
+    RBTreeNode&lt;T&gt; getParent() {
+        return parent;
+    }
+    void setParent(RBTreeNode&lt;T&gt; parent) {
+        this.parent = parent;
+    }
+    boolean isRed() {
+        return red;
+    }
+    boolean isBlack(){
+        return !red;
+    }
+    /**
+     * 本篇文章中没有涉及此方法。
+     **/
+    boolean isLeaf(){
+        return left==null &amp;&amp; right==null;
+    }
+    void setRed(boolean red) {
+        this.red = red;
+    }
+    void makeRed(){
+        red=true;
+    }
+    void makeBlack(){
+        red=false;
+    }
+    @Override
+    public String toString(){
+    return value.toString();
+    }
+}</code></pre><h2 id="操作类代码"><a href="#操作类代码" class="headerlink" title="操作类代码"></a>操作类代码</h2><p>由于本片文章只是讲解了如个构造一棵红黑树，所以我把删除之类的操作全部删除了。</p>
+<pre><code>/**
+ * 为了使说明过程更易理解，此处指定，双亲就是爸爸，当前节点就是儿子，爸爸的双亲叫做爷爷
+ * @author Ted
+ * @date 2019/10/13 - 10:24
+ */
+public class RBTree&lt;T extends Comparable&lt;T&gt;&gt; {
+    private final RBTreeNode&lt;T&gt; root;
+    /**
+     * 在32位操作系统中，64位的long 和 double 变量由于会被JVM当作两个分离的32位来进行操作，
+     * 所以不具有原子性。而使用AtomicLong能让long的操作保持原子型。
+     */
+    private java.util.concurrent.atomic.AtomicLong size =
+            new java.util.concurrent.atomic.AtomicLong(0);
+    /**
+     * 覆盖模式，就是如果值重复了，则覆盖，意思就是一个值只能出现一次，相同便覆盖。相对应的便是
+     * 非覆盖模式，不过我们这里就不谈了。
+     */
+    private volatile boolean overrideMode=true;
+    /**
+     * 构造函数
+     */
+    public RBTree(){
+        this.root = new RBTreeNode&lt;T&gt;();
+    }
+    public RBTree(boolean overrideMode){
+        this();
+        this.overrideMode=overrideMode;
+    }
+    /**
+     * get 和 set
+     * @return
+     */
+    public boolean isOverrideMode() {
+        return overrideMode;
+    }
+    public void setOverrideMode(boolean overrideMode) {
+        this.overrideMode = overrideMode;
+    }
+    /**
+     * number of tree number
+     * @return
+     */
+    public long getSize() {
+        return size.get();
+    }
+    /**
+     * get the root node，这里可以看出来，这个根指的是根的左子树，原因尚未明确，但是不影响操作。
+     * @return
+     */
+    private RBTreeNode&lt;T&gt; getRoot(){
+        return root.getLeft();
+    }
+    /**
+     * 添加节点的操作
+     * @param value
+     * @return
+     */
+    public T addNode(T value){
+        RBTreeNode&lt;T&gt; t = new RBTreeNode&lt;T&gt;(value);
+        return addNode(t);
+    }
+    /**
+     * 查找节点的操作
+     * @param value
+     * @return
+     */
+    public T find(T value){
+        RBTreeNode&lt;T&gt; dataRoot = getRoot();
+        while(dataRoot!=null){
+            int cmp = dataRoot.getValue().compareTo(value);
+            if(cmp&lt;0){
+                dataRoot = dataRoot.getRight();
+            }else if(cmp&gt;0){
+                dataRoot = dataRoot.getLeft();
+            }else{
+                return dataRoot.getValue();
+            }
+        }
+        return null;
+    }
+    /**
+     * 这里是真正的添加节点操作
+     * @param node
+     * @return
+     */
+    private T addNode(RBTreeNode&lt;T&gt; node){
+        //初始化节点
+        node.setLeft(null);
+        node.setRight(null);
+        node.setRed(true);
+        setParent(node,null);
+        //如果root左子树（按照代码来看，这是我们的根），根为空。肯定操作就简单了
+        if(root.getLeft()==null){
+            root.setLeft(node);
+            //根一定是黑的
+            node.setRed(false);
+            size.incrementAndGet();
+        }else{
+            RBTreeNode&lt;T&gt; x = findParentNode(node);
+            int cmp = x.getValue().compareTo(node.getValue());
+            //值相等那么覆盖，结束本方法。非覆盖模式我们这里先忽略
+            if(this.overrideMode &amp;&amp; cmp==0){
+                T v = x.getValue();
+                x.setValue(node.getValue());
+                return v;
+            }else if(cmp==0){
+                //value exists,ignore this node
+                return x.getValue();
+            }
+            //值不相等，就认x为爸爸
+            setParent(node,x);
+            //然后认儿子，一个认爸爸，一个认儿子，看来是个双向链表
+            if(cmp&gt;0){
+                x.setLeft(node);
+            }else{
+                x.setRight(node);
+            }
+            //然后开始调整红黑树
+            fixInsert(node);
+            size.incrementAndGet();
+        }
+        return null;
+    }
+    /**
+     * 这是构造过程中，找爸爸的方法。
+     * @param x
+     * @return
+     */
+    private RBTreeNode&lt;T&gt; findParentNode(RBTreeNode&lt;T&gt; x){
+        RBTreeNode&lt;T&gt; dataRoot = getRoot();
+        RBTreeNode&lt;T&gt; child = dataRoot;
+        //找爸爸的过程是个循环的过程，这里没有用递归，而是用不断更换child和dataRoot所指的对象
+        // 来实现追根溯源，因为递归太占资源。
+        while(child!=null){
+            int cmp = child.getValue().compareTo(x.getValue());
+            if(cmp==0){
+                return child;
+            }
+            if(cmp&gt;0){
+                dataRoot = child;
+                child = child.getLeft();
+            }else if(cmp&lt;0){
+                dataRoot = child;
+                child = child.getRight();
+            }
+        }
+        return dataRoot;
+    }
+    /**
+     * 这是插入节点完成后，修复红黑树的操作
+     * @param x
+     */
+    private void fixInsert(RBTreeNode&lt;T&gt; x){
+        RBTreeNode&lt;T&gt; parent = x.getParent();
+        while(parent!=null &amp;&amp; parent.isRed()){
+            /**
+             * 循环，只要爸爸不是空的，而且爸爸是红的，就需要追上去，看看有没有不平衡
+             */
+            RBTreeNode&lt;T&gt; uncle = getUncle(x);
+            if(uncle==null||!uncle.isRed()){
+                /**
+                 * 没有叔叔的情况，就是爷爷只有一个儿子。
+                 */
+                RBTreeNode&lt;T&gt; ancestor = parent.getParent();//获取爷爷
+                if(parent == ancestor.getLeft()){
+                    /**
+                     * 如果爸爸在爷爷左边，是一种情况，需要爷爷右旋。
+                     * 当爸爸在爷爷左边时，如果孙子在爸爸右边，那么就需要先把祖宗三代排列到一条斜线上，
+                     * 这个就跟二叉平衡树的平衡因子一样。将爸爸左旋，降低辈分，孙子成了爸爸，爸爸成了
+                     * 孙子，同时爷爷也就换了儿子和孙子。
+                     * 为什么要这么做，这里主要是因为要对爷爷进行右旋，而如果儿子在爸爸右侧，则儿子数值
+                     * 大于爸爸，如果直接对爷爷右旋，则爸爸会接替爷爷的位置，而儿子到了爸爸左侧，但是
+                     * 儿子的数值大于爸爸，怎么可以位于爸爸的左侧呢。违反了根本的排序规则。所以要提前将
+                     * 爸爸和儿子互换，将数值小的爸爸变成儿子的左孩子，然后对爷爷进行右旋。儿子这个中间
+                     * 数值变成了爷爷和爸爸的根，刚好符合左小右大的规则，而且树的高度变低了。
+                     *
+                     */
+                    boolean isRight = x == parent.getRight();
+                    if(isRight){
+                        rotateLeft(parent);
+                    }
+                    rotateRight(ancestor);
+                    /**
+                     * 调节颜色。如果孙子在爸爸的右侧，那么孙子就要变成黑色，因为孙子最后成了子树的根。
+                     * 否则，爸爸就要变成黑的。因为爸爸成了子树的根。
+                     */
+                    if(isRight){
+                        x.setRed(false);
+                        parent=null;//end loop
+                    }else{
+                        parent.setRed(false);
+                    }
+                    /**
+                     * 首先我们操作树之前，红黑树一定是平衡的，那么可以推测出，爷爷一定是黑的。因为爸爸是
+                     * 红色的。所以操作完成后，爷爷一定要设置为红的。不然不符合同一节点到不同叶子节点路径
+                     * 上，黑色节点相同这一定律。有人变黑就有人要变红
+                     */
+                    ancestor.setRed(true);
+                }else{
+                    /**
+                     * 如果爸爸在爷爷右侧，是另一种情况，爷爷需要左旋。
+                     * 那么和爸爸在爷爷左侧对应，如果孙子在爸爸的左侧，那么需要先把孙子，爸爸，爷爷
+                     * 放到朝右的一条斜线上，则需要先对爸爸右旋。然后孙子就成了爸爸，爸爸就成了孙子。
+                     * 然后再整体左旋。
+                     */
+                    boolean isLeft = x == parent.getLeft();
+                    if(isLeft){
+                        rotateRight(parent);
+                    }
+                    rotateLeft(ancestor);
+                    /**
+                     * 调节颜色，还是一样，旋转完成后，成了根的要变为黑色。爷爷降了辈分，变为红色。
+                     */
+                    if(isLeft){
+                        x.setRed(false);
+                        parent=null;//end loop
+                    }else{
+                        parent.setRed(false);
+                    }
+                    ancestor.setRed(true);
+                }
+            }else{
+                /**
+                 * 如果有叔叔，而且叔叔是红色的（注释了的代码就是错误的，少了判断叔叔颜色的功能。
+                 * 导致输出结果输错）。此时爸爸也是红色的，此时将爸爸和叔叔变黑，将爷爷变红色。
+                 * 为什么这样做，如果按照树本来是平衡的，爷爷一定是黑色的。叔叔和爸爸变了黑色，
+                 * 肯定会不符合：根节点到任意节点的路径上黑色节点数目相同。所以要把爷爷变为红的。
+                 * 然后开始往上层走，因为把爷爷变红了，那么爷爷可能会和祖爷爷都为红色，所以需要对
+                 * 爷爷进行调节，所以x现在成了爷爷，那么祖爷爷成了parent。
+                 */
+//                parent.setRed(false);
+//                uncle.setRed(false);
+//                parent.getParent().setRed(true);
+//                x=parent.getParent();
+//                parent = x.getParent();
+                /**
+                 * 修改后的代码，如果uncle是红色。那么就按照常规操作，将uncle和爸爸变黑，爷爷变红
+                 * 然后将爷爷设为x，祖爷爷变为parent继续循环。
+                 * 但是如果uncle是黑色的，那么就很可能需要大调整一次了。本案例中，插入8节点时，
+                 * 遍历到根部了，需要往左侧添枝加叶了。
+                 */
+                parent.setRed(false);
+                uncle.setRed(false);
+                parent.getParent().setRed(true);
+                x=parent.getParent();
+                parent = x.getParent();
+            }
+        }
+        getRoot().makeBlack();
+        getRoot().setParent(null);
+    }
+    /**
+     * 获取叔叔节点的操作
+     * @param node
+     * @return
+     */
+    private RBTreeNode&lt;T&gt; getUncle(RBTreeNode&lt;T&gt; node){
+        RBTreeNode&lt;T&gt; parent = node.getParent();
+        RBTreeNode&lt;T&gt; ancestor = parent.getParent();
+        if(ancestor==null){
+            return null;
+        }
+        if(parent == ancestor.getLeft()){
+            return ancestor.getRight();
+        }else{
+            return ancestor.getLeft();
+        }
+    }
+    /**
+     * 左旋操作
+     * @param node
+     */
+    private void rotateLeft(RBTreeNode&lt;T&gt; node){
+        RBTreeNode&lt;T&gt; right = node.getRight();
+        if(right==null){
+            throw new java.lang.IllegalStateException(&quot;right node is null&quot;);
+        }
+        RBTreeNode&lt;T&gt; parent = node.getParent();
+        node.setRight(right.getLeft());
+        setParent(right.getLeft(),node);
+        /**
+         * 对node左旋，那么node一定有右子树right。
+         * 左旋之后，node就变成right的儿子了，right成了node的爹，也是新的子树的根。
+         * 而node降了辈分，需要接纳right的左儿子，因为right的左儿子小于right大于node，所以
+         * 成为node的右儿子，会符合排序规则。由于是双向链表。node知道了right的左儿子成了自己
+         * 儿子，但是这个儿子还不知道自己的新爸爸是谁，所以setParent设置新爸爸。
+         * 同理对于node也一样，right要认node为自己的左儿子，node也要知道自己的新爸爸right。
+         * 同理对于right也一样。node的原parent要认right为自己的新儿子，right也要认node的原parent
+         * 为自己的新爸爸。相当于旋转一次进行三次双向链表操作，六次重新连接操作。
+         */
+        right.setLeft(node);
+        setParent(node,right);
+        if(parent==null){//node pointer to root
+            //right  raise to root node
+            root.setLeft(right);
+            setParent(right,null);
+        }else{
+            if(parent.getLeft()==node){
+                parent.setLeft(right);
+            }else{
+                parent.setRight(right);
+            }
+            //right.setParent(parent);
+            setParent(right,parent);
+        }
+    }
+    /**
+     * 右旋操作
+     * @param node
+     */
+    private void rotateRight(RBTreeNode&lt;T&gt; node){
+        RBTreeNode&lt;T&gt; left = node.getLeft();
+        if(left==null){
+            throw new java.lang.IllegalStateException(&quot;left node is null&quot;);
+        }
+        RBTreeNode&lt;T&gt; parent = node.getParent();
+        node.setLeft(left.getRight());
+        setParent(left.getRight(),node);
+        /**
+         * 与左旋同理
+         */
+        left.setRight(node);
+        setParent(node,left);
+        if(parent==null){
+            root.setLeft(left);
+            setParent(left,null);
+        }else{
+            if(parent.getLeft()==node){
+                parent.setLeft(left);
+            }else{
+                parent.setRight(left);
+            }
+            setParent(left,parent);
+        }
+    }
+    /**
+     * 认识新爸爸的操作
+     * @param node
+     * @param parent
+     */
+    private void setParent(RBTreeNode&lt;T&gt; node,RBTreeNode&lt;T&gt; parent){
+        if(node!=null){
+            node.setParent(parent);
+            if(parent==root){
+                node.setParent(null);
+            }
+        }
+    }
+    /**
+     * 红黑树的打印操作，这里面的操作没有深究
+     * @param root
+     */
+    public void printTree(RBTreeNode&lt;T&gt; root){
+        java.util.LinkedList&lt;RBTreeNode&lt;T&gt;&gt; queue =new java.util.LinkedList&lt;RBTreeNode&lt;T&gt;&gt;();
+        java.util.LinkedList&lt;RBTreeNode&lt;T&gt;&gt; queue2 =new java.util.LinkedList&lt;RBTreeNode&lt;T&gt;&gt;();
+        if(root==null){
+            return ;
+        }
+        queue.add(root);
+        boolean firstQueue = true;
+        while(!queue.isEmpty() || !queue2.isEmpty()){
+            java.util.LinkedList&lt;RBTreeNode&lt;T&gt;&gt; q = firstQueue ? queue : queue2;
+            RBTreeNode&lt;T&gt; n = q.poll();
+            if(n!=null){
+                String pos = n.getParent()==null ? &quot;&quot; : ( n == n.getParent().getLeft()
+                        ? &quot; LE&quot; : &quot; RI&quot;);
+                String pstr = n.getParent()==null ? &quot;&quot; : n.getParent().toString();
+                String cstr = n.isRed()?&quot;R&quot;:&quot;B&quot;;
+                cstr = n.getParent()==null ? cstr : cstr+&quot; &quot;;
+                System.out.print(n+&quot;(&quot;+(cstr)+pstr+(pos)+&quot;)&quot;+&quot;\t&quot;);
+                if(n.getLeft()!=null){
+                    (firstQueue ? queue2 : queue).add(n.getLeft());
+                }
+                if(n.getRight()!=null){
+                    (firstQueue ? queue2 : queue).add(n.getRight());
+                }
+            }else{
+                System.out.println();
+                firstQueue = !firstQueue;
+            }
+        }
+    }
+    /**
+     * 测试用的主函数
+     * @param args
+     */
+    public static void main(String[] args) {
+        RBTree&lt;Integer&gt; bst = new RBTree&lt;Integer&gt;();
+        bst.addNode(1);
+        bst.addNode(2);
+        bst.addNode(3);
+        bst.addNode(4);
+        bst.addNode(5);
+        bst.addNode(6);
+        bst.addNode(7);
+        bst.addNode(8);
+        bst.addNode(9);
+        bst.addNode(10);
+    bst.addNode(11);
+    bst.addNode(12);
+    bst.addNode(13);
+    bst.addNode(14);
+    bst.addNode(15);
+    bst.addNode(16);
+    bst.addNode(17);
+    bst.addNode(18);
+        bst.printTree(bst.getRoot());
+    }
+}</code></pre><h2 id="结果"><a href="#结果" class="headerlink" title="结果"></a>结果</h2><p>输出结果为如下:<br><img src="//luoyefubuki.com/2019/10/14/%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E4%BD%A0%E6%9E%84%E9%80%A0%E4%B8%80%E6%A3%B5%E7%BA%A2%E9%BB%91%E6%A0%91-java%E4%BB%A3%E7%A0%81/45.jpg" alt="手把手教你构造一棵红黑树-java代码"><br>模拟结果如下:<br><img src="//luoyefubuki.com/2019/10/14/%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E4%BD%A0%E6%9E%84%E9%80%A0%E4%B8%80%E6%A3%B5%E7%BA%A2%E9%BB%91%E6%A0%91-java%E4%BB%A3%E7%A0%81/46.jpg" alt="手把手教你构造一棵红黑树-java代码"><br>模拟过程见伪代码解析。请点击回到顶部按钮</p>
+
       
 
       
@@ -360,7 +905,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    目录，不存在的…
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#伪代码讲解"><span class="toc-number">1.</span> <span class="toc-text">伪代码讲解</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#插入节点1"><span class="toc-number">1.1.</span> <span class="toc-text">插入节点1</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#插入节点2"><span class="toc-number">1.2.</span> <span class="toc-text">插入节点2</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#插入节点3"><span class="toc-number">1.3.</span> <span class="toc-text">插入节点3</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#插入节点4"><span class="toc-number">1.4.</span> <span class="toc-text">插入节点4</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#插入节点5"><span class="toc-number">1.5.</span> <span class="toc-text">插入节点5</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#插入节点6"><span class="toc-number">1.6.</span> <span class="toc-text">插入节点6</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#插入节点7"><span class="toc-number">1.7.</span> <span class="toc-text">插入节点7</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#插入节点8"><span class="toc-number">1.8.</span> <span class="toc-text">插入节点8</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#插入节点9"><span class="toc-number">1.9.</span> <span class="toc-text">插入节点9</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#插入节点10"><span class="toc-number">1.10.</span> <span class="toc-text">插入节点10</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#插入节点11"><span class="toc-number">1.11.</span> <span class="toc-text">插入节点11</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#插入节点12"><span class="toc-number">1.12.</span> <span class="toc-text">插入节点12</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#插入节点13"><span class="toc-number">1.13.</span> <span class="toc-text">插入节点13</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#插入节点14"><span class="toc-number">1.14.</span> <span class="toc-text">插入节点14</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#插入节点15"><span class="toc-number">1.15.</span> <span class="toc-text">插入节点15</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#插入节点16"><span class="toc-number">1.16.</span> <span class="toc-text">插入节点16</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#插入节点17"><span class="toc-number">1.17.</span> <span class="toc-text">插入节点17</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#插入节点18"><span class="toc-number">1.18.</span> <span class="toc-text">插入节点18</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#代码讲解"><span class="toc-number">2.</span> <span class="toc-text">代码讲解</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#节点类代码"><span class="toc-number">2.1.</span> <span class="toc-text">节点类代码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#操作类代码"><span class="toc-number">2.2.</span> <span class="toc-text">操作类代码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#结果"><span class="toc-number">2.3.</span> <span class="toc-text">结果</span></a></li></ol></li></ol>
                     </div>
                 </span>
             </div>
