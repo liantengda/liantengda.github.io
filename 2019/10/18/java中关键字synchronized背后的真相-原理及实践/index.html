@@ -24,7 +24,10 @@
 <meta property="og:image" content="http://luoyefubuki.com/2019/10/18/java%E4%B8%AD%E5%85%B3%E9%94%AE%E5%AD%97synchronized%E8%83%8C%E5%90%8E%E7%9A%84%E7%9C%9F%E7%9B%B8-%E5%8E%9F%E7%90%86%E5%8F%8A%E5%AE%9E%E8%B7%B5/7.jpg">
 <meta property="og:image" content="http://luoyefubuki.com/2019/10/18/java%E4%B8%AD%E5%85%B3%E9%94%AE%E5%AD%97synchronized%E8%83%8C%E5%90%8E%E7%9A%84%E7%9C%9F%E7%9B%B8-%E5%8E%9F%E7%90%86%E5%8F%8A%E5%AE%9E%E8%B7%B5/9.jpg">
 <meta property="og:image" content="http://luoyefubuki.com/2019/10/18/java%E4%B8%AD%E5%85%B3%E9%94%AE%E5%AD%97synchronized%E8%83%8C%E5%90%8E%E7%9A%84%E7%9C%9F%E7%9B%B8-%E5%8E%9F%E7%90%86%E5%8F%8A%E5%AE%9E%E8%B7%B5/8.jpg">
-<meta property="og:updated_time" content="2019-10-19T13:43:28.569Z">
+<meta property="og:image" content="http://luoyefubuki.com/2019/10/18/java%E4%B8%AD%E5%85%B3%E9%94%AE%E5%AD%97synchronized%E8%83%8C%E5%90%8E%E7%9A%84%E7%9C%9F%E7%9B%B8-%E5%8E%9F%E7%90%86%E5%8F%8A%E5%AE%9E%E8%B7%B5/10.jpg">
+<meta property="og:image" content="http://luoyefubuki.com/2019/10/18/java%E4%B8%AD%E5%85%B3%E9%94%AE%E5%AD%97synchronized%E8%83%8C%E5%90%8E%E7%9A%84%E7%9C%9F%E7%9B%B8-%E5%8E%9F%E7%90%86%E5%8F%8A%E5%AE%9E%E8%B7%B5/11.jpg">
+<meta property="og:image" content="http://luoyefubuki.com/2019/10/18/java%E4%B8%AD%E5%85%B3%E9%94%AE%E5%AD%97synchronized%E8%83%8C%E5%90%8E%E7%9A%84%E7%9C%9F%E7%9B%B8-%E5%8E%9F%E7%90%86%E5%8F%8A%E5%AE%9E%E8%B7%B5/12.jpg">
+<meta property="og:updated_time" content="2019-10-20T10:37:29.899Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="java中关键字synchronized背后的真相-原理及实践">
 <meta name="twitter:description" content="为什么我要整理synchronized系列私がこんなに難しいことを勉強しているのは、決して私は勉強することが大好きだということではない、実は、全ては面接のためなのだ。因为面试被吊起来打。不过仔细学完之后，发现还挺有意思。">
@@ -219,8 +222,28 @@
         <h1 id="为什么我要整理synchronized系列"><a href="#为什么我要整理synchronized系列" class="headerlink" title="为什么我要整理synchronized系列"></a>为什么我要整理synchronized系列</h1><p>私がこんなに難しいことを勉強しているのは、決して私は勉強することが大好きだということではない、実は、全ては面接のためなのだ。<br>因为面试被吊起来打。不过仔细学完之后，发现还挺有意思。</p>
 <a id="more"></a>
 <h1 id="同步和异步的解释"><a href="#同步和异步的解释" class="headerlink" title="同步和异步的解释"></a>同步和异步的解释</h1><p>synchronized英文本意为同步。而在我们平时写程序的印象中，synchronized关键字的功能是使线程一个一个排队进入方法，而不能一起进入。所以如果从这个角度来看的话，感觉这和常人的思维不太一样啊。大家都不是同时向前的，怎么就同步了呢。经过反复的查询资料得知，发现有人是这样理解的，这里的同步不能理解为多个线程同时执行，这样理解就不正确了，而应该理解为每个线程运行过程中分为好多步骤，比如线程此时运行到锁跟前了，那么下一步拿到锁了才可以执行，所以获得锁这一过程就是一个步骤，如果此时锁被其他线程霸占，那么自己得不到锁，这一步就不能算完成，就需要等着，直到自己拿到锁了，才能完成这一步。而同步肯定是多个对象的概念，即不是一个人的事情，在拿不到锁的期间，如果线程处于激活状态，那么就会在那里消耗资源干等着，这个时候肯定有其他对象在处理这件事情，最后给这个线程一个结果，然后结束这个步骤。所以才叫做同步。理解了同步，那么异步就好理解了，就是当一个线程运行到一个特定的地方，请求做了某件事请，但是并不需要等待一个结果，而是让其他对象自己去解决，然后自己仍然继续运行，所以这个时候此线程已经开始其他步骤了，而其他对象具体做到哪一步，自己也不用关心。所以叫做异步。此处再放一张群友激烈争论图。如果根据以上理解再推理多线程的表面现象，那么同步就是一堆线程在排队等一个线程执行完。异步就是大家可以同时进入方法同时执行。<br><img src="//luoyefubuki.com/2019/10/18/java%E4%B8%AD%E5%85%B3%E9%94%AE%E5%AD%97synchronized%E8%83%8C%E5%90%8E%E7%9A%84%E7%9C%9F%E7%9B%B8-%E5%8E%9F%E7%90%86%E5%8F%8A%E5%AE%9E%E8%B7%B5/1.jpg" alt="java中关键字synchronized背后的真相-原理及实践"></p>
-<h1 id="synchronized的作用"><a href="#synchronized的作用" class="headerlink" title="synchronized的作用"></a>synchronized的作用</h1><p>在了解synchronized作用之前，需要提前了解一下多线程在java虚拟机中的内存机制。如下图所示。每个线程都有自己的线程栈，都有自己的工作内存。而工作内存中都有共享变量的副本，每次修改了共享变量后，之后要与主内存中的共享变量同步。<br><img src="//luoyefubuki.com/2019/10/18/java%E4%B8%AD%E5%85%B3%E9%94%AE%E5%AD%97synchronized%E8%83%8C%E5%90%8E%E7%9A%84%E7%9C%9F%E7%9B%B8-%E5%8E%9F%E7%90%86%E5%8F%8A%E5%AE%9E%E8%B7%B5/2.jpg" alt="java中关键字synchronized背后的真相-原理及实践"><br>而如果不加锁，三个线程则有可能同时进入某个方法，对共享变量进行修改。然后其实他们只是修改了一下此时的副本。而后每个线程都进行一次同步，结果可能导致，本来三个线程同时将库存变量-1，最后主内存中库存变量只减了1，并没有-3.（当然也可能-3，或者-2）<br><img src="//luoyefubuki.com/2019/10/18/java%E4%B8%AD%E5%85%B3%E9%94%AE%E5%AD%97synchronized%E8%83%8C%E5%90%8E%E7%9A%84%E7%9C%9F%E7%9B%B8-%E5%8E%9F%E7%90%86%E5%8F%8A%E5%AE%9E%E8%B7%B5/3.jpg" alt="java中关键字synchronized背后的真相-原理及实践"><br>加入synchronized关键字，然后使用类锁object。由于是类锁，所以多个线程运行到同步代码块时，需要取得锁才可以继续运行本类的方法。(后续会讲到类锁)。线程每次减完库存，与主内存共享变量同步完成后，运行完方法，本线程才会释放锁，其他线程才能竞争锁。由于一个锁每次只能标记一个线程，所以就出现了多个线程顺序执行的现象。所以才能使共享变量在同一时刻被一个线程修改。保证共享变量的数据一致性。这种现象其实也有一个术语，叫做线程安全。<br>    public class TradeService {<br>        //日志<br>        Logger logger = Logger.getLogger(TradeService.class);<br>        //库存，静态变量充当共享变量<br>        private static Integer stock = 5;<br>        //静态对象，相当于类锁<br>        private static Object object = new Object();<br>        //减库存方法<br>        public String decStockNoLock(){<br>            //同步代码块synchronized(锁){}<br>            synchronized (object){<br>                if(stock&lt;=0){<br>                    logger.info(“下单失败，已经没有库存了”);<br>                    return “下单失败，已经没有库存了”;<br>                }<br>                stock–;<br>                logger.info(“下单成功，当前剩余产品数：—&gt;”+stock);<br>                return “下单成功，当前剩余产品数：—-&gt;”+stock;<br>            }<br>        }<br>    }</p>
-<h1 id="无锁——-gt-偏向锁——-gt-轻量锁——-gt-重量锁"><a href="#无锁——-gt-偏向锁——-gt-轻量锁——-gt-重量锁" class="headerlink" title="无锁——&gt;偏向锁——&gt;轻量锁——&gt;重量锁"></a>无锁——&gt;偏向锁——&gt;轻量锁——&gt;重量锁</h1><p>终于到了synchronized关键字锁的膨胀过程了。此处来以两个线程的运行过程来阐述整个过程。此处需要一些预先的知识。</p>
+<h1 id="synchronized的作用"><a href="#synchronized的作用" class="headerlink" title="synchronized的作用"></a>synchronized的作用</h1><p>在了解synchronized作用之前，需要提前了解一下多线程在java虚拟机中的内存机制。如下图所示。每个线程都有自己的线程栈，都有自己的工作内存。而工作内存中都有共享变量的副本，每次修改了共享变量后，之后要与主内存中的共享变量同步。<br><img src="//luoyefubuki.com/2019/10/18/java%E4%B8%AD%E5%85%B3%E9%94%AE%E5%AD%97synchronized%E8%83%8C%E5%90%8E%E7%9A%84%E7%9C%9F%E7%9B%B8-%E5%8E%9F%E7%90%86%E5%8F%8A%E5%AE%9E%E8%B7%B5/2.jpg" alt="java中关键字synchronized背后的真相-原理及实践"><br>而如果不加锁，三个线程则有可能同时进入某个方法，对共享变量进行修改。然后其实他们只是修改了一下此时的副本。而后每个线程都进行一次同步，结果可能导致，本来三个线程同时将库存变量-1，最后主内存中库存变量只减了1，并没有-3.（当然也可能-3，或者-2）<br><img src="//luoyefubuki.com/2019/10/18/java%E4%B8%AD%E5%85%B3%E9%94%AE%E5%AD%97synchronized%E8%83%8C%E5%90%8E%E7%9A%84%E7%9C%9F%E7%9B%B8-%E5%8E%9F%E7%90%86%E5%8F%8A%E5%AE%9E%E8%B7%B5/3.jpg" alt="java中关键字synchronized背后的真相-原理及实践"><br>加入synchronized关键字，然后使用类锁object。由于是类锁，所以多个线程运行到同步代码块时，需要取得锁才可以继续运行本类的方法。(后续会讲到类锁)。线程每次减完库存，与主内存共享变量同步完成后，运行完方法，本线程才会释放锁，其他线程才能竞争锁。由于一个锁每次只能标记一个线程，所以就出现了多个线程顺序执行的现象。所以才能使共享变量在同一时刻被一个线程修改。保证共享变量的数据一致性。这种现象其实也有一个术语，叫做线程安全。</p>
+<pre><code>public class TradeService {
+    //日志
+    Logger logger = Logger.getLogger(TradeService.class);
+    //库存，静态变量充当共享变量
+    private static Integer stock = 5;
+    //静态对象，相当于类锁
+    private static Object object = new Object();
+    //减库存方法
+    public String decStockNoLock(){
+        //同步代码块synchronized(锁){}
+        synchronized (object){
+            if(stock&lt;=0){
+                logger.info(&quot;下单失败，已经没有库存了&quot;);
+                return &quot;下单失败，已经没有库存了&quot;;
+            }
+            stock--;
+            logger.info(&quot;下单成功，当前剩余产品数：---&gt;&quot;+stock);
+            return &quot;下单成功，当前剩余产品数：----&gt;&quot;+stock;
+        }
+    }
+}</code></pre><h1 id="无锁——-gt-偏向锁——-gt-轻量锁——-gt-重量锁"><a href="#无锁——-gt-偏向锁——-gt-轻量锁——-gt-重量锁" class="headerlink" title="无锁——&gt;偏向锁——&gt;轻量锁——&gt;重量锁"></a>无锁——&gt;偏向锁——&gt;轻量锁——&gt;重量锁</h1><p>终于到了synchronized关键字锁的膨胀过程了。此处来以两个线程的运行过程来阐述整个过程。此处需要一些预先的知识。</p>
 <h2 id="java对象头"><a href="#java对象头" class="headerlink" title="java对象头"></a>java对象头</h2><p>如下图所示，左侧为实例对象模型，右侧为实例对象的类模板。其中对象头由两部分组成，一部分用于存储自身的运行时数据，称之为 Mark Word，另外一部分是类型指针，及对象指向它的类元数据的指针。<br><img src="//luoyefubuki.com/2019/10/18/java%E4%B8%AD%E5%85%B3%E9%94%AE%E5%AD%97synchronized%E8%83%8C%E5%90%8E%E7%9A%84%E7%9C%9F%E7%9B%B8-%E5%8E%9F%E7%90%86%E5%8F%8A%E5%AE%9E%E8%B7%B5/4.jpg" alt="java中关键字synchronized背后的真相-原理及实践"><br>我们先了解其中的锁标志位及偏向状态位。其中锁状态标志为00时，是轻量锁，为10时是重量锁。为01时，再去检测偏向位，为1是偏向锁，为0是无锁状态。<br><img src="//luoyefubuki.com/2019/10/18/java%E4%B8%AD%E5%85%B3%E9%94%AE%E5%AD%97synchronized%E8%83%8C%E5%90%8E%E7%9A%84%E7%9C%9F%E7%9B%B8-%E5%8E%9F%E7%90%86%E5%8F%8A%E5%AE%9E%E8%B7%B5/5.jpg" alt="java中关键字synchronized背后的真相-原理及实践"></p>
 <h2 id="CAS指令"><a href="#CAS指令" class="headerlink" title="CAS指令"></a>CAS指令</h2><p>CAS指令的英文（Compare And Swap），从字面意思理解就是比较和交换。伪代码如下，其中p代表目标地址。CAS会判断目标地址的内容和old是否一致，如果一致，则将new的值存入目标地址。（C语言中，int* p表示声明一个指针变量p，p表示指针指向的地址，与&amp;a取地址符号很像，*p表示指针指向地址中的值，与a变量很像）。</p>
 <pre><code>function cas(p , old , new ) returns bool {
@@ -235,6 +258,28 @@
 <h2 id="轻量级锁"><a href="#轻量级锁" class="headerlink" title="轻量级锁"></a>轻量级锁</h2><p>当线程1还在同步代码块中时，线程2来了。进行了前边同样的操作，检查锁状态位，然后尝试CAS尝试修改线程id，但是由于此时锁对象时偏向锁状态，所以，线程2会修改失败，然后线程2就会通知JVM，申请撤销锁对象的偏向锁，等到线程1运行到安全点时，就暂停线程1.如果线程1在被JVM通知之前已经完成了操作，那么就会释放锁，从而又是一个无锁的状态，这个时候和偏向锁操作一样，偏向了线程2.如果线程1的代码逻辑还没有执行完，那么这时候就会对锁进行升级，成为轻量级锁。<br><img src="//luoyefubuki.com/2019/10/18/java%E4%B8%AD%E5%85%B3%E9%94%AE%E5%AD%97synchronized%E8%83%8C%E5%90%8E%E7%9A%84%E7%9C%9F%E7%9B%B8-%E5%8E%9F%E7%90%86%E5%8F%8A%E5%AE%9E%E8%B7%B5/9.jpg" alt="java中关键字synchronized背后的真相-原理及实践"><br>这个过程和无锁到偏向锁不太一样，无锁到偏向锁只是修改一下锁对象的id和偏向锁状态位。但是从偏向锁升级到轻量级锁，操作会略微复杂。首先会把锁对象中的信息从偏向锁恢复到无锁的状态，JVM首先会在当前线程的栈帧中建立一个名为锁记录的空间（Lock Record）,用于存储锁对象目前的mark_word拷贝（Displaced Mark Word）。然后将锁对象的对象头中的mark word复制到当前线程刚才创建好的锁记录中，即将锁对象的mark word指向lock record，再将lock word里的owner指向锁对象的mark word。感觉就是互相可以知道对方了。然后把锁标志位从01修改为00状态。<br><img src="//luoyefubuki.com/2019/10/18/java%E4%B8%AD%E5%85%B3%E9%94%AE%E5%AD%97synchronized%E8%83%8C%E5%90%8E%E7%9A%84%E7%9C%9F%E7%9B%B8-%E5%8E%9F%E7%90%86%E5%8F%8A%E5%AE%9E%E8%B7%B5/8.jpg" alt="java中关键字synchronized背后的真相-原理及实践"></p>
 <h2 id="重量级锁"><a href="#重量级锁" class="headerlink" title="重量级锁"></a>重量级锁</h2><p>此时线程2又过来竞争锁，由于线程1还在执行同步代码块，线程2进行CAS操作失败，没有获得锁，然后进行自旋操作（就是再来一遍请求锁的操作），自旋一定次数后，线程1仍然霸占锁，此时JVM就会认为此时线程竞争锁十分的激烈，这个时候锁就会从轻量锁再度膨胀为重量级锁。锁标志位成为10，然后JVM挂起线程2，此时线程1同时也会进行CAS操作，发现锁变成重量级锁，当线程1执行完操作后，对锁进行释放，并且去唤醒阻塞的线程。让他们重新从无锁状态开始竞争。依次轮回。</p>
 <h1 id="重量级锁为什么重"><a href="#重量级锁为什么重" class="headerlink" title="重量级锁为什么重"></a>重量级锁为什么重</h1><p>重量级锁需要向操作系统底层申请互斥量，而申请互斥量，需要给互斥量加互斥锁，这会涉及用户态与内核态的转换。加互斥锁就意味着阻塞线程，阻塞线程就意味着线程的上下文切换。线程上下文切换—&gt;当CPU从执行一个线程切换到执行另外一个线程的时候，它需要先存储当前线程的本地的数据，程序指针等，然后载入另一个线程的本地数据，程序指针等，最后才开始执行。 这个步骤会很耗资源。</p>
+<h1 id="synchronized加锁的三种方式"><a href="#synchronized加锁的三种方式" class="headerlink" title="synchronized加锁的三种方式"></a>synchronized加锁的三种方式</h1><h1 id="monitorenter-monitorexit"><a href="#monitorenter-monitorexit" class="headerlink" title="monitorenter/monitorexit"></a>monitorenter/monitorexit</h1><p>首先展示一下本次案例的代码。上边已经展示过了。点库存方法中有个synchronized代码块。</p>
+<pre><code>public class TradeService {
+    //日志
+    Logger logger = Logger.getLogger(TradeService.class);
+    //库存，静态变量充当共享变量
+    private static Integer stock = 5;
+    //静态对象，相当于类锁
+    private static Object object = new Object();
+    //减库存方法
+    public String decStockNoLock(){
+        //同步代码块synchronized(锁){}
+        synchronized (object){
+            if(stock&lt;=0){
+                logger.info(&quot;下单失败，已经没有库存了&quot;);
+                return &quot;下单失败，已经没有库存了&quot;;
+            }
+            stock--;
+            logger.info(&quot;下单成功，当前剩余产品数：---&gt;&quot;+stock);
+            return &quot;下单成功，当前剩余产品数：----&gt;&quot;+stock;
+        }
+    }
+}</code></pre><p>对此类进行反编译。如下图所示。<br><img src="//luoyefubuki.com/2019/10/18/java%E4%B8%AD%E5%85%B3%E9%94%AE%E5%AD%97synchronized%E8%83%8C%E5%90%8E%E7%9A%84%E7%9C%9F%E7%9B%B8-%E5%8E%9F%E7%90%86%E5%8F%8A%E5%AE%9E%E8%B7%B5/10.jpg" alt="java中关键字synchronized背后的真相-原理及实践"><br><img src="//luoyefubuki.com/2019/10/18/java%E4%B8%AD%E5%85%B3%E9%94%AE%E5%AD%97synchronized%E8%83%8C%E5%90%8E%E7%9A%84%E7%9C%9F%E7%9B%B8-%E5%8E%9F%E7%90%86%E5%8F%8A%E5%AE%9E%E8%B7%B5/11.jpg" alt="java中关键字synchronized背后的真相-原理及实践"><br><img src="//luoyefubuki.com/2019/10/18/java%E4%B8%AD%E5%85%B3%E9%94%AE%E5%AD%97synchronized%E8%83%8C%E5%90%8E%E7%9A%84%E7%9C%9F%E7%9B%B8-%E5%8E%9F%E7%90%86%E5%8F%8A%E5%AE%9E%E8%B7%B5/12.jpg" alt="java中关键字synchronized背后的真相-原理及实践"></p>
 
       
 
@@ -392,7 +437,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#为什么我要整理synchronized系列"><span class="toc-number">1.</span> <span class="toc-text">为什么我要整理synchronized系列</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#同步和异步的解释"><span class="toc-number">2.</span> <span class="toc-text">同步和异步的解释</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#synchronized的作用"><span class="toc-number">3.</span> <span class="toc-text">synchronized的作用</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#无锁——-gt-偏向锁——-gt-轻量锁——-gt-重量锁"><span class="toc-number">4.</span> <span class="toc-text">无锁——&gt;偏向锁——&gt;轻量锁——&gt;重量锁</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#java对象头"><span class="toc-number">4.1.</span> <span class="toc-text">java对象头</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CAS指令"><span class="toc-number">4.2.</span> <span class="toc-text">CAS指令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#无锁"><span class="toc-number">4.3.</span> <span class="toc-text">无锁</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#偏向锁"><span class="toc-number">4.4.</span> <span class="toc-text">偏向锁</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#轻量级锁"><span class="toc-number">4.5.</span> <span class="toc-text">轻量级锁</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#重量级锁"><span class="toc-number">4.6.</span> <span class="toc-text">重量级锁</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#重量级锁为什么重"><span class="toc-number">5.</span> <span class="toc-text">重量级锁为什么重</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#为什么我要整理synchronized系列"><span class="toc-number">1.</span> <span class="toc-text">为什么我要整理synchronized系列</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#同步和异步的解释"><span class="toc-number">2.</span> <span class="toc-text">同步和异步的解释</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#synchronized的作用"><span class="toc-number">3.</span> <span class="toc-text">synchronized的作用</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#无锁——-gt-偏向锁——-gt-轻量锁——-gt-重量锁"><span class="toc-number">4.</span> <span class="toc-text">无锁——&gt;偏向锁——&gt;轻量锁——&gt;重量锁</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#java对象头"><span class="toc-number">4.1.</span> <span class="toc-text">java对象头</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CAS指令"><span class="toc-number">4.2.</span> <span class="toc-text">CAS指令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#无锁"><span class="toc-number">4.3.</span> <span class="toc-text">无锁</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#偏向锁"><span class="toc-number">4.4.</span> <span class="toc-text">偏向锁</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#轻量级锁"><span class="toc-number">4.5.</span> <span class="toc-text">轻量级锁</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#重量级锁"><span class="toc-number">4.6.</span> <span class="toc-text">重量级锁</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#重量级锁为什么重"><span class="toc-number">5.</span> <span class="toc-text">重量级锁为什么重</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#synchronized加锁的三种方式"><span class="toc-number">6.</span> <span class="toc-text">synchronized加锁的三种方式</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#monitorenter-monitorexit"><span class="toc-number">7.</span> <span class="toc-text">monitorenter/monitorexit</span></a></li></ol>
                     </div>
                 </span>
             </div>
