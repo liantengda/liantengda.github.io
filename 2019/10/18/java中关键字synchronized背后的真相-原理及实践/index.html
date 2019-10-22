@@ -27,7 +27,7 @@
 <meta property="og:image" content="http://luoyefubuki.com/2019/10/18/java%E4%B8%AD%E5%85%B3%E9%94%AE%E5%AD%97synchronized%E8%83%8C%E5%90%8E%E7%9A%84%E7%9C%9F%E7%9B%B8-%E5%8E%9F%E7%90%86%E5%8F%8A%E5%AE%9E%E8%B7%B5/10.jpg">
 <meta property="og:image" content="http://luoyefubuki.com/2019/10/18/java%E4%B8%AD%E5%85%B3%E9%94%AE%E5%AD%97synchronized%E8%83%8C%E5%90%8E%E7%9A%84%E7%9C%9F%E7%9B%B8-%E5%8E%9F%E7%90%86%E5%8F%8A%E5%AE%9E%E8%B7%B5/11.jpg">
 <meta property="og:image" content="http://luoyefubuki.com/2019/10/18/java%E4%B8%AD%E5%85%B3%E9%94%AE%E5%AD%97synchronized%E8%83%8C%E5%90%8E%E7%9A%84%E7%9C%9F%E7%9B%B8-%E5%8E%9F%E7%90%86%E5%8F%8A%E5%AE%9E%E8%B7%B5/12.jpg">
-<meta property="og:updated_time" content="2019-10-20T13:45:48.114Z">
+<meta property="og:updated_time" content="2019-10-22T02:35:43.895Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="java中关键字synchronized背后的真相-原理及实践">
 <meta name="twitter:description" content="为什么我要整理synchronized系列私がこんなに難しいことを勉強しているのは、決して私は勉強することが大好きだということではない、実は、全ては面接のためなのだ。因为面试被吊起来打。不过仔细学完之后，发现还挺有意思。">
@@ -255,9 +255,28 @@
 }</code></pre><p>CAS指令是原子性的，执行过程中，不可被打断的。不能同时有多个线程进行操作。</p>
 <h2 id="无锁"><a href="#无锁" class="headerlink" title="无锁"></a>无锁</h2><p>一开始线程都还没有到达同步代码块时，锁对象一定是无锁的状态。锁状态标志位01，偏向锁位0。<br><img src="//luoyefubuki.com/2019/10/18/java%E4%B8%AD%E5%85%B3%E9%94%AE%E5%AD%97synchronized%E8%83%8C%E5%90%8E%E7%9A%84%E7%9C%9F%E7%9B%B8-%E5%8E%9F%E7%90%86%E5%8F%8A%E5%AE%9E%E8%B7%B5/6.jpg" alt="java中关键字synchronized背后的真相-原理及实践"></p>
 <h2 id="偏向锁"><a href="#偏向锁" class="headerlink" title="偏向锁"></a>偏向锁</h2><p>假设线程1先到达同步块，JVM会先去锁对象object的对象头中查看锁状态标志位和偏向锁状态位，得知目前无锁。然后JVM使用CAS操作，将mark_word的前23位修改成线程1的id，用来记录拿到锁的线程1，改写成功后，线程1就拥有了该对象的锁，并且将偏向锁标志位置为1，即更新对象状态为偏向锁状态。为什么要有偏向锁，因为当并发量很小的时候，某个线程刚运行完同步代码块，然后没有过多久，又是它来运行同步代码块，如果这个时候发现锁的线程id还是自己，那么就不用再进行什么CAS操作了，直接忽略锁进入方法，这样就可以节省资源开销。<br><img src="//luoyefubuki.com/2019/10/18/java%E4%B8%AD%E5%85%B3%E9%94%AE%E5%AD%97synchronized%E8%83%8C%E5%90%8E%E7%9A%84%E7%9C%9F%E7%9B%B8-%E5%8E%9F%E7%90%86%E5%8F%8A%E5%AE%9E%E8%B7%B5/7.jpg" alt="java中关键字synchronized背后的真相-原理及实践"></p>
-<h2 id="轻量级锁"><a href="#轻量级锁" class="headerlink" title="轻量级锁"></a>轻量级锁</h2><p>当线程1还在同步代码块中时，线程2来了。进行了前边同样的操作，检查锁状态位，然后尝试CAS尝试修改线程id，但是由于此时锁对象时偏向锁状态，所以，线程2会修改失败，然后线程2就会通知JVM，申请撤销锁对象的偏向锁，等到线程1运行到安全点时，就暂停线程1.如果线程1在被JVM通知之前已经完成了操作，那么就会释放锁，从而又是一个无锁的状态，这个时候和偏向锁操作一样，偏向了线程2.如果线程1的代码逻辑还没有执行完，那么这时候就会对锁进行升级，成为轻量级锁。<br><img src="//luoyefubuki.com/2019/10/18/java%E4%B8%AD%E5%85%B3%E9%94%AE%E5%AD%97synchronized%E8%83%8C%E5%90%8E%E7%9A%84%E7%9C%9F%E7%9B%B8-%E5%8E%9F%E7%90%86%E5%8F%8A%E5%AE%9E%E8%B7%B5/9.jpg" alt="java中关键字synchronized背后的真相-原理及实践"><br>这个过程和无锁到偏向锁不太一样，无锁到偏向锁只是修改一下锁对象的id和偏向锁状态位。但是从偏向锁升级到轻量级锁，操作会略微复杂。首先会把锁对象中的信息从偏向锁恢复到无锁的状态，JVM首先会在当前线程的栈帧中建立一个名为锁记录的空间（Lock Record）,用于存储锁对象目前的mark_word拷贝（Displaced Mark Word）。然后将锁对象的对象头中的mark word复制到当前线程刚才创建好的锁记录中，即将锁对象的mark word指向lock record，再将lock word里的owner指向锁对象的mark word。感觉就是互相可以知道对方了。然后把锁标志位从01修改为00状态。<br><img src="//luoyefubuki.com/2019/10/18/java%E4%B8%AD%E5%85%B3%E9%94%AE%E5%AD%97synchronized%E8%83%8C%E5%90%8E%E7%9A%84%E7%9C%9F%E7%9B%B8-%E5%8E%9F%E7%90%86%E5%8F%8A%E5%AE%9E%E8%B7%B5/8.jpg" alt="java中关键字synchronized背后的真相-原理及实践"></p>
+<h2 id="轻量级锁"><a href="#轻量级锁" class="headerlink" title="轻量级锁"></a>轻量级锁</h2><p>当线程1还在同步代码块中时，线程2来了。进行了前边同样的操作，检查锁状态位，然后尝试CAS尝试修改线程id，但是由于此时锁对象是偏向锁状态，所以，线程2会修改失败，然后线程2就会通知JVM，申请撤销锁对象的偏向锁，等到线程1运行到安全点时，就暂停线程1.如果线程1在被JVM通知之前已经完成了操作，那么就会释放锁，从而又是一个无锁的状态，这个时候和偏向锁操作一样，偏向了线程2.如果线程1的代码逻辑还没有执行完，那么这时候就会对锁进行升级，成为轻量级锁。<br><img src="//luoyefubuki.com/2019/10/18/java%E4%B8%AD%E5%85%B3%E9%94%AE%E5%AD%97synchronized%E8%83%8C%E5%90%8E%E7%9A%84%E7%9C%9F%E7%9B%B8-%E5%8E%9F%E7%90%86%E5%8F%8A%E5%AE%9E%E8%B7%B5/9.jpg" alt="java中关键字synchronized背后的真相-原理及实践"><br>这个过程和无锁到偏向锁不太一样，无锁到偏向锁只是修改一下锁对象的id和偏向锁状态位。但是从偏向锁升级到轻量级锁，操作会略微复杂。首先会把锁对象中的信息从偏向锁恢复到无锁的状态，JVM首先会在当前线程的栈帧中建立一个名为锁记录的空间（Lock Record）,用于存储锁对象目前的mark_word拷贝（Displaced Mark Word）。然后将锁对象的对象头中的mark word复制到当前线程刚才创建好的锁记录中，即将锁对象的mark word指向lock record，再将lock word里的owner指向锁对象的mark word。感觉就是互相可以知道对方了。然后把锁标志位从01修改为00状态。<br><img src="//luoyefubuki.com/2019/10/18/java%E4%B8%AD%E5%85%B3%E9%94%AE%E5%AD%97synchronized%E8%83%8C%E5%90%8E%E7%9A%84%E7%9C%9F%E7%9B%B8-%E5%8E%9F%E7%90%86%E5%8F%8A%E5%AE%9E%E8%B7%B5/8.jpg" alt="java中关键字synchronized背后的真相-原理及实践"></p>
 <h2 id="重量级锁"><a href="#重量级锁" class="headerlink" title="重量级锁"></a>重量级锁</h2><p>此时线程2又过来竞争锁，由于线程1还在执行同步代码块，线程2进行CAS操作失败，没有获得锁，然后进行自旋操作（就是再来一遍请求锁的操作），自旋一定次数后，线程1仍然霸占锁，此时JVM就会认为此时线程竞争锁十分的激烈，这个时候锁就会从轻量锁再度膨胀为重量级锁。锁标志位成为10，然后JVM挂起线程2，此时线程1同时也会进行CAS操作，发现锁变成重量级锁，当线程1执行完操作后，对锁进行释放，并且去唤醒阻塞的线程。让他们重新从无锁状态开始竞争。依次轮回。</p>
-<h1 id="重量级锁为什么重"><a href="#重量级锁为什么重" class="headerlink" title="重量级锁为什么重"></a>重量级锁为什么重</h1><p>重量级锁需要向操作系统底层申请互斥量，而申请互斥量，需要给互斥量加互斥锁，这会涉及用户态与内核态的转换。加互斥锁就意味着阻塞线程，阻塞线程就意味着线程的上下文切换。线程上下文切换—&gt;当CPU从执行一个线程切换到执行另外一个线程的时候，它需要先存储当前线程的本地的数据，程序指针等，然后载入另一个线程的本地数据，程序指针等，最后才开始执行。 这个步骤会很耗资源。</p>
+<h1 id="重量级锁为什么重"><a href="#重量级锁为什么重" class="headerlink" title="重量级锁为什么重"></a>重量级锁为什么重</h1><p>我们以上学习的那些绕来绕去的东西以及java对象中的对象头里的某些东西，都是为了优化java锁机制而出现的。本来在JDK1.6版本之前，是不存在这些绕来绕去的东西的，synchronized直接就是个重量锁。也就是说，偏向锁和轻量级锁啥的都是依赖JVM自己的逻辑实现，不直接与底层发生关系。而重量级锁的实现，也就是JDK1.6之前的synchronized，就是一块不留情面的笨重锁。</p>
+<p>根据上文可以了解到，当锁标识位为10时，锁对象升级为重量锁状态，锁标识指针指向的是monitor对象（管程或监视器）的起始地址。每个对象都存在着一个 monitor 与之关联，当一个 monitor 被某个线程持有后，它便处于锁定状态。java虚拟机中，monitor的数据结构如下所示。</p>
+<pre><code>ObjectMonitor() {
+_header       = NULL;
+_count        = 0; //记录个数
+_waiters      = 0,
+_recursions   = 0;
+_object       = NULL;
+_owner        = NULL;
+_WaitSet      = NULL; //处于wait状态的线程，会被加入到_WaitSet
+_WaitSetLock  = 0 ;
+_Responsible  = NULL ;
+_succ         = NULL ;
+_cxq          = NULL ;
+FreeNext      = NULL ;
+_EntryList    = NULL ; //处于等待锁block状态的线程，会被加入到该列表
+_SpinFreq     = 0 ;
+_SpinClock    = 0 ;
+OwnerIsThread = 0 ;
+}</code></pre><p>看了这个类，对其中的某些成员变量的表意是不是感觉似曾相识，_WaitSet（等待状态队列） 和 _EntryList（阻塞状态队列），_owner指向持有ObjectMonitor对象的线程，<br>重量级锁需要向操作系统底层申请互斥量，而申请互斥量，需要给互斥量加互斥锁，这会涉及用户态与内核态的转换。加互斥锁就意味着阻塞线程，阻塞线程就意味着线程的上下文切换。线程上下文切换—&gt;当CPU从执行一个线程切换到执行另外一个线程的时候，它需要先存储当前线程的本地的数据，程序指针等，然后载入另一个线程的本地数据，程序指针等，最后才开始执行。 这个步骤会很耗资源。</p>
 <h1 id="synchronized加锁的三种方式"><a href="#synchronized加锁的三种方式" class="headerlink" title="synchronized加锁的三种方式"></a>synchronized加锁的三种方式</h1><h2 id="作用于普通方法"><a href="#作用于普通方法" class="headerlink" title="作用于普通方法"></a>作用于普通方法</h2><p>synchronized作用于普通方法，锁的是当前实例对象，this。等同于synchronized（普通成员变量或this）</p>
 <pre><code>public class TradeTestService {
     //库存，静态变量充当共享变量
