@@ -38,10 +38,10 @@
 <meta property="og:image" content="http://luoyefubuki.com/2019/10/18/java%E4%B8%AD%E5%85%B3%E9%94%AE%E5%AD%97synchronized%E8%83%8C%E5%90%8E%E7%9A%84%E7%9C%9F%E7%9B%B8-%E5%8E%9F%E7%90%86%E5%8F%8A%E5%AE%9E%E8%B7%B5/11.jpg">
 <meta property="og:image" content="http://luoyefubuki.com/2019/10/18/java%E4%B8%AD%E5%85%B3%E9%94%AE%E5%AD%97synchronized%E8%83%8C%E5%90%8E%E7%9A%84%E7%9C%9F%E7%9B%B8-%E5%8E%9F%E7%90%86%E5%8F%8A%E5%AE%9E%E8%B7%B5/12.jpg">
 <meta property="og:image" content="http://luoyefubuki.com/2019/10/18/java%E4%B8%AD%E5%85%B3%E9%94%AE%E5%AD%97synchronized%E8%83%8C%E5%90%8E%E7%9A%84%E7%9C%9F%E7%9B%B8-%E5%8E%9F%E7%90%86%E5%8F%8A%E5%AE%9E%E8%B7%B5/26.jpg">
-<meta property="og:image" content="http://luoyefubuki.com/2019/10/18/java%E4%B8%AD%E5%85%B3%E9%94%AE%E5%AD%97synchronized%E8%83%8C%E5%90%8E%E7%9A%84%E7%9C%9F%E7%9B%B8-%E5%8E%9F%E7%90%86%E5%8F%8A%E5%AE%9E%E8%B7%B5/26.jpg">
 <meta property="og:image" content="http://luoyefubuki.com/2019/10/18/java%E4%B8%AD%E5%85%B3%E9%94%AE%E5%AD%97synchronized%E8%83%8C%E5%90%8E%E7%9A%84%E7%9C%9F%E7%9B%B8-%E5%8E%9F%E7%90%86%E5%8F%8A%E5%AE%9E%E8%B7%B5/27.jpg">
 <meta property="og:image" content="http://luoyefubuki.com/2019/10/18/java%E4%B8%AD%E5%85%B3%E9%94%AE%E5%AD%97synchronized%E8%83%8C%E5%90%8E%E7%9A%84%E7%9C%9F%E7%9B%B8-%E5%8E%9F%E7%90%86%E5%8F%8A%E5%AE%9E%E8%B7%B5/28.jpg">
-<meta property="og:updated_time" content="2019-10-27T04:05:55.652Z">
+<meta property="og:image" content="http://luoyefubuki.com/2019/10/18/java%E4%B8%AD%E5%85%B3%E9%94%AE%E5%AD%97synchronized%E8%83%8C%E5%90%8E%E7%9A%84%E7%9C%9F%E7%9B%B8-%E5%8E%9F%E7%90%86%E5%8F%8A%E5%AE%9E%E8%B7%B5/29.jpg">
+<meta property="og:updated_time" content="2019-10-27T07:28:46.950Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="java中关键字synchronized背后的真相-原理及实践">
 <meta name="twitter:description" content="为什么我要整理synchronized系列私がこんなに難しいことを勉強しているのは、決して私は勉強することが大好きだということではない、実は、全ては面接のためなのだ。因为面试被吊起来打。不过仔细学完之后，发现还挺有意思。">
@@ -661,8 +661,9 @@ private  void product() {
              Bucket.class.notifyAll();
          }
      }
-}</code></pre><p>结果如下。面包师1开始说胡话了，明明有两个面包，居然说剩余1个，而且面包6居然不见了<br><img src="//luoyefubuki.com/2019/10/18/java%E4%B8%AD%E5%85%B3%E9%94%AE%E5%AD%97synchronized%E8%83%8C%E5%90%8E%E7%9A%84%E7%9C%9F%E7%9B%B8-%E5%8E%9F%E7%90%86%E5%8F%8A%E5%AE%9E%E8%B7%B5/26.jpg" alt="java中关键字synchronized背后的真相-原理及实践"><br>而且我设定的最大容量明明是100，这已经超产了。<br><img src="//luoyefubuki.com/2019/10/18/java%E4%B8%AD%E5%85%B3%E9%94%AE%E5%AD%97synchronized%E8%83%8C%E5%90%8E%E7%9A%84%E7%9C%9F%E7%9B%B8-%E5%8E%9F%E7%90%86%E5%8F%8A%E5%AE%9E%E8%B7%B5/27.jpg" alt="java中关键字synchronized背后的真相-原理及实践"><br>出现这种现象，主要是这次连消费者们都不是一个锁了，都是自己锁自己，每个线程本来就是一个对象，三个线程三个对象三把锁，谁也不能阻塞谁。基本上和加锁没有关系了，这个时候估计都是偏向锁。因为每把锁只有一个线程。<br>而且面包师3，貌似挂掉了。至于面包6跑哪去了，也没见顾客说话啊。<br><img src="//luoyefubuki.com/2019/10/18/java%E4%B8%AD%E5%85%B3%E9%94%AE%E5%AD%97synchronized%E8%83%8C%E5%90%8E%E7%9A%84%E7%9C%9F%E7%9B%B8-%E5%8E%9F%E7%90%86%E5%8F%8A%E5%AE%9E%E8%B7%B5/28.jpg" alt="java中关键字synchronized背后的真相-原理及实践"></p>
+}</code></pre><p>结果如下。面包师1开始说胡话了，明明有两个面包，居然说剩余1个，而且面包6居然不见了<br><img src="//luoyefubuki.com/2019/10/18/java%E4%B8%AD%E5%85%B3%E9%94%AE%E5%AD%97synchronized%E8%83%8C%E5%90%8E%E7%9A%84%E7%9C%9F%E7%9B%B8-%E5%8E%9F%E7%90%86%E5%8F%8A%E5%AE%9E%E8%B7%B5/27.jpg" alt="java中关键字synchronized背后的真相-原理及实践"><br>而且我设定的最大容量明明是100，这已经超产了。<br><img src="//luoyefubuki.com/2019/10/18/java%E4%B8%AD%E5%85%B3%E9%94%AE%E5%AD%97synchronized%E8%83%8C%E5%90%8E%E7%9A%84%E7%9C%9F%E7%9B%B8-%E5%8E%9F%E7%90%86%E5%8F%8A%E5%AE%9E%E8%B7%B5/28.jpg" alt="java中关键字synchronized背后的真相-原理及实践"><br>出现这种现象，主要是这次连消费者们都不是一个锁了，都是自己锁自己，每个线程本来就是一个对象，三个线程三个对象三把锁，谁也不能阻塞谁。基本上和加锁没有关系了，这个时候估计都是偏向锁。因为每把锁只有一个线程。<br>而且面包师3，貌似挂掉了。至于面包6跑哪去了，也没见顾客说话啊。<br><img src="//luoyefubuki.com/2019/10/18/java%E4%B8%AD%E5%85%B3%E9%94%AE%E5%AD%97synchronized%E8%83%8C%E5%90%8E%E7%9A%84%E7%9C%9F%E7%9B%B8-%E5%8E%9F%E7%90%86%E5%8F%8A%E5%AE%9E%E8%B7%B5/29.jpg" alt="java中关键字synchronized背后的真相-原理及实践"></p>
 <h2 id="同步代码块总结"><a href="#同步代码块总结" class="headerlink" title="同步代码块总结"></a>同步代码块总结</h2><p>所以，总的一点就是，如果我们指定那几个线程需要竞争，一定要给他们同一把锁，如果我们对java内存机制很清晰的话，一眼就能看出来锁对不对。</p>
+<p>## </p>
 
       
 
