@@ -37,7 +37,11 @@
 <meta property="og:image" content="http://luoyefubuki.com/2019/10/18/java%E4%B8%AD%E5%85%B3%E9%94%AE%E5%AD%97synchronized%E8%83%8C%E5%90%8E%E7%9A%84%E7%9C%9F%E7%9B%B8-%E5%8E%9F%E7%90%86%E5%8F%8A%E5%AE%9E%E8%B7%B5/10.jpg">
 <meta property="og:image" content="http://luoyefubuki.com/2019/10/18/java%E4%B8%AD%E5%85%B3%E9%94%AE%E5%AD%97synchronized%E8%83%8C%E5%90%8E%E7%9A%84%E7%9C%9F%E7%9B%B8-%E5%8E%9F%E7%90%86%E5%8F%8A%E5%AE%9E%E8%B7%B5/11.jpg">
 <meta property="og:image" content="http://luoyefubuki.com/2019/10/18/java%E4%B8%AD%E5%85%B3%E9%94%AE%E5%AD%97synchronized%E8%83%8C%E5%90%8E%E7%9A%84%E7%9C%9F%E7%9B%B8-%E5%8E%9F%E7%90%86%E5%8F%8A%E5%AE%9E%E8%B7%B5/12.jpg">
-<meta property="og:updated_time" content="2019-10-26T14:11:44.050Z">
+<meta property="og:image" content="http://luoyefubuki.com/2019/10/18/java%E4%B8%AD%E5%85%B3%E9%94%AE%E5%AD%97synchronized%E8%83%8C%E5%90%8E%E7%9A%84%E7%9C%9F%E7%9B%B8-%E5%8E%9F%E7%90%86%E5%8F%8A%E5%AE%9E%E8%B7%B5/26.jpg">
+<meta property="og:image" content="http://luoyefubuki.com/2019/10/18/java%E4%B8%AD%E5%85%B3%E9%94%AE%E5%AD%97synchronized%E8%83%8C%E5%90%8E%E7%9A%84%E7%9C%9F%E7%9B%B8-%E5%8E%9F%E7%90%86%E5%8F%8A%E5%AE%9E%E8%B7%B5/26.jpg">
+<meta property="og:image" content="http://luoyefubuki.com/2019/10/18/java%E4%B8%AD%E5%85%B3%E9%94%AE%E5%AD%97synchronized%E8%83%8C%E5%90%8E%E7%9A%84%E7%9C%9F%E7%9B%B8-%E5%8E%9F%E7%90%86%E5%8F%8A%E5%AE%9E%E8%B7%B5/27.jpg">
+<meta property="og:image" content="http://luoyefubuki.com/2019/10/18/java%E4%B8%AD%E5%85%B3%E9%94%AE%E5%AD%97synchronized%E8%83%8C%E5%90%8E%E7%9A%84%E7%9C%9F%E7%9B%B8-%E5%8E%9F%E7%90%86%E5%8F%8A%E5%AE%9E%E8%B7%B5/28.jpg">
+<meta property="og:updated_time" content="2019-10-27T04:05:55.652Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="java中关键字synchronized背后的真相-原理及实践">
 <meta name="twitter:description" content="为什么我要整理synchronized系列私がこんなに難しいことを勉強しているのは、決して私は勉強することが大好きだということではない、実は、全ては面接のためなのだ。因为面试被吊起来打。不过仔细学完之后，发现还挺有意思。">
@@ -233,7 +237,7 @@
 <a id="more"></a>
 <h1 id="同步和异步的解释"><a href="#同步和异步的解释" class="headerlink" title="同步和异步的解释"></a>同步和异步的解释</h1><p>synchronized英文本意为同步。而在我们平时写程序的印象中，synchronized关键字的功能是使线程一个一个排队进入方法，而不能一起进入。所以如果从这个角度来看的话，感觉这和常人的思维不太一样啊。大家都不是同时向前的，怎么就同步了呢。经过反复的查询资料得知，发现有人是这样理解的，这里的同步不能理解为多个线程同时执行，这样理解就不正确了，而应该理解为每个线程运行过程中分为好多步骤，比如线程此时运行到锁跟前了，那么下一步拿到锁了才可以执行，所以获得锁这一过程就是一个步骤，如果此时锁被其他线程霸占，那么自己得不到锁，这一步就不能算完成，就需要等着，直到自己拿到锁了，才能完成这一步。而同步肯定是多个对象的概念，即不是一个人的事情，在拿不到锁的期间，如果线程处于激活状态，那么就会在那里消耗资源干等着，这个时候肯定有其他对象在处理这件事情，最后给这个线程一个结果，然后结束这个步骤。所以才叫做同步。理解了同步，那么异步就好理解了，就是当一个线程运行到一个特定的地方，请求做了某件事请，但是并不需要等待一个结果，而是让其他对象自己去解决，然后自己仍然继续运行，所以这个时候此线程已经开始其他步骤了，而其他对象具体做到哪一步，自己也不用关心。所以叫做异步。此处再放一张群友激烈争论图。如果根据以上理解再推理多线程的表面现象，那么同步就是一堆线程在排队等一个线程执行完。异步就是大家可以同时进入方法同时执行。<br><img src="//luoyefubuki.com/2019/10/18/java%E4%B8%AD%E5%85%B3%E9%94%AE%E5%AD%97synchronized%E8%83%8C%E5%90%8E%E7%9A%84%E7%9C%9F%E7%9B%B8-%E5%8E%9F%E7%90%86%E5%8F%8A%E5%AE%9E%E8%B7%B5/1.jpg" alt="java中关键字synchronized背后的真相-原理及实践"></p>
 <h1 id="synchronized的作用"><a href="#synchronized的作用" class="headerlink" title="synchronized的作用"></a>synchronized的作用</h1><h2 id="java并发内存模型以及内存操作规则"><a href="#java并发内存模型以及内存操作规则" class="headerlink" title="java并发内存模型以及内存操作规则"></a>java并发内存模型以及内存操作规则</h2><p>在了解synchronized作用之前，需要提前了解一下多线程在java虚拟机中的内存机制。所有线程都有自己的栈帧和PC计数器，每个线程的栈帧中存在一个自己的局部变量表（也就是大家经常说的工作内存），主内存中的共享变量基础类型会复制一份更新到每个线程栈帧的局部变量表中，需要使用时直接丢进操作数栈中使用。然后就是每个线程修改完共享变量的值后，及时更新到主内存中。另外就是其他线程能在使用之前及时从主内存中备份数据更新到自己的局部变量表中。<br><img src="//luoyefubuki.com/2019/10/18/java%E4%B8%AD%E5%85%B3%E9%94%AE%E5%AD%97synchronized%E8%83%8C%E5%90%8E%E7%9A%84%E7%9C%9F%E7%9B%B8-%E5%8E%9F%E7%90%86%E5%8F%8A%E5%AE%9E%E8%B7%B5/25.jpg" alt="java中关键字synchronized背后的真相-原理及实践"><br>具体变量从主内存到工作内存，以及从工作内存转回主内存的实现细节，由下面八个原子性的操作完成：<br>lock：作用于主内存变量，将该变量标识为一个线程独占的状态<br>unlock：作用于主内存变量，将独占状态释放<br>read：作用于主内存变量，将值拷贝到工作内存中<br>load：作用于工作内存中的变量，将值放到工作内存中的变量副本中<br>use：作用于工作内存中的变量，将值传给执行引擎<br>asign：作用于工作内存中的变量，将执行引擎中的值赋给工作内存中的变量<br>store：作用于工作内存中的变量，将值传给主内存<br>write：作用于主内存中的变量，将工作内存中返回的值放到主内存变量中<br>其中synchronized通过monitorenter跟monitorexit指令调用的lock/unlock操作），Java内存模型还规定了执行上述8种基本操作时必须满足如下规则:<br>1、不允许read和load、store和write操作之一单独出现（即不允许一个变量从主存读取了但是工作内存不接受，或者从工作内存发起会写了但是主存不接受的情况），以上两个操作必须按顺序执行，但没有保证必须连续执行，也就是说，read与load之间、store与write之间是可插入其他指令的。<br>2、不允许一个线程丢弃它的最近的assign操作，即变量在工作内存中改变了之后必须把该变化同步回主内存。<br>3、不允许一个线程无原因地（没有发生过任何assign操作）把数据从线程的工作内存同步回主内存中。<br>4、一个新的变量只能从主内存中“诞生”，不允许在工作内存中直接使用一个未被初始化（load或assign）的变量，换句话说就是对一个变量实施use和store操作之前，必须先执行过了assign和load操作。<br>5、一个变量在同一个时刻只允许一条线程对其执行lock操作，但lock操作可以被同一个条线程重复执行多次，多次执行lock后，只有执行相同次数的unlock操作，变量才会被解锁。<br>6、如果对一个变量执行lock操作，将会清空工作内存中此变量的值，在执行引擎使用这个变量前，需要重新执行load或assign操作初始化变量的值。<br>7、如果一个变量实现没有被lock操作锁定，则不允许对它执行unlock操作，也不允许去unlock一个被其他线程锁定的变量。<br>8、对一个变量执行unlock操作之前，必须先把此变量同步回主内存（执行store和write操作）。</p>
-<h2 id="synchronized"><a href="#synchronized" class="headerlink" title="synchronized"></a>synchronized</h2><p>如上。每个线程都有自己的线程栈，都有自己的工作内存。而工作内存中都有共享变量的副本，每次修改了共享变量后，之后要与主内存中的共享变量同步。<br><img src="//luoyefubuki.com/2019/10/18/java%E4%B8%AD%E5%85%B3%E9%94%AE%E5%AD%97synchronized%E8%83%8C%E5%90%8E%E7%9A%84%E7%9C%9F%E7%9B%B8-%E5%8E%9F%E7%90%86%E5%8F%8A%E5%AE%9E%E8%B7%B5/2.jpg" alt="java中关键字synchronized背后的真相-原理及实践"><br>而如果不加锁，三个线程则有可能同时进入某个方法，对共享变量进行修改。然后其实他们只是修改了一下此时的副本。而后每个线程都进行一次同步，结果可能导致，本来三个线程同时将库存变量-1，最后主内存中库存变量只减了1，并没有-3.（当然也可能-3，或者-2）<br><img src="//luoyefubuki.com/2019/10/18/java%E4%B8%AD%E5%85%B3%E9%94%AE%E5%AD%97synchronized%E8%83%8C%E5%90%8E%E7%9A%84%E7%9C%9F%E7%9B%B8-%E5%8E%9F%E7%90%86%E5%8F%8A%E5%AE%9E%E8%B7%B5/3.jpg" alt="java中关键字synchronized背后的真相-原理及实践"><br>加入synchronized关键字，然后使用类锁object。由于是类锁，所以多个线程运行到同步代码块时，需要取得锁才可以继续运行本类的方法。(后续会讲到类锁)。线程每次减完库存，与主内存共享变量同步完成后，运行完方法，本线程才会释放锁，其他线程才能竞争锁。由于一个锁每次只能标记一个线程，所以就出现了多个线程顺序执行的现象。所以才能使共享变量在同一时刻被一个线程修改。保证共享变量的数据一致性。这种现象其实也有一个术语，叫做线程安全。</p>
+<h2 id="作用"><a href="#作用" class="headerlink" title="作用"></a>作用</h2><p>如上。每个线程都有自己的线程栈，都有自己的工作内存。而工作内存中都有共享变量的副本，每次修改了共享变量后，之后要与主内存中的共享变量同步。<br><img src="//luoyefubuki.com/2019/10/18/java%E4%B8%AD%E5%85%B3%E9%94%AE%E5%AD%97synchronized%E8%83%8C%E5%90%8E%E7%9A%84%E7%9C%9F%E7%9B%B8-%E5%8E%9F%E7%90%86%E5%8F%8A%E5%AE%9E%E8%B7%B5/2.jpg" alt="java中关键字synchronized背后的真相-原理及实践"><br>而如果不加锁，三个线程则有可能同时进入某个方法，对共享变量进行修改。然后其实他们只是修改了一下此时的副本。而后每个线程都进行一次同步，结果可能导致，本来三个线程同时将库存变量-1，最后主内存中库存变量只减了1，并没有-3.（当然也可能-3，或者-2）<br><img src="//luoyefubuki.com/2019/10/18/java%E4%B8%AD%E5%85%B3%E9%94%AE%E5%AD%97synchronized%E8%83%8C%E5%90%8E%E7%9A%84%E7%9C%9F%E7%9B%B8-%E5%8E%9F%E7%90%86%E5%8F%8A%E5%AE%9E%E8%B7%B5/3.jpg" alt="java中关键字synchronized背后的真相-原理及实践"><br>加入synchronized关键字，然后使用类锁object。由于是类锁，所以多个线程运行到同步代码块时，需要取得锁才可以继续运行本类的方法。(后续会讲到类锁)。线程每次减完库存，与主内存共享变量同步完成后，运行完方法，本线程才会释放锁，其他线程才能竞争锁。由于一个锁每次只能标记一个线程，所以就出现了多个线程顺序执行的现象。所以才能使共享变量在同一时刻被一个线程修改。保证共享变量的数据一致性。这种现象其实也有一个术语，叫做线程安全。</p>
 <pre><code>public class TradeService {
     //日志
     Logger logger = Logger.getLogger(TradeService.class);
@@ -291,7 +295,11 @@ OwnerIsThread = 0 ;
 <p>当多个线程同时访问一段同步代码时，众线程需要先通过互斥同步或CAS操作进入cxq,同时cxq中合适的线程会放入_EntryList 集合，然后进行尝试锁定操作，如果失败，则被封装成ObjectWaiter对象，然后被调用wait()阻塞进入_WaitSet队列，如果成功则获得当前锁。当线程获取到对象的monitor后进入_Owner区域并把monitor中的owner变量设置为当前线程同时monitor中的计数器count加1，若线程调用 wait() 方法，将释放当前持有的monitor，owner变量恢复为null，count自减1，同时该线程进入_WaitSet集合中等待被唤醒。若当前线程执行完毕也将释放monitor(锁)并复位变量的值，以便其他线程进入获取monitor(锁)。【所以感觉这个count好像最多也就是1，有2的情况咩？】monitor对象存在于每个Java对象的对象头中(存储的指针的指向)，synchronized锁便是通过这种方式获取锁的，也是为什么Java中任意对象可以作为锁的原因。总的来看，_WaitSet区域得先进入cxq或_EntryList区域才能进一步去竞争锁。<br><img src="//luoyefubuki.com/2019/10/18/java%E4%B8%AD%E5%85%B3%E9%94%AE%E5%AD%97synchronized%E8%83%8C%E5%90%8E%E7%9A%84%E7%9C%9F%E7%9B%B8-%E5%8E%9F%E7%90%86%E5%8F%8A%E5%AE%9E%E8%B7%B5/13.jpg" alt="java中关键字synchronized背后的真相-原理及实践"></p>
 <p>那么话又说回到为什么重量锁重，主要是因为一旦有线程拥有了锁，其他线程竞争锁失败就直接被wait（）了。之后要等待占有锁的线程释放锁后去唤醒他们。重量操作就在这里。wait方法会导致当前被wait的线程挂起，而挂起线程意味着线程的上下文切换。而这个操作和操作系统底层直接相关。总的一点就是很耗时间。</p>
 <h2 id="线程上下文切换"><a href="#线程上下文切换" class="headerlink" title="线程上下文切换"></a>线程上下文切换</h2><p>此处直接引用大佬解析<br><a href="https://www.cnblogs.com/sevencutekk/p/11534140.html" target="_blank" rel="noopener">https://www.cnblogs.com/sevencutekk/p/11534140.html</a></p>
-<h1 id="synchronized加锁的三种方式"><a href="#synchronized加锁的三种方式" class="headerlink" title="synchronized加锁的三种方式"></a>synchronized加锁的三种方式</h1><h2 id="作用于普通方法"><a href="#作用于普通方法" class="headerlink" title="作用于普通方法"></a>作用于普通方法</h2><p>synchronized作用于普通方法，锁的是当前实例对象，this。等同于synchronized（普通成员变量或this）</p>
+<h1 id="类锁与对象锁"><a href="#类锁与对象锁" class="headerlink" title="类锁与对象锁"></a>类锁与对象锁</h1><p>总的区分方法就是看锁住的是class对象，还是普通对象。</p>
+<h2 id="对象锁"><a href="#对象锁" class="headerlink" title="对象锁"></a>对象锁</h2><p>普通方法上加了synchronized或者synchronized(this),还可以在锁类中，创建个普通对象，如private Object object = new Object()，然后synchronized(object)。</p>
+<h2 id="类锁"><a href="#类锁" class="headerlink" title="类锁"></a>类锁</h2><p>在静态方法上加了synchronized或者synchronized(锁类.class)，还可以在锁类中，创建个静态对象，如private static Object object = new Object(),然后synchronized(object)。</p>
+<h2 id="使用规则"><a href="#使用规则" class="headerlink" title="使用规则"></a>使用规则</h2><p>如果想要指定的多线程竞争，那么一定要让他们锁住同一个对象。一定要分清楚锁的是谁。从以上我们学的每个对象都有自己的对象头和monitor就可以得知。只有锁住同一个对象，才会使多线程竞争。以下实践中我会提到多种情况下，多线程什么时候才是顺序执行的。</p>
+<h1 id="synchronized加锁的三种方式"><a href="#synchronized加锁的三种方式" class="headerlink" title="synchronized加锁的三种方式"></a>synchronized加锁的三种方式</h1><h2 id="作用于普通方法"><a href="#作用于普通方法" class="headerlink" title="作用于普通方法"></a>作用于普通方法</h2><p>synchronized作用于普通方法，锁的是当前实例对象，this。等同于synchronized（this）</p>
 <pre><code>public class TradeTestService {
     //库存，静态变量充当共享变量
     private static Integer stock = 5;
@@ -344,7 +352,7 @@ OwnerIsThread = 0 ;
 <p>The thread that executes monitorexit must be the owner of the monitor associated with the instance referenced by objectref.<br>The thread decrements the entry count of the monitor associated with objectref. If as a result the value of the entry count is zero, the thread exits the monitor and is no longer its owner. Other threads that are blocking to enter the monitor are allowed to attempt to do so.</p>
 </blockquote>
 <p>执行monitorexit的线程必须是与当前object相关联的monitor的所有者。<br>指令执行时，monitor的进入数减1，如果减1后进入数为0，那线程退出monitor，不再是这个monitor的所有者。其他被这个monitor阻塞的线程可以尝试去获取这个 monitor 的所有权</p>
-<h2 id="作用于静态方法"><a href="#作用于静态方法" class="headerlink" title="作用于静态方法"></a>作用于静态方法</h2><p>synchronized作用于静态方法，锁的是当前类的class对象。也就是类锁。等同于synchronized（静态成员变量或者类.class）。</p>
+<h2 id="作用于静态方法"><a href="#作用于静态方法" class="headerlink" title="作用于静态方法"></a>作用于静态方法</h2><p>synchronized作用于静态方法，锁的是当前类的class对象。也就是类锁。等同于synchronized（类.class）。</p>
 <pre><code>public class TradeStaticService {
     //库存，静态变量充当共享变量
     private static Integer stock = 5;
@@ -359,7 +367,303 @@ public synchronized static void decStockNoLockA(){
     System.out.println(&quot;success&quot;);
     }
 }</code></pre><p>如果synchronized作用于静态方法，反编译代码如下，多了个静态方法标识<br><img src="//luoyefubuki.com/2019/10/18/java%E4%B8%AD%E5%85%B3%E9%94%AE%E5%AD%97synchronized%E8%83%8C%E5%90%8E%E7%9A%84%E7%9C%9F%E7%9B%B8-%E5%8E%9F%E7%90%86%E5%8F%8A%E5%AE%9E%E8%B7%B5/12.jpg" alt="java中关键字synchronized背后的真相-原理及实践"></p>
-<h1 id="可重入"><a href="#可重入" class="headerlink" title="可重入"></a>可重入</h1>
+<h1 id="可重入"><a href="#可重入" class="headerlink" title="可重入"></a>可重入</h1><h1 id="synchronized的实践"><a href="#synchronized的实践" class="headerlink" title="synchronized的实践"></a>synchronized的实践</h1><p>这里我来使用我自己写的生产者消费者来说明锁如何使用。<br>面包实体类</p>
+<pre><code>public class Bread {
+//总数量
+public static int total = 0;
+//生产出来自带编号
+private int number;
+public Bread(int number) {
+    this.number = number;
+}
+@Override
+public String toString() {
+    return &quot;面包&quot;+this.number;
+}
+}</code></pre><p>放面包的桶类</p>
+<pre><code>public class Bucket {
+//桶的真面目
+private Map&lt;Integer, Bread&gt; map = new HashMap&lt;&gt;();
+//最大容量
+private  final int MAX_CAPACITY = 100;
+public Bucket() {
+    //构造方法
+}
+//往桶里放入
+public void putIn(Bread bread) {
+    this.map.put(Bread.total,bread);
+}
+//从桶里取出
+public void takeOut() {
+    Iterator&lt;Integer&gt; iterator = this.map.keySet().iterator();
+    if(iterator.hasNext()) {
+        this.map.remove(iterator.next());
+    }
+}
+public Map&lt;Integer, Bread&gt; getMap() {
+    return map;
+}
+public void setMap(Map&lt;Integer, Bread&gt; map) {
+    this.map = map;
+}
+public int getMAX_CAPACITY() {
+    return MAX_CAPACITY;
+}
+}</code></pre><p>生产者实体类</p>
+<pre><code>public class P implements Runnable{
+private  String name;
+//笼子
+private Bucket b;
+//生产者静态锁
+private static Object PLock = new Object();
+//构造生产者
+public P(Bucket b, String name) {
+    this.b = b;
+    this.name = name;
+}
+@Override
+public void run() {
+    System.out.println(name+&quot;----&gt;入场&quot;);
+    while(true) {
+         product();
+    }
+}
+//生产者方法
+private  void product() {
+     synchronized (this.b){
+        //如果笼子满了，就停止生产
+         if(this.b.getMap().size()&gt;=this.b.getMAX_CAPACITY()) {
+             try {
+                 this.b.wait();
+             } catch (InterruptedException e) {
+                 e.printStackTrace();
+             }
+         }else {
+            //否则就开始生产
+             try {
+                 Thread.sleep(25);
+             } catch (InterruptedException e) {
+                 e.printStackTrace();
+             }
+             //面包总数及编号
+             Bread.total++;
+             System.out.println(Bread.total);
+             Bread bread = new Bread(Bread.total);
+             this.b.putIn(bread);
+             System.out.println(name+&quot;说剩余&quot;+this.b.getMap().size()+&quot;个面包&quot;+this.b.getMap());
+             //每次生产一个就去唤醒一次消费者
+             this.b.notifyAll();
+         }
+     }
+}
+}</code></pre><p>消费者实体类</p>
+<pre><code>public class C implements Runnable{
+private String name;
+//消费者笼子
+private Bucket b;
+//消费者锁，静态锁
+private static Object CLock = new Object();
+//消费者构造方法
+public C(Bucket b, String name) {
+    this.b = b;
+    this.name = name;
+}
+@Override
+public void run() {
+    System.out.println(name+&quot;======&gt;入场&quot;);
+    while(true) {
+            consume();
+    }
+}
+//消费者方法
+private  void  consume()  {
+    //静态代码块
+    synchronized (this.b){
+        //如果笼子里没有面包了，就挂起
+        if(this.b.getMap().size()&lt;=0) {
+            try {
+                this.b.wait();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }else {
+            //否则就开始消费面包
+            try {
+                Thread.sleep(30);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            this.b.takeOut();
+            System.out.println(name+&quot;：还有&quot;+this.b.getMap().size()+&quot;个面包&quot;+this.b.getMap());
+            //每消费一次就去尝试唤醒生产者
+            this.b.notifyAll();
+        }
+    }
+}
+}</code></pre><p>饭店类</p>
+<pre><code>public class Restaurant {
+//饭店门口
+public static void main(String[] args){
+    //饭店里有一个桶
+    Bucket bucket = new Bucket();
+    //有三名面包师
+    Thread p1 = new Thread(new P(bucket,&quot;面包师1&quot;));
+    Thread p2 = new Thread(new P(bucket,&quot;面包师2&quot;));
+    Thread p3 = new Thread(new P(bucket,&quot;面包师3&quot;));
+    p1.start();
+    p2.start();
+    p3.start();
+    //来了三名顾客
+    Thread c1 = new Thread(new C(bucket,&quot;顾客1&quot;));
+    Thread c2 = new Thread(new C(bucket,&quot;顾客2&quot;));
+    Thread c3 = new Thread(new C(bucket,&quot;顾客3&quot;));
+    c1.start();
+    c2.start();
+    c3.start();
+}
+}</code></pre><p>如上几个类复制粘贴即可使用。接下来我们先直接从上面这种情况说起：</p>
+<p>##多个线程同时访问synchronized(普通对象变量)，但是普通对象变量指向同一个对象<br>上边这种情况，我们可以看到生产者中静态代码块synchronized(this.b)，而这个b变量只是个引用，他指向了构造方法种传入的那个桶对象引用，通过引用将桶对象的地址赋值给了b。然后b从此指向了饭店种的bucket。同理消费者中也是一样，b普通成员对象变量最终指向了饭店里的bucket，所以生产者和消费者是同一把锁。那么意思就是，3个面包师，三个顾客，一共6个人，同一时刻只能允许一个人对桶操作。同时由于是同一把锁，那么每当this.b.notifyAll()时，会唤醒五个线程。</p>
+<p>##生产者同时访问synchronized(Bucket.class)，消费者同时访问synchronized(Bucket.object)<br>消费者类中添加一个静态成员对象变量object。如下</p>
+<pre><code>public class Bucket {
+//桶的真面目
+private Map&lt;Integer, Bread&gt; map = new HashMap&lt;&gt;();
+//最大容量
+private  final int MAX_CAPACITY = 100;
+//桶公共静态锁
+public static Object object = new Object();
+public Bucket() {
+    //构造方法
+}
+//往桶里放入
+public void putIn(Bread bread) {
+    this.map.put(Bread.total,bread);
+}
+//从桶里取出
+public void takeOut() {
+    Iterator&lt;Integer&gt; iterator = this.map.keySet().iterator();
+    if(iterator.hasNext()) {
+        this.map.remove(iterator.next());
+    }
+}
+public Map&lt;Integer, Bread&gt; getMap() {
+    return map;
+}
+public void setMap(Map&lt;Integer, Bread&gt; map) {
+    this.map = map;
+}
+public int getMAX_CAPACITY() {
+    return MAX_CAPACITY;
+}
+}</code></pre><p>然后改变消费者和生产者中同步代码块的锁对象。<br>消费者</p>
+<pre><code>//消费者方法
+private  void  consume()  {
+    //静态代码块
+    synchronized (Bucket.object){
+        //如果笼子里没有面包了，就挂起
+        if(this.b.getMap().size()&lt;=0) {
+            try {
+                Bucket.object.wait();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }else {
+            //否则就开始消费面包
+            try {
+                Thread.sleep(30);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            this.b.takeOut();
+            System.out.println(name+&quot;：还有&quot;+this.b.getMap().size()+&quot;个面包&quot;+this.b.getMap());
+            //每消费一次就去尝试唤醒生产者
+            Bucket.object.notifyAll();
+        }
+    }
+}</code></pre><p>生产者</p>
+<pre><code>//生产者方法
+private  void product() {
+     synchronized (Bucket.class){
+        //如果笼子满了，就停止生产
+         if(this.b.getMap().size()&gt;=this.b.getMAX_CAPACITY()) {
+             try {
+                 Bucket.class.wait();
+             } catch (InterruptedException e) {
+                 e.printStackTrace();
+             }
+         }else {
+            //否则就开始生产
+             try {
+                 Thread.sleep(25);
+             } catch (InterruptedException e) {
+                 e.printStackTrace();
+             }
+             //面包总数及编号
+             Bread.total++;
+             System.out.println(Bread.total);
+             Bread bread = new Bread(Bread.total);
+             this.b.putIn(bread);
+             System.out.println(name+&quot;说剩余&quot;+this.b.getMap().size()+&quot;个面包&quot;+this.b.getMap());
+             //每次生产一个就去唤醒一次消费者
+             Bucket.class.notifyAll();
+         }
+     }
+}</code></pre><p>结果如下，生产者井然有序的生产，因为他们拥有的是Bucket的类锁，class对象，是同一把锁。而消费者再也没有苏醒过，因为一开始篮子是空的，他们都被挂起来了，并且他们拥有的是Bucket的静态对象变量object的锁，虽然也是静态的，但是对应的却是另一个class对象，和Bucket.class不是一个对象，所以即使生产者notifyAll也叫不醒他们，因为不是一把锁。<br><img src="//luoyefubuki.com/2019/10/18/java%E4%B8%AD%E5%85%B3%E9%94%AE%E5%AD%97synchronized%E8%83%8C%E5%90%8E%E7%9A%84%E7%9C%9F%E7%9B%B8-%E5%8E%9F%E7%90%86%E5%8F%8A%E5%AE%9E%E8%B7%B5/26.jpg" alt="java中关键字synchronized背后的真相-原理及实践"></p>
+<h2 id="消费者和生产者同时访问synchronized-this"><a href="#消费者和生产者同时访问synchronized-this" class="headerlink" title="消费者和生产者同时访问synchronized(this)"></a>消费者和生产者同时访问synchronized(this)</h2><p>把生产者和消费者的同步代码块中的锁对象改为this,这下就更精彩了。<br>消费者</p>
+<pre><code>//消费者方法
+private  void  consume()  {
+    //静态代码块
+    synchronized (this){
+        //如果笼子里没有面包了，就挂起
+        if(this.b.getMap().size()&lt;=0) {
+            try {
+                Bucket.object.wait();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }else {
+            //否则就开始消费面包
+            try {
+                Thread.sleep(30);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            this.b.takeOut();
+            System.out.println(name+&quot;：还有&quot;+this.b.getMap().size()+&quot;个面包&quot;+this.b.getMap());
+            //每消费一次就去尝试唤醒生产者
+            Bucket.object.notifyAll();
+        }
+    }
+}</code></pre><p>生产者</p>
+<pre><code>//生产者方法
+private  void product() {
+     synchronized (this){
+        //如果笼子满了，就停止生产
+         if(this.b.getMap().size()&gt;=this.b.getMAX_CAPACITY()) {
+             try {
+                 Bucket.class.wait();
+             } catch (InterruptedException e) {
+                 e.printStackTrace();
+             }
+         }else {
+            //否则就开始生产
+             try {
+                 Thread.sleep(25);
+             } catch (InterruptedException e) {
+                 e.printStackTrace();
+             }
+             //面包总数及编号
+             Bread.total++;
+             System.out.println(Bread.total);
+             Bread bread = new Bread(Bread.total);
+             this.b.putIn(bread);
+             System.out.println(name+&quot;说剩余&quot;+this.b.getMap().size()+&quot;个面包&quot;+this.b.getMap());
+             //每次生产一个就去唤醒一次消费者
+             Bucket.class.notifyAll();
+         }
+     }
+}</code></pre><p>结果如下。面包师1开始说胡话了，明明有两个面包，居然说剩余1个，而且面包6居然不见了<br><img src="//luoyefubuki.com/2019/10/18/java%E4%B8%AD%E5%85%B3%E9%94%AE%E5%AD%97synchronized%E8%83%8C%E5%90%8E%E7%9A%84%E7%9C%9F%E7%9B%B8-%E5%8E%9F%E7%90%86%E5%8F%8A%E5%AE%9E%E8%B7%B5/26.jpg" alt="java中关键字synchronized背后的真相-原理及实践"><br>而且我设定的最大容量明明是100，这已经超产了。<br><img src="//luoyefubuki.com/2019/10/18/java%E4%B8%AD%E5%85%B3%E9%94%AE%E5%AD%97synchronized%E8%83%8C%E5%90%8E%E7%9A%84%E7%9C%9F%E7%9B%B8-%E5%8E%9F%E7%90%86%E5%8F%8A%E5%AE%9E%E8%B7%B5/27.jpg" alt="java中关键字synchronized背后的真相-原理及实践"><br>出现这种现象，主要是这次连消费者们都不是一个锁了，都是自己锁自己，每个线程本来就是一个对象，三个线程三个对象三把锁，谁也不能阻塞谁。基本上和加锁没有关系了，这个时候估计都是偏向锁。因为每把锁只有一个线程。<br>而且面包师3，貌似挂掉了。至于面包6跑哪去了，也没见顾客说话啊。<br><img src="//luoyefubuki.com/2019/10/18/java%E4%B8%AD%E5%85%B3%E9%94%AE%E5%AD%97synchronized%E8%83%8C%E5%90%8E%E7%9A%84%E7%9C%9F%E7%9B%B8-%E5%8E%9F%E7%90%86%E5%8F%8A%E5%AE%9E%E8%B7%B5/28.jpg" alt="java中关键字synchronized背后的真相-原理及实践"></p>
+<h2 id="同步代码块总结"><a href="#同步代码块总结" class="headerlink" title="同步代码块总结"></a>同步代码块总结</h2><p>所以，总的一点就是，如果我们指定那几个线程需要竞争，一定要给他们同一把锁，如果我们对java内存机制很清晰的话，一眼就能看出来锁对不对。</p>
+
       
 
       
@@ -525,7 +829,7 @@ public synchronized static void decStockNoLockA(){
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#为什么我要整理synchronized系列"><span class="toc-number">1.</span> <span class="toc-text">为什么我要整理synchronized系列</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#同步和异步的解释"><span class="toc-number">2.</span> <span class="toc-text">同步和异步的解释</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#synchronized的作用"><span class="toc-number">3.</span> <span class="toc-text">synchronized的作用</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#java并发内存模型以及内存操作规则"><span class="toc-number">3.1.</span> <span class="toc-text">java并发内存模型以及内存操作规则</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#synchronized"><span class="toc-number">3.2.</span> <span class="toc-text">synchronized</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#可见性"><span class="toc-number">4.</span> <span class="toc-text">可见性</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#无锁——-gt-偏向锁——-gt-轻量锁——-gt-重量锁"><span class="toc-number">5.</span> <span class="toc-text">无锁——&gt;偏向锁——&gt;轻量锁——&gt;重量锁</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#java对象头"><span class="toc-number">5.1.</span> <span class="toc-text">java对象头</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CAS指令"><span class="toc-number">5.2.</span> <span class="toc-text">CAS指令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#无锁"><span class="toc-number">5.3.</span> <span class="toc-text">无锁</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#偏向锁"><span class="toc-number">5.4.</span> <span class="toc-text">偏向锁</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#轻量级锁"><span class="toc-number">5.5.</span> <span class="toc-text">轻量级锁</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#重量级锁"><span class="toc-number">5.6.</span> <span class="toc-text">重量级锁</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#重量级锁为什么重【难】"><span class="toc-number">6.</span> <span class="toc-text">重量级锁为什么重【难】</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#重量级锁运行原理"><span class="toc-number">6.1.</span> <span class="toc-text">重量级锁运行原理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#线程上下文切换"><span class="toc-number">6.2.</span> <span class="toc-text">线程上下文切换</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#synchronized加锁的三种方式"><span class="toc-number">7.</span> <span class="toc-text">synchronized加锁的三种方式</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#作用于普通方法"><span class="toc-number">7.1.</span> <span class="toc-text">作用于普通方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#作用于同步块"><span class="toc-number">7.2.</span> <span class="toc-text">作用于同步块</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#测试代码及反编译代码"><span class="toc-number">7.2.1.</span> <span class="toc-text">测试代码及反编译代码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#monitorenter-monitorexit"><span class="toc-number">7.2.2.</span> <span class="toc-text">monitorenter/monitorexit</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#作用于静态方法"><span class="toc-number">7.3.</span> <span class="toc-text">作用于静态方法</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#可重入"><span class="toc-number">8.</span> <span class="toc-text">可重入</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#为什么我要整理synchronized系列"><span class="toc-number">1.</span> <span class="toc-text">为什么我要整理synchronized系列</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#同步和异步的解释"><span class="toc-number">2.</span> <span class="toc-text">同步和异步的解释</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#synchronized的作用"><span class="toc-number">3.</span> <span class="toc-text">synchronized的作用</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#java并发内存模型以及内存操作规则"><span class="toc-number">3.1.</span> <span class="toc-text">java并发内存模型以及内存操作规则</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#作用"><span class="toc-number">3.2.</span> <span class="toc-text">作用</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#可见性"><span class="toc-number">4.</span> <span class="toc-text">可见性</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#无锁——-gt-偏向锁——-gt-轻量锁——-gt-重量锁"><span class="toc-number">5.</span> <span class="toc-text">无锁——&gt;偏向锁——&gt;轻量锁——&gt;重量锁</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#java对象头"><span class="toc-number">5.1.</span> <span class="toc-text">java对象头</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CAS指令"><span class="toc-number">5.2.</span> <span class="toc-text">CAS指令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#无锁"><span class="toc-number">5.3.</span> <span class="toc-text">无锁</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#偏向锁"><span class="toc-number">5.4.</span> <span class="toc-text">偏向锁</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#轻量级锁"><span class="toc-number">5.5.</span> <span class="toc-text">轻量级锁</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#重量级锁"><span class="toc-number">5.6.</span> <span class="toc-text">重量级锁</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#重量级锁为什么重【难】"><span class="toc-number">6.</span> <span class="toc-text">重量级锁为什么重【难】</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#重量级锁运行原理"><span class="toc-number">6.1.</span> <span class="toc-text">重量级锁运行原理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#线程上下文切换"><span class="toc-number">6.2.</span> <span class="toc-text">线程上下文切换</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#类锁与对象锁"><span class="toc-number">7.</span> <span class="toc-text">类锁与对象锁</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#对象锁"><span class="toc-number">7.1.</span> <span class="toc-text">对象锁</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#类锁"><span class="toc-number">7.2.</span> <span class="toc-text">类锁</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#使用规则"><span class="toc-number">7.3.</span> <span class="toc-text">使用规则</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#synchronized加锁的三种方式"><span class="toc-number">8.</span> <span class="toc-text">synchronized加锁的三种方式</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#作用于普通方法"><span class="toc-number">8.1.</span> <span class="toc-text">作用于普通方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#作用于同步块"><span class="toc-number">8.2.</span> <span class="toc-text">作用于同步块</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#测试代码及反编译代码"><span class="toc-number">8.2.1.</span> <span class="toc-text">测试代码及反编译代码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#monitorenter-monitorexit"><span class="toc-number">8.2.2.</span> <span class="toc-text">monitorenter/monitorexit</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#作用于静态方法"><span class="toc-number">8.3.</span> <span class="toc-text">作用于静态方法</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#可重入"><span class="toc-number">9.</span> <span class="toc-text">可重入</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#synchronized的实践"><span class="toc-number">10.</span> <span class="toc-text">synchronized的实践</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#消费者和生产者同时访问synchronized-this"><span class="toc-number">10.1.</span> <span class="toc-text">消费者和生产者同时访问synchronized(this)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#同步代码块总结"><span class="toc-number">10.2.</span> <span class="toc-text">同步代码块总结</span></a></li></ol></li></ol>
                     </div>
                 </span>
             </div>
