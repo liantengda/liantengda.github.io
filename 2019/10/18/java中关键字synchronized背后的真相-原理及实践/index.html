@@ -41,7 +41,8 @@
 <meta property="og:image" content="http://luoyefubuki.com/2019/10/18/java%E4%B8%AD%E5%85%B3%E9%94%AE%E5%AD%97synchronized%E8%83%8C%E5%90%8E%E7%9A%84%E7%9C%9F%E7%9B%B8-%E5%8E%9F%E7%90%86%E5%8F%8A%E5%AE%9E%E8%B7%B5/27.jpg">
 <meta property="og:image" content="http://luoyefubuki.com/2019/10/18/java%E4%B8%AD%E5%85%B3%E9%94%AE%E5%AD%97synchronized%E8%83%8C%E5%90%8E%E7%9A%84%E7%9C%9F%E7%9B%B8-%E5%8E%9F%E7%90%86%E5%8F%8A%E5%AE%9E%E8%B7%B5/28.jpg">
 <meta property="og:image" content="http://luoyefubuki.com/2019/10/18/java%E4%B8%AD%E5%85%B3%E9%94%AE%E5%AD%97synchronized%E8%83%8C%E5%90%8E%E7%9A%84%E7%9C%9F%E7%9B%B8-%E5%8E%9F%E7%90%86%E5%8F%8A%E5%AE%9E%E8%B7%B5/29.jpg">
-<meta property="og:updated_time" content="2019-10-27T07:28:46.950Z">
+<meta property="og:image" content="http://luoyefubuki.com/2019/10/18/java%E4%B8%AD%E5%85%B3%E9%94%AE%E5%AD%97synchronized%E8%83%8C%E5%90%8E%E7%9A%84%E7%9C%9F%E7%9B%B8-%E5%8E%9F%E7%90%86%E5%8F%8A%E5%AE%9E%E8%B7%B5/30.jpg">
+<meta property="og:updated_time" content="2019-10-27T08:14:51.896Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="java中关键字synchronized背后的真相-原理及实践">
 <meta name="twitter:description" content="为什么我要整理synchronized系列私がこんなに難しいことを勉強しているのは、決して私は勉強することが大好きだということではない、実は、全ては面接のためなのだ。因为面试被吊起来打。不过仔细学完之后，发现还挺有意思。">
@@ -661,9 +662,128 @@ private  void product() {
              Bucket.class.notifyAll();
          }
      }
-}</code></pre><p>结果如下。面包师1开始说胡话了，明明有两个面包，居然说剩余1个，而且面包6居然不见了<br><img src="//luoyefubuki.com/2019/10/18/java%E4%B8%AD%E5%85%B3%E9%94%AE%E5%AD%97synchronized%E8%83%8C%E5%90%8E%E7%9A%84%E7%9C%9F%E7%9B%B8-%E5%8E%9F%E7%90%86%E5%8F%8A%E5%AE%9E%E8%B7%B5/27.jpg" alt="java中关键字synchronized背后的真相-原理及实践"><br>而且我设定的最大容量明明是100，这已经超产了。<br><img src="//luoyefubuki.com/2019/10/18/java%E4%B8%AD%E5%85%B3%E9%94%AE%E5%AD%97synchronized%E8%83%8C%E5%90%8E%E7%9A%84%E7%9C%9F%E7%9B%B8-%E5%8E%9F%E7%90%86%E5%8F%8A%E5%AE%9E%E8%B7%B5/28.jpg" alt="java中关键字synchronized背后的真相-原理及实践"><br>出现这种现象，主要是这次连消费者们都不是一个锁了，都是自己锁自己，每个线程本来就是一个对象，三个线程三个对象三把锁，谁也不能阻塞谁。基本上和加锁没有关系了，这个时候估计都是偏向锁。因为每把锁只有一个线程。<br>而且面包师3，貌似挂掉了。至于面包6跑哪去了，也没见顾客说话啊。<br><img src="//luoyefubuki.com/2019/10/18/java%E4%B8%AD%E5%85%B3%E9%94%AE%E5%AD%97synchronized%E8%83%8C%E5%90%8E%E7%9A%84%E7%9C%9F%E7%9B%B8-%E5%8E%9F%E7%90%86%E5%8F%8A%E5%AE%9E%E8%B7%B5/29.jpg" alt="java中关键字synchronized背后的真相-原理及实践"></p>
+}</code></pre><p>结果如下。面包师1开始说胡话了，明明有两个面包，居然说剩余1个，而且面包6居然不见了<br><img src="//luoyefubuki.com/2019/10/18/java%E4%B8%AD%E5%85%B3%E9%94%AE%E5%AD%97synchronized%E8%83%8C%E5%90%8E%E7%9A%84%E7%9C%9F%E7%9B%B8-%E5%8E%9F%E7%90%86%E5%8F%8A%E5%AE%9E%E8%B7%B5/27.jpg" alt="java中关键字synchronized背后的真相-原理及实践"><br>而且我设定的最大容量明明是100，这已经超产了。<br><img src="//luoyefubuki.com/2019/10/18/java%E4%B8%AD%E5%85%B3%E9%94%AE%E5%AD%97synchronized%E8%83%8C%E5%90%8E%E7%9A%84%E7%9C%9F%E7%9B%B8-%E5%8E%9F%E7%90%86%E5%8F%8A%E5%AE%9E%E8%B7%B5/28.jpg" alt="java中关键字synchronized背后的真相-原理及实践"><br>出现这种现象，主要是这次连消费者们都不是一个锁了，都是自己锁自己，每个线程本来就是一个对象，三个线程三个对象三把锁，谁也不能阻塞谁。基本上和加锁没有关系了，这个时候估计都是偏向锁。因为每把锁只有一个线程。<br>而且面包师3，貌似挂掉了。至于面包6跑哪去了，也没见顾客说话啊。<br><img src="//luoyefubuki.com/2019/10/18/java%E4%B8%AD%E5%85%B3%E9%94%AE%E5%AD%97synchronized%E8%83%8C%E5%90%8E%E7%9A%84%E7%9C%9F%E7%9B%B8-%E5%8E%9F%E7%90%86%E5%8F%8A%E5%AE%9E%E8%B7%B5/29.jpg" alt="java中关键字synchronized背后的真相-原理及实践"><br>至于这个异常，网上的说法是这样的。</p>
+<blockquote>
+<p>基本上所有的集合类都会有一个叫做快速失败的校验机制，当一个集合在被多个线程修改并访问时，就会出现ConcurrentModificationException 校验机制。它的实现原理就是我们经常提到的modCount修改计数器。如果在读列表时，modCount发生变化则会抛出ConcurrentModificationException异常。这与线程同步是两码事，线程同步是为了保护集合中的数据不被脏读、脏写而设置的。</p>
+</blockquote>
 <h2 id="同步代码块总结"><a href="#同步代码块总结" class="headerlink" title="同步代码块总结"></a>同步代码块总结</h2><p>所以，总的一点就是，如果我们指定那几个线程需要竞争，一定要给他们同一把锁，如果我们对java内存机制很清晰的话，一眼就能看出来锁对不对。</p>
-<p>## </p>
+<h2 id="多线程同时访问同一个类下的两个普通方法"><a href="#多线程同时访问同一个类下的两个普通方法" class="headerlink" title="多线程同时访问同一个类下的两个普通方法"></a>多线程同时访问同一个类下的两个普通方法</h2><p>这种情况我们就需要改代码了。因为生产者和消费者是通过桶相互连接的。所以同一个类指的桶这个类，synchronized应该加在桶的普通方法上。<br>生产者</p>
+<pre><code>public class P implements Runnable{
+private  String name;
+//笼子
+private Bucket b;
+//生产者静态锁
+private static Object PLock = new Object();
+//构造生产者
+public P(Bucket b, String name) {
+    this.b = b;
+    this.name = name;
+}
+@Override
+public void run() {
+    System.out.println(name+&quot;----&gt;入场&quot;);
+    while(true) {
+         product();
+    }
+}
+//生产者方法
+private  void product() {
+    //生产需要时间
+     try {
+         Thread.sleep(25);
+     } catch (InterruptedException e) {
+         e.printStackTrace();
+     }
+     //面包总数及编号
+     Bread.total++;
+     Bread bread = new Bread(Bread.total);
+     this.b.putIn(bread,this.name);
+}
+}</code></pre><p>消费者</p>
+<pre><code>public class C implements Runnable{
+private String name;
+//消费者笼子
+private Bucket b;
+//消费者锁，静态锁
+private static Object CLock = new Object();
+//消费者构造方法
+public C(Bucket b, String name) {
+    this.b = b;
+    this.name = name;
+}
+@Override
+public void run() {
+    System.out.println(name+&quot;======&gt;入场&quot;);
+    while(true) {
+            consume();
+    }
+}
+//消费者方法
+private  void  consume()  {
+            //消费面包需要时间
+            try {
+                Thread.sleep(30);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            this.b.takeOut(this.name);
+}
+}</code></pre><p>桶</p>
+<pre><code>public class Bucket {
+//桶的真面目
+private Map&lt;Integer, Bread&gt; map = new HashMap&lt;&gt;();
+//最大容量
+private  final int MAX_CAPACITY = 10;
+//桶公共静态锁
+public static Object object = new Object();
+public Bucket() {
+    //构造方法
+}
+//往桶里放入
+public synchronized void putIn(Bread bread,String name) {
+    //如果桶满了就别放了，叫消费者消费
+    if(this.getMap().size()&gt;=this.getMAX_CAPACITY()) {
+        try {
+            this.wait();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+    this.map.put(bread.getNumber(),bread);
+    System.out.println(bread.getNumber());
+    System.out.println(name+&quot;说剩余&quot;+this.getMap().size()+&quot;个面包&quot;+this.getMap());
+    //每次生产一个就去唤醒一次消费者
+    this.notifyAll();
+}
+//从桶里取出
+public synchronized void takeOut(String name) {
+    //如果笼子里没有面包了，就挂起
+    if(this.getMap().size()&lt;=0) {
+        try {
+            this.wait();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+    Iterator&lt;Integer&gt; iterator = this.map.keySet().iterator();
+    if(iterator.hasNext()) {
+        this.map.remove(iterator.next());
+    }
+    System.out.println(name+&quot;：还有&quot;+this.getMap().size()+&quot;个面包&quot;+this.getMap());
+    //每消费一次就去尝试唤醒生产者
+    this.notifyAll();
+}
+public Map&lt;Integer, Bread&gt; getMap() {
+    return map;
+}
+public void setMap(Map&lt;Integer, Bread&gt; map) {
+    this.map = map;
+}
+public int getMAX_CAPACITY() {
+    return MAX_CAPACITY;
+}
+}</code></pre><p>以上代码的运行结果如下，虽然可能会出现些小问题，不过目前来看还算正常，每个数字都正确对应，没有发生很大错误。这里的普通方法上添加了synchronized关键字，相当于锁定this，而此处的this指的是bucket对象，而生产者和消费者的bucket在构造时是同一个桶，所以虽然是两个方法，但是他们的锁都是这个桶，所以可以相互唤醒，顺序执行。<br><img src="//luoyefubuki.com/2019/10/18/java%E4%B8%AD%E5%85%B3%E9%94%AE%E5%AD%97synchronized%E8%83%8C%E5%90%8E%E7%9A%84%E7%9C%9F%E7%9B%B8-%E5%8E%9F%E7%90%86%E5%8F%8A%E5%AE%9E%E8%B7%B5/30.jpg" alt="java中关键字synchronized背后的真相-原理及实践"></p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>以上几种情况只是少数几种情况，还有很多不同的组合。但是还是那句话，如果我们对java的内存机制十分熟悉的话，根本不用辨别目前是哪种情况，直接看锁是不是一个锁就可以了。</p>
 
       
 
@@ -830,7 +950,7 @@ private  void product() {
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#为什么我要整理synchronized系列"><span class="toc-number">1.</span> <span class="toc-text">为什么我要整理synchronized系列</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#同步和异步的解释"><span class="toc-number">2.</span> <span class="toc-text">同步和异步的解释</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#synchronized的作用"><span class="toc-number">3.</span> <span class="toc-text">synchronized的作用</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#java并发内存模型以及内存操作规则"><span class="toc-number">3.1.</span> <span class="toc-text">java并发内存模型以及内存操作规则</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#作用"><span class="toc-number">3.2.</span> <span class="toc-text">作用</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#可见性"><span class="toc-number">4.</span> <span class="toc-text">可见性</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#无锁——-gt-偏向锁——-gt-轻量锁——-gt-重量锁"><span class="toc-number">5.</span> <span class="toc-text">无锁——&gt;偏向锁——&gt;轻量锁——&gt;重量锁</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#java对象头"><span class="toc-number">5.1.</span> <span class="toc-text">java对象头</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CAS指令"><span class="toc-number">5.2.</span> <span class="toc-text">CAS指令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#无锁"><span class="toc-number">5.3.</span> <span class="toc-text">无锁</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#偏向锁"><span class="toc-number">5.4.</span> <span class="toc-text">偏向锁</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#轻量级锁"><span class="toc-number">5.5.</span> <span class="toc-text">轻量级锁</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#重量级锁"><span class="toc-number">5.6.</span> <span class="toc-text">重量级锁</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#重量级锁为什么重【难】"><span class="toc-number">6.</span> <span class="toc-text">重量级锁为什么重【难】</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#重量级锁运行原理"><span class="toc-number">6.1.</span> <span class="toc-text">重量级锁运行原理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#线程上下文切换"><span class="toc-number">6.2.</span> <span class="toc-text">线程上下文切换</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#类锁与对象锁"><span class="toc-number">7.</span> <span class="toc-text">类锁与对象锁</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#对象锁"><span class="toc-number">7.1.</span> <span class="toc-text">对象锁</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#类锁"><span class="toc-number">7.2.</span> <span class="toc-text">类锁</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#使用规则"><span class="toc-number">7.3.</span> <span class="toc-text">使用规则</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#synchronized加锁的三种方式"><span class="toc-number">8.</span> <span class="toc-text">synchronized加锁的三种方式</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#作用于普通方法"><span class="toc-number">8.1.</span> <span class="toc-text">作用于普通方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#作用于同步块"><span class="toc-number">8.2.</span> <span class="toc-text">作用于同步块</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#测试代码及反编译代码"><span class="toc-number">8.2.1.</span> <span class="toc-text">测试代码及反编译代码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#monitorenter-monitorexit"><span class="toc-number">8.2.2.</span> <span class="toc-text">monitorenter/monitorexit</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#作用于静态方法"><span class="toc-number">8.3.</span> <span class="toc-text">作用于静态方法</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#可重入"><span class="toc-number">9.</span> <span class="toc-text">可重入</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#synchronized的实践"><span class="toc-number">10.</span> <span class="toc-text">synchronized的实践</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#消费者和生产者同时访问synchronized-this"><span class="toc-number">10.1.</span> <span class="toc-text">消费者和生产者同时访问synchronized(this)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#同步代码块总结"><span class="toc-number">10.2.</span> <span class="toc-text">同步代码块总结</span></a></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#为什么我要整理synchronized系列"><span class="toc-number">1.</span> <span class="toc-text">为什么我要整理synchronized系列</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#同步和异步的解释"><span class="toc-number">2.</span> <span class="toc-text">同步和异步的解释</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#synchronized的作用"><span class="toc-number">3.</span> <span class="toc-text">synchronized的作用</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#java并发内存模型以及内存操作规则"><span class="toc-number">3.1.</span> <span class="toc-text">java并发内存模型以及内存操作规则</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#作用"><span class="toc-number">3.2.</span> <span class="toc-text">作用</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#可见性"><span class="toc-number">4.</span> <span class="toc-text">可见性</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#无锁——-gt-偏向锁——-gt-轻量锁——-gt-重量锁"><span class="toc-number">5.</span> <span class="toc-text">无锁——&gt;偏向锁——&gt;轻量锁——&gt;重量锁</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#java对象头"><span class="toc-number">5.1.</span> <span class="toc-text">java对象头</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CAS指令"><span class="toc-number">5.2.</span> <span class="toc-text">CAS指令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#无锁"><span class="toc-number">5.3.</span> <span class="toc-text">无锁</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#偏向锁"><span class="toc-number">5.4.</span> <span class="toc-text">偏向锁</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#轻量级锁"><span class="toc-number">5.5.</span> <span class="toc-text">轻量级锁</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#重量级锁"><span class="toc-number">5.6.</span> <span class="toc-text">重量级锁</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#重量级锁为什么重【难】"><span class="toc-number">6.</span> <span class="toc-text">重量级锁为什么重【难】</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#重量级锁运行原理"><span class="toc-number">6.1.</span> <span class="toc-text">重量级锁运行原理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#线程上下文切换"><span class="toc-number">6.2.</span> <span class="toc-text">线程上下文切换</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#类锁与对象锁"><span class="toc-number">7.</span> <span class="toc-text">类锁与对象锁</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#对象锁"><span class="toc-number">7.1.</span> <span class="toc-text">对象锁</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#类锁"><span class="toc-number">7.2.</span> <span class="toc-text">类锁</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#使用规则"><span class="toc-number">7.3.</span> <span class="toc-text">使用规则</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#synchronized加锁的三种方式"><span class="toc-number">8.</span> <span class="toc-text">synchronized加锁的三种方式</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#作用于普通方法"><span class="toc-number">8.1.</span> <span class="toc-text">作用于普通方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#作用于同步块"><span class="toc-number">8.2.</span> <span class="toc-text">作用于同步块</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#测试代码及反编译代码"><span class="toc-number">8.2.1.</span> <span class="toc-text">测试代码及反编译代码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#monitorenter-monitorexit"><span class="toc-number">8.2.2.</span> <span class="toc-text">monitorenter/monitorexit</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#作用于静态方法"><span class="toc-number">8.3.</span> <span class="toc-text">作用于静态方法</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#可重入"><span class="toc-number">9.</span> <span class="toc-text">可重入</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#synchronized的实践"><span class="toc-number">10.</span> <span class="toc-text">synchronized的实践</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#消费者和生产者同时访问synchronized-this"><span class="toc-number">10.1.</span> <span class="toc-text">消费者和生产者同时访问synchronized(this)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#同步代码块总结"><span class="toc-number">10.2.</span> <span class="toc-text">同步代码块总结</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#多线程同时访问同一个类下的两个普通方法"><span class="toc-number">10.3.</span> <span class="toc-text">多线程同时访问同一个类下的两个普通方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#总结"><span class="toc-number">10.4.</span> <span class="toc-text">总结</span></a></li></ol></li></ol>
                     </div>
                 </span>
             </div>
