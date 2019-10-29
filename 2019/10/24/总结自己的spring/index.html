@@ -17,7 +17,7 @@
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://luoyefubuki.com/2019/10/24/%E6%80%BB%E7%BB%93%E8%87%AA%E5%B7%B1%E7%9A%84spring/1.jpg">
 <meta property="og:image" content="http://luoyefubuki.com/2019/10/24/%E6%80%BB%E7%BB%93%E8%87%AA%E5%B7%B1%E7%9A%84spring/1.jpg">
-<meta property="og:updated_time" content="2019-10-29T09:26:01.047Z">
+<meta property="og:updated_time" content="2019-10-29T11:52:10.579Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="总结自己的spring">
 <meta name="twitter:description" content="初学spring实践我直接来从我第一次使用spring的时候开始，来看看spring到底简化了哪些过程。以下是我自学java时，全程自己手动编写的一个图书后台管理系统。虽然对于现在这个时代，已经很烂了，但是从我手动编写的整个过程恰好可以说明，框架都做了哪些事情。">
@@ -490,7 +490,7 @@ public int bookDeleteById(int bookId) throws IOException {
     session.close();
     return index;
 }    
-}</code></pre><h2 id="使用spring后"><a href="#使用spring后" class="headerlink" title="使用spring后"></a>使用spring后</h2><h3 id="目录结构-1"><a href="#目录结构-1" class="headerlink" title="目录结构"></a>目录结构</h3><p>与未使用spring之前相比，mybatis.xml被删除了，多了一个appalicationContext.xml文件。<br><img src="//luoyefubuki.com/2019/10/24/%E6%80%BB%E7%BB%93%E8%87%AA%E5%B7%B1%E7%9A%84spring/1.jpg" alt="总结自己的spring"><br>我们先从service的实现层来看。代码如下，除了分页看上去还是很辣眼睛，其他方法的代码都已经简化了。然后和未使用spring之前的代码相比，发现多了@Service，@Resource两个注解。并且，可以发现我并没有创建BookInfoMapper接口的实体类。但是如下代码中bookInfoMaper却可以当个对象使用。</p>
+}</code></pre><h2 id="使用spring后"><a href="#使用spring后" class="headerlink" title="使用spring后"></a>使用spring后</h2><h3 id="目录结构-1"><a href="#目录结构-1" class="headerlink" title="目录结构"></a>目录结构</h3><p>与未使用spring之前相比，mybatis.xml被删除了，多了一个appalicationContext.xml文件。<br><img src="//luoyefubuki.com/2019/10/24/%E6%80%BB%E7%BB%93%E8%87%AA%E5%B7%B1%E7%9A%84spring/1.jpg" alt="总结自己的spring"><br>我们先从service的实现层来看。代码如下，除了分页看上去还是很辣眼睛，其他方法的代码都已经简化了。然后和未使用spring之前的代码相比，发现多了@Service，@Resource两个注解。并且，可以发现我并没有创建BookInfoMapper接口的实体类。但是如下代码中bookInfoMaper却可以当个对象使用。这里便是spring一个很重要的特点。IOC和DI。也就是传说中的控制反转和依赖注入。</p>
 <pre><code>@Service(&quot;bookInfoService&quot;)
 public class BookInfoServiceImpl implements BookInfoService {
 @Resource
@@ -607,7 +607,70 @@ public BookInfo checkUserLoginService(String uname, String pwd) {
 public BookInfo checkBookInfo(String bookId) throws IOException {
     return bookInfoMapper.selByBookId(bookId);
 }    
-}</code></pre><h1 id="IOC"><a href="#IOC" class="headerlink" title="IOC"></a>IOC</h1><p>IOC英文名称inversion of control，翻译过来就是控制反转。即控制权反转，原先需要我们new一个对象，以后有了spring，交由spring帮助我们创建。</p>
+}</code></pre><h1 id="appalicationContext-xml里面是什么"><a href="#appalicationContext-xml里面是什么" class="headerlink" title="appalicationContext.xml里面是什么"></a>appalicationContext.xml里面是什么</h1><p>为了尽量少放些无价值信息，我把<beans>里面的东西删除了，然后我们看看这里面配置了什么。我们首先看到beans，也就是spring给我们创造的对象们，然后每个bean就代表具体的对象，class代表对应对象的具体实现类。</beans></p>
+<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;beans&gt;
+   &lt;!-- 注解扫描。base-package指的去哪里扫描。spring会去指定路径下扫描java文件，如果扫描到文件中带有@Service, @Component, @Repository, @Controller等这些注解的类，则把这些类注册为bean，bean就是对象。  --&gt;
+&lt;context:component-scan base-package=&quot;com.lian.service.impl&quot;&gt;&lt;/context:component-scan&gt;
+&lt;!-- 数据源封装 数据源就是获取数据库连接的 spring-jdbc.jar中  用这个就代替了mybatis.xml中的JDBC封装--&gt;
+&lt;bean id=&quot;dataSource&quot; class=&quot;org.springframework.jdbc.datasource.DriverManagerDataSource&quot;&gt;
+    &lt;!-- 注入属性值 在加载配置文件时，自动创建该对象，并为该对象对应属性赋值 --&gt;
+    &lt;property name=&quot;driverClassName&quot; value=&quot;com.mysql.cj.jdbc.Driver&quot;&gt;&lt;/property&gt;
+    &lt;property name=&quot;url&quot; value=&quot;jdbc:mysql://127.0.0.1:3306/ssm?useUnicode=true&amp;amp;characterEncoding=utf-8&amp;amp;useSSL=false&amp;amp;serverTimezone=GMT&quot;&gt;&lt;/property&gt;
+    &lt;property name=&quot;username&quot; value=&quot;root&quot;&gt;&lt;/property&gt;
+    &lt;property name=&quot;password&quot; value=&quot;555888&quot;&gt;&lt;/property&gt;
+&lt;/bean&gt;
+&lt;!-- 创建工厂需要连接数据库 依赖注入，依赖数据源对象的建立    --&gt;
+&lt;bean id=&quot;factory&quot; class=&quot;org.mybatis.spring.SqlSessionFactoryBean&quot;&gt;
+    &lt;!-- 对象注入  这个难道就是依赖注入？DI  把上边实例化的对象注入到另一个对象中--&gt;
+    &lt;!-- 自动注入，当类的属性名和我们要引用的对象名一样时，可以不用手动输入property。将autowire设置为byName
+        就会去自动寻找该对象
+     --&gt;
+    &lt;property name=&quot;dataSource&quot; ref=&quot;dataSource&quot;&gt;&lt;/property&gt;
+    &lt;!-- 在没有使用注解时，需要告诉电脑去哪里加载实体类 --&gt;
+    &lt;property name=&quot;typeAliasesPackage&quot; value=&quot;com.lian.pojo&quot;&gt;&lt;/property&gt;
+&lt;/bean&gt;
+&lt;!-- 这个类不需要被别人引用，不需要被别人引用的类就不用起ID --&gt;
+&lt;!-- 扫描器相当于mybatis.xml中的mappers下的package标签  创建建接口对象 --&gt;
+&lt;bean class=&quot;org.mybatis.spring.mapper.MapperScannerConfigurer&quot;&gt;
+    &lt;property name=&quot;basePackage&quot; value=&quot;com.lian.mapper&quot;&gt;&lt;/property&gt;
+    &lt;property name=&quot;sqlSessionFactory&quot; ref=&quot;factory&quot;&gt;&lt;/property&gt;
+&lt;/bean&gt;
+&lt;!-- 有了注解扫描这些东西就不用配了 --&gt;
+&lt;!-- 此处需要将service对象注入，通过id去getBean   到这里就把mybatis基本整合完了--&gt;
+&lt;!-- &lt;bean  id=&quot;bookInfoService&quot; class=&quot;com.lian.service.impl.BookInfoServiceImpl&quot;&gt;
+    此处写入这个对象中的属性bookInfoMapper  name是类中的属性名 ref引用来自哪个类，类名变小写        
+    &lt;property name=&quot;bookInfoMapper&quot; ref=&quot;bookInfoMapper&quot;&gt;&lt;/property&gt;
+&lt;/bean&gt; --&gt;
+&lt;!-- spring-jdbc.jar中 --&gt;
+&lt;bean id=&quot;txManager&quot; class=&quot;org.springframework.jdbc.datasource.DataSourceTransactionManager&quot;&gt;
+    &lt;!-- 提交事务需要连接数据库 --&gt;
+    &lt;property name=&quot;dataSource&quot; ref=&quot;dataSource&quot;&gt;&lt;/property&gt;
+&lt;/bean&gt;
+&lt;!-- 配置声明式事务 --&gt;
+&lt;tx:advice id=&quot;txAdvice&quot; transaction-manager=&quot;txManager&quot;&gt;
+    &lt;tx:attributes&gt;
+         &lt;!-- 此处控制哪些方法中有事务 --&gt;
+         &lt;!-- BookIns*这个*是个通配符。扩大搜索范围，不需要频繁写入方法 --&gt;
+        &lt;tx:method name=&quot;BookIns*&quot;/&gt;
+        &lt;tx:method name=&quot;bookDel*&quot;/&gt;
+        &lt;tx:method name=&quot;upd*&quot;/&gt;
+    &lt;/tx:attributes&gt;
+&lt;/tx:advice&gt;
+&lt;!-- 此处面向切面编程aop --&gt;
+&lt;aop:aspectj-autoproxy proxy-target-class=&quot;true&quot;&gt;&lt;/aop:aspectj-autoproxy&gt;
+&lt;bean id=&quot;mybefore&quot; class=&quot;com.lian.advice.MyBefore&quot;&gt;&lt;/bean&gt;
+&lt;bean id=&quot;myafter&quot; class=&quot;com.lian.advice.MyAfter&quot;&gt;&lt;/bean&gt;
+&lt;aop:config&gt;
+    &lt;!-- 切点范围设置大一些 --&gt;
+    &lt;aop:pointcut expression=&quot;execution(* com.lian.service.impl.*.BookInsert(..))&quot; id=&quot;mypoint&quot;/&gt;
+    &lt;aop:advisor advice-ref=&quot;txAdvice&quot; pointcut-ref=&quot;mypoint&quot;/&gt;
+    &lt;!--此处引入前置通知  --&gt;
+    &lt;aop:advisor advice-ref=&quot;mybefore&quot; pointcut-ref=&quot;mypoint&quot;/&gt;
+    &lt;!-- 此处引入后置通知 --&gt;
+    &lt;aop:advisor advice-ref=&quot;myafter&quot; pointcut-ref=&quot;mypoint&quot;/&gt;
+&lt;/aop:config&gt;
+&lt;/beans&gt;</code></pre><h1 id="IOC"><a href="#IOC" class="headerlink" title="IOC"></a>IOC</h1><p>IOC英文名称inversion of control，翻译过来就是控制反转。即控制权反转，原先需要我们new一个对象，以后有了spring，交由spring帮助我们创建。</p>
 <h1 id="DI"><a href="#DI" class="headerlink" title="DI"></a>DI</h1><p>Dependency Injection，依赖注入。</p>
 <h1 id="AOP"><a href="#AOP" class="headerlink" title="AOP"></a>AOP</h1><p>Aspect Oriented Programming,面向切面编程。</p>
 <h1 id="applicationContext-amp-BeanFactory"><a href="#applicationContext-amp-BeanFactory" class="headerlink" title="applicationContext&amp;BeanFactory"></a>applicationContext&amp;BeanFactory</h1>
@@ -776,7 +839,7 @@ public BookInfo checkBookInfo(String bookId) throws IOException {
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#初学spring实践"><span class="toc-number">1.</span> <span class="toc-text">初学spring实践</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#未使用spring之前"><span class="toc-number">1.1.</span> <span class="toc-text">未使用spring之前</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#目录结构"><span class="toc-number">1.1.1.</span> <span class="toc-text">目录结构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#实体类"><span class="toc-number">1.1.2.</span> <span class="toc-text">实体类</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#图书信息类"><span class="toc-number">1.1.2.1.</span> <span class="toc-text">图书信息类</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#图书类型类"><span class="toc-number">1.1.2.2.</span> <span class="toc-text">图书类型类</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#其他类型"><span class="toc-number">1.1.2.3.</span> <span class="toc-text">其他类型</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#service类"><span class="toc-number">1.1.3.</span> <span class="toc-text">service类</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#使用spring后"><span class="toc-number">1.2.</span> <span class="toc-text">使用spring后</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#目录结构-1"><span class="toc-number">1.2.1.</span> <span class="toc-text">目录结构</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#IOC"><span class="toc-number">2.</span> <span class="toc-text">IOC</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#DI"><span class="toc-number">3.</span> <span class="toc-text">DI</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#AOP"><span class="toc-number">4.</span> <span class="toc-text">AOP</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#applicationContext-amp-BeanFactory"><span class="toc-number">5.</span> <span class="toc-text">applicationContext&amp;BeanFactory</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#初学spring实践"><span class="toc-number">1.</span> <span class="toc-text">初学spring实践</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#未使用spring之前"><span class="toc-number">1.1.</span> <span class="toc-text">未使用spring之前</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#目录结构"><span class="toc-number">1.1.1.</span> <span class="toc-text">目录结构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#实体类"><span class="toc-number">1.1.2.</span> <span class="toc-text">实体类</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#图书信息类"><span class="toc-number">1.1.2.1.</span> <span class="toc-text">图书信息类</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#图书类型类"><span class="toc-number">1.1.2.2.</span> <span class="toc-text">图书类型类</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#其他类型"><span class="toc-number">1.1.2.3.</span> <span class="toc-text">其他类型</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#service类"><span class="toc-number">1.1.3.</span> <span class="toc-text">service类</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#使用spring后"><span class="toc-number">1.2.</span> <span class="toc-text">使用spring后</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#目录结构-1"><span class="toc-number">1.2.1.</span> <span class="toc-text">目录结构</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#appalicationContext-xml里面是什么"><span class="toc-number">2.</span> <span class="toc-text">appalicationContext.xml里面是什么</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#IOC"><span class="toc-number">3.</span> <span class="toc-text">IOC</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#DI"><span class="toc-number">4.</span> <span class="toc-text">DI</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#AOP"><span class="toc-number">5.</span> <span class="toc-text">AOP</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#applicationContext-amp-BeanFactory"><span class="toc-number">6.</span> <span class="toc-text">applicationContext&amp;BeanFactory</span></a></li></ol>
                     </div>
                 </span>
             </div>
