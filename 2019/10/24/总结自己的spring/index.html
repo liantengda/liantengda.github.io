@@ -8,19 +8,19 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>总结自己的spring | 纷飞落叶的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="初学spring实践我直接来从我第一次使用spring的时候开始，来看看spring到底简化了哪些过程。以下是我自学java时，全程自己手动编写的一个图书后台管理系统。虽然对于现在这个时代，已经很烂了，但是从我手动编写的整个过程恰好可以说明，框架都做了哪些事情。 未使用spring之前目录结构这是我初学时候严格按照视频中讲的所搭建的目录结构，是不是一目了然。其中ORM框架使用的mybatis，但是">
+  <meta name="description" content="初学spring实践我直接来从我第一次使用spring的时候开始，来看看spring到底简化了哪些过程。以下是我自学java时，全程自己手动编写的一个图书后台管理系统。虽然对于现在这个时代，已经很烂了，但是从我手动编写的整个过程恰好可以说明，框架都做了哪些事情。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="总结自己的spring">
 <meta property="og:url" content="http://yoursite.com/2019/10/24/总结自己的spring/index.html">
 <meta property="og:site_name" content="纷飞落叶的博客">
-<meta property="og:description" content="初学spring实践我直接来从我第一次使用spring的时候开始，来看看spring到底简化了哪些过程。以下是我自学java时，全程自己手动编写的一个图书后台管理系统。虽然对于现在这个时代，已经很烂了，但是从我手动编写的整个过程恰好可以说明，框架都做了哪些事情。 未使用spring之前目录结构这是我初学时候严格按照视频中讲的所搭建的目录结构，是不是一目了然。其中ORM框架使用的mybatis，但是">
+<meta property="og:description" content="初学spring实践我直接来从我第一次使用spring的时候开始，来看看spring到底简化了哪些过程。以下是我自学java时，全程自己手动编写的一个图书后台管理系统。虽然对于现在这个时代，已经很烂了，但是从我手动编写的整个过程恰好可以说明，框架都做了哪些事情。">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://luoyefubuki.com/2019/10/24/%E6%80%BB%E7%BB%93%E8%87%AA%E5%B7%B1%E7%9A%84spring/1.jpg">
 <meta property="og:image" content="http://luoyefubuki.com/2019/10/24/%E6%80%BB%E7%BB%93%E8%87%AA%E5%B7%B1%E7%9A%84spring/1.jpg">
-<meta property="og:updated_time" content="2019-10-29T09:02:50.365Z">
+<meta property="og:updated_time" content="2019-10-29T09:26:01.047Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="总结自己的spring">
-<meta name="twitter:description" content="初学spring实践我直接来从我第一次使用spring的时候开始，来看看spring到底简化了哪些过程。以下是我自学java时，全程自己手动编写的一个图书后台管理系统。虽然对于现在这个时代，已经很烂了，但是从我手动编写的整个过程恰好可以说明，框架都做了哪些事情。 未使用spring之前目录结构这是我初学时候严格按照视频中讲的所搭建的目录结构，是不是一目了然。其中ORM框架使用的mybatis，但是">
+<meta name="twitter:description" content="初学spring实践我直接来从我第一次使用spring的时候开始，来看看spring到底简化了哪些过程。以下是我自学java时，全程自己手动编写的一个图书后台管理系统。虽然对于现在这个时代，已经很烂了，但是从我手动编写的整个过程恰好可以说明，框架都做了哪些事情。">
 <meta name="twitter:image" content="http://luoyefubuki.com/2019/10/24/%E6%80%BB%E7%BB%93%E8%87%AA%E5%B7%B1%E7%9A%84spring/1.jpg">
   
     <link rel="alternative" href="/atom.xml" title="纷飞落叶的博客" type="application/atom+xml">
@@ -210,6 +210,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h1 id="初学spring实践"><a href="#初学spring实践" class="headerlink" title="初学spring实践"></a>初学spring实践</h1><p>我直接来从我第一次使用spring的时候开始，来看看spring到底简化了哪些过程。以下是我自学java时，全程自己手动编写的一个图书后台管理系统。虽然对于现在这个时代，已经很烂了，但是从我手动编写的整个过程恰好可以说明，框架都做了哪些事情。</p>
+<a id="more"></a>
 <h2 id="未使用spring之前"><a href="#未使用spring之前" class="headerlink" title="未使用spring之前"></a>未使用spring之前</h2><h3 id="目录结构"><a href="#目录结构" class="headerlink" title="目录结构"></a>目录结构</h3><p>这是我初学时候严格按照视频中讲的所搭建的目录结构，是不是一目了然。其中ORM框架使用的mybatis，但是此时并没有使用struts以及springmvc，所以servlet层有点混乱。不过我们先不要在意这些。<br><img src="//luoyefubuki.com/2019/10/24/%E6%80%BB%E7%BB%93%E8%87%AA%E5%B7%B1%E7%9A%84spring/1.jpg" alt="总结自己的spring"></p>
 <h3 id="实体类"><a href="#实体类" class="headerlink" title="实体类"></a>实体类</h3><p>实体类中，我省略了get和set方法，不然代码太长了。如果需要复制粘贴，则自己把所有get和set都加上。</p>
 <h4 id="图书信息类"><a href="#图书信息类" class="headerlink" title="图书信息类"></a>图书信息类</h4><pre><code>/**
