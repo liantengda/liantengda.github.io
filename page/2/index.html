@@ -178,6 +178,76 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-为什么会出现多路查找树" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/09/22/为什么会出现多路查找树/">为什么会出现多路查找树</a>
+    </h1>
+  
+
+        
+        
+<a href="/2019/09/22/为什么会出现多路查找树/" class="archive-article-date">
+  	<time datetime="2019-09-22T06:49:36.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-22</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="多路查找树出现的背景"><a href="#多路查找树出现的背景" class="headerlink" title="多路查找树出现的背景"></a>多路查找树出现的背景</h1><p>不论什么东西被创造，都是因为有人感觉到某件事很麻烦，需要一种东西去解决麻烦。<br>我们平时使用的数据库，数据都是存储在硬盘上的（数据量过大，内存装不下）。因此，当我们需要硬盘中的数据时，我们理所当然要去硬盘中定位到数据，然后取出来。磁盘读取数据是以盘块 (block) 为基本单位的，位于同一盘块中的所有数据都能被一次性全部读取出来。单就时间成本而言，读取物理地址连续的 1000 个字节，与读取单个字节几乎没有区别，磁盘IO主要花费都在寻找数据上。</p>
+        
+          <a class="article-more-a" href="/2019/09/22/为什么会出现多路查找树/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/09/22/为什么会出现多路查找树/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-没有看到文件打开，却显示文件夹正在使用，请关闭后重试，修改文件夹名不成功" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -772,78 +842,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2019/09/16/平衡二叉树/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-二叉排序树" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/09/15/二叉排序树/">二叉排序树</a>
-    </h1>
-  
-
-        
-        
-<a href="/2019/09/15/二叉排序树/" class="archive-article-date">
-  	<time datetime="2019-09-15T07:40:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-15</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="二叉排序树的出现"><a href="#二叉排序树的出现" class="headerlink" title="二叉排序树的出现"></a>二叉排序树的出现</h1><p>如果有一组元素，{67，23，89，65，33，10，98，40，5，102}我们把他们散乱的放到一起，当我们删除时，可以直接将数据与末尾数据互换，然后删除末尾数据，如果要插入数据，直接插入末尾就可以了。但是如果要想查找到我们的数据，简直无从下手，只能遍历一遍这个集合，一个个的对。</p>
-<p>这个时候我们就想到整理一下这些数据，将他们变为有序的{5，10，23，33，40，65，67，89，98，102}，那么查找的时候，就可以使用折半查找，轻松找到数据，但是当我们想要插入一个数据时，我们就需要将后边的数据向后移动。删除数据时，我们又需要将后边所有元素向前移动。时间都浪费在搬运上了。</p>
-<p>此时就出现了二叉排序树。既可以快速找到数据，又可以轻松插入删除数据。</p>
-        
-          <a class="article-more-a" href="/2019/09/15/二叉排序树/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/09/15/二叉排序树/">展开全文 >></a>
         </p>
       
 

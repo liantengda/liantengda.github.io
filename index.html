@@ -178,6 +178,75 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-为什么会有框架这种东西" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/10/29/为什么会有框架这种东西/">为什么会有框架这种东西</a>
+    </h1>
+  
+
+        
+        
+<a href="/2019/10/29/为什么会有框架这种东西/" class="archive-article-date">
+  	<time datetime="2019-10-29T01:50:38.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-10-29</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="问题来源"><a href="#问题来源" class="headerlink" title="问题来源"></a>问题来源</h1><p>本来自己是要分析spring的好处的。不过在分析过程中感觉自己很有必要再次回顾一下当初自学java时初次使用框架所体会到的惊喜和乐趣。</p>
+<h1 id="框架概念"><a href="#框架概念" class="headerlink" title="框架概念"></a>框架概念</h1><p>当初自己看视频的时候，讲师都这样解释框架，框架就是一种软件开发的半成品，也就是说，我们还未开发一个软件之前，框架已经帮助我们开发了一半了。实际开发中，很多框架已经帮我们做了不止一半的活。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/10/29/为什么会有框架这种东西/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-总结自己的spring" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -199,7 +268,404 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="IOC"><a href="#IOC" class="headerlink" title="IOC"></a>IOC</h1><p>IOC英文名称inversion of control，翻译过来就是控制反转。即控制权反转，原先需要我们new一个对象，以后有了spring，交由spring帮助我们创建。</p>
+        <h1 id="初学spring实践"><a href="#初学spring实践" class="headerlink" title="初学spring实践"></a>初学spring实践</h1><p>我直接来从我第一次使用spring的时候开始，来看看spring到底简化了哪些过程。以下是我自学java时，全程自己手动编写的一个图书后台管理系统。虽然对于现在这个时代，已经很烂了，但是从我手动编写的整个过程恰好可以说明，框架都做了哪些事情。</p>
+<h2 id="未使用spring之前"><a href="#未使用spring之前" class="headerlink" title="未使用spring之前"></a>未使用spring之前</h2><h3 id="目录结构"><a href="#目录结构" class="headerlink" title="目录结构"></a>目录结构</h3><p>这是我初学时候严格按照视频中讲的所搭建的目录结构，是不是一目了然。其中ORM框架使用的mybatis，但是此时并没有使用struts以及springmvc，所以servlet层有点混乱。不过我们先不要在意这些。<br><img src="//luoyefubuki.com/2019/10/24/%E6%80%BB%E7%BB%93%E8%87%AA%E5%B7%B1%E7%9A%84spring/1.jpg" alt="总结自己的spring"></p>
+<h3 id="实体类"><a href="#实体类" class="headerlink" title="实体类"></a>实体类</h3><p>实体类中，我省略了get和set方法，不然代码太长了。如果需要复制粘贴，则自己把所有get和set都加上。</p>
+<h4 id="图书信息类"><a href="#图书信息类" class="headerlink" title="图书信息类"></a>图书信息类</h4><pre><code>/**
+ * 图书信息类
+ * @author Administrator
+ *
+ */
+public class BookInfo {
+private int bookId;
+private    String bookCode;
+private    String bookName;
+private    int bookType;
+//关联图书类型，查询图书信息时同时需要包含图书类型，就需要resultmap出场
+private BookType bookTypes;
+private    String bookAuthor;
+private    String publishPress; 
+private    String publishDate;
+private    int borrowed;
+private String createdBy;
+private String creationTime;
+private String lastUpdatetime;
+//输出形式
+@Override
+public String toString() {
+    return &quot;BookInfo [bookId=&quot; + bookId + &quot;, bookCode=&quot; + bookCode + &quot;, bookName=&quot; + bookName + &quot;, bookType=&quot;
+            + bookType + &quot;, bookTypes=&quot; + bookTypes + &quot;, bookAuthor=&quot; + bookAuthor + &quot;, publishPress=&quot;
+            + publishPress + &quot;, publishDate=&quot; + publishDate + &quot;, borrowed=&quot; + borrowed + &quot;, createdBy=&quot; + createdBy
+            + &quot;, creationTime=&quot; + creationTime + &quot;, lastUpdatetime=&quot; + lastUpdatetime + &quot;]&quot;;
+}
+//构造方法，根据实际情况创建
+public BookInfo() {
+    super();
+}
+}</code></pre><h4 id="图书类型类"><a href="#图书类型类" class="headerlink" title="图书类型类"></a>图书类型类</h4><p>同样省略了get和set方法</p>
+<pre><code>/**
+ * 图书类型
+ * @author Administrator
+ *
+ */
+public class BookType {
+private int id;
+private String typeName;
+@Override
+public String toString() {
+    return &quot;BookType [id=&quot; + id + &quot;, typeName=&quot; + typeName + &quot;]&quot;;
+}
+}</code></pre><h4 id="其他类型"><a href="#其他类型" class="headerlink" title="其他类型"></a>其他类型</h4><p>剩下的几个类型与本次解析spring没太大关系。就不一一例举了。</p>
+<h3 id="service类"><a href="#service类" class="headerlink" title="service类"></a>service类</h3><p>我们首先看看BookInfoService这个类，来大概看一下其中实现了什么功能，可能会有些不太对的地方，不用先理会这些。</p>
+<pre><code>public interface BookInfoService {
+/**
+ * 查看书籍
+ * @param bookCode
+ * @return
+ * @throws IOException 
+ */
+BookInfo checkBookInfo(String bookId) throws IOException;
+/**
+ * 通过bookId查看书籍信息
+ * @param bookId
+ * @return
+ * @throws IOException 
+ */
+BookInfo checkBookInfoById (int bookId) throws IOException;
+/**
+ * 校验用户登录
+ * @param uname 用户名
+ * @param pwd 密码
+ * @return 返回查询到的用户信息
+ */
+BookInfo checkUserLoginService(String uname, String pwd);
+/**
+ * 修改书籍信息
+ * @param bookInfo
+ * @return
+ * @throws IOException 
+ */
+int updateBook(BookInfo bookInfo) throws IOException;
+/**
+ * 接口也需要和实现类一样抛出异常
+ * 获取所有用户信息
+ * @return
+ */
+List&lt;BookInfo&gt; BookInfoShowService()throws IOException;
+/**
+ * 按照分页查询获取所有用户信息
+ * @return
+ * @throws IOException
+ */
+PageInfo BookInfoShowService2(int pageSize,int pageNumber)throws IOException;
+/**
+ * 按照分页查询并且关联查询所有用户信息
+ * @param pageSize
+ * @param pageNumber
+ * @return
+ * @throws IOException
+ */
+PageInfo BookInfoShowService3(int pageSize,int pageNumber)throws IOException;
+/**
+ * 书籍新增
+ * @param u
+ * @return
+ * @throws IOException 
+ */
+int BookInsert(BookInfo u) throws IOException;
+/**
+ * 模糊查询
+ * @param pageSize
+ * @param pageNumber
+ * @param bookText
+ * @return
+ * @throws IOException 
+ */
+PageInfo BookInfoShowService4(String bookText,int pageSize, int pageNumber) throws IOException;
+/**
+ * 通过bookId删除书籍
+ * @param bookId
+ * @return
+ * @throws IOException 
+ */
+int bookDeleteById(int bookId) throws IOException;
+}</code></pre><p>然后我们再看一下service实现层，如何去实现逻辑，以及如何从mapper层（Dao层）拿到数据。我们可以看到如下代码，每个方法都要读取一次mybatis.xml，这个xml中主要是一些将实体类与数据库相关联的一些东西，包括数据库连接。每个方法都要创建一个SqlSessionFactory对象，居然还要通过写方法的全路径名，来映射到对应的mapper.xml，否则还得通过BookInfoMapper bookInfoMapper = session.getMapper(BookInfoMapper.class);来内部创建一个对应mapper的对象，去调用相应的增删改查方法。是不是很辣眼睛。（这里里面的分页是原来手写的，有点辣眼睛）</p>
+<pre><code>public class BookInfoServiceImpl implements BookInfoService {
+/**
+ * 获取所有书籍信息
+ */
+@Override
+public List&lt;BookInfo&gt; BookInfoShowService() throws IOException {
+    InputStream is = Resources.getResourceAsStream(&quot;mybatis.xml&quot;);
+    SqlSessionFactory factory = new SqlSessionFactoryBuilder().build(is);
+    SqlSession session = factory.openSession();
+    List&lt;BookInfo&gt; list = session.selectList(&quot;com.lian.mapper.BookInfoMapper.selAll&quot;);
+    session.close();
+    return list;
+}
+/**
+ * 按照分页查询获取书籍信息
+ */
+@Override
+public PageInfo BookInfoShowService2(int pageSize,int pageNumber) throws IOException {
+    PageInfo pi= new PageInfo();
+    pi.setPageNumber(pageNumber);
+    pi.setPageSize(pageSize);
+    Map&lt;String,Integer&gt; map = new HashMap&lt;&gt;();
+    map.put(&quot;pageStart&quot;, (pi.getPageNumber()-1)*pi.getPageSize());
+    map.put(&quot;pageSize&quot;, pi.getPageSize());
+    InputStream is = Resources.getResourceAsStream(&quot;mybatis.xml&quot;);
+    SqlSessionFactory factory = new SqlSessionFactoryBuilder().build(is);
+    SqlSession session = factory.openSession();
+    List&lt;BookInfo&gt; list = session.selectList(&quot;com.lian.mapper.BookInfoMapper.selByPage&quot;,map);
+    pi.setList(list); 
+    long count = session.selectOne(&quot;com.lian.mapper.BookInfoMapper.selCount&quot;);
+    long total = (count%pageSize==0?count/pageSize:count/pageSize+1); 
+    pi.setTotal(total);
+    session.close();
+    return pi;
+}
+/**
+ * 按照分页查询并且关联查询书籍信息
+ */
+@Override
+public PageInfo BookInfoShowService3(int pageSize, int pageNumber) throws IOException {
+    PageInfo pi= new PageInfo();
+    pi.setPageNumber(pageNumber);
+    pi.setPageSize(pageSize);
+    InputStream is = Resources.getResourceAsStream(&quot;mybatis.xml&quot;);
+    SqlSessionFactory factory = new SqlSessionFactoryBuilder().build(is);
+    SqlSession session = factory.openSession();
+    BookInfoMapper bookInfoMapper = session.getMapper(BookInfoMapper.class);
+    List&lt;BookInfo&gt; list = bookInfoMapper.selByPage4((pageNumber-1)*pageSize, pageSize);
+    pi.setList(list);
+    long count = bookInfoMapper.selCount();
+    long total = (count%pageSize==0?count/pageSize:count/pageSize+1); 
+    pi.setTotal(total);
+    session.close();
+    return pi;
+}
+/**
+ * 模糊查询
+ */
+@Override
+public PageInfo BookInfoShowService4(String bookText,int pageSize, int pageNumber ) throws IOException {
+    PageInfo pi= new PageInfo();
+    pi.setPageNumber(pageNumber);
+    pi.setPageSize(pageSize);
+    InputStream is = Resources.getResourceAsStream(&quot;mybatis.xml&quot;);
+    SqlSessionFactory factory = new SqlSessionFactoryBuilder().build(is);
+    SqlSession session = factory.openSession();
+    BookInfoMapper bookInfoMapper = session.getMapper(BookInfoMapper.class);
+    List&lt;BookInfo&gt; list = bookInfoMapper.selByPage5(bookText,(pageNumber-1)*pageSize, pageSize);
+    pi.setList(list);
+    long count = bookInfoMapper.selCount2(bookText);
+    long total = (count&lt;pageSize?1:(count%pageSize==0?count/pageSize:count/pageSize+1)); 
+    pi.setTotal(total);
+    session.close();
+    return pi;
+}
+/**
+ * 书籍新增
+ */
+@Override
+public int BookInsert(BookInfo bi) throws IOException {
+    InputStream is = Resources.getResourceAsStream(&quot;mybatis.xml&quot;);
+    SqlSessionFactory factory = new SqlSessionFactoryBuilder().build(is);
+    SqlSession session = factory.openSession();
+    int index = session.insert(&quot;com.lian.mapper.BookInfoMapper.ins&quot;,bi);
+    if(index&gt;0){
+        System.out.println(&quot;新增成功&quot;);
+    }else{
+        System.out.println(&quot;新增失败&quot;);
+        session.rollback();
+    }
+    session.commit();
+    return index;
+}
+/**
+ * 查看书籍
+ */
+@Override
+public BookInfo checkBookInfo(String bookId) throws IOException {
+    InputStream is = Resources.getResourceAsStream(&quot;mybatis.xml&quot;);
+    SqlSessionFactory factory = new SqlSessionFactoryBuilder().build(is);
+    SqlSession session = factory.openSession();
+    BookInfoMapper bookInfoMapper = session.getMapper(BookInfoMapper.class);
+    BookInfo bookInfo = bookInfoMapper.selByBookId(bookId);
+    session.close();
+    return bookInfo;
+}
+/**
+ * 通过bookId查看图书信息
+ */
+@Override
+public BookInfo checkBookInfoById(int bookId) throws IOException {
+    InputStream is = Resources.getResourceAsStream(&quot;mybatis.xml&quot;);
+    SqlSessionFactory factory = new SqlSessionFactoryBuilder().build(is);
+    SqlSession session = factory.openSession();
+    BookInfoMapper bookInfoMapper = session.getMapper(BookInfoMapper.class);
+    BookInfo bookInfo = bookInfoMapper.selByBookId(bookId);
+    session.close();
+    return bookInfo;
+}
+/**
+ * 修改书籍信息
+ */
+@Override
+public int updateBook(BookInfo bookInfo) throws IOException {
+    InputStream is = Resources.getResourceAsStream(&quot;mybatis.xml&quot;);
+    SqlSessionFactory factory = new SqlSessionFactoryBuilder().build(is);
+    SqlSession session = factory.openSession();
+    System.out.println(bookInfo);
+    int index = session.update(&quot;com.lian.mapper.BookInfoMapper.update&quot;,bookInfo);
+    if(index&gt;0){
+        System.out.println(&quot;修改成功&quot;);
+    }else{
+        System.out.println(&quot;修改失败&quot;);
+        session.rollback();
+    }
+    session.commit();
+    session.close();
+    return index;
+}
+/**
+ * 删除书籍信息
+ */
+public int bookDeleteById(int bookId) throws IOException {
+    InputStream is = Resources.getResourceAsStream(&quot;mybatis.xml&quot;);
+    SqlSessionFactory factory = new SqlSessionFactoryBuilder().build(is);
+    SqlSession session = factory.openSession();
+    System.out.println(bookId);
+    int index = session.update(&quot;com.lian.mapper.BookInfoMapper.deleteById&quot;,bookId);
+    if(index&gt;0){
+        System.out.println(&quot;删除成功&quot;);
+    }else{
+        System.out.println(&quot;删除失败&quot;);
+        session.rollback();
+    }
+    session.commit();
+    session.close();
+    return index;
+}    
+}</code></pre><h2 id="使用spring后"><a href="#使用spring后" class="headerlink" title="使用spring后"></a>使用spring后</h2><h3 id="目录结构-1"><a href="#目录结构-1" class="headerlink" title="目录结构"></a>目录结构</h3><p>与未使用spring之前相比，mybatis.xml被删除了，多了一个appalicationContext.xml文件。<br><img src="//luoyefubuki.com/2019/10/24/%E6%80%BB%E7%BB%93%E8%87%AA%E5%B7%B1%E7%9A%84spring/1.jpg" alt="总结自己的spring"><br>我们先从service的实现层来看。代码如下，除了分页看上去还是很辣眼睛，其他方法的代码都已经简化了。然后和未使用spring之前的代码相比，发现多了@Service，@Resource两个注解。并且，可以发现我并没有创建BookInfoMapper接口的实体类。但是如下代码中bookInfoMaper却可以当个对象使用。</p>
+<pre><code>@Service(&quot;bookInfoService&quot;)
+public class BookInfoServiceImpl implements BookInfoService {
+@Resource
+private BookInfoMapper bookInfoMapper;
+/**
+ * 展示图书
+ */
+@Override
+public List&lt;BookInfo&gt; BookInfoShowService() throws IOException {
+    return bookInfoMapper.sellAll();
+}
+/**
+ * 按照分页查询获取书籍信息  这个估计不能用
+ */
+@Override
+public PageInfo BookInfoShowService2(int pageSize,int pageNumber) throws IOException {
+    PageInfo pi= new PageInfo();
+    pi.setPageNumber(pageNumber);
+    pi.setPageSize(pageSize);
+    Map&lt;String,Integer&gt; map = new HashMap&lt;&gt;();
+    map.put(&quot;pageStart&quot;, (pi.getPageNumber()-1)*pi.getPageSize());
+    map.put(&quot;pageSize&quot;, pi.getPageSize());
+    List&lt;BookInfo&gt; list =bookInfoMapper.selByPage(map); 
+    pi.setList(list); 
+    long count =bookInfoMapper.selCount();  
+    long total = (count%pageSize==0?count/pageSize:count/pageSize+1); 
+    pi.setTotal(total);
+    return pi;
+}
+/**
+ * 按照分页查询并且关联查询书籍信息
+ */
+@Override
+public PageInfo BookInfoShowService3(int pageSize, int pageNumber) throws IOException {
+    PageInfo pi= new PageInfo();
+    pi.setPageNumber(pageNumber);
+    pi.setPageSize(pageSize);
+    List&lt;BookInfo&gt; list = bookInfoMapper.selByPage4((pageNumber-1)*pageSize, pageSize);
+    pi.setList(list);
+    long count = bookInfoMapper.selCount();
+    long total = (count%pageSize==0?count/pageSize:count/pageSize+1); 
+    pi.setTotal(total);
+    return pi;
+}
+/**
+ * 模糊查询
+ */
+@Override
+public PageInfo BookInfoShowService4(String bookText,int pageSize, int pageNumber ) throws IOException {
+    PageInfo pi= new PageInfo();
+    pi.setPageNumber(pageNumber);
+    pi.setPageSize(pageSize);
+    List&lt;BookInfo&gt; list = bookInfoMapper.selByPage5(bookText,(pageNumber-1)*pageSize, pageSize);
+    pi.setList(list);
+    long count = bookInfoMapper.selCount2(bookText);
+    long total = (count&lt;pageSize?1:(count%pageSize==0?count/pageSize:count/pageSize+1)); 
+    pi.setTotal(total);
+    return pi;
+
+}
+/**
+ * 书籍新增
+ */
+@Override
+public int BookInsert(BookInfo bi) throws IOException {
+    int index=0;
+    //这里有个遗留问题，为啥返回来的是null。不是1，网上说的是Integer和int的关系导致的
+    String s = bookInfoMapper.ins(bi);
+    if(s==null){
+        index=1;
+    }
+    return  index;
+}
+/**
+ * 通过bookId查看图书信息
+ */
+@Override
+public BookInfo checkBookInfoById(int bookId) throws IOException {
+    BookInfo bookInfo = bookInfoMapper.selByBookId(bookId);
+    return bookInfo;
+}
+/**
+ * 修改书籍信息    这个情况又会复杂些
+ */
+@Override
+public int updateBook(BookInfo bookInfo) throws IOException {
+    int index=0;
+    String s = bookInfoMapper.update(bookInfo);
+    if(s==null){
+        index=1;
+    }
+    return  index;     
+}
+/**
+ * 删除书籍信息
+ */
+public int bookDeleteById(int bookId) throws IOException {
+    int index=0;
+    String s = bookInfoMapper.deleteById(bookId);
+    if(s==null){
+        index=1;
+    }
+    return  index;
+}
+@Override
+public BookInfo checkUserLoginService(String uname, String pwd) {
+    // TODO Auto-generated method stub
+    return null;
+}
+/**
+ * 通过图书Id查看图书信息
+ */
+@Override
+public BookInfo checkBookInfo(String bookId) throws IOException {
+    return bookInfoMapper.selByBookId(bookId);
+}    
+}</code></pre><h1 id="IOC"><a href="#IOC" class="headerlink" title="IOC"></a>IOC</h1><p>IOC英文名称inversion of control，翻译过来就是控制反转。即控制权反转，原先需要我们new一个对象，以后有了spring，交由spring帮助我们创建。</p>
 <h1 id="DI"><a href="#DI" class="headerlink" title="DI"></a>DI</h1><p>Dependency Injection，依赖注入。</p>
 <h1 id="AOP"><a href="#AOP" class="headerlink" title="AOP"></a>AOP</h1><p>Aspect Oriented Programming,面向切面编程。</p>
 <h1 id="applicationContext-amp-BeanFactory"><a href="#applicationContext-amp-BeanFactory" class="headerlink" title="applicationContext&amp;BeanFactory"></a>applicationContext&amp;BeanFactory</h1>
@@ -771,76 +1237,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2019/09/29/linux检测内存系统运行状况/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-为什么会出现多路查找树" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/09/22/为什么会出现多路查找树/">为什么会出现多路查找树</a>
-    </h1>
-  
-
-        
-        
-<a href="/2019/09/22/为什么会出现多路查找树/" class="archive-article-date">
-  	<time datetime="2019-09-22T06:49:36.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-22</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="多路查找树出现的背景"><a href="#多路查找树出现的背景" class="headerlink" title="多路查找树出现的背景"></a>多路查找树出现的背景</h1><p>不论什么东西被创造，都是因为有人感觉到某件事很麻烦，需要一种东西去解决麻烦。<br>我们平时使用的数据库，数据都是存储在硬盘上的（数据量过大，内存装不下）。因此，当我们需要硬盘中的数据时，我们理所当然要去硬盘中定位到数据，然后取出来。磁盘读取数据是以盘块 (block) 为基本单位的，位于同一盘块中的所有数据都能被一次性全部读取出来。单就时间成本而言，读取物理地址连续的 1000 个字节，与读取单个字节几乎没有区别，磁盘IO主要花费都在寻找数据上。</p>
-        
-          <a class="article-more-a" href="/2019/09/22/为什么会出现多路查找树/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/09/22/为什么会出现多路查找树/">展开全文 >></a>
         </p>
       
 
