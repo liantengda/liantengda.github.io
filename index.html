@@ -200,8 +200,9 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h1 id="flyway是什么"><a href="#flyway是什么" class="headerlink" title="flyway是什么"></a>flyway是什么</h1><p>flyway是一个数据库版本控制工具。使用Flyway，用户可以从任意一个数据库版本迁移到最新版本，简单而且有效。</p>
-<h1 id="flyway是如何起作用的"><a href="#flyway是如何起作用的" class="headerlink" title="flyway是如何起作用的"></a>flyway是如何起作用的</h1><p>Flyway可以对数据库进行升级，从任意一个版本升级到最新的版本。但是升级的依据是用户自己编写的sql脚本，用户自己决定每一个版本的升级内容。Flyway不限定脚本里面的内容，但是对脚本文件的名称有一定的要求：<br><img src="//luoyefubuki.com/2019/11/05/%E5%88%9D%E8%AF%86flyway/1.jpg" alt="初识flyway"><br>具体要求：<br>版本号和版本描述之间，使用两个下划线分隔。<br>版本描述之间，使用一个下划线分隔单词。<br>版本号唯一：不允许多个脚本文件有相同的版本号。<br>如下，是一个开源系统的图示，他是这样写的。<br><img src="//luoyefubuki.com/2019/11/05/%E5%88%9D%E8%AF%86flyway/2.jpg" alt="初识flyway"><br>使用Flyway升级，flyway会自动创建一张历史记录表：flyway_schema_history。<br><img src="//luoyefubuki.com/2019/11/05/%E5%88%9D%E8%AF%86flyway/3.jpg" alt="初识flyway"><br>flyway在升级数据库的时候，会检查已经执行过的版本对应的脚本是否发生变化，包括脚本文件名，以及脚本内容。如果flyway检测到发生了变化，则抛出错误，并终止升级。如果已经执行过的脚本没有发生变化，flyway会跳过这些脚本，依次执行后续版本的脚本，并在记录表中插入对应的升级记录。如果你好奇，flyway如何检查脚本文件的内容是否有修改。你可以注意以下记录表中有一个字段checksum，它记录了脚本文件的校验和。flyway通过比对文件的校验和来检测文件的内容是否变更。<br><img src="//luoyefubuki.com/2019/11/05/%E5%88%9D%E8%AF%86flyway/4.jpg" alt="初识flyway"><br>flyway检测数据库中是否有历史记录表，没有则代表是第一次升级。此时，flyway要求数据库是空的，并拒绝对数据库进行升级。<br>你可以设置baseline-on-migrate参数为true，flyway会自动将当前的数据库记录为V1版本，然后执行升级脚本。这也表示用户所准备的脚本中，V1版本的脚本会被跳过，只有V1之后的版本才会被执行。<br><img src="//luoyefubuki.com/2019/11/05/%E5%88%9D%E8%AF%86flyway/5.jpg" alt="初识flyway"><br>而且路径配置必须遵循以下规则。在源文件路径下：<br>/db/migration<br><img src="//luoyefubuki.com/2019/11/05/%E5%88%9D%E8%AF%86flyway/6.jpg" alt="初识flyway"></p>
-
+        
+          <a class="article-more-a" href="/2019/11/05/初识flyway/#more">more >></a>
+        
       
 
       
