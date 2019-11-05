@@ -178,6 +178,75 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-初识flyway" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/11/05/初识flyway/">初识flyway</a>
+    </h1>
+  
+
+        
+        
+<a href="/2019/11/05/初识flyway/" class="archive-article-date">
+  	<time datetime="2019-11-05T08:05:19.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-05</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="flyway是什么"><a href="#flyway是什么" class="headerlink" title="flyway是什么"></a>flyway是什么</h1><p>flyway是一个数据库版本控制工具。使用Flyway，用户可以从任意一个数据库版本迁移到最新版本，简单而且有效。</p>
+<h1 id="flyway是如何起作用的"><a href="#flyway是如何起作用的" class="headerlink" title="flyway是如何起作用的"></a>flyway是如何起作用的</h1><p>Flyway可以对数据库进行升级，从任意一个版本升级到最新的版本。但是升级的依据是用户自己编写的sql脚本，用户自己决定每一个版本的升级内容。Flyway不限定脚本里面的内容，但是对脚本文件的名称有一定的要求：<br><img src="//luoyefubuki.com/2019/11/05/%E5%88%9D%E8%AF%86flyway/1.jpg" alt="初识flyway"><br>具体要求：<br>版本号和版本描述之间，使用两个下划线分隔。<br>版本描述之间，使用一个下划线分隔单词。<br>版本号唯一：不允许多个脚本文件有相同的版本号。<br>如下，是一个开源系统的图示，他是这样写的。<br><img src="//luoyefubuki.com/2019/11/05/%E5%88%9D%E8%AF%86flyway/2.jpg" alt="初识flyway"><br>使用Flyway升级，flyway会自动创建一张历史记录表：flyway_schema_history。<br><img src="//luoyefubuki.com/2019/11/05/%E5%88%9D%E8%AF%86flyway/3.jpg" alt="初识flyway"><br>flyway在升级数据库的时候，会检查已经执行过的版本对应的脚本是否发生变化，包括脚本文件名，以及脚本内容。如果flyway检测到发生了变化，则抛出错误，并终止升级。如果已经执行过的脚本没有发生变化，flyway会跳过这些脚本，依次执行后续版本的脚本，并在记录表中插入对应的升级记录。如果你好奇，flyway如何检查脚本文件的内容是否有修改。你可以注意以下记录表中有一个字段checksum，它记录了脚本文件的校验和。flyway通过比对文件的校验和来检测文件的内容是否变更。<br><img src="//luoyefubuki.com/2019/11/05/%E5%88%9D%E8%AF%86flyway/4.jpg" alt="初识flyway"><br>flyway检测数据库中是否有历史记录表，没有则代表是第一次升级。此时，flyway要求数据库是空的，并拒绝对数据库进行升级。<br>你可以设置baseline-on-migrate参数为true，flyway会自动将当前的数据库记录为V1版本，然后执行升级脚本。这也表示用户所准备的脚本中，V1版本的脚本会被跳过，只有V1之后的版本才会被执行。<br><img src="//luoyefubuki.com/2019/11/05/%E5%88%9D%E8%AF%86flyway/5.jpg" alt="初识flyway"><br>而且路径配置必须遵循以下规则。在源文件路径下：<br>/db/migration<br><img src="//luoyefubuki.com/2019/11/05/%E5%88%9D%E8%AF%86flyway/6.jpg" alt="初识flyway"></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/11/05/初识flyway/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-test" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -764,76 +833,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2019/10/18/java中关键字synchronized背后的真相-原理及实践/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-手把手教你构造一棵红黑树-java代码" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/10/14/手把手教你构造一棵红黑树-java代码/">手把手教你构造一棵红黑树-java代码</a>
-    </h1>
-  
-
-        
-        
-<a href="/2019/10/14/手把手教你构造一棵红黑树-java代码/" class="archive-article-date">
-  	<time datetime="2019-10-14T02:37:22.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-10-14</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="伪代码讲解"><a href="#伪代码讲解" class="headerlink" title="伪代码讲解"></a>伪代码讲解</h1><p>我们先从形象的树形结构讲解红黑树的构造过程。<br>如果我有一组数据{1，2，3，4，5，6，7，8，9，10，11，12，13，14，15，16，17，18}，从左到右，每个数字都是一个节点的值，我们先从简单的开始，节点值相同则覆盖的红黑树开始。当然这个例子里没有相同的节点值，那就更方便了。<br>差点忘了一点，每次插入节点时，首先假定插入的新节点是红色的。这个目前我的感觉是，每次插入的节点是红色，就会强迫红黑树进行平衡调节，此时违反了规则:<strong>父子节点不能同时为红色</strong>。这个规则被违反了可以递归解决。<br>而如果插入黑色节点，会违反规则:<strong>任何一个节点向下遍历到其子孙的叶子节点，所经过的黑节点个数必须相等。</strong>而解决这条规则的问题是很困难的。</p>
-        
-          <a class="article-more-a" href="/2019/10/14/手把手教你构造一棵红黑树-java代码/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/10/14/手把手教你构造一棵红黑树-java代码/">展开全文 >></a>
         </p>
       
 
