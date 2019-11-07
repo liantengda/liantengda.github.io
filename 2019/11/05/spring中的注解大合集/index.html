@@ -21,7 +21,14 @@
 <meta property="og:image" content="http://luoyefubuki.com/2019/11/05/spring%E4%B8%AD%E7%9A%84%E6%B3%A8%E8%A7%A3%E5%A4%A7%E5%90%88%E9%9B%86/4.jpg">
 <meta property="og:image" content="http://luoyefubuki.com/2019/11/05/spring%E4%B8%AD%E7%9A%84%E6%B3%A8%E8%A7%A3%E5%A4%A7%E5%90%88%E9%9B%86/5.jpg">
 <meta property="og:image" content="http://luoyefubuki.com/2019/11/05/spring%E4%B8%AD%E7%9A%84%E6%B3%A8%E8%A7%A3%E5%A4%A7%E5%90%88%E9%9B%86/6.jpg">
-<meta property="og:updated_time" content="2019-11-06T02:00:36.166Z">
+<meta property="og:image" content="http://luoyefubuki.com/2019/11/05/spring%E4%B8%AD%E7%9A%84%E6%B3%A8%E8%A7%A3%E5%A4%A7%E5%90%88%E9%9B%86/7.jpg">
+<meta property="og:image" content="http://luoyefubuki.com/2019/11/05/spring%E4%B8%AD%E7%9A%84%E6%B3%A8%E8%A7%A3%E5%A4%A7%E5%90%88%E9%9B%86/8.jpg">
+<meta property="og:image" content="http://luoyefubuki.com/2019/11/05/spring%E4%B8%AD%E7%9A%84%E6%B3%A8%E8%A7%A3%E5%A4%A7%E5%90%88%E9%9B%86/9.jpg">
+<meta property="og:image" content="http://luoyefubuki.com/2019/11/05/spring%E4%B8%AD%E7%9A%84%E6%B3%A8%E8%A7%A3%E5%A4%A7%E5%90%88%E9%9B%86/10.jpg">
+<meta property="og:image" content="http://luoyefubuki.com/2019/11/05/spring%E4%B8%AD%E7%9A%84%E6%B3%A8%E8%A7%A3%E5%A4%A7%E5%90%88%E9%9B%86/11.jpg">
+<meta property="og:image" content="http://luoyefubuki.com/2019/11/05/spring%E4%B8%AD%E7%9A%84%E6%B3%A8%E8%A7%A3%E5%A4%A7%E5%90%88%E9%9B%86/12.jpg">
+<meta property="og:image" content="http://luoyefubuki.com/2019/11/05/spring%E4%B8%AD%E7%9A%84%E6%B3%A8%E8%A7%A3%E5%A4%A7%E5%90%88%E9%9B%86/13.jpg">
+<meta property="og:updated_time" content="2019-11-07T02:02:16.460Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="spring中的注解大合集">
 <meta name="twitter:description" content="前言本片文章只简单罗列spring中我所碰到的注解，同时简单介绍他们的作用和使用方法。">
@@ -311,6 +318,170 @@ public void init() throws ServletException {
     bs = wac.getBean(&quot;bookInfoService&quot;,BookInfoServiceImpl.class);
 }
 }</code></pre><h2 id="注解8-Resource和-Autowire"><a href="#注解8-Resource和-Autowire" class="headerlink" title="注解8 @Resource和@Autowire"></a>注解8 @Resource和@Autowire</h2><p>忘了说了，注解7和注解8体现了spring的一个很重要的设计方式。IOC和DI，如注解7中，applicationContext.xml配置的那样，每个bean都通过配置文件在容器启动后交由spring管理（IOC），而每个bean中的property里就配置了该bean的成员，而我们知道有一种成员是成员对象。注解8@Resource和@Autowire就用在这个地方，依赖注入（DI），依赖就是指一种关系，如果在 “类A” 中创建了 “类B” 的实例，我们说 “类A” 依赖 “类B”。依赖类不由程序员实例化，而是通过spring容器帮我们new指定的实例，并将实例注入到需要该对象的类中去.<br><img src="//luoyefubuki.com/2019/11/05/spring%E4%B8%AD%E7%9A%84%E6%B3%A8%E8%A7%A3%E5%A4%A7%E5%90%88%E9%9B%86/6.jpg" alt="spring中的注解大合集"></p>
+<h2 id="注解9-RestController和-Controller"><a href="#注解9-RestController和-Controller" class="headerlink" title="注解9 @RestController和@Controller"></a>注解9 @RestController和@Controller</h2><p>来自package org.springframework.web.bind.annotation;@RestController注解相当于@ResponseBody ＋ @Controller合在一起的作用，但是如果使用了@RestController会导致视图解析器InternalResourceViewResolver不起作用，无法跳转页面，只能返回JSON。所以要看情况使用。如下图所示就只能使用@Controller。<br><img src="//luoyefubuki.com/2019/11/05/spring%E4%B8%AD%E7%9A%84%E6%B3%A8%E8%A7%A3%E5%A4%A7%E5%90%88%E9%9B%86/7.jpg" alt="spring中的注解大合集"></p>
+<h2 id="注解10-RequestMapping，-PostMapping及-GetMapping等"><a href="#注解10-RequestMapping，-PostMapping及-GetMapping等" class="headerlink" title="注解10 @RequestMapping，@PostMapping及@GetMapping等"></a>注解10 @RequestMapping，@PostMapping及@GetMapping等</h2><p>来自package org.springframework.web.bind.annotation。我们先来简单说下这个注解做了什么，内部原理有时间再分析，注解对应的是springMVC框架。<br>代码<br>主页控制器</p>
+<pre><code>@Api(value = &quot;页面跳转&quot;, description = &quot;页面跳转管理api&quot;, position = 5, produces = &quot;http&quot;)
+@Controller
+@Slf4j
+public class HopeController {
+    /***
+     * 首页
+     * @return
+     */
+    @ApiOperation(value = &quot;首页&quot;, notes = &quot;首页&quot;)
+    @GetMapping(value = {&quot;/&quot;, &quot;/common/index&quot;, &quot;/index&quot;})
+    public String index() {
+    return &quot;common/index&quot;;
+    }
+    /***
+     * 登录
+     * @return
+     */
+    @ApiOperation(value = &quot;登录&quot;, notes = &quot;登录&quot;)
+    @GetMapping(&quot;/login&quot;)
+    public String login() {
+    return &quot;common/login&quot;;
+    }
+    /**
+     * @Description: 打开角色列表
+     * @Param: []
+     * @return: []
+     * @Author: aodeng
+     * @Date: 19-3-17
+     */
+    @ApiOperation(value = &quot;角色列表&quot;, notes = &quot;角色列表&quot;)
+    @RequiresPermissions(&quot;roles&quot;)
+    @GetMapping(&quot;/role/role&quot;)
+    public ModelAndView role() {
+    return ResultHopeUtil.view(&quot;admin/role/role&quot;);
+    }
+}</code></pre><p>角色类操作控制器</p>
+<pre><code>@Api(value = &quot;角色&quot;, description = &quot;角色管理api&quot;, position = 20, produces = &quot;http&quot;)
+@RestController
+@Slf4j
+@RequestMapping(&quot;/role&quot;)
+public class RoleController {
+    //service层依赖
+    private final SysRoleService sysRoleService;
+    private final ShiroService shiroService;
+    private final SysUserService sysUserService;
+    //构造方法，我们先别理会这些细节，我们只用来说明这几个注解干了什么。    
+    public RoleController(SysRoleService sysRoleService,ShiroService shiroService,SysUserService sysUserService){
+    this.sysRoleService=sysRoleService;
+    this.shiroService=shiroService;
+    this.sysUserService=sysUserService;
+    }
+    /** 
+    * @Description: 角色列表
+    * @Param: [vo]
+    * @return: [vo]
+    * @Author: aodeng
+    * @Date: 19-3-17
+    */
+    @ApiOperation(value = &quot;角色列表&quot;, notes = &quot;角色列表，传入参数只需要pageNum和pageSize&quot;,produces=&quot;application/json, application/xml&quot;, consumes=&quot;application/json, application/xml&quot;,response = SysRole.class)
+    @ApiImplicitParams({
+        @ApiImplicitParam(name = &quot;pageNum&quot;, value = &quot;第几页&quot;, required = true, dataType = &quot;String&quot;, paramType = &quot;query&quot;),
+        @ApiImplicitParam(name = &quot;pageSize&quot;, value = &quot;数据条数&quot;, required = true, dataType = &quot;String&quot;, paramType = &quot;query&quot;)
+    })
+    @RequiresPermissions(&quot;role:list&quot;)
+    @PostMapping(&quot;/list&quot;)
+    public PageResultVo list(RoleConditionVo vo) {
+    PageInfo&lt;SysRole&gt; pageInfo = sysRoleService.findPageBreakByCondition(vo);
+    return ResultHopeUtil.tablePage(pageInfo);
+    }
+    /** 
+    * @Description: 保存添加角色
+    * @Param: [sysRoleForm]
+    * @return: [sysRoleForm]
+    * @Author: aodeng
+    * @Date: 19-3-17
+    */
+    @ApiOperation(value = &quot;保存添加角色&quot;, notes = &quot;保存添加角色&quot;,produces=&quot;application/json, application/xml&quot;, consumes=&quot;application/json, application/xml&quot;)
+    @ApiResponses({
+        @ApiResponse(code = 200, message = &quot;操作成功&quot;),
+        @ApiResponse(code = 500, message = &quot;操作失败，返回错误原因&quot;),
+    })
+    @RequiresPermissions(&quot;role:add&quot;)
+    @PostMapping(&quot;/add&quot;)
+    public ResponseVo add(SysRole sysRoleForm) {
+    try {
+        sysRoleForm.setCreatetime(DateUtil.date());
+        sysRoleForm.setUpdatetime(DateUtil.date());
+        sysRoleForm.setRoleId(RandomUtil.randomUUID().substring(0, 7).toString());
+        if (sysRoleService.insert(sysRoleForm)) {
+        return ResultHopeUtil.success(&quot;角色添加成功！&quot;);
+        } else {
+        return ResultHopeUtil.error(&quot;角色添加失败！&quot;);
+        }
+    } catch (Exception e) {
+        log.error(&quot;[角色添加失败！]-[{}]&quot;, e.getMessage());
+        return ResultHopeUtil.error(&quot;角色添加失败！&quot;);
+    }
+    }
+    /** 
+    * @Description: 打开编辑角色
+    * @Param: [id, map]
+    * @return: [id, map]
+    * @Author: aodeng
+    * @Date: 19-3-17
+    */ 
+    @ApiOperation(value = &quot;打开编辑角色&quot;, notes = &quot;打开编辑角色&quot;)
+    @ApiImplicitParams(
+        @ApiImplicitParam(name = &quot;id&quot;, value = &quot;角色主键id&quot;, required = true, dataType = &quot;Integer&quot;, paramType = &quot;query&quot;)
+    )
+    @GetMapping(&quot;/edit/{id}&quot;)
+    public ModelAndView edit(@PathVariable(&quot;id&quot;) Integer id, ModelMap map) {
+    map.addAttribute(&quot;role&quot;, sysRoleService.selectById(id));
+    return ResultHopeUtil.view(&quot;admin/role/edit&quot;);
+    }
+}</code></pre><p>演示功能<br>如下图点击角色管理，请求的地址是/role/role<br><img src="//luoyefubuki.com/2019/11/05/spring%E4%B8%AD%E7%9A%84%E6%B3%A8%E8%A7%A3%E5%A4%A7%E5%90%88%E9%9B%86/8.jpg" alt="spring中的注解大合集"><br>然后通过 @GetMapping(“/role/role”)就会映射到对应的方法上，请求主页控制器中的role()方法。</p>
+<pre><code> /**
+ * @Description: 打开角色列表
+ * @Param: []
+ * @return: []
+ * @Author: aodeng
+ * @Date: 19-3-17
+ */
+@ApiOperation(value = &quot;角色列表&quot;, notes = &quot;角色列表&quot;)
+@RequiresPermissions(&quot;roles&quot;)
+@GetMapping(&quot;/role/role&quot;)
+public ModelAndView role() {
+return ResultHopeUtil.view(&quot;admin/role/role&quot;);
+}</code></pre><p>接着ModelAndView移步到admin/role/role，我们可以看到请求静态资源目录下有个role.html视图。<br><img src="//luoyefubuki.com/2019/11/05/spring%E4%B8%AD%E7%9A%84%E6%B3%A8%E8%A7%A3%E5%A4%A7%E5%90%88%E9%9B%86/9.jpg" alt="spring中的注解大合集"><br>其中含有一段js代码<br><img src="//luoyefubuki.com/2019/11/05/spring%E4%B8%AD%E7%9A%84%E6%B3%A8%E8%A7%A3%E5%A4%A7%E5%90%88%E9%9B%86/10.jpg" alt="spring中的注解大合集"><br>然后初始化表<br><img src="//luoyefubuki.com/2019/11/05/spring%E4%B8%AD%E7%9A%84%E6%B3%A8%E8%A7%A3%E5%A4%A7%E5%90%88%E9%9B%86/11.jpg" alt="spring中的注解大合集"><br>然后会在初始化表的过程中，请求查询列表方法。这里的option.url就是/role/list<br><img src="//luoyefubuki.com/2019/11/05/spring%E4%B8%AD%E7%9A%84%E6%B3%A8%E8%A7%A3%E5%A4%A7%E5%90%88%E9%9B%86/12.jpg" alt="spring中的注解大合集"><br>然后就会映射到RoleController的list方法。</p>
+<pre><code>@Api(value = &quot;角色&quot;, description = &quot;角色管理api&quot;, position = 20, produces = &quot;http&quot;)
+@RestController
+@Slf4j
+@RequestMapping(&quot;/role&quot;)
+public class RoleController {
+    //service层依赖
+    private final SysRoleService sysRoleService;
+    private final ShiroService shiroService;
+    private final SysUserService sysUserService;
+    //构造方法，我们先别理会这些细节，我们只用来说明这几个注解干了什么。    
+    public RoleController(SysRoleService sysRoleService,ShiroService shiroService,SysUserService sysUserService){
+    this.sysRoleService=sysRoleService;
+    this.shiroService=shiroService;
+    this.sysUserService=sysUserService;
+    }
+    /** 
+    * @Description: 角色列表
+    * @Param: [vo]
+    * @return: [vo]
+    * @Author: aodeng
+    * @Date: 19-3-17
+    */
+    @ApiOperation(value = &quot;角色列表&quot;, notes = &quot;角色列表，传入参数只需要pageNum和pageSize&quot;,produces=&quot;application/json, application/xml&quot;, consumes=&quot;application/json, application/xml&quot;,response = SysRole.class)
+    @ApiImplicitParams({
+        @ApiImplicitParam(name = &quot;pageNum&quot;, value = &quot;第几页&quot;, required = true, dataType = &quot;String&quot;, paramType = &quot;query&quot;),
+        @ApiImplicitParam(name = &quot;pageSize&quot;, value = &quot;数据条数&quot;, required = true, dataType = &quot;String&quot;, paramType = &quot;query&quot;)
+    })
+    @RequiresPermissions(&quot;role:list&quot;)
+    @PostMapping(&quot;/list&quot;)
+    public PageResultVo list(RoleConditionVo vo) {
+    PageInfo&lt;SysRole&gt; pageInfo = sysRoleService.findPageBreakByCondition(vo);
+    return ResultHopeUtil.tablePage(pageInfo);
+    }
+}</code></pre><p>于是就从数据库查询到了数据返回，添入角色列表中<br><img src="//luoyefubuki.com/2019/11/05/spring%E4%B8%AD%E7%9A%84%E6%B3%A8%E8%A7%A3%E5%A4%A7%E5%90%88%E9%9B%86/13.jpg" alt="spring中的注解大合集"><br>至于他们的区别<br>@RequestMapping如果没有指定请求方式，将接收Get,Post,Head,Options等所有的请求方式<br>@GetMapping是一个组合注解，是@RequestMapping(method = RequestMethod.GET)的缩写。只接收get请求，否则报错405，方法不被允许<br>@PostMapping是一个组合注解，是@RequestMapping(method = RequestMethod.POST)的缩写。只接收post请求，否则报错405，方法不被允许</p>
 
       
 
@@ -468,7 +639,7 @@ public void init() throws ServletException {
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#注解"><span class="toc-number">2.</span> <span class="toc-text">注解</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#注解大集合"><span class="toc-number">3.</span> <span class="toc-text">注解大集合</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#注解1-ApiModel系列"><span class="toc-number">3.1.</span> <span class="toc-text">注解1 @ApiModel系列</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#注解2-Data"><span class="toc-number">3.2.</span> <span class="toc-text">注解2 @Data</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#注解3-EqualsAndHashCode"><span class="toc-number">3.3.</span> <span class="toc-text">注解3 @EqualsAndHashCode</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#注解4-GeneratedValue"><span class="toc-number">3.4.</span> <span class="toc-text">注解4 @GeneratedValue</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#注解5-Entity、-Table、-Column、-Id"><span class="toc-number">3.5.</span> <span class="toc-text">注解5 @Entity、@Table、@Column、@Id</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#注解6-JsonIgnoreProperties和-JsonIgnore"><span class="toc-number">3.6.</span> <span class="toc-text">注解6 @JsonIgnoreProperties和@JsonIgnore</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#注解7-Component、-Repository、-Service、-Controller"><span class="toc-number">3.7.</span> <span class="toc-text">注解7 @Component、@Repository、@Service、@Controller</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#注解8-Resource和-Autowire"><span class="toc-number">3.8.</span> <span class="toc-text">注解8 @Resource和@Autowire</span></a></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#注解"><span class="toc-number">2.</span> <span class="toc-text">注解</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#注解大集合"><span class="toc-number">3.</span> <span class="toc-text">注解大集合</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#注解1-ApiModel系列"><span class="toc-number">3.1.</span> <span class="toc-text">注解1 @ApiModel系列</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#注解2-Data"><span class="toc-number">3.2.</span> <span class="toc-text">注解2 @Data</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#注解3-EqualsAndHashCode"><span class="toc-number">3.3.</span> <span class="toc-text">注解3 @EqualsAndHashCode</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#注解4-GeneratedValue"><span class="toc-number">3.4.</span> <span class="toc-text">注解4 @GeneratedValue</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#注解5-Entity、-Table、-Column、-Id"><span class="toc-number">3.5.</span> <span class="toc-text">注解5 @Entity、@Table、@Column、@Id</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#注解6-JsonIgnoreProperties和-JsonIgnore"><span class="toc-number">3.6.</span> <span class="toc-text">注解6 @JsonIgnoreProperties和@JsonIgnore</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#注解7-Component、-Repository、-Service、-Controller"><span class="toc-number">3.7.</span> <span class="toc-text">注解7 @Component、@Repository、@Service、@Controller</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#注解8-Resource和-Autowire"><span class="toc-number">3.8.</span> <span class="toc-text">注解8 @Resource和@Autowire</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#注解9-RestController和-Controller"><span class="toc-number">3.9.</span> <span class="toc-text">注解9 @RestController和@Controller</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#注解10-RequestMapping，-PostMapping及-GetMapping等"><span class="toc-number">3.10.</span> <span class="toc-text">注解10 @RequestMapping，@PostMapping及@GetMapping等</span></a></li></ol></li></ol>
                     </div>
                 </span>
             </div>
