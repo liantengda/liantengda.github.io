@@ -28,7 +28,8 @@
 <meta property="og:image" content="http://luoyefubuki.com/2019/11/05/spring%E4%B8%AD%E7%9A%84%E6%B3%A8%E8%A7%A3%E5%A4%A7%E5%90%88%E9%9B%86/11.jpg">
 <meta property="og:image" content="http://luoyefubuki.com/2019/11/05/spring%E4%B8%AD%E7%9A%84%E6%B3%A8%E8%A7%A3%E5%A4%A7%E5%90%88%E9%9B%86/12.jpg">
 <meta property="og:image" content="http://luoyefubuki.com/2019/11/05/spring%E4%B8%AD%E7%9A%84%E6%B3%A8%E8%A7%A3%E5%A4%A7%E5%90%88%E9%9B%86/13.jpg">
-<meta property="og:updated_time" content="2019-11-07T09:46:39.867Z">
+<meta property="og:image" content="http://luoyefubuki.com/2019/11/05/spring%E4%B8%AD%E7%9A%84%E6%B3%A8%E8%A7%A3%E5%A4%A7%E5%90%88%E9%9B%86/14.jpg">
+<meta property="og:updated_time" content="2019-11-09T08:32:59.873Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="spring中的注解大合集">
 <meta name="twitter:description" content="前言本片文章只简单罗列spring中我所碰到的注解，同时简单介绍他们的作用和使用方法。">
@@ -482,7 +483,45 @@ public class RoleController {
     return ResultHopeUtil.tablePage(pageInfo);
     }
 }</code></pre><p>于是就从数据库查询到了数据返回，添入角色列表中<br><img src="//luoyefubuki.com/2019/11/05/spring%E4%B8%AD%E7%9A%84%E6%B3%A8%E8%A7%A3%E5%A4%A7%E5%90%88%E9%9B%86/13.jpg" alt="spring中的注解大合集"><br>至于他们的区别<br>@RequestMapping如果没有指定请求方式，将接收Get,Post,Head,Options等所有的请求方式<br>@GetMapping是一个组合注解，是@RequestMapping(method = RequestMethod.GET)的缩写。只接收get请求，否则报错405，方法不被允许<br>@PostMapping是一个组合注解，是@RequestMapping(method = RequestMethod.POST)的缩写。只接收post请求，否则报错405，方法不被允许</p>
-<h2 id="注解11-Slf4j"><a href="#注解11-Slf4j" class="headerlink" title="注解11 @Slf4j"></a>注解11 @Slf4j</h2>
+<h2 id="注解11-Slf4j"><a href="#注解11-Slf4j" class="headerlink" title="注解11 @Slf4j"></a>注解11 @Slf4j</h2><p>来自package lombok.extern.slf4j;如果不想每次都写private final Logger logger = LoggerFactory.getLogger(当前类名.class); 可以用注解@Slf4j;然后直接log.(日志内容)就可以打印日志了。<br>代码</p>
+<pre><code>@RestController
+@Slf4j
+public class LoginController {
+    //登陆
+    @PostMapping(&quot;/login&quot;)
+    public ResponseVo login(HttpServletRequest request, String username, String password, String verification,
+                @RequestParam(name = &quot;rememberme&quot;, defaultValue = &quot;false&quot;) Boolean rememberme) {
+    log.info(&quot;[进入登录方法....]&quot;);
+    //判断验证码
+    String rightCode = (String) request.getSession().getAttribute(Constants.KAPTCHA_SESSION_KEY);
+    if (StringUtils.isNotBlank(verification) &amp;&amp; StringUtils.isNotBlank(rightCode) &amp;&amp; verification.equals(rightCode)) {
+        log.info(&quot;[验证码通过]&quot;);
+    } else {
+        return ResultHopeUtil.error(&quot;验证码错误！&quot;);
+    }
+    UsernamePasswordToken token = new UsernamePasswordToken(username, password, rememberme);
+    try {
+        Subject subject = SecurityUtils.getSubject();
+        //登录验证
+        subject.login(token);
+    } catch (Exception e) {
+        token.clear();
+        log.info(&quot;[登录内部错误！请联系管理员检查！]-[{}]&quot;, DateUtil.date());
+        return ResultHopeUtil.error(e.getMessage());
+    }
+    log.info(&quot;[登录成功]-[{}]&quot;, DateUtil.date());
+    return ResultHopeUtil.success(&quot;登录成功！&quot;);
+    }
+}</code></pre><p>结果展示<br><img src="//luoyefubuki.com/2019/11/05/spring%E4%B8%AD%E7%9A%84%E6%B3%A8%E8%A7%A3%E5%A4%A7%E5%90%88%E9%9B%86/14.jpg" alt="spring中的注解大合集"></p>
+<h2 id="注解12-NoRepositoryBean"><a href="#注解12-NoRepositoryBean" class="headerlink" title="注解12 @NoRepositoryBean"></a>注解12 @NoRepositoryBean</h2><p>来自package org.springframework.data.repository;确保添加了该注解的 repository 接口不会在运行时被创建实例。也就是说，使用了该注解的接口不会被单独创建实例，只会作为其他接口的父接口而被使用。</p>
+<blockquote>
+<p>相当于你在使用spring data jpa 的时候，每个实体类有需要实现的相同的方法，就可以单独抽取出来，放在一个公共的接口MyRepository中，并这个类继承了jpa的相关Repository接口或类，由MyRepository接口来衔接jpa的相关操作，其他实体类需要实现的操作就直接继承MyRepository接口，不用每次都去继承jpa的相关接口或类啦，所以这个公共接口就需要这个注解@NoRepositoryBean来标识</p>
+</blockquote>
+<h2 id="注解13-SpringBootApplication"><a href="#注解13-SpringBootApplication" class="headerlink" title="注解13 @SpringBootApplication"></a>注解13 @SpringBootApplication</h2><p>来自package org.springframework.boot.autoconfigure，@SpringBootApplication这一个注解整合了三个注解的功能：<br>@Configuration 在SpringBoot中，被@Configuration 注解的类是一个配置类，相当于Spring中的xml配置文件。<br>@EnableAutoConfiguration @EnableAutoConfiguration借助@Import注解使用AutoConfigurationImportSelector将所有符合自动配置条件的bean定义加载到Spring的IoC容器中。<br>@ComponentScan @ComponentScan的作用是开启Spring的自定扫描功能，将范围内被@Component 注解的类加载到容器中，并生成bean。可以通过basePackages等属性指定自动扫描的范围。如果不指定，则默认是从被@ComponentScan注解的类所在的package进行扫描，因此SpringBoot的启动类最好放在项目的root package下面，这样才能保证整个项目下的所有类都在扫描范围中。</p>
+<h2 id="注解14-Order"><a href="#注解14-Order" class="headerlink" title="注解14 @Order"></a>注解14 @Order</h2><p>来自package org.springframework.core.annotation，注解@Order或者接口Ordered的作用是定义Spring IOC容器中Bean的执行顺序的优先级，而不是定义Bean的加载顺序，Bean的加载顺序不受@Order或Ordered接口的影响；默认是最低优先级,值越小优先级越高。</p>
+<h2 id="注解15-Bean"><a href="#注解15-Bean" class="headerlink" title="注解15 @Bean"></a>注解15 @Bean</h2><p>来自package org.springframework.context.annotation，从英文意思来看就知道这是个spring管理的对象，而且一般要配合@Configuration来使用，曾经我们配置bean实在spring容器xml文件中配置。有了bean注解就更加方便了。可以从注解7和注解8的实例进一步了解bean。</p>
+<h2 id="注解16-Mapper，-MapperScan和-Repository"><a href="#注解16-Mapper，-MapperScan和-Repository" class="headerlink" title="注解16 @Mapper，@MapperScan和@Repository"></a>注解16 @Mapper，@MapperScan和@Repository</h2><p>@Mapper来自package org.apache.ibatis.annotations，看来是个mybatis的注解。但是使用了这个注解却可以将Dao层交由spring管理。如果我们的mapper包内接口过多，则每个接口都需要一个@Mapper注解。此时我们可以在启动类上使用@MapperScan注解，在括号中指定需要扫描的mapper包。@MapperScan来自org.mybatis.spring.annotation.MapperScan。而@Repository本来是spring的组件注解之一，但是在此处是为了消除IDE工具报红才加的。</p>
+<h2 id="注解17"><a href="#注解17" class="headerlink" title="注解17"></a>注解17</h2>
       
 
       
@@ -639,7 +678,7 @@ public class RoleController {
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#注解"><span class="toc-number">2.</span> <span class="toc-text">注解</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#注解大集合"><span class="toc-number">3.</span> <span class="toc-text">注解大集合</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#注解1-ApiModel系列"><span class="toc-number">3.1.</span> <span class="toc-text">注解1 @ApiModel系列</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#注解2-Data"><span class="toc-number">3.2.</span> <span class="toc-text">注解2 @Data</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#注解3-EqualsAndHashCode"><span class="toc-number">3.3.</span> <span class="toc-text">注解3 @EqualsAndHashCode</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#注解4-GeneratedValue"><span class="toc-number">3.4.</span> <span class="toc-text">注解4 @GeneratedValue</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#注解5-Entity、-Table、-Column、-Id"><span class="toc-number">3.5.</span> <span class="toc-text">注解5 @Entity、@Table、@Column、@Id</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#注解6-JsonIgnoreProperties和-JsonIgnore"><span class="toc-number">3.6.</span> <span class="toc-text">注解6 @JsonIgnoreProperties和@JsonIgnore</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#注解7-Component、-Repository、-Service、-Controller"><span class="toc-number">3.7.</span> <span class="toc-text">注解7 @Component、@Repository、@Service、@Controller</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#注解8-Resource和-Autowire"><span class="toc-number">3.8.</span> <span class="toc-text">注解8 @Resource和@Autowire</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#注解9-RestController和-Controller"><span class="toc-number">3.9.</span> <span class="toc-text">注解9 @RestController和@Controller</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#注解10-RequestMapping，-PostMapping及-GetMapping等"><span class="toc-number">3.10.</span> <span class="toc-text">注解10 @RequestMapping，@PostMapping及@GetMapping等</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#注解11-Slf4j"><span class="toc-number">3.11.</span> <span class="toc-text">注解11 @Slf4j</span></a></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#注解"><span class="toc-number">2.</span> <span class="toc-text">注解</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#注解大集合"><span class="toc-number">3.</span> <span class="toc-text">注解大集合</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#注解1-ApiModel系列"><span class="toc-number">3.1.</span> <span class="toc-text">注解1 @ApiModel系列</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#注解2-Data"><span class="toc-number">3.2.</span> <span class="toc-text">注解2 @Data</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#注解3-EqualsAndHashCode"><span class="toc-number">3.3.</span> <span class="toc-text">注解3 @EqualsAndHashCode</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#注解4-GeneratedValue"><span class="toc-number">3.4.</span> <span class="toc-text">注解4 @GeneratedValue</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#注解5-Entity、-Table、-Column、-Id"><span class="toc-number">3.5.</span> <span class="toc-text">注解5 @Entity、@Table、@Column、@Id</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#注解6-JsonIgnoreProperties和-JsonIgnore"><span class="toc-number">3.6.</span> <span class="toc-text">注解6 @JsonIgnoreProperties和@JsonIgnore</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#注解7-Component、-Repository、-Service、-Controller"><span class="toc-number">3.7.</span> <span class="toc-text">注解7 @Component、@Repository、@Service、@Controller</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#注解8-Resource和-Autowire"><span class="toc-number">3.8.</span> <span class="toc-text">注解8 @Resource和@Autowire</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#注解9-RestController和-Controller"><span class="toc-number">3.9.</span> <span class="toc-text">注解9 @RestController和@Controller</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#注解10-RequestMapping，-PostMapping及-GetMapping等"><span class="toc-number">3.10.</span> <span class="toc-text">注解10 @RequestMapping，@PostMapping及@GetMapping等</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#注解11-Slf4j"><span class="toc-number">3.11.</span> <span class="toc-text">注解11 @Slf4j</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#注解12-NoRepositoryBean"><span class="toc-number">3.12.</span> <span class="toc-text">注解12 @NoRepositoryBean</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#注解13-SpringBootApplication"><span class="toc-number">3.13.</span> <span class="toc-text">注解13 @SpringBootApplication</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#注解14-Order"><span class="toc-number">3.14.</span> <span class="toc-text">注解14 @Order</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#注解15-Bean"><span class="toc-number">3.15.</span> <span class="toc-text">注解15 @Bean</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#注解16-Mapper，-MapperScan和-Repository"><span class="toc-number">3.16.</span> <span class="toc-text">注解16 @Mapper，@MapperScan和@Repository</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#注解17"><span class="toc-number">3.17.</span> <span class="toc-text">注解17</span></a></li></ol></li></ol>
                     </div>
                 </span>
             </div>
