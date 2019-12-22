@@ -178,73 +178,6 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-伟大的DNS协议" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/12/22/伟大的DNS协议/">伟大的DNS协议</a>
-    </h1>
-  
-
-        
-        
-<a href="/2019/12/22/伟大的DNS协议/" class="archive-article-date">
-  	<time datetime="2019-12-22T11:51:25.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-22</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/12/22/伟大的DNS协议/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
     <article id="post-灵魂打击" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -282,6 +215,131 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2019/12/17/灵魂打击/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-伟大的DNS协议" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/12/02/伟大的DNS协议/">伟大的DNS协议</a>
+    </h1>
+  
+
+        
+        
+<a href="/2019/12/02/伟大的DNS协议/" class="archive-article-date">
+  	<time datetime="2019-12-02T11:51:25.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-02</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="DNS协议（域名解析协议）"><a href="#DNS协议（域名解析协议）" class="headerlink" title="DNS协议（域名解析协议）"></a>DNS协议（域名解析协议）</h1><h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>DNS是一种用可以将域名转换为IP地址的Internet服务。根据我们所学的通信知识，数据交流首先需要知道对方IP地址，如果没有ip地址，网络层就罢工了，不能使用IP协议了。但是如果我们每想访问一个应用，都要知道对方主机的IP地址，例如百度<br><img src="//luoyefubuki.com/2019/12/02/%E4%BC%9F%E5%A4%A7%E7%9A%84DNS%E5%8D%8F%E8%AE%AE/22.jpg" alt="伟大的DNS协议"><br>如果没有域名，我们就需要输入这个ip地址，去百度一下。这是实在不太好记。<br><img src="//luoyefubuki.com/2019/12/02/%E4%BC%9F%E5%A4%A7%E7%9A%84DNS%E5%8D%8F%E8%AE%AE/2.jpg" alt="伟大的DNS协议"><br>换成域名后，大家都知道www.草泥马.com，只需要替换中间的草泥马就可以了。<br><img src="//luoyefubuki.com/2019/12/02/%E4%BC%9F%E5%A4%A7%E7%9A%84DNS%E5%8D%8F%E8%AE%AE/3.jpg" alt="伟大的DNS协议"><br>所以这项协议就诞生了。其规则就是域名是分层级的，以<a href="http://www.baidu.com为例，www.baidu.com的真实域名为www.baidu.com.root,其中.root是根域名，.com是顶级域名，.baidu是次级域名，www是三级域名，代表主机名。这样一来，就可以进行分级查询了。就形成了一套规则，DNS协议。" target="_blank" rel="noopener">www.baidu.com为例，www.baidu.com的真实域名为www.baidu.com.root,其中.root是根域名，.com是顶级域名，.baidu是次级域名，www是三级域名，代表主机名。这样一来，就可以进行分级查询了。就形成了一套规则，DNS协议。</a></p>
+<h2 id="查询示例"><a href="#查询示例" class="headerlink" title="查询示例"></a>查询示例</h2><p>如下为本机查询百度ip的整个分级查询过程，可以看到先从分域名开始，</p>
+<pre><code>[root@VM_0_14_centos ~]# dig +trace www.baidu.com
+    # 目前，世界上一共有十三组根域名服务器，从A.ROOT-SERVERS.NET一直到M.ROOT-SERVERS.NET
+; &lt;&lt;&gt;&gt; DiG 9.11.4-P2-RedHat-9.11.4-9.P2.el7 &lt;&lt;&gt;&gt; +trace www.baidu.com
+;; global options: +cmd
+.            184604    IN    NS    e.root-servers.net.
+.            184604    IN    NS    f.root-servers.net.
+.            184604    IN    NS    g.root-servers.net.
+.            184604    IN    NS    h.root-servers.net.
+.            184604    IN    NS    i.root-servers.net.
+.            184604    IN    NS    j.root-servers.net.
+.            184604    IN    NS    k.root-servers.net.
+.            184604    IN    NS    l.root-servers.net.
+.            184604    IN    NS    m.root-servers.net.
+.            184604    IN    NS    a.root-servers.net.
+.            184604    IN    NS    b.root-servers.net.
+.            184604    IN    NS    c.root-servers.net.
+.            184604    IN    NS    d.root-servers.net.
+;; Received 239 bytes from 183.60.83.19#53(183.60.83.19) in 3 ms
+# DNS服务器向13台根域名服务器发送请求，然后从183.60.83.19获取到13组根域名服务器信息。#后边是端口号。
+com.            172800    IN    NS    a.gtld-servers.net.
+com.            172800    IN    NS    e.gtld-servers.net.
+com.            172800    IN    NS    g.gtld-servers.net.
+com.            172800    IN    NS    c.gtld-servers.net.
+com.            172800    IN    NS    b.gtld-servers.net.
+com.            172800    IN    NS    k.gtld-servers.net.
+com.            172800    IN    NS    m.gtld-servers.net.
+com.            172800    IN    NS    i.gtld-servers.net.
+com.            172800    IN    NS    f.gtld-servers.net.
+com.            172800    IN    NS    l.gtld-servers.net.
+com.            172800    IN    NS    j.gtld-servers.net.
+com.            172800    IN    NS    h.gtld-servers.net.
+com.            172800    IN    NS    d.gtld-servers.net.
+com.            86400    IN    DS    30909 8 2 E2D3C916F6DEEAC73294E8268FB5885044A833FC5459588F4A9184CF C41A5766
+com.            86400    IN    RRSIG    DS 8 1 86400 20191203050000 20191120040000 22545 . MKqGgVQFeIv+Ku3s2WLphkS/rAxDOzEK2K00yGxsaumgK34xU2nkkuCl AhsCHNjmJHjg1hop0l0tlUAK/OUpAy0nZ9wiYvPlgDE8Z5OioBuj0+9P z9hXVK6vXkv5Q9APLJc4N903b18Gp5jlNsqLPCho3gKn/uuOZpqkYlKy DLV0RhKHqz04Q8aNg5FBGbRPDMD7OnlQ7oz63CwLqDGHLqEEKkATaTah qdaAhhI84u72yXM81qCXkbYRcnV1z2MH2fWkgHarYZwpuSpXjxCkCAw4 kCYjhE3swHRbxrN4Vf44sG/K2Pv8oDQ3EWU10Yt4FzMzbJ7rdtBwTwAD bwsBMQ==
+;; Received 1173 bytes from 199.9.14.201#53(b.root-servers.net) in 161 ms
+# 然后DNS服务器请求13组根域名服务器，得到13组顶级域名服务器com.的NS记录。从根域名服务器b.root-servers.net获取到1173个字节的信息。
+baidu.com.        172800    IN    NS    ns2.baidu.com.
+baidu.com.        172800    IN    NS    ns3.baidu.com.
+baidu.com.        172800    IN    NS    ns4.baidu.com.
+baidu.com.        172800    IN    NS    ns1.baidu.com.
+baidu.com.        172800    IN    NS    ns7.baidu.com.
+CK0POJMG874LJREF7EFN8430QVIT8BSM.com. 86400 IN NSEC3 1 1 0 - CK0Q1GIN43N1ARRC9OSM6QPQR81H5M9A NS SOA RRSIG DNSKEY NSEC3PARAM
+CK0POJMG874LJREF7EFN8430QVIT8BSM.com. 86400 IN RRSIG NSEC3 8 2 86400 20191127054802 20191120043802 12163 com. mTPzrfchN2W03wJ0BLnXl0sgiOY98UAXZfeJn+/fO02iQQ1CkSB2Z/Ga OVBub2M0L37QrRXVplMNd5oRF0/LBLm3XRbREHrQ7lxGgAucp4Mrcaph E0XARLOHqlcPdM3SlZ6mqynv5NF3xAj+cEgcSUvtekLWW0pyosoGrLEE GIsGOmbPLTVIEZHuqxKi7uoo9RpfzrMHqbctef7etXzPBg==
+HPVV2B5N85O7HJJRB7690IB5UVF9O9UA.com. 86400 IN NSEC3 1 1 0 - HPVVN3Q5E5GOQP2QFE2LEM4SVB9C0SJ6 NS DS RRSIG
+HPVV2B5N85O7HJJRB7690IB5UVF9O9UA.com. 86400 IN RRSIG NSEC3 8 2 86400 20191125055418 20191118044418 12163 com. g7RUQrrniChEJ2aua7sZ9ZSeRw/aR88aTuhETIsPHoY4uZXITkT4N3be y0+9O+kJTXi+OLY1cz2vdnWI9pTk/TLWwCdbR10XBb474GIBuW7pzzTS UUPFssj2IfUFbteU2JM8CF9VC2XaU/wucL3xzJZHzboCPFzs2OJzqdDF KHS0z+IBLCLeuiYhMosI/6Hgi1TGYAdh4UPiFhVintWbKw==
+;; Received 761 bytes from 192.12.94.30#53(e.gtld-servers.net) in 176 ms
+# 然后DNS服务器向13组顶级域名服务器发出请求，得到次级域名baidu.com.的NS记录，一共五条。从e.gtld-servers.net获取761字节。
+www.baidu.com.        1200    IN    CNAME    www.a.shifen.com.
+a.shifen.com.        1200    IN    NS    ns1.a.shifen.com.
+a.shifen.com.        1200    IN    NS    ns5.a.shifen.com.
+a.shifen.com.        1200    IN    NS    ns2.a.shifen.com.
+a.shifen.com.        1200    IN    NS    ns4.a.shifen.com.
+a.shifen.com.        1200    IN    NS    ns3.a.shifen.com.
+;; Received 239 bytes from 112.80.248.64#53(ns3.baidu.com) in 32 ms
+# 然后DNS服务器向顶级域名五台服务器请求，获得www.baidu.com的主机名。从ns3.baidu.com获取239字节的数据。则最后主机就是112.80.248.64.</code></pre><h2 id="DNS记录"><a href="#DNS记录" class="headerlink" title="DNS记录"></a>DNS记录</h2><p>域名与IP的对应关系就成为记录。<br>NS记录，就是name server，域名服务器记录，返回保存下一级域名信息的服务器地址。该记录只能是域名形式。所以我们看到的都是英文字母。而A记录就是域名指向的IP地址，address。上面还出现了CNAME，Canonical Name，返回另一个域名，即当前查询域名是另一个域名的跳转。</p>
+<h2 id="DNS数据传输"><a href="#DNS数据传输" class="headerlink" title="DNS数据传输"></a>DNS数据传输</h2><p>DNS同时占用TCP和UDP的53端口。<br>DNS在进行区域传输的时候使用TCP协议，其它时候则使用UDP协议；<br>DNS的规范规定了2种类型的DNS服务器，一个叫主DNS服务器，一个叫辅助DNS服务器。在一个区中主DNS服务器从自己本机的数据文件中读取该区的DNS数据信息，而辅助DNS服务器则从区的主DNS服务器中读取该区的DNS数据信息。当一个辅助DNS服务器启动时，它需要与主DNS服务器通信，并加载数据信息，这就叫做区传送（zone transfer）。<br>辅助DNS服务器定时从主服务器总读取本区域的数据，查看数据变动情况，一旦变动，就需要进行同步，同步过程就是区域传送。而区域传送的数据量要比单个请求的数据量大很多，为了保证数据的准确性，此时使用TCP连接。为什么，按道理，UDP也可以传递数据包，无论多大的包，只要分开传不就可以了。但是DNS设计时，限制了UDP传递的数据大小，为512字节，多余的数据是不可以分开传递的，而是直接截取丢掉。所以当字节数多于512时，就需要使用TCP协议了。<br>所以，可见这道真题的答案很明显了，应该选择DNS。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/12/02/伟大的DNS协议/">展开全文 >></a>
         </p>
       
 
