@@ -6,15 +6,16 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>纷飞落叶的博客</title>
+  <title>伟大的DNS协议 | 纷飞落叶的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="纷飞落叶的博客">
-<meta property="og:url" content="http://yoursite.com/page/3/index.html">
+  <meta property="og:type" content="article">
+<meta property="og:title" content="伟大的DNS协议">
+<meta property="og:url" content="http://yoursite.com/2019/12/22/伟大的DNS协议/index.html">
 <meta property="og:site_name" content="纷飞落叶的博客">
 <meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-12-22T11:52:01.108Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="纷飞落叶的博客">
+<meta name="twitter:title" content="伟大的DNS协议">
   
     <link rel="alternative" href="/atom.xml" title="纷飞落叶的博客" type="application/atom+xml">
   
@@ -176,35 +177,66 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-    <article id="post-多路查找树之B+树" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+            <article id="post-伟大的DNS协议" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/09/19/多路查找树之B+树/">多路查找树之B+树</a>
+    <h1 class="article-title" itemprop="name">
+      伟大的DNS协议
     </h1>
   
 
         
         
-<a href="/2019/09/19/多路查找树之B+树/" class="archive-article-date">
-  	<time datetime="2019-09-19T12:23:57.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-19</time>
+        <!-- 不蒜子统计 -->
+        <span id="busuanzi_container_page_pv" style='display:none' class="archive-article-date">
+              <i class="icon-smile icon"></i> 阅读数：<span id="busuanzi_value_page_pv"></span>次
+        </span>
+
+<a href="/2019/12/22/伟大的DNS协议/" class="archive-article-date">
+  	<time datetime="2019-12-22T11:51:25.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-22</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="B-树的出现"><a href="#B-树的出现" class="headerlink" title="B+树的出现"></a>B+树的出现</h1><p>在了解B+树之前，首先需要了解B树是什么。<br><a href="//luoyefubuki.com/2019/09/19/多路查找树之B树/">多路查找树之B树</a><br>了解了B树，我们可以知道，B树解决了一个节点只能存取一个数据的问题，而且也解决了平衡二叉树高度不可控制的问题。<br>但是B树是有缺陷的。进行范围查询时，每读取一个节点都需要回溯到根部重新遍历，使得路径上的分支节点被多次读取，增加了磁盘I/O操作。而且，B树的每个节点都是Key-Value存储在一起的，而value部分也只是一个存储了数据的地址，所以每次比较key的时候，都会把value读取出来，增加了不必要的I/O，我们使用B树本来就是为了减少磁盘I/O的，所以仍然需要对其进行改进。<br>于是出现了B+树。<br><img src="//luoyefubuki.com/2019/09/19/%E5%A4%9A%E8%B7%AF%E6%9F%A5%E6%89%BE%E6%A0%91%E4%B9%8BB+%E6%A0%91/1.jpg" alt="多路查找树之B+树"></p>
-        
-          <a class="article-more-a" href="/2019/09/19/多路查找树之B+树/#more">more >></a>
         
       
 
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/支付宝支付.png">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/微信支付.png">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
       
     </div>
     <div class="article-info article-info-index">
@@ -213,11 +245,58 @@
       
 
       
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/09/19/多路查找树之B+树/">展开全文 >></a>
-        </p>
-      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/12/22/伟大的DNS协议/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
       
       <div class="clearfix"></div>
     </div>
@@ -225,7 +304,40 @@
 </article>
 
 
+  
+  <!-- ������City�氲װ���� -->
+<div id="lv-container" data-id="city" data-uid="MTAyMC80NTQ3Mi8yMTk4NA==">
+	<script type="text/javascript">
+   (function(d, s) {
+       var j, e = d.getElementsByTagName(s)[0];
 
+       if (typeof LivereTower === 'function') { return; }
+
+       j = d.createElement(s);
+       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+       j.async = true;
+
+       e.parentNode.insertBefore(j, e);
+   })(document, 'script');
+	</script>
+<noscript> Ϊ����ʹ�����������۹����뼤��JavaScript</noscript>
+</div>
+<!-- City�氲װ��������� -->
+  
+
+
+
+
+  
+<nav id="article-nav">
+  
+  
+    <a href="/2019/12/17/灵魂打击/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">交织于灵魂中的希望与绝望</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
 
 
 <aside class="wrap-side-operation">
@@ -241,643 +353,36 @@
         </div>
         
         
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-多路查找树之B树" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/09/19/多路查找树之B树/">多路查找树之B树</a>
-    </h1>
-  
-
-        
-        
-<a href="/2019/09/19/多路查找树之B树/" class="archive-article-date">
-  	<time datetime="2019-09-19T12:23:29.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-19</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="B树的出现"><a href="#B树的出现" class="headerlink" title="B树的出现"></a>B树的出现</h1><p>在看这篇文章之前，如果不知道2-3树，和2-3-4树的小伙伴，可以先通过以下这两篇文章，理解一下B树的特例。对理解B树十分有帮助。<br><a href="//luoyefubuki.com/2019/09/19/多路查找树之2-3树/">多路查找树之2-3树</a> <a href="//luoyefubuki.com/2019/09/19/多路查找树之2-3-4树/">多路查找树之2-3-4树</a></p>
-        
-          <a class="article-more-a" href="/2019/09/19/多路查找树之B树/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/09/19/多路查找树之B树/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    目录，不存在的…
+                    </div>
+                </span>
             </div>
         </div>
         
-        
     </div>
 </aside>
 
 
 
-
-  
-    <article id="post-多路查找树之2-3-4树" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/09/19/多路查找树之2-3-4树/">多路查找树之2-3-4树</a>
-    </h1>
   
 
-        
-        
-<a href="/2019/09/19/多路查找树之2-3-4树/" class="archive-article-date">
-  	<time datetime="2019-09-19T12:22:59.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-19</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="2-3-4树出现的契机"><a href="#2-3-4树出现的契机" class="headerlink" title="2-3-4树出现的契机"></a>2-3-4树出现的契机</h1><p>前面我们分析了2-3树，今天来分析2-3-4树，为什么会有2-3-4树。其实2-3树和2-3-4树都是B树，区别就是2-3-4树添加了四节点。了解了2-3-4树，我们就知道B树就是2-3-……-n树。</p>
-        
-          <a class="article-more-a" href="/2019/09/19/多路查找树之2-3-4树/#more">more >></a>
-        
-      
+  
+  
 
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/09/19/多路查找树之2-3-4树/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
+  
 
 
 
 
   
-    <article id="post-多路查找树之2-3树" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/09/19/多路查找树之2-3树/">多路查找树之2-3树</a>
-    </h1>
-  
 
-        
-        
-<a href="/2019/09/19/多路查找树之2-3树/" class="archive-article-date">
-  	<time datetime="2019-09-19T12:21:46.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-19</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="出现的原因"><a href="#出现的原因" class="headerlink" title="出现的原因"></a>出现的原因</h1><p>我们前边学了二叉排序树，如果碰都的数据比较理想，{35，17，39，9，28，65}会长得像一棵树。如果碰到的数据，排序是单调变化的话，比如{9，17，28，35，39，65}可想而知，这棵树会变成一棵斜树，和链表没啥区别了。<br><img src="//luoyefubuki.com/2019/09/19/%E5%A4%9A%E8%B7%AF%E6%9F%A5%E6%89%BE%E6%A0%91%E4%B9%8B2-3%E6%A0%91/1.jpg" alt="多路查找树之2-3树"></p>
-        
-          <a class="article-more-a" href="/2019/09/19/多路查找树之2-3树/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/09/19/多路查找树之2-3树/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Windows如何安装chocolatey" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/09/19/Windows如何安装chocolatey/">Windows如何安装chocolatey</a>
-    </h1>
-  
-
-        
-        
-<a href="/2019/09/19/Windows如何安装chocolatey/" class="archive-article-date">
-  	<time datetime="2019-09-19T08:16:26.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-19</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/09/19/Windows如何安装chocolatey/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-使用docker快速部署一个java项目" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/09/17/使用docker快速部署一个java项目/">使用docker快速部署一个java项目</a>
-    </h1>
-  
-
-        
-        
-<a href="/2019/09/17/使用docker快速部署一个java项目/" class="archive-article-date">
-  	<time datetime="2019-09-17T12:38:50.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-17</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="一、docker的安装"><a href="#一、docker的安装" class="headerlink" title="一、docker的安装"></a>一、docker的安装</h1><p>使用docker version查看docker是否安装成功。<br>systemctl status docker 查看docker服务是否启动成功。</p>
-        
-          <a class="article-more-a" href="/2019/09/17/使用docker快速部署一个java项目/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/09/17/使用docker快速部署一个java项目/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-平衡二叉树" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/09/16/平衡二叉树/">平衡二叉树</a>
-    </h1>
-  
-
-        
-        
-<a href="/2019/09/16/平衡二叉树/" class="archive-article-date">
-  	<time datetime="2019-09-16T04:57:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-16</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="为什么要有平衡二叉树"><a href="#为什么要有平衡二叉树" class="headerlink" title="为什么要有平衡二叉树"></a>为什么要有平衡二叉树</h1><p>我们前边学习了二叉搜索树，解决一组有序数据集合数据插入和删除困难的问题。但是也碰到了一个问题，就是如果这棵二叉搜索树长得太歪了怎么办。如下图所示，这跟链表有啥区别。如果树长成这样，二叉搜索树还有什么意义。<br><img src="//luoyefubuki.com/2019/09/16/%E5%B9%B3%E8%A1%A1%E4%BA%8C%E5%8F%89%E6%A0%91/1.jpg" alt="平衡二叉树"></p>
-        
-          <a class="article-more-a" href="/2019/09/16/平衡二叉树/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/09/16/平衡二叉树/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-二叉排序树" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/09/15/二叉排序树/">二叉排序树</a>
-    </h1>
-  
-
-        
-        
-<a href="/2019/09/15/二叉排序树/" class="archive-article-date">
-  	<time datetime="2019-09-15T07:40:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-15</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="二叉排序树的出现"><a href="#二叉排序树的出现" class="headerlink" title="二叉排序树的出现"></a>二叉排序树的出现</h1><p>如果有一组元素，{67，23，89，65，33，10，98，40，5，102}我们把他们散乱的放到一起，当我们删除时，可以直接将数据与末尾数据互换，然后删除末尾数据，如果要插入数据，直接插入末尾就可以了。但是如果要想查找到我们的数据，简直无从下手，只能遍历一遍这个集合，一个个的对。</p>
-<p>这个时候我们就想到整理一下这些数据，将他们变为有序的{5，10，23，33，40，65，67，89，98，102}，那么查找的时候，就可以使用折半查找，轻松找到数据，但是当我们想要插入一个数据时，我们就需要将后边的数据向后移动。删除数据时，我们又需要将后边所有元素向前移动。时间都浪费在搬运上了。</p>
-<p>此时就出现了二叉排序树。既可以快速找到数据，又可以轻松插入删除数据。</p>
-        
-          <a class="article-more-a" href="/2019/09/15/二叉排序树/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/09/15/二叉排序树/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-赫夫曼树的解释" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/09/15/赫夫曼树的解释/">赫夫曼树的解释</a>
-    </h1>
-  
-
-        
-        
-<a href="/2019/09/15/赫夫曼树的解释/" class="archive-article-date">
-  	<time datetime="2019-09-15T07:35:42.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-15</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/09/15/赫夫曼树的解释/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-线索二叉树" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/09/15/线索二叉树/">线索二叉树</a>
-    </h1>
-  
-
-        
-        
-<a href="/2019/09/15/线索二叉树/" class="archive-article-date">
-  	<time datetime="2019-09-15T06:44:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-15</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="前提"><a href="#前提" class="headerlink" title="前提"></a>前提</h1><p>在学习线索二叉树之前，首先应该知道二叉树常用的几种存储结构以及二叉树的遍历方式。</p>
-        
-          <a class="article-more-a" href="/2019/09/15/线索二叉树/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/09/15/线索二叉树/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-  
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/2/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><a class="extend next" rel="next" href="/page/4/">Next &raquo;</a>
-    </nav>
   
 
 
@@ -913,8 +418,8 @@
     <script>
 	var yiliaConfig = {
 		mathjax: false,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
