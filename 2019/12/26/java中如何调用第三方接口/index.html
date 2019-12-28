@@ -8,19 +8,18 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>java中如何调用第三方接口 | 纷飞落叶的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="需求需要获取第三方的某些数据信息。而且手中有第三方的接口规范。在java中，一般会有以下四种方式：  ①通过JDK网络类Java.net.HttpURLConnection；②通过common封装好的HttpClient；③通过Apache封装好的CloseableHttpClient；④通过SpringBoot-RestTemplate；  我遇到的问题我需要进入第三方库中获取相应的角色信息。因">
+  <meta name="description" content="需求需要获取第三方的某些数据信息。而且手中有第三方的接口规范。在java中，一般会有以下四种方式：  ①通过JDK网络类Java.net.HttpURLConnection；②通过common封装好的HttpClient；③通过Apache封装好的CloseableHttpClient；④通过SpringBoot-RestTemplate；">
 <meta property="og:type" content="article">
 <meta property="og:title" content="java中如何调用第三方接口">
 <meta property="og:url" content="http://yoursite.com/2019/12/26/java中如何调用第三方接口/index.html">
 <meta property="og:site_name" content="纷飞落叶的博客">
-<meta property="og:description" content="需求需要获取第三方的某些数据信息。而且手中有第三方的接口规范。在java中，一般会有以下四种方式：  ①通过JDK网络类Java.net.HttpURLConnection；②通过common封装好的HttpClient；③通过Apache封装好的CloseableHttpClient；④通过SpringBoot-RestTemplate；  我遇到的问题我需要进入第三方库中获取相应的角色信息。因">
+<meta property="og:description" content="需求需要获取第三方的某些数据信息。而且手中有第三方的接口规范。在java中，一般会有以下四种方式：  ①通过JDK网络类Java.net.HttpURLConnection；②通过common封装好的HttpClient；③通过Apache封装好的CloseableHttpClient；④通过SpringBoot-RestTemplate；">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://luoyefubuki.com/2019/12/26/java%E4%B8%AD%E5%A6%82%E4%BD%95%E8%B0%83%E7%94%A8%E7%AC%AC%E4%B8%89%E6%96%B9%E6%8E%A5%E5%8F%A3/1.jpg">
-<meta property="og:image" content="http://luoyefubuki.com/2019/12/26/%E5%8F%91%E9%80%81http%E8%AF%B7%E6%B1%82%E9%9C%80%E8%A6%81%E4%BA%9B%E4%BB%80%E4%B9%88/">
-<meta property="og:updated_time" content="2019-12-28T03:11:50.812Z">
+<meta property="og:updated_time" content="2019-12-28T03:16:57.499Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="java中如何调用第三方接口">
-<meta name="twitter:description" content="需求需要获取第三方的某些数据信息。而且手中有第三方的接口规范。在java中，一般会有以下四种方式：  ①通过JDK网络类Java.net.HttpURLConnection；②通过common封装好的HttpClient；③通过Apache封装好的CloseableHttpClient；④通过SpringBoot-RestTemplate；  我遇到的问题我需要进入第三方库中获取相应的角色信息。因">
+<meta name="twitter:description" content="需求需要获取第三方的某些数据信息。而且手中有第三方的接口规范。在java中，一般会有以下四种方式：  ①通过JDK网络类Java.net.HttpURLConnection；②通过common封装好的HttpClient；③通过Apache封装好的CloseableHttpClient；④通过SpringBoot-RestTemplate；">
 <meta name="twitter:image" content="http://luoyefubuki.com/2019/12/26/java%E4%B8%AD%E5%A6%82%E4%BD%95%E8%B0%83%E7%94%A8%E7%AC%AC%E4%B8%89%E6%96%B9%E6%8E%A5%E5%8F%A3/1.jpg">
   
     <link rel="alternative" href="/atom.xml" title="纷飞落叶的博客" type="application/atom+xml">
@@ -213,6 +212,7 @@
 <blockquote>
 <p>①通过JDK网络类Java.net.HttpURLConnection；<br>②通过common封装好的HttpClient；<br>③通过Apache封装好的CloseableHttpClient；<br>④通过SpringBoot-RestTemplate；</p>
 </blockquote>
+<a id="more"></a>
 <h1 id="我遇到的问题"><a href="#我遇到的问题" class="headerlink" title="我遇到的问题"></a>我遇到的问题</h1><p>我需要进入第三方库中获取相应的角色信息。因此我先读取了配置文件中的baseURL，然后接续具体的接口，比如根据用户名获取当前用户信息。/user/getUserByLoginName。</p>
 <h1 id="选择请求第三方接口方式"><a href="#选择请求第三方接口方式" class="headerlink" title="选择请求第三方接口方式"></a>选择请求第三方接口方式</h1><p>我选择的是Apache封装好的CloseableHttpClient,可关闭的http客户端。CloseableHttpClient是在HttpClient的基础上修改更新而来的，这里还涉及到请求头token的设置（请求验证），利用fastjson转换请求或返回结果字符串为json格式。首先我们需要的工具包为如下：</p>
 <pre><code>&lt;!--CloseableHttpClient--&gt;
@@ -291,7 +291,7 @@ public class CloseableHttpClientTest {
 
     }
 }</code></pre><h1 id="请求结果"><a href="#请求结果" class="headerlink" title="请求结果"></a>请求结果</h1><p>为一张澎湃新闻的http页面。<br><img src="//luoyefubuki.com/2019/12/26/java%E4%B8%AD%E5%A6%82%E4%BD%95%E8%B0%83%E7%94%A8%E7%AC%AC%E4%B8%89%E6%96%B9%E6%8E%A5%E5%8F%A3/1.jpg" alt="java中如何调用第三方接口"></p>
-<h1 id="涉及到的原理"><a href="#涉及到的原理" class="headerlink" title="涉及到的原理"></a>涉及到的原理</h1><p>http请求本来是一个应用层协议protocol，其基于的传输层协议是TCP协议，网络层协议是IP协议。所以当使用java发起http请求时，一定也经历了三次握手，四次挥手。先建立连接，然后发送请求，然后获取响应，然后关闭连接。具体详情请移步HTTP请求各个参数详解。<br><img src="//luoyefubuki.com/2019/12/26/%E5%8F%91%E9%80%81http%E8%AF%B7%E6%B1%82%E9%9C%80%E8%A6%81%E4%BA%9B%E4%BB%80%E4%B9%88/" alt="发送http请求需要些什么"></p>
+<h1 id="涉及到的原理"><a href="#涉及到的原理" class="headerlink" title="涉及到的原理"></a>涉及到的原理</h1><p>http请求本来是一个应用层协议protocol，其基于的传输层协议是TCP协议，网络层协议是IP协议。所以当使用java发起http请求时，一定也经历了三次握手，四次挥手。先建立连接，然后发送请求，然后获取响应，然后关闭连接。具体详情请移步HTTP请求各个参数详解。<br><a href="//luoyefubuki.com/2019/12/26/发送http请求需要些什么/">发送http请求需要些什么</a></p>
 
       
 
