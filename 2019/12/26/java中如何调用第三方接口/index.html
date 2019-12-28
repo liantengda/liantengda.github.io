@@ -16,7 +16,7 @@
 <meta property="og:description" content="需求需要获取第三方的某些数据信息。而且手中有第三方的接口规范。在java中，一般会有以下四种方式：  ①通过JDK网络类Java.net.HttpURLConnection；②通过common封装好的HttpClient；③通过Apache封装好的CloseableHttpClient；④通过SpringBoot-RestTemplate；">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://luoyefubuki.com/2019/12/26/java%E4%B8%AD%E5%A6%82%E4%BD%95%E8%B0%83%E7%94%A8%E7%AC%AC%E4%B8%89%E6%96%B9%E6%8E%A5%E5%8F%A3/1.jpg">
-<meta property="og:updated_time" content="2019-12-28T03:16:57.499Z">
+<meta property="og:updated_time" content="2019-12-28T03:18:00.958Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="java中如何调用第三方接口">
 <meta name="twitter:description" content="需求需要获取第三方的某些数据信息。而且手中有第三方的接口规范。在java中，一般会有以下四种方式：  ①通过JDK网络类Java.net.HttpURLConnection；②通过common封装好的HttpClient；③通过Apache封装好的CloseableHttpClient；④通过SpringBoot-RestTemplate；">
@@ -291,7 +291,7 @@ public class CloseableHttpClientTest {
 
     }
 }</code></pre><h1 id="请求结果"><a href="#请求结果" class="headerlink" title="请求结果"></a>请求结果</h1><p>为一张澎湃新闻的http页面。<br><img src="//luoyefubuki.com/2019/12/26/java%E4%B8%AD%E5%A6%82%E4%BD%95%E8%B0%83%E7%94%A8%E7%AC%AC%E4%B8%89%E6%96%B9%E6%8E%A5%E5%8F%A3/1.jpg" alt="java中如何调用第三方接口"></p>
-<h1 id="涉及到的原理"><a href="#涉及到的原理" class="headerlink" title="涉及到的原理"></a>涉及到的原理</h1><p>http请求本来是一个应用层协议protocol，其基于的传输层协议是TCP协议，网络层协议是IP协议。所以当使用java发起http请求时，一定也经历了三次握手，四次挥手。先建立连接，然后发送请求，然后获取响应，然后关闭连接。具体详情请移步HTTP请求各个参数详解。<br><a href="//luoyefubuki.com/2019/12/26/发送http请求需要些什么/">发送http请求需要些什么</a></p>
+<h1 id="涉及到的原理"><a href="#涉及到的原理" class="headerlink" title="涉及到的原理"></a>涉及到的原理</h1><p>http请求本来是一个应用层协议protocol，其基于的传输层协议是TCP协议，网络层协议是IP协议。所以当使用java发起http请求时，一定也经历了三次握手，四次挥手。先建立连接，然后发送请求，然后获取响应，然后关闭连接。具体详情请移步HTTP请求各个参数详解。<br><a href="//luoyefubuki.com/2019/11/20/发送http请求需要些什么/">发送http请求需要些什么</a></p>
 
       
 
@@ -419,15 +419,6 @@ public class CloseableHttpClientTest {
 
   
 <nav id="article-nav">
-  
-    <a href="/2019/12/28/发送http请求需要些什么/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          发送http请求需要些什么
-        
-      </div>
-    </a>
   
   
     <a href="/2019/12/23/寻求蜕变之道-为什么你很厌恶自己的工作/" id="article-nav-older" class="article-nav-link-wrap">

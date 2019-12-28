@@ -8,14 +8,17 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>发送http请求需要些什么 | 纷飞落叶的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="article">
+  <meta name="description" content="零、简介HTTP协议（Hyper Text Transfer Protocol，超文本传输协议）,是用于从万维网（WWW:World Wide Web ）服务器传输超文本到本地浏览器的传送协议。HTTP基于TCP/IP通信协议来传递数据。HTTP基于客户端/服务端（C/S）架构模型，通过一个可靠的链接来交换信息，是一个无状态的请求/响应协议。">
+<meta property="og:type" content="article">
 <meta property="og:title" content="发送http请求需要些什么">
-<meta property="og:url" content="http://yoursite.com/2019/12/28/发送http请求需要些什么/index.html">
+<meta property="og:url" content="http://yoursite.com/2019/11/20/发送http请求需要些什么/index.html">
 <meta property="og:site_name" content="纷飞落叶的博客">
+<meta property="og:description" content="零、简介HTTP协议（Hyper Text Transfer Protocol，超文本传输协议）,是用于从万维网（WWW:World Wide Web ）服务器传输超文本到本地浏览器的传送协议。HTTP基于TCP/IP通信协议来传递数据。HTTP基于客户端/服务端（C/S）架构模型，通过一个可靠的链接来交换信息，是一个无状态的请求/响应协议。">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-12-28T03:11:19.818Z">
+<meta property="og:updated_time" content="2019-12-28T04:09:46.144Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="发送http请求需要些什么">
+<meta name="twitter:description" content="零、简介HTTP协议（Hyper Text Transfer Protocol，超文本传输协议）,是用于从万维网（WWW:World Wide Web ）服务器传输超文本到本地浏览器的传送协议。HTTP基于TCP/IP通信协议来传递数据。HTTP基于客户端/服务端（C/S）架构模型，通过一个可靠的链接来交换信息，是一个无状态的请求/响应协议。">
   
     <link rel="alternative" href="/atom.xml" title="纷飞落叶的博客" type="application/atom+xml">
   
@@ -195,15 +198,76 @@
               <i class="icon-smile icon"></i> 阅读数：<span id="busuanzi_value_page_pv"></span>次
         </span>
 
-<a href="/2019/12/28/发送http请求需要些什么/" class="archive-article-date">
-  	<time datetime="2019-12-28T03:11:19.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-28</time>
+<a href="/2019/11/20/发送http请求需要些什么/" class="archive-article-date">
+  	<time datetime="2019-11-20T03:11:19.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-20</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <h1 id="零、简介"><a href="#零、简介" class="headerlink" title="零、简介"></a>零、简介</h1><p>HTTP协议（Hyper Text Transfer Protocol，超文本传输协议）,是用于从万维网（WWW:World Wide Web ）服务器传输超文本到本地浏览器的传送协议。<br>HTTP基于TCP/IP通信协议来传递数据。<br>HTTP基于客户端/服务端（C/S）架构模型，通过一个可靠的链接来交换信息，是一个无状态的请求/响应协议。</p>
+<a id="more"></a>
+<h1 id="一、请求行"><a href="#一、请求行" class="headerlink" title="一、请求行"></a>一、请求行</h1><h2 id="1-HTTP请求方式"><a href="#1-HTTP请求方式" class="headerlink" title="1.HTTP请求方式"></a>1.HTTP请求方式</h2><p>HTTP请求方式大概有如下几种。<br>get，向Web服务器请求一个文件。<br>post,向web服务器发送数据让web服务器进行处理<br>put,向web服务器发送数据并存储在web服务器内部<br>head，检查一个对象是否存在<br>delete，从web服务器上删除一个文件<br>connect，对通道提供支持<br>trace，跟踪到服务器的l路径<br>options，查询web服务器的性能<br>其中我们常用的两个就是get和post</p>
+<h2 id="2-实例"><a href="#2-实例" class="headerlink" title="2.实例"></a>2.实例</h2><p>POST /test/tupian/cm HTTP/1.1</p>
+<p>分成三部分：</p>
+<p>（1）POST：HTTP请求方式</p>
+<p>（2）/test/tupian/cm：请求Web服务器的目录地址（或者指令）</p>
+<p>（3）HTTP/1.1: URI（Uniform Resource Identifier，统一资源标识符）及其版本</p>
+<p>备注：</p>
+<p>在Ajax中，对应method属性设置。</p>
+<h1 id="二、请求头"><a href="#二、请求头" class="headerlink" title="二、请求头"></a>二、请求头</h1><h2 id="1-Host—主机"><a href="#1-Host—主机" class="headerlink" title="1.Host—主机"></a>1.Host—主机</h2><p>说明：</p>
+<p>请求的web服务器域名地址</p>
+<h2 id="1-User-Agent—-用户代理，客户端，多数情况下是浏览器"><a href="#1-User-Agent—-用户代理，客户端，多数情况下是浏览器" class="headerlink" title="1.User-Agent—-用户代理，客户端，多数情况下是浏览器"></a>1.User-Agent—-用户代理，客户端，多数情况下是浏览器</h2><p>说明：</p>
+<p>HTTP客户端运行的浏览器类型的详细信息。通过该头部信息，web服务器可以判断到当前HTTP请求的客户端浏览器类别。</p>
+<p>实例：</p>
+<p>User-Agent: Mozilla/5.0 (Windows; U; Windows NT 5.1; zh-CN; rv:1.8.1.11) Gecko/20071127 Firefox/2.0.0.11</p>
+<h2 id="3-Accept—接收内容设置"><a href="#3-Accept—接收内容设置" class="headerlink" title="3.Accept—接收内容设置"></a>3.Accept—接收内容设置</h2><p>说明：</p>
+<p>指定客户端能够接收的内容类型，内容类型中的先后次序表示客户端接收的先后次序。</p>
+<p>例如：</p>
+<p>Accept:text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,<em>/</em>;q=0.5<br>即 接收：xml文本，带有编码信息的xml文本，带有编码信息的xhtml+xml文本，html文本，纯文本，png图片。</p>
+<p>备注：</p>
+<p>在Prototyp（1.5）的Ajax代码封装中，将Accept默认设置为“text/javascript, text/html, application/xml, text/xml, <em>/</em>”。这是因为Ajax默认获取服务器返回的Json数据模式。</p>
+<p>在Ajax代码中，可以使用XMLHttpRequest 对象中setRequestHeader函数方法来动态设置这些Header信息。</p>
+<h2 id="4-Accept-Language—接收语言"><a href="#4-Accept-Language—接收语言" class="headerlink" title="4.Accept-Language—接收语言"></a>4.Accept-Language—接收语言</h2><p>说明：</p>
+<p>指定HTTP客户端浏览器用来展示返回信息所优先选择的语言。</p>
+<p>实例：</p>
+<p>Accept-Language: zh-cn,zh;q=0.5</p>
+<p>这里默认为中文。</p>
+<h2 id="5-Accept-Encoding—接收编码"><a href="#5-Accept-Encoding—接收编码" class="headerlink" title="5.Accept-Encoding—接收编码"></a>5.Accept-Encoding—接收编码</h2><p>说明：</p>
+<p>指定客户端浏览器可以支持的web服务器返回内容压缩编码类型。表示允许服务器在将输出内容发送到客户端以前进行压缩，以节约带宽。而这里设置的就是客户端浏览器所能够支持的返回压缩格式。</p>
+<p>实例：</p>
+<p>Accept-Encoding: gzip,deflate</p>
+<p>备注：</p>
+<p>其实在百度很多产品线中，apache在给客户端返回页面数据之前，将数据以gzip格式进行压缩。</p>
+<h2 id="6-Accept-Charset—接收的字符编码集"><a href="#6-Accept-Charset—接收的字符编码集" class="headerlink" title="6.Accept-Charset—接收的字符编码集"></a>6.Accept-Charset—接收的字符编码集</h2><p>说明：</p>
+<p>浏览器可以接受的字符编码集。</p>
+<p>实例：</p>
+<p>Accept-Charset: gb2312,utf-8;q=0.7,*;q=0.7</p>
+<h2 id="7-Content-Type—内容类型"><a href="#7-Content-Type—内容类型" class="headerlink" title="7.Content-Type—内容类型"></a>7.Content-Type—内容类型</h2><p>说明：</p>
+<p>显示此HTTP请求提交的内容类型。一般只有post提交时才需要设置该属性。</p>
+<p>实例：</p>
+<p>Content-type: application/x-www-form-urlencoded;charset:UTF-8</p>
+<p>有关Content-Type属性值可以如下两种编码类型：</p>
+<p>（1）“application/x-www-form-urlencoded”： 表单数据向服务器提交时所采用的编码类型，默认的缺省值就是“application/x-www-form-urlencoded”。 然而，在向服务器发送大量的文本、包含非ASCII字符的文本或二进制数据时这种编码方式效率很低。</p>
+<p>（2）“multipart/form-data”： 在文件上载时，所使用的编码类型应当是“multipart/form-data”，它既可以发送文本数据，也支持二进制数据上载。</p>
+<p>当提交为单单数据时，可以使用“application/x-www-form-urlencoded”；当提交的是文件时，就需要使用“multipart/form-data”编码类型。</p>
+<p>在Content-Type属性当中还是指定提交内容的charset字符编码。一般不进行设置，它只是告诉web服务器post提交的数据采用的何种字符编码。</p>
+<p>一般在开发过程，是由前端工程与后端UI工程师商量好使用什么字符编码格式来post提交的，然后后端ui工程师按照固定的字符编码来解析提交的数据。所以这里设置的charset没有多大作用。</p>
+<h2 id="8-Connection—连接方式"><a href="#8-Connection—连接方式" class="headerlink" title="8.Connection—连接方式"></a>8.Connection—连接方式</h2><p>说明：</p>
+<p>表示是否需要持久连接。如果web服务器端看到这里的值为“Keep-Alive”，或者看到请求使用的是HTTP 1.1（HTTP 1.1默认进行持久连接），它就可以利用持久连接的优点，当页面包含多个元素时（例如Applet，图片），显著地减少下载所需要的时间。要实现这一点， web服务器需要在返回给客户端HTTP头信息中发送一个Content-Length（返回信息正文的长度）头，最简单的实现方法是：先把内容写入ByteArrayOutputStream，然 后在正式写出内容之前计算它的大小。</p>
+<p>实例：</p>
+<p>Connection: keep-alive</p>
+<h2 id="9-Keep-Alive—保持连接"><a href="#9-Keep-Alive—保持连接" class="headerlink" title="9.Keep-Alive—保持连接"></a>9.Keep-Alive—保持连接</h2><p>说明：</p>
+<p>显示此HTTP连接的Keep-Alive时间。使客户端到服务器端的连接持续有效，当出现对服务器的后继请求时，Keep-Alive功能避免了建立或者重新建立连接。</p>
+<p>以前HTTP请求是一站式连接，从HTTP/1.1协议之后，就有了长连接，即在规定的Keep-Alive时间内，连接是不会断开的。</p>
+<p>实例：</p>
+<p>Keep-Alive: 300</p>
+<h2 id="10-cookie—用来携带一些个性参数"><a href="#10-cookie—用来携带一些个性参数" class="headerlink" title="10.cookie—用来携带一些个性参数"></a>10.cookie—用来携带一些个性参数</h2><p>说明：</p>
+<p>HTTP请求发送时，会把保存在该请求域名下的所有cookie值一起发送给web服务器。</p>
+<h2 id="11-Referer—请求的来源"><a href="#11-Referer—请求的来源" class="headerlink" title="11.Referer—请求的来源"></a>11.Referer—请求的来源</h2><p>说明：<br>如果我从<a href="http://www.baidu.com访问www.google.com,那么此次的http请求中referer中显示的便是www.baidu.com。" target="_blank" rel="noopener">www.baidu.com访问www.google.com,那么此次的http请求中referer中显示的便是www.baidu.com。</a></p>
+<p>包含一个URL，用户从该URL代表的页面出发访问当前请求的页面<br>这个属性可以用来防止盗链，当请求我的服务器资源的链接不是我要求的链接时，可以拦截然后导向到我指定的服务器，再从我指定的服务器寻找我的资源。</p>
+<h1 id="三、空行"><a href="#三、空行" class="headerlink" title="三、空行"></a>三、空行</h1><h1 id="四、请求体"><a href="#四、请求体" class="headerlink" title="四、请求体"></a>四、请求体</h1>
       
 
       
@@ -292,7 +356,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/12/28/发送http请求需要些什么/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/11/20/发送http请求需要些什么/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -331,9 +395,18 @@
   
 <nav id="article-nav">
   
+    <a href="/2019/12/02/伟大的DNS协议/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          伟大的DNS协议
+        
+      </div>
+    </a>
   
-    <a href="/2019/12/26/java中如何调用第三方接口/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">java中如何调用第三方接口</div>
+  
+    <a href="/2019/11/11/计算机考研之计算机网络/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">计算机考研之计算机网络</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -360,7 +433,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    目录，不存在的…
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#零、简介"><span class="toc-number">1.</span> <span class="toc-text">零、简介</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#一、请求行"><span class="toc-number">2.</span> <span class="toc-text">一、请求行</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-HTTP请求方式"><span class="toc-number">2.1.</span> <span class="toc-text">1.HTTP请求方式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-实例"><span class="toc-number">2.2.</span> <span class="toc-text">2.实例</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#二、请求头"><span class="toc-number">3.</span> <span class="toc-text">二、请求头</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-Host—主机"><span class="toc-number">3.1.</span> <span class="toc-text">1.Host—主机</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-User-Agent—-用户代理，客户端，多数情况下是浏览器"><span class="toc-number">3.2.</span> <span class="toc-text">1.User-Agent—-用户代理，客户端，多数情况下是浏览器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-Accept—接收内容设置"><span class="toc-number">3.3.</span> <span class="toc-text">3.Accept—接收内容设置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-Accept-Language—接收语言"><span class="toc-number">3.4.</span> <span class="toc-text">4.Accept-Language—接收语言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-Accept-Encoding—接收编码"><span class="toc-number">3.5.</span> <span class="toc-text">5.Accept-Encoding—接收编码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-Accept-Charset—接收的字符编码集"><span class="toc-number">3.6.</span> <span class="toc-text">6.Accept-Charset—接收的字符编码集</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-Content-Type—内容类型"><span class="toc-number">3.7.</span> <span class="toc-text">7.Content-Type—内容类型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8-Connection—连接方式"><span class="toc-number">3.8.</span> <span class="toc-text">8.Connection—连接方式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#9-Keep-Alive—保持连接"><span class="toc-number">3.9.</span> <span class="toc-text">9.Keep-Alive—保持连接</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#10-cookie—用来携带一些个性参数"><span class="toc-number">3.10.</span> <span class="toc-text">10.cookie—用来携带一些个性参数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#11-Referer—请求的来源"><span class="toc-number">3.11.</span> <span class="toc-text">11.Referer—请求的来源</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#三、空行"><span class="toc-number">4.</span> <span class="toc-text">三、空行</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#四、请求体"><span class="toc-number">5.</span> <span class="toc-text">四、请求体</span></a></li></ol>
                     </div>
                 </span>
             </div>
