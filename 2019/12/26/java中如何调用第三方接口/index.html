@@ -18,7 +18,7 @@
 <meta property="og:image" content="http://luoyefubuki.com/2019/12/26/java%E4%B8%AD%E5%A6%82%E4%BD%95%E8%B0%83%E7%94%A8%E7%AC%AC%E4%B8%89%E6%96%B9%E6%8E%A5%E5%8F%A3/1.jpg">
 <meta property="og:image" content="http://luoyefubuki.com/2019/12/26/java%E4%B8%AD%E5%A6%82%E4%BD%95%E8%B0%83%E7%94%A8%E7%AC%AC%E4%B8%89%E6%96%B9%E6%8E%A5%E5%8F%A3/3.jpg">
 <meta property="og:image" content="http://luoyefubuki.com/2019/12/26/java%E4%B8%AD%E5%A6%82%E4%BD%95%E8%B0%83%E7%94%A8%E7%AC%AC%E4%B8%89%E6%96%B9%E6%8E%A5%E5%8F%A3/2.jpg">
-<meta property="og:updated_time" content="2020-01-05T13:22:46.973Z">
+<meta property="og:updated_time" content="2020-01-05T13:25:43.070Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="java中如何调用第三方接口">
 <meta name="twitter:description" content="需求需要获取第三方的某些数据信息。而且手中有第三方的接口规范。在java中，一般会有以下四种方式：  ①通过JDK网络类Java.net.HttpURLConnection；②通过common封装好的HttpClient；③通过Apache封装好的CloseableHttpClient；④通过SpringBoot-RestTemplate；">
@@ -215,7 +215,7 @@
 <p>①通过JDK网络类Java.net.HttpURLConnection；<br>②通过common封装好的HttpClient；<br>③通过Apache封装好的CloseableHttpClient；<br>④通过SpringBoot-RestTemplate；</p>
 </blockquote>
 <a id="more"></a>
-<h1 id="我遇到的问题"><a href="#我遇到的问题" class="headerlink" title="我遇到的问题"></a>我遇到的问题</h1><p>我需要进入第三方库中获取相应的角色信息。因此我先读取了配置文件中的baseURL，然后接续具体的接口，比如根据用户名获取当前用户信息。/user/getUserByLoginName。</p>
+<h1 id="我遇到的问题"><a href="#我遇到的问题" class="headerlink" title="我遇到的问题"></a>我遇到的问题</h1><p>我需要进入第三方库中获取相应的角色信息。因此我先读取了配置文件中的baseURL，然后接续具体的接口，比如获取一些用户信息。/baseInfo/getInfo。</p>
 <h1 id="选择请求第三方接口方式"><a href="#选择请求第三方接口方式" class="headerlink" title="选择请求第三方接口方式"></a>选择请求第三方接口方式</h1><p>我选择的是Apache封装好的CloseableHttpClient,可关闭的http客户端。CloseableHttpClient是在HttpClient的基础上修改更新而来的，这里还涉及到请求头token的设置（请求验证），利用fastjson转换请求或返回结果字符串为json格式。首先我们需要的工具包为如下：</p>
 <pre><code>&lt;!--CloseableHttpClient--&gt;
     &lt;dependency&gt;
