@@ -16,7 +16,9 @@
 <meta property="og:description" content="需求需要获取第三方的某些数据信息。而且手中有第三方的接口规范。在java中，一般会有以下四种方式：  ①通过JDK网络类Java.net.HttpURLConnection；②通过common封装好的HttpClient；③通过Apache封装好的CloseableHttpClient；④通过SpringBoot-RestTemplate；">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://luoyefubuki.com/2019/12/26/java%E4%B8%AD%E5%A6%82%E4%BD%95%E8%B0%83%E7%94%A8%E7%AC%AC%E4%B8%89%E6%96%B9%E6%8E%A5%E5%8F%A3/1.jpg">
-<meta property="og:updated_time" content="2019-12-28T04:15:45.743Z">
+<meta property="og:image" content="http://luoyefubuki.com/2019/12/26/java%E4%B8%AD%E5%A6%82%E4%BD%95%E8%B0%83%E7%94%A8%E7%AC%AC%E4%B8%89%E6%96%B9%E6%8E%A5%E5%8F%A3/3.jpg">
+<meta property="og:image" content="http://luoyefubuki.com/2019/12/26/java%E4%B8%AD%E5%A6%82%E4%BD%95%E8%B0%83%E7%94%A8%E7%AC%AC%E4%B8%89%E6%96%B9%E6%8E%A5%E5%8F%A3/2.jpg">
+<meta property="og:updated_time" content="2020-01-05T13:22:46.973Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="java中如何调用第三方接口">
 <meta name="twitter:description" content="需求需要获取第三方的某些数据信息。而且手中有第三方的接口规范。在java中，一般会有以下四种方式：  ①通过JDK网络类Java.net.HttpURLConnection；②通过common封装好的HttpClient；③通过Apache封装好的CloseableHttpClient；④通过SpringBoot-RestTemplate；">
@@ -219,78 +221,244 @@
     &lt;dependency&gt;
         &lt;groupId&gt;org.apache.httpcomponents&lt;/groupId&gt;
         &lt;artifactId&gt;httpclient&lt;/artifactId&gt;
-        &lt;version&gt;4.5.2&lt;/version&gt;
+        &lt;version&gt;4.5.6&lt;/version&gt;
     &lt;/dependency&gt;
-    &lt;dependency&gt;
-        &lt;groupId&gt;com.alibaba&lt;/groupId&gt;
-        &lt;artifactId&gt;fastjson&lt;/artifactId&gt;
-        &lt;version&gt;1.2.28&lt;/version&gt;
-    &lt;/dependency&gt;</code></pre><h1 id="代码如下"><a href="#代码如下" class="headerlink" title="代码如下"></a>代码如下</h1><pre><code>import org.apache.http.HttpResponse;
-import org.apache.http.NameValuePair;
-import org.apache.http.client.ClientProtocolException;
-import org.apache.http.client.entity.UrlEncodedFormEntity;
+   &lt;dependency&gt;
+    &lt;groupId&gt;com.alibaba&lt;/groupId&gt;
+    &lt;artifactId&gt;fastjson&lt;/artifactId&gt;
+    &lt;version&gt;1.2.46&lt;/version&gt;
+&lt;/dependency&gt;</code></pre><h1 id="代码如下"><a href="#代码如下" class="headerlink" title="代码如下"></a>代码如下</h1><h2 id="controller类"><a href="#controller类" class="headerlink" title="controller类"></a>controller类</h2><pre><code>/**
+ * @author Ted
+ * @date 2020/1/5 - 17:57
+ */
+@RestController
+@RequestMapping(&quot;/user&quot;)
+public class GetInfo {
+    /**
+     * 依赖注入GetResultInfo
+     */
+    @Autowired
+    GetResultInfo getResultInfo;
+    /**
+     * 获取用户列表
+     * @param request
+     * @return
+     */
+    @RequestMapping(&quot;/getInfo&quot;)
+    public Map&lt;String,Object&gt; getUserInfo(HttpServletRequest request){
+    HashMap&lt;String, Object&gt; result = new HashMap&lt;&gt;();
+    HttpSession session = request.getSession();
+    List&lt;Object&gt; users = getResultInfo.getUserListByRoleId(session);
+    if(users.size()&gt;0){
+        result.put(&quot;code&quot;,&quot;200&quot;);
+        result.put(&quot;msg&quot;,&quot;操作成功&quot;);
+        result.put(&quot;data&quot;,users);
+    }else{
+        result.put(&quot;code&quot;,&quot;500&quot;);
+        result.put(&quot;msg&quot;,&quot;操作失败&quot;);
+    }
+    return result;
+    }
+}</code></pre><h2 id="httpclient请求类GetResultInfo"><a href="#httpclient请求类GetResultInfo" class="headerlink" title="httpclient请求类GetResultInfo"></a>httpclient请求类GetResultInfo</h2><pre><code>import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
+import org.apache.http.HttpEntity;
+import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGet;
-import org.apache.http.client.methods.HttpPost;
+import org.apache.http.client.utils.URIBuilder;
 import org.apache.http.impl.client.CloseableHttpClient;
-import org.apache.http.impl.client.HttpClientBuilder;
-import org.apache.http.message.BasicNameValuePair;
-import org.apache.http.protocol.HTTP;
+import org.apache.http.impl.client.HttpClients;
 import org.apache.http.util.EntityUtils;
-
+import org.springframework.core.io.support.PropertiesLoaderUtils;
+import org.springframework.stereotype.Component;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.io.UnsupportedEncodingException;
+import java.net.URI;
 import java.util.ArrayList;
 import java.util.List;
-
-/**
- * CloseableHttpClient使用示例
- * jar包：httpclient.jar
+import java.util.Properties;
+@Component
+public class GetResultInfo {
+    //httpclient
+    CloseableHttpClient httpClient = HttpClients.createDefault();
+    CloseableHttpResponse response = null;
+    String entityStr = null;
+    String roleId = null;
+    /**
+     * 根据roleId获取用户集合
+     * @param session
+     * @return
+     */
+    public List&lt;Object&gt; getUserListByRoleId(HttpSession session){
+    //读取配置文件
+    Properties properties = null;
+    try {
+        properties = PropertiesLoaderUtils.loadAllProperties(&quot;remoteUrl-config.properties&quot;);
+        String baseRestUrl = properties.getProperty(&quot;baseRestUrl&quot;);
+        System.out.println(baseRestUrl);
+    } catch (IOException e) {
+        e.printStackTrace();
+    }
+    List list = new ArrayList();
+    GetResultInfo getRole = new GetResultInfo();
+    String roleId = &quot;1&quot;;
+    System.out.println(roleId);
+    try {
+        URIBuilder uriBuilder = new URIBuilder(properties.getProperty(&quot;baseRestUrl&quot;)+&quot;/baseInfo/getInfo&quot;);
+        String entityStr = getEntityStr(uriBuilder,properties,&quot;2&quot;,roleId);
+        System.out.println(entityStr);
+        JSONObject jsonObject = JSON.parseObject(entityStr);
+        JSONArray users = jsonObject.getJSONArray(&quot;users&quot;);
+        if(users.size()&gt;0){
+        for(int i = 0;i&lt;users.size();i++){
+            list.add(users.get(i));
+        }
+        }
+    } catch (Exception e) {
+        e.printStackTrace();
+    }
+    return list;
+    }
+    /**
+     * 获取响应体
+     * @param uriBuilder
+     * @param properties
+     * @param ParamType
+     * @param param
+     * @return
+     */
+    private String getEntityStr(URIBuilder uriBuilder,Properties properties,String ParamType,String param){
+    try {
+        uriBuilder.addParameter(&quot;roleId&quot;,param);
+        URI build = uriBuilder.build();
+        HttpGet get = new HttpGet(uriBuilder.build());
+        get.addHeader(&quot;Content-type&quot;, &quot;application/x-www-form-urlencoded&quot;);
+        get.addHeader(&quot;Content-length&quot;,&quot;0&quot;);
+        get.addHeader(&quot;accept&quot;, &quot;application/json&quot;);
+        get.addHeader(&quot;User-Agent&quot;, &quot;Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.7.6)&quot;);
+        //发起httpClient请求
+        System.out.println(&quot;准备发起请求&quot;);
+        response = httpClient.execute(get);
+        //获取请求返回的对象
+        HttpEntity entity = response.getEntity();
+        //生成响应体内容
+        if(entity != null){
+        entityStr = EntityUtils.toString(entity,&quot;UTF-8&quot;);
+        }
+    } catch (Exception e) {
+        e.printStackTrace();
+    }
+    return entityStr;
+    }
+}</code></pre><h2 id="配置文件"><a href="#配置文件" class="headerlink" title="配置文件"></a>配置文件</h2><p>其中配置文件remoteUrl-config.properties放在resource文件夹下，它的内容中含有常用的第三方接口地址，如下：</p>
+<blockquote>
+<p>app.system.id=00001<br>app.service.secretkey=hehe</p>
+<h1 id="baseUrl"><a href="#baseUrl" class="headerlink" title="baseUrl"></a>baseUrl</h1><p>baseRestUrl=<a href="http://localhost:8080/lian" target="_blank" rel="noopener">http://localhost:8080/lian</a><br>#<br>mybase = <a href="http://localhost:8080/mybase/" target="_blank" rel="noopener">http://localhost:8080/mybase/</a></p>
+</blockquote>
+<h2 id="模拟第三方类"><a href="#模拟第三方类" class="headerlink" title="模拟第三方类"></a>模拟第三方类</h2><p>请求的远程接口，本文因为模拟，所以写在了本地项目的另一个包里。</p>
+<pre><code>/**
+ * @author Ted
+ * @date 2020/1/5 - 18:08
  */
-public class CloseableHttpClientTest {
-
-    public static void doGet() {
-    CloseableHttpClient client = HttpClientBuilder.create().build();
-    HttpGet get = new HttpGet(&quot;http://www.thepaper.cn&quot;);
-    try {
-        get.addHeader(&quot;User-Agent&quot;, &quot;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.81 Safari/537.36&quot;);
-        HttpResponse response = client.execute(get);
-        String res = EntityUtils.toString(response.getEntity());
-        System.out.println(res);
-    } catch (IOException e) {
-        e.printStackTrace();
+@RestController
+@RequestMapping(&quot;/baseInfo&quot;)
+public class BaseInfo {
+    /**
+     * 根据角色id获取用户列表
+     * @param roleId
+     * @return
+     */
+    @RequestMapping(&quot;/getInfo&quot;)
+    public Map&lt;String,Object&gt; queryUsersByRoleId(String roleId){
+    System.out.println(&quot;请求来到&quot;);
+    HashMap&lt;String, Object&gt; result = new HashMap&lt;&gt;();
+    ArrayList&lt;User&gt; users = new ArrayList&lt;&gt;();
+    User user = new User();
+    user.setUserId(&quot;1234567890&quot;);
+    user.setUserName(&quot;Ted&quot;);
+    user.setUserLoginName(&quot;Ted&quot;);
+    user.setTel(&quot;18291817273&quot;);
+    user.setRoleId(&quot;1&quot;);
+    users.add(user);
+    result.put(&quot;users&quot;,users);
+    return result;
     }
+}</code></pre><h2 id="用户类"><a href="#用户类" class="headerlink" title="用户类"></a>用户类</h2><pre><code>/**
+ * 用户类
+ * @author Ted
+ * @date 2019/12/6 16:41
+ */
+public class User {
+    /**
+     * 用户id
+     */
+    private String userId;
+    /**
+     * 用户姓名
+     */
+    private String userName;
+    /**
+     * 用户登录名
+     */
+    private String userLoginName;
+    /**
+     * 角色类型id
+     */
+    private String roleId;
+    /**
+     * 电话号码
+     */
+    private String tel;
+
+    public String getTel() {
+    return tel;
     }
 
-    public static void doPost() {
-    CloseableHttpClient client = HttpClientBuilder.create().build();
-    HttpPost post = new HttpPost(&quot;https://www.thepaper.cn/www/commentPraise.msp&quot;);
-    try {
-        post.addHeader(&quot;User-Agent&quot;, &quot;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.81 Safari/537.36&quot;);
-        List&lt;NameValuePair&gt; params = new ArrayList&lt;&gt;();
-        params.add(new BasicNameValuePair(&quot;commentId&quot;, &quot;18718372&quot;));
-        post.setEntity(new UrlEncodedFormEntity(params, HTTP.UTF_8));
-        HttpResponse response = client.execute(post);
-        String res = EntityUtils.toString(response.getEntity());
-        System.out.println(res);
-    } catch (UnsupportedEncodingException e) {
-        e.printStackTrace();
-    } catch (ClientProtocolException e) {
-        e.printStackTrace();
-    } catch (IOException e) {
-        e.printStackTrace();
-    }
+    public void setTel(String tel) {
+    this.tel = tel;
     }
 
-
-    public static void main(String[] args) {
-    doGet();
-    System.out.println(&quot;-----------分割线------------&quot;);
-    System.out.println(&quot;-----------分割线------------&quot;);
-    System.out.println(&quot;-----------分割线------------&quot;);
-    doPost();
-
+    public String getRoleId() {
+    return roleId;
     }
-}</code></pre><h1 id="请求结果"><a href="#请求结果" class="headerlink" title="请求结果"></a>请求结果</h1><p>为一张澎湃新闻的http页面。<br><img src="//luoyefubuki.com/2019/12/26/java%E4%B8%AD%E5%A6%82%E4%BD%95%E8%B0%83%E7%94%A8%E7%AC%AC%E4%B8%89%E6%96%B9%E6%8E%A5%E5%8F%A3/1.jpg" alt="java中如何调用第三方接口"></p>
+
+    public void setRoleId(String roleId) {
+    this.roleId = roleId;
+    }
+
+    public String getUserId() {
+    return userId;
+    }
+
+    public void setUserId(String userId) {
+    this.userId = userId;
+    }
+
+    public String getUserName() {
+    return userName;
+    }
+
+    public void setUserName(String userName) {
+    this.userName = userName;
+    }
+
+    public String getUserLoginName() {
+    return userLoginName;
+    }
+
+    public void setUserLoginName(String userLoginName) {
+    this.userLoginName = userLoginName;
+    }
+
+    @Override
+    public String toString() {
+    return &quot;User{&quot; +
+        &quot;userId=&apos;&quot; + userId + &apos;\&apos;&apos; +
+        &quot;, userName=&apos;&quot; + userName + &apos;\&apos;&apos; +
+        &quot;, userLoginName=&apos;&quot; + userLoginName + &apos;\&apos;&apos; +
+        &apos;}&apos;;
+    }
+}</code></pre><h1 id="请求结果"><a href="#请求结果" class="headerlink" title="请求结果"></a>请求结果</h1><p><img src="//luoyefubuki.com/2019/12/26/java%E4%B8%AD%E5%A6%82%E4%BD%95%E8%B0%83%E7%94%A8%E7%AC%AC%E4%B8%89%E6%96%B9%E6%8E%A5%E5%8F%A3/1.jpg" alt="java中如何调用第三方接口"><br>如果我们修改可接受参数为图片格式<br>get.addHeader(“accept”, “image/png”);<br>那么就会得到如下结果<br><img src="//luoyefubuki.com/2019/12/26/java%E4%B8%AD%E5%A6%82%E4%BD%95%E8%B0%83%E7%94%A8%E7%AC%AC%E4%B8%89%E6%96%B9%E6%8E%A5%E5%8F%A3/3.jpg" alt="java中如何调用第三方接口"><br>控制台报错<br><img src="//luoyefubuki.com/2019/12/26/java%E4%B8%AD%E5%A6%82%E4%BD%95%E8%B0%83%E7%94%A8%E7%AC%AC%E4%B8%89%E6%96%B9%E6%8E%A5%E5%8F%A3/2.jpg" alt="java中如何调用第三方接口"></p>
 <h1 id="涉及到的原理"><a href="#涉及到的原理" class="headerlink" title="涉及到的原理"></a>涉及到的原理</h1><p>http请求本来是一个应用层协议protocol，其基于的传输层协议是TCP协议，网络层协议是IP协议。所以当使用java发起http请求时，一定也经历了三次握手，四次挥手。先建立连接，然后发送请求，然后获取响应，然后关闭连接。具体详情请移步HTTP请求各个参数详解。<br><a href="//luoyefubuki.com/2019/11/20/发送http请求需要些什么/">发送http请求需要些什么</a></p>
 
       
@@ -458,7 +626,7 @@ public class CloseableHttpClientTest {
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#需求"><span class="toc-number">1.</span> <span class="toc-text">需求</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#我遇到的问题"><span class="toc-number">2.</span> <span class="toc-text">我遇到的问题</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#选择请求第三方接口方式"><span class="toc-number">3.</span> <span class="toc-text">选择请求第三方接口方式</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#代码如下"><span class="toc-number">4.</span> <span class="toc-text">代码如下</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#请求结果"><span class="toc-number">5.</span> <span class="toc-text">请求结果</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#涉及到的原理"><span class="toc-number">6.</span> <span class="toc-text">涉及到的原理</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#需求"><span class="toc-number">1.</span> <span class="toc-text">需求</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#我遇到的问题"><span class="toc-number">2.</span> <span class="toc-text">我遇到的问题</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#选择请求第三方接口方式"><span class="toc-number">3.</span> <span class="toc-text">选择请求第三方接口方式</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#代码如下"><span class="toc-number">4.</span> <span class="toc-text">代码如下</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#controller类"><span class="toc-number">4.1.</span> <span class="toc-text">controller类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#httpclient请求类GetResultInfo"><span class="toc-number">4.2.</span> <span class="toc-text">httpclient请求类GetResultInfo</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#配置文件"><span class="toc-number">4.3.</span> <span class="toc-text">配置文件</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#baseUrl"><span class="toc-number">5.</span> <span class="toc-text">baseUrl</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#模拟第三方类"><span class="toc-number">5.1.</span> <span class="toc-text">模拟第三方类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#用户类"><span class="toc-number">5.2.</span> <span class="toc-text">用户类</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#请求结果"><span class="toc-number">6.</span> <span class="toc-text">请求结果</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#涉及到的原理"><span class="toc-number">7.</span> <span class="toc-text">涉及到的原理</span></a></li></ol>
                     </div>
                 </span>
             </div>
