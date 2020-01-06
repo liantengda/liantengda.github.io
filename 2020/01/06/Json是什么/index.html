@@ -6,15 +6,23 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives | 纷飞落叶的博客</title>
+  <title>Json是什么 | 纷飞落叶的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="纷飞落叶的博客">
-<meta property="og:url" content="http://yoursite.com/archives/page/7/index.html">
+  <meta name="description" content="JSON简介JSON是一种数据格式，也就是一种规范。它具有简洁清晰的层次结构，易于人阅读和编写，同时易于机器解析和生成。并且在进行数据传输时，它占用的带宽也比较小。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Json是什么">
+<meta property="og:url" content="http://yoursite.com/2020/01/06/Json是什么/index.html">
 <meta property="og:site_name" content="纷飞落叶的博客">
+<meta property="og:description" content="JSON简介JSON是一种数据格式，也就是一种规范。它具有简洁清晰的层次结构，易于人阅读和编写，同时易于机器解析和生成。并且在进行数据传输时，它占用的带宽也比较小。">
 <meta property="og:locale" content="default">
+<meta property="og:image" content="http://luoyefubuki.com/2020/01/06/Json%E6%98%AF%E4%BB%80%E4%B9%88/1.jpg">
+<meta property="og:image" content="http://luoyefubuki.com/2020/01/06/Json%E6%98%AF%E4%BB%80%E4%B9%88/2.jpg">
+<meta property="og:image" content="http://luoyefubuki.com/2020/01/06/Json%E6%98%AF%E4%BB%80%E4%B9%88/3.jpg">
+<meta property="og:updated_time" content="2020-01-06T14:18:11.474Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="纷飞落叶的博客">
+<meta name="twitter:title" content="Json是什么">
+<meta name="twitter:description" content="JSON简介JSON是一种数据格式，也就是一种规范。它具有简洁清晰的层次结构，易于人阅读和编写，同时易于机器解析和生成。并且在进行数据传输时，它占用的带宽也比较小。">
+<meta name="twitter:image" content="http://luoyefubuki.com/2020/01/06/Json%E6%98%AF%E4%BB%80%E4%B9%88/1.jpg">
   
     <link rel="alternative" href="/atom.xml" title="纷飞落叶的博客" type="application/atom+xml">
   
@@ -176,305 +184,433 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-Json是什么" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Json是什么
+    </h1>
+  
+
+        
+        
+        <!-- 不蒜子统计 -->
+        <span id="busuanzi_container_page_pv" style='display:none' class="archive-article-date">
+              <i class="icon-smile icon"></i> 阅读数：<span id="busuanzi_value_page_pv"></span>次
+        </span>
+
+<a href="/2020/01/06/Json是什么/" class="archive-article-date">
+  	<time datetime="2020-01-06T14:09:17.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-01-06</time>
+</a>
+        
+      </header>
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="JSON简介"><a href="#JSON简介" class="headerlink" title="JSON简介"></a>JSON简介</h1><p>JSON是一种数据格式，也就是一种规范。它具有简洁清晰的层次结构，易于人阅读和编写，同时易于机器解析和生成。并且在进行数据传输时，它占用的带宽也比较小。</p>
+<a id="more"></a>
+<h1 id="为什么要用JSON"><a href="#为什么要用JSON" class="headerlink" title="为什么要用JSON"></a>为什么要用JSON</h1><p>一个东西为什么出现，要么是第一次被创造，要么就是它前边的东西相对来说不那么好用了。在JSON出现之前，大家一直用XML来传递数据。因为XML是一种纯文本格式，所以它适合在网络上交换数据。</p>
+<h2 id="XML"><a href="#XML" class="headerlink" title="XML"></a>XML</h2><p>XML即可扩展标记语言(eXtensible Markup Language)。标记是指计算机所能理解的信息符号，通过此种标记，计算机之间可以处理包含各种信息的文章等。类似于HTML。</p>
+<h3 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h3><p>此处使用DOM4J工具，DOM4J是 dom4j.org 出品的一个开源 XML 解析包。DOM4J应用于 Java 平台，采用了 Java 集合框架并完全支持 DOM，SAX 和 JAXP。<br>需要导入如下依赖；</p>
+<pre><code>&lt;dependency&gt;
+        &lt;groupId&gt;dom4j&lt;/groupId&gt;
+        &lt;artifactId&gt;dom4j&lt;/artifactId&gt;
+        &lt;version&gt;1.6.1&lt;/version&gt;
+&lt;/dependency&gt;</code></pre><p>xml配置文件如下：</p>
+<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;beans &gt;
+    &lt;person&gt;
+    &lt;name&gt;Ted&lt;/name&gt;
+    &lt;age&gt;25&lt;/age&gt;
+    &lt;sex&gt;男&lt;/sex&gt;
+    &lt;/person&gt;
+&lt;/beans&gt;</code></pre><p>实体类如下：（get和set自己加）</p>
+<pre><code>public class Person {
+    private String name;
+    private String age;
+    private String sex;
+}</code></pre><p>xml转换为java对象代码如下：</p>
+<pre><code>import org.dom4j.Document;
+import org.dom4j.DocumentException;
+import org.dom4j.Element;
+import org.dom4j.io.SAXReader;
+import java.io.File;
+import java.lang.reflect.Method;
+import java.util.List;
+/**
+ * Ted
+ */
+public class ReadXml {
+    public static void main(String[] args) {
+    //路径自己搞
+    File file = new File(&quot;D:\\project\\dubbo_test\\test-consumer\\src\\main\\resources\\config.xml&quot;);
+    SAXReader saxReader = new SAXReader();
+    Document document=null;
+    try {
+        document = saxReader.read(file);
+    } catch (DocumentException e) {
+        e.printStackTrace();
+    }
+    Person person = (Person)getObject(document, Person.class);
+    System.out.println(person);
+    }
+    /**
+     * 根据xml内容以及即将转换的类模板，将xml节点转换为java对象
+     * @param document
+     * @param clazz
+     * @return
+     */
+    private static Object getObject(Document document,Class&lt;?&gt; clazz){
+    Object obj=null;
+    //获取要转换为java对象的节点，此处不能用根节点，因为我的xml根节点是beans
+    Element person = document.getRootElement().element(&quot;person&quot;);
+    try {
+        obj=clazz.newInstance();//创建对象
+        List&lt;Element&gt; properties=person.elements();
+        for(Element pro:properties){
+        //获取属性名
+        String propertyname=pro.getName();
+        //将首字母变大写
+        propertyname = propertyname.substring(0,1).toUpperCase()+propertyname.substring(1);
+        //获取属性标签的值
+        String propertyvalue=pro.getText();
+        System.out.println(&quot;属性名:&quot;+propertyname+&quot;--&gt;&quot;+&quot;属性值:&quot;+propertyvalue);
+        Method m = obj.getClass().getMethod(&quot;set&quot;+propertyname,String.class);
+        m.invoke(obj,propertyvalue);
+        }
+    } catch (Exception e) {
+        e.printStackTrace();
+    }
+    return obj;
+    }
+}</code></pre><p>输出结果：<br><img src="//luoyefubuki.com/2020/01/06/Json%E6%98%AF%E4%BB%80%E4%B9%88/1.jpg" alt="Json是什么"></p>
+<h3 id="xml优点"><a href="#xml优点" class="headerlink" title="xml优点"></a>xml优点</h3><p>A.格式统一，符合标准；<br>B.容易与其他系统进行远程交互，数据共享比较方便。</p>
+<h3 id="xml缺点"><a href="#xml缺点" class="headerlink" title="xml缺点"></a>xml缺点</h3><p>A.XML文件庞大，文件格式复杂，传输占带宽；<br>B.服务器端和客户端都需要花费大量代码来解析XML，导致服务器端和客户端代码变得异常复杂且不易维护；<br>C.客户端不同浏览器之间解析XML的方式不一致，需要重复编写很多代码；<br>D.服务器端和客户端解析XML花费较多的资源和时间。<br>自己感觉到的一些缺点：</p>
+<blockquote>
+<p>XML本身不算复杂，但是，加上DTD、XSD、XPath、XSLT等一大堆复杂的规范以后，任何正常的软件开发人员碰到XML都会感觉头大了，最后大家发现，即使你努力钻研几个月，也未必搞得&gt;清楚XML的规范。</p>
+</blockquote>
+<h2 id="JSON优点"><a href="#JSON优点" class="headerlink" title="JSON优点"></a>JSON优点</h2><p>A.数据格式比较简单，易于读写，格式都是压缩的，占用带宽小；<br>B.易于解析，客户端JavaScript可以简单的通过eval_r()进行JSON数据的读取；<br>C.支持多种语言，包括ActionScript, C, C#, ColdFusion, Java, JavaScript, Perl, PHP, Python, Ruby等服务器端语言，便于服务器端的解析；<br>D.在PHP世界，已经有PHP-JSON和JSON-PHP出现了，偏于PHP序列化后的程序直接调用，PHP服务器端的对象、数组等能直接生成JSON格式，便于客户端的访问提取；<br>E.因为JSON格式能直接为服务器端代码使用，大大简化了服务器端和客户端的代码开发量，且完成任务不变，并且易于维护。</p>
+<h1 id="JSON的使用"><a href="#JSON的使用" class="headerlink" title="JSON的使用"></a>JSON的使用</h1><p>按照目前所做的工作，主要是用来前后端数据交流的。前端请求后端接口，后端返回值类型为Map集合，为键值对形式。到了前端转换为JSON格式，Map集合中的list就变成了JSON中的数组。Map中的单个key:value，就是一组映射，而这种单个的一组映射也就只能归为大Map的属性了。Map中的key:Object，就是一个JSON对象。而Object就是多组无序映射的集合。</p>
+<h2 id="JSON格式"><a href="#JSON格式" class="headerlink" title="JSON格式"></a>JSON格式</h2><blockquote>
+<p>1） 并列的数据之间用逗号（”, “）分隔。</p>
+<p>2） 映射用冒号（”: “）表示。</p>
+<p>3） 并列数据的集合（数组）用方括号(“[]”)表示。</p>
+<p>4） 映射的集合（对象）用大括号（”{}”）表示。<br>在编写json的过程中，最容易出错的地方就是逗号和冒号的位置。一般并列数据之间都需要逗号，而并列数据的最后一个，后边不加逗号。如下是我编写的一个json数据：</p>
+</blockquote>
+<pre><code>{
+  &quot;garden&quot;: &quot;百草园&quot;,
+  &quot;classroom&quot;:
+  {
+    &quot;trashCan&quot;: {&quot;color&quot;: &quot;red&quot;,&quot;volume&quot;: &quot;5L&quot;,&quot;material&quot;: &quot;aluminum&quot;},
+    &quot;teacher&quot;:
+    [
+      {&quot;name&quot;:&quot;刘艳&quot;,&quot;subject&quot;:&quot;English&quot;},
+      {&quot;name&quot;:&quot;华刚&quot;,&quot;subject&quot;:&quot;Math&quot;},
+      {&quot;name&quot;:&quot;李明&quot;,&quot;subject&quot;:&quot;physical&quot;}
+    ],
+    &quot;student&quot;:
+    [
+      {&quot;name&quot;: &quot;小明&quot;,&quot;age&quot;: &quot;18&quot;},
+      {&quot;name&quot;: &quot;小红&quot;,&quot;age&quot;: &quot;18&quot;},
+      {&quot;name&quot;: &quot;小李&quot;,&quot;age&quot;: &quot;18&quot;}
+    ]
+  }
+}</code></pre><p>我用图片来说明一下，<br><img src="//luoyefubuki.com/2020/01/06/Json%E6%98%AF%E4%BB%80%E4%B9%88/2.jpg" alt="Json是什么"></p>
+<h2 id="测试JSON"><a href="#测试JSON" class="headerlink" title="测试JSON"></a>测试JSON</h2><p>讲完json的数据格式，我们亲自实践一下。</p>
+<h3 id="实体类"><a href="#实体类" class="headerlink" title="实体类"></a>实体类</h3><p><img src="//luoyefubuki.com/2020/01/06/Json%E6%98%AF%E4%BB%80%E4%B9%88/3.jpg" alt="Json是什么"><br>学校类</p>
+<pre><code>@Data
+public class School {
+    private String garden;
+    private Classroom classroom;
+}</code></pre><p>学生类</p>
+<pre><code>@Data
+public class Student {
+private String name;
+private String age;
+}</code></pre><p>老师类</p>
+<pre><code>@Data
+public class Teacher {
+private String name;
+private String subject;
+}</code></pre><p>垃圾桶类</p>
+<pre><code>@Data
+public class TrashCan {
+private String color;
+private String volume;
+private String material;
+}</code></pre><p>教室类</p>
+<pre><code>@Data
+public class Classroom {
+ private TrashCan trashCan;
+private List&lt;Teacher&gt; teachers;
+private List&lt;Student&gt; students;
+}</code></pre><h3 id="JSON工具类"><a href="#JSON工具类" class="headerlink" title="JSON工具类"></a>JSON工具类</h3><pre><code>public class JsonUtil {
+    //主方法
+    public static void main(String[] args) {
+    //获取大对象
+    JSONObject schoolJson = getJsonObject(&quot;school.json&quot;);
+    System.out.println(schoolJson);
+    //大JSON转换为java实体类School
+    School school = schoolJson.toJavaObject(School.class);
+    //可以直接映射到实体类中的对象成员
+    System.out.println(&quot;the color of the trash can in the classroom of the school is ---&gt;&quot;+school.getClassroom().getTrashCan().getColor());
+    //发现JSONArray不能自动转变成List,teachers=null, students=null
+    System.out.println(&quot;no absolute school---&gt;&quot;+school);
+    //这个garden到底是啥
+    System.out.println(&quot;the garden name of the school is ---&gt;&quot;+school.getGarden());
+    //这个garden其实是个字符串，也是对象
+    String garden = (String)schoolJson.get(&quot;garden&quot;);
+    System.out.println(garden);
+    //由大JSON对象获取下一级JSON对象
+    JSONObject classroomJson = schoolJson.getJSONObject(&quot;classroom&quot;);
+    System.out.println(classroomJson.toJSONString());
+    //JsonObject转java对象
+    Classroom classroom = classroomJson.toJavaObject(Classroom.class);
+    System.out.println(&quot;no absolute classroom----&gt;&quot;+classroom);
+    //JSON对象中的数组转换
+    JSONArray teacher = classroomJson.getJSONArray(&quot;teacher&quot;);
+    for(int i=0;i&lt;teacher.size();i++){
+        System.out.println(teacher.get(i));
+    }
+    //将JSONArray转换成对应实体类的List
+    List&lt;Teacher&gt; teachers = teacher.toJavaList(Teacher.class);
+    //对于List成员，只有通过这种方式才能注入数据。
+    classroom.setTeachers(teachers);
+    JSONArray student = classroomJson.getJSONArray(&quot;student&quot;);
+    for(int i=0;i&lt;student.size();i++){
+        System.out.println(student.get(i));
+    }
+    List&lt;Student&gt; students = student.toJavaList(Student.class);
+    classroom.setStudents(students);
+    System.out.println(&quot;absolute classroom---&gt;&quot;+classroom);
+    school.setClassroom(classroom);
+    System.out.println(&quot;absolute school---&gt;&quot;+school);
+    }
+    /**
+     * 获取JSONObject
+     * @param filePath
+     * @return
+     */
+    public static JSONObject getJsonObject(String filePath){
+    URL resource = JsonUtil.class.getResource(&quot;&quot;);
+    String path = resource.getPath();
+    int target = path.indexOf(&quot;target&quot;);
+    String substring = path.substring(1, target);
+    String baseFilePath = substring+&quot;src\\main\\java\\com\\dubbo\\example\\consumer\\json-old\\&quot;;
+    File file = new File(baseFilePath+filePath);
+    String jsonStr = readJsonFile(file);
+    JSONObject jsonObject = JSON.parseObject(jsonStr);
+    return jsonObject;
+    }
+    /**
+     * 读取json文件
+     * @param jsonFile json文件名
+     * @return 返回json字符串
+     */
+    public static String readJsonFile(File jsonFile) {
+    String jsonStr = &quot;&quot;;
+    try {
+        FileReader fileReader = new FileReader(jsonFile);
+        Reader reader = new InputStreamReader(new FileInputStream(jsonFile), &quot;utf-8&quot;);
+        int ch = 0;
+        StringBuffer sb = new StringBuffer();
+        while ((ch = reader.read()) != -1) {
+        sb.append((char) ch);
+        }
+        fileReader.close();
+        reader.close();
+        jsonStr = sb.toString();
+        return jsonStr;
+    } catch (Exception e) {
+        e.printStackTrace();
+        return null;
+    }
+    }
+}</code></pre><h1 id="自己的感觉"><a href="#自己的感觉" class="headerlink" title="自己的感觉"></a>自己的感觉</h1><h2 id="使用xml和json的感觉"><a href="#使用xml和json的感觉" class="headerlink" title="使用xml和json的感觉"></a>使用xml和json的感觉</h2><p>感觉json确实比xml好用多了。</p>
+<h2 id="对于json的理解"><a href="#对于json的理解" class="headerlink" title="对于json的理解"></a>对于json的理解</h2><p>我目前感觉JSON应该有三种数据格式，其中两种JSONObject和JSONArray就是大家常说的两种，但是还应该有第三种，就是单一的键值对，如上面json文件中的”garden”:”百草园”一样。既不是JSONObject，也不是JSONArray，只能通过JSON大对象get(key),得到Object。其实就是个String。</p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/支付宝支付.png">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/微信支付.png">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2019/08/17/JavaScript标签运动从初级至伪精通/" class="archive-article-date">
-  	<time datetime="2019-08-17T02:08:27.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-17</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/08/17/JavaScript标签运动从初级至伪精通/">JavaScript标签运动从初级至伪精通</a>
-    </h1>
-  
+      
 
-        <div class="article-info info-on-right">
-          
-          
+      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/01/06/Json是什么/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2019/08/16/富有含义的English/" class="archive-article-date">
-  	<time datetime="2019-08-16T12:46:16.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-16</time>
-</a>
+  <!-- ������City�氲װ���� -->
+<div id="lv-container" data-id="city" data-uid="MTAyMC80NTQ3Mi8yMTk4NA==">
+	<script type="text/javascript">
+   (function(d, s) {
+       var j, e = d.getElementsByTagName(s)[0];
+
+       if (typeof LivereTower === 'function') { return; }
+
+       j = d.createElement(s);
+       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+       j.async = true;
+
+       e.parentNode.insertBefore(j, e);
+   })(document, 'script');
+	</script>
+<noscript> Ϊ����ʹ�����������۹����뼤��JavaScript</noscript>
+</div>
+<!-- City�氲װ��������� -->
+  
+
+
+
+
+  
+<nav id="article-nav">
+  
+  
+    <a href="/2020/01/05/不要成为一名程序员/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">不要成为一名程序员</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/08/16/富有含义的English/">富有含义的English</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#JSON简介"><span class="toc-number">1.</span> <span class="toc-text">JSON简介</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#为什么要用JSON"><span class="toc-number">2.</span> <span class="toc-text">为什么要用JSON</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#XML"><span class="toc-number">2.1.</span> <span class="toc-text">XML</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#示例"><span class="toc-number">2.1.1.</span> <span class="toc-text">示例</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#xml优点"><span class="toc-number">2.1.2.</span> <span class="toc-text">xml优点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#xml缺点"><span class="toc-number">2.1.3.</span> <span class="toc-text">xml缺点</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#JSON优点"><span class="toc-number">2.2.</span> <span class="toc-text">JSON优点</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#JSON的使用"><span class="toc-number">3.</span> <span class="toc-text">JSON的使用</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#JSON格式"><span class="toc-number">3.1.</span> <span class="toc-text">JSON格式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#测试JSON"><span class="toc-number">3.2.</span> <span class="toc-text">测试JSON</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#实体类"><span class="toc-number">3.2.1.</span> <span class="toc-text">实体类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#JSON工具类"><span class="toc-number">3.2.2.</span> <span class="toc-text">JSON工具类</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#自己的感觉"><span class="toc-number">4.</span> <span class="toc-text">自己的感觉</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#使用xml和json的感觉"><span class="toc-number">4.1.</span> <span class="toc-text">使用xml和json的感觉</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#对于json的理解"><span class="toc-number">4.2.</span> <span class="toc-text">对于json的理解</span></a></li></ol></li></ol>
+                    </div>
+                </span>
+            </div>
         </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2019/08/13/JavaScript的DOM操作/" class="archive-article-date">
-  	<time datetime="2019-08-13T12:39:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-13</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/08/13/JavaScript的DOM操作/">JavaScript的DOM操作</a>
-    </h1>
+        
+    </div>
+</aside>
+
+
+
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2019/08/11/CSS定位之相对定位和绝对定位及其他定位/" class="archive-article-date">
-  	<time datetime="2019-08-11T06:51:01.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-11</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/08/11/CSS定位之相对定位和绝对定位及其他定位/">CSS定位之相对定位和绝对定位及其他定位</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2019/08/11/JavaScript图片轮播之无缝滚动/" class="archive-article-date">
-  	<time datetime="2019-08-11T02:50:38.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-11</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/08/11/JavaScript图片轮播之无缝滚动/">JavaScript图片轮播之无缝滚动</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2019/08/10/js代码简化之连等于/" class="archive-article-date">
-  	<time datetime="2019-08-10T15:19:42.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-10</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/08/10/js代码简化之连等于/">js代码简化之连等于</a>
-    </h1>
+
+
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2019/08/10/如何在hexo博客中嵌入多段html代码/" class="archive-article-date">
-  	<time datetime="2019-08-10T01:50:21.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-10</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/08/10/如何在hexo博客中嵌入多段html代码/">如何在hexo博客中嵌入多段html代码</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2019/08/09/羊皮卷/" class="archive-article-date">
-  	<time datetime="2019-08-09T13:41:56.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-09</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/08/09/羊皮卷/">羊皮卷</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2019/08/04/python处理图片/" class="archive-article-date">
-  	<time datetime="2019-08-04T13:08:53.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-04</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/08/04/python处理图片/">python处理图片</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2019/08/03/innerHTML介绍/" class="archive-article-date">
-  	<time datetime="2019-08-03T14:20:59.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-03</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/08/03/innerHTML介绍/">innerHTML介绍</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/archives/page/6/">&laquo; Prev</a><a class="page-number" href="/archives/">1</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/5/">5</a><a class="page-number" href="/archives/page/6/">6</a><span class="page-number current">7</span><a class="page-number" href="/archives/page/8/">8</a><a class="page-number" href="/archives/page/9/">9</a><a class="extend next" rel="next" href="/archives/page/8/">Next &raquo;</a>
-    </nav>
   
 
 
@@ -511,8 +647,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
