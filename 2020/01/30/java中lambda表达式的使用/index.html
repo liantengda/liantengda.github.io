@@ -6,15 +6,29 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives | 纷飞落叶的博客</title>
+  <title>java中lambda表达式的使用 | 纷飞落叶的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="纷飞落叶的博客">
-<meta property="og:url" content="http://yoursite.com/archives/page/6/index.html">
+  <meta name="description" content="前言前段时间将自己的文章搬运到了CSDN上，陆陆续续写了几篇原创，发现就构造红黑树有不少人看了看，感觉自己的技术功底还是很差，所以还是回归自己当初记笔记的初心吧，就写到自己的博客上就可以了。本来过年打算加班挣钱，没想到碰到了新型冠状病毒，本着狗命要紧的原则，我打算逃了，在这段时间里好好研究研究技术，也许比多挣那么几千块钱有用吧。 为什么要出现lambda表达式在参考了各个技术大佬的文章之后，我打算">
+<meta property="og:type" content="article">
+<meta property="og:title" content="java中lambda表达式的使用">
+<meta property="og:url" content="http://yoursite.com/2020/01/30/java中lambda表达式的使用/index.html">
 <meta property="og:site_name" content="纷飞落叶的博客">
+<meta property="og:description" content="前言前段时间将自己的文章搬运到了CSDN上，陆陆续续写了几篇原创，发现就构造红黑树有不少人看了看，感觉自己的技术功底还是很差，所以还是回归自己当初记笔记的初心吧，就写到自己的博客上就可以了。本来过年打算加班挣钱，没想到碰到了新型冠状病毒，本着狗命要紧的原则，我打算逃了，在这段时间里好好研究研究技术，也许比多挣那么几千块钱有用吧。 为什么要出现lambda表达式在参考了各个技术大佬的文章之后，我打算">
 <meta property="og:locale" content="default">
+<meta property="og:image" content="http://luoyefubuki.com/2020/01/30/java%E4%B8%ADlambda%E8%A1%A8%E8%BE%BE%E5%BC%8F%E7%9A%84%E4%BD%BF%E7%94%A8/2.jpg">
+<meta property="og:image" content="http://luoyefubuki.com/2020/01/30/java%E4%B8%ADlambda%E8%A1%A8%E8%BE%BE%E5%BC%8F%E7%9A%84%E4%BD%BF%E7%94%A8/3.jpg">
+<meta property="og:image" content="http://luoyefubuki.com/2020/01/30/java%E4%B8%ADlambda%E8%A1%A8%E8%BE%BE%E5%BC%8F%E7%9A%84%E4%BD%BF%E7%94%A8/4.jpg">
+<meta property="og:image" content="http://luoyefubuki.com/2020/01/30/java%E4%B8%ADlambda%E8%A1%A8%E8%BE%BE%E5%BC%8F%E7%9A%84%E4%BD%BF%E7%94%A8/5.jpg">
+<meta property="og:image" content="http://luoyefubuki.com/2020/01/30/java%E4%B8%ADlambda%E8%A1%A8%E8%BE%BE%E5%BC%8F%E7%9A%84%E4%BD%BF%E7%94%A8/5.jpg">
+<meta property="og:image" content="http://luoyefubuki.com/2020/01/30/java%E4%B8%ADlambda%E8%A1%A8%E8%BE%BE%E5%BC%8F%E7%9A%84%E4%BD%BF%E7%94%A8/6.jpg">
+<meta property="og:image" content="http://luoyefubuki.com/2020/01/30/java%E4%B8%ADlambda%E8%A1%A8%E8%BE%BE%E5%BC%8F%E7%9A%84%E4%BD%BF%E7%94%A8/5.jpg">
+<meta property="og:image" content="http://luoyefubuki.com/2020/01/30/java%E4%B8%ADlambda%E8%A1%A8%E8%BE%BE%E5%BC%8F%E7%9A%84%E4%BD%BF%E7%94%A8/6.jpg">
+<meta property="og:image" content="http://luoyefubuki.com/2020/01/30/java%E4%B8%ADlambda%E8%A1%A8%E8%BE%BE%E5%BC%8F%E7%9A%84%E4%BD%BF%E7%94%A8/7.jpg">
+<meta property="og:updated_time" content="2020-01-30T04:58:09.892Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="纷飞落叶的博客">
+<meta name="twitter:title" content="java中lambda表达式的使用">
+<meta name="twitter:description" content="前言前段时间将自己的文章搬运到了CSDN上，陆陆续续写了几篇原创，发现就构造红黑树有不少人看了看，感觉自己的技术功底还是很差，所以还是回归自己当初记笔记的初心吧，就写到自己的博客上就可以了。本来过年打算加班挣钱，没想到碰到了新型冠状病毒，本着狗命要紧的原则，我打算逃了，在这段时间里好好研究研究技术，也许比多挣那么几千块钱有用吧。 为什么要出现lambda表达式在参考了各个技术大佬的文章之后，我打算">
+<meta name="twitter:image" content="http://luoyefubuki.com/2020/01/30/java%E4%B8%ADlambda%E8%A1%A8%E8%BE%BE%E5%BC%8F%E7%9A%84%E4%BD%BF%E7%94%A8/2.jpg">
   
     <link rel="alternative" href="/atom.xml" title="纷飞落叶的博客" type="application/atom+xml">
   
@@ -176,305 +190,452 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-java中lambda表达式的使用" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      java中lambda表达式的使用
+    </h1>
+  
+
+        
+        
+        <!-- 不蒜子统计 -->
+        <span id="busuanzi_container_page_pv" style='display:none' class="archive-article-date">
+              <i class="icon-smile icon"></i> 阅读数：<span id="busuanzi_value_page_pv"></span>次
+        </span>
+
+<a href="/2020/01/30/java中lambda表达式的使用/" class="archive-article-date">
+  	<time datetime="2020-01-30T01:15:05.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-01-30</time>
+</a>
+        
+      </header>
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>前段时间将自己的文章搬运到了CSDN上，陆陆续续写了几篇原创，发现就构造红黑树有不少人看了看，感觉自己的技术功底还是很差，所以还是回归自己当初记笔记的初心吧，就写到自己的博客上就可以了。本来过年打算加班挣钱，没想到碰到了新型冠状病毒，本着狗命要紧的原则，我打算逃了，在这段时间里好好研究研究技术，也许比多挣那么几千块钱有用吧。</p>
+<h1 id="为什么要出现lambda表达式"><a href="#为什么要出现lambda表达式" class="headerlink" title="为什么要出现lambda表达式"></a>为什么要出现lambda表达式</h1><p>在参考了各个技术大佬的文章之后，我打算从我自己实现的一个例子开始说起。</p>
+<h2 id="情景1"><a href="#情景1" class="headerlink" title="情景1"></a>情景1</h2><p>刚开始，我有一堆字符串，每个字符串都想让他加倍输出，例如“呵”我想让他变成“呵呵”。以下为第一版代码</p>
+<pre><code>public class LambdaTest {
+    public static void main(String[] args) {
+    doubleString(&quot;哈&quot;);
+    doubleString(&quot;呵&quot;);
+    doubleString(&quot;嘿&quot;);
+    doubleString(&quot;略&quot;);
+    doubleString(&quot;汪&quot;);
+    doubleString(&quot;啦&quot;);
+    doubleString(&quot;嘎&quot;);
+    doubleString(&quot;hia&quot;);
+    doubleString(&quot;six&quot;);
+    }
+    /**
+     * 加倍输出字符串
+     * @param s
+     */
+    public static void doubleString(String s){
+    s=s+s;
+    System.out.println(s);
+    }
+}</code></pre><p>结果如下：<br><img src="//luoyefubuki.com/2020/01/30/java%E4%B8%ADlambda%E8%A1%A8%E8%BE%BE%E5%BC%8F%E7%9A%84%E4%BD%BF%E7%94%A8/2.jpg" alt="java中lambda表达式的使用"></p>
+<h2 id="情景2"><a href="#情景2" class="headerlink" title="情景2"></a>情景2</h2><p>我现在想让这些字符串三倍输出，我觉得两个字不能很好的表达我强烈的感情，于是我创建了另一个方法，三倍输出字符串方法，然后批量将doubleString修改为trebleString。（先说一点，全部替换会报错，逃！）</p>
+<pre><code>public class LambdaTest {
+    public static void main(String[] args) {
+    trebleString(&quot;哈&quot;);
+    trebleString(&quot;呵&quot;);
+    trebleString(&quot;嘿&quot;);
+    trebleString(&quot;略&quot;);
+    trebleString(&quot;汪&quot;);
+    trebleString(&quot;啦&quot;);
+    trebleString(&quot;嘎&quot;);
+    trebleString(&quot;hia&quot;);
+    trebleString(&quot;six&quot;);
+    }
+    /**
+     * 加倍输出字符串
+     * @param s
+     */
+    public static void doubleString(String s){
+    s=s+s;
+    System.out.println(s);
+    }
+    /**
+     * 三倍输出字符串
+     * @param s
+     */
+    public static void trebleString(String s){
+    s = s+s+s;
+    System.out.println(s);
+    }
+}</code></pre><p>结果如下：<br><img src="//luoyefubuki.com/2020/01/30/java%E4%B8%ADlambda%E8%A1%A8%E8%BE%BE%E5%BC%8F%E7%9A%84%E4%BD%BF%E7%94%A8/3.jpg" alt="java中lambda表达式的使用"></p>
+<h2 id="情景3"><a href="#情景3" class="headerlink" title="情景3"></a>情景3</h2><p>我现在感觉光是这几个字已经不能表达我强烈的感情了，我想要加入鸡你太美，于是我创建了第三个方法，鸡你太美字符串方法，然后将trebleString修改为鸡你太美String。（注意驼峰命名规则！！(●’◡’●)）</p>
+<pre><code>public class LambdaTest {
+    public static void main(String[] args) {
+    鸡你太美String(&quot;哈&quot;);
+    鸡你太美String(&quot;呵&quot;);
+    鸡你太美String(&quot;嘿&quot;);
+    鸡你太美String(&quot;略&quot;);
+    鸡你太美String(&quot;汪&quot;);
+    鸡你太美String(&quot;啦&quot;);
+    鸡你太美String(&quot;嘎&quot;);
+    鸡你太美String(&quot;hia&quot;);
+    鸡你太美String(&quot;six&quot;);
+    }
+    /**
+     * 加倍输出字符串
+     * @param s
+     */
+    public static void doubleString(String s){
+    s=s+s;
+    System.out.println(s);
+    }
+    /**
+     * 三倍输出字符串
+     * @param s
+     */
+    public static void trebleString(String s){
+    s = s+s+s;
+    System.out.println(s);
+    }
+    /**
+     * 鸡你太美字符串
+     * @param s
+     */
+    public static void 鸡你太美String(String s){
+    s = s+s+s+&quot;,鸡你太美&quot;;
+    System.out.println(s);
+    }
+}</code></pre><p>结果如下：<br><img src="//luoyefubuki.com/2020/01/30/java%E4%B8%ADlambda%E8%A1%A8%E8%BE%BE%E5%BC%8F%E7%9A%84%E4%BD%BF%E7%94%A8/4.jpg" alt="java中lambda表达式的使用"></p>
+<h2 id="情景4"><a href="#情景4" class="headerlink" title="情景4"></a>情景4</h2><p>从学习编程开始，我们就知道main函数是个门面，用来运行的，杂七杂八的代码不能交织到一块去。随着对字符串的操作变多，我们开始封装了一个工具类StringOperate，然后把曾经写的方法都放到了操作类中StringOperate，然后定义一个新的方法冠状病毒String方法。再将方法逐个修改，进行调用。<br>字符串操作类</p>
+<pre><code>public class StringOperate {
+    /**
+     * 加倍输出字符串
+     * @param s
+     */
+    public static void doubleString(String s){
+    s=s+s;
+    System.out.println(s);
+    }
+    /**
+     * 三倍输出字符串
+     * @param s
+     */
+    public static void trebleString(String s){
+    s = s+s+s;
+    System.out.println(s);
+    }
+    /**
+     * 鸡你太美字符串
+     * @param s
+     */
+    public static void 鸡你太美String(String s){
+    s = s+s+s+&quot;,鸡你太美&quot;;
+    System.out.println(s);
+    }
+    /**
+     * 冠状病毒字符串
+     * @param s
+     */
+    public static void 冠状病毒String(String s){
+    s = s+s+s+&quot;,鸡你太美，新年好，冠状病毒&quot;;
+    System.out.println(s);
+    }
+}</code></pre><p>主函数</p>
+<pre><code>public class LambdaTest {
+    public static void main(String[] args) {
+    StringOperate.冠状病毒String(&quot;哈&quot;);
+    StringOperate.冠状病毒String(&quot;呵&quot;);
+    StringOperate.冠状病毒String(&quot;嘿&quot;);
+    StringOperate.冠状病毒String(&quot;略&quot;);
+    StringOperate.冠状病毒String(&quot;汪&quot;);
+    StringOperate.冠状病毒String(&quot;啦&quot;);
+    StringOperate.冠状病毒String(&quot;嘎&quot;);
+    StringOperate.冠状病毒String(&quot;hia&quot;);
+    StringOperate.冠状病毒String(&quot;six&quot;);
+    }
+}</code></pre><p>结果<br><img src="//luoyefubuki.com/2020/01/30/java%E4%B8%ADlambda%E8%A1%A8%E8%BE%BE%E5%BC%8F%E7%9A%84%E4%BD%BF%E7%94%A8/5.jpg" alt="java中lambda表达式的使用"></p>
+<h2 id="情景5-策略模式"><a href="#情景5-策略模式" class="headerlink" title="情景5 策略模式"></a>情景5 策略模式</h2><p>每次只要我们想要改变同一个行为时，就得在每个调用的地方修改一遍，如果有100个调用的地方，那么我们就得手动修改100次代码。此时我们想个办法，怎么让我们只改一个地方，然后让调用方法的所有的地方同时发生改变呢。此时就出现了策略模式<br>我么可以封装一个接口如下：</p>
+<pre><code>public interface MyInterface {
+    /**
+     * 对传入的字符串做同一件事情
+     * @param s
+     */
+    void doSameThingToString(String s);
+}</code></pre><p>然后实现这个接口，引入字符串操作类，同时表明要做那件事情：</p>
+<pre><code>public class MyInterfaceImpl implements MyInterface {
+    /**
+     * 对字符串做同一间事情
+     * @param s
+     */
+    @Override
+    public void doSameThingToString(String s) {
+    StringOperate.冠状病毒String(s);
+    }
+}</code></pre><p>然后我们去主方法里面这样操作：</p>
+<pre><code>public class LambdaTest {
+    public static void main(String[] args) {
+    //new一个实例，用来调用它里面的方法
+    MyInterface myInterface = new MyInterfaceImpl();
+    //进行一波操作
+    myInterface.doSameThingToString(&quot;哈&quot;);
+    myInterface.doSameThingToString(&quot;呵&quot;);
+    myInterface.doSameThingToString(&quot;嘿&quot;);
+    myInterface.doSameThingToString(&quot;略&quot;);
+    myInterface.doSameThingToString(&quot;汪&quot;);
+    myInterface.doSameThingToString(&quot;啦&quot;);
+    myInterface.doSameThingToString(&quot;嘎&quot;);
+    myInterface.doSameThingToString(&quot;hia&quot;);
+    myInterface.doSameThingToString(&quot;six&quot;);
+    }
+}</code></pre><p>结果<br><img src="//luoyefubuki.com/2020/01/30/java%E4%B8%ADlambda%E8%A1%A8%E8%BE%BE%E5%BC%8F%E7%9A%84%E4%BD%BF%E7%94%A8/5.jpg" alt="java中lambda表达式的使用"><br>此时我只想要鸡你太美，不想看到冠状病毒，那我们就去改一下实现类里面的方法就可以了，不用对着main一顿操作。这次我们实现了修改一处，就达到处处修改的目的。</p>
+<pre><code>public class MyInterfaceImpl implements MyInterface {
+    /**
+     * 对字符串做同一间事情
+     * @param s
+     */
+    @Override
+    public void doSameThingToString(String s) {
+    StringOperate.鸡你太美String(s);
+    }
+}</code></pre><p>结果<br><img src="//luoyefubuki.com/2020/01/30/java%E4%B8%ADlambda%E8%A1%A8%E8%BE%BE%E5%BC%8F%E7%9A%84%E4%BD%BF%E7%94%A8/6.jpg" alt="java中lambda表达式的使用"></p>
+<h2 id="情景6-lambda表达式"><a href="#情景6-lambda表达式" class="headerlink" title="情景6 lambda表达式"></a>情景6 lambda表达式</h2><p>我们直接来看如下例子：（此处先不纠结原理）<br>首先我定义了一个接口</p>
+<pre><code>public interface MyLambdaInterface {
+    /**
+     * 对字符串做同一件事情
+     * @param s
+     */
+    void doSameThing(String s);
+}</code></pre><p>然后在使用到方法的地方提前声明将进行何种操作</p>
+<pre><code>public class LambdaTest {
+    public static void main(String[] args) {
+        //声明将要进行什么操作
+    MyLambdaInterface myLambdaInterface = s -&gt; StringOperate.冠状病毒String(s);
+    //进行一波操作
+    myLambdaInterface.doSameThing(&quot;哈&quot;);
+    myLambdaInterface.doSameThing(&quot;呵&quot;);
+    myLambdaInterface.doSameThing(&quot;嘿&quot;);
+    myLambdaInterface.doSameThing(&quot;略&quot;);
+    myLambdaInterface.doSameThing(&quot;汪&quot;);
+    myLambdaInterface.doSameThing(&quot;啦&quot;);
+    myLambdaInterface.doSameThing(&quot;嘎&quot;);
+    myLambdaInterface.doSameThing(&quot;hia&quot;);
+    myLambdaInterface.doSameThing(&quot;six&quot;);
+    }
+}</code></pre><p>结果<br><img src="//luoyefubuki.com/2020/01/30/java%E4%B8%ADlambda%E8%A1%A8%E8%BE%BE%E5%BC%8F%E7%9A%84%E4%BD%BF%E7%94%A8/5.jpg" alt="java中lambda表达式的使用"><br>如果我们不想看到冠状病毒，一心只想要鸡你太美，我们只需要在声明操作的地方改动一下，就可以了。有了lambda，我们不用再去实现那个实现类，也不用再去手动new个实体。</p>
+<pre><code>public class LambdaTest {
+    public static void main(String[] args) {
+    MyLambdaInterface myLambdaInterface = s -&gt; StringOperate.鸡你太美String(s);
+    //进行一波操作
+    myLambdaInterface.doSameThing(&quot;哈&quot;);
+    myLambdaInterface.doSameThing(&quot;呵&quot;);
+    myLambdaInterface.doSameThing(&quot;嘿&quot;);
+    myLambdaInterface.doSameThing(&quot;略&quot;);
+    myLambdaInterface.doSameThing(&quot;汪&quot;);
+    myLambdaInterface.doSameThing(&quot;啦&quot;);
+    myLambdaInterface.doSameThing(&quot;嘎&quot;);
+    myLambdaInterface.doSameThing(&quot;hia&quot;);
+    myLambdaInterface.doSameThing(&quot;six&quot;);
+    }
+}</code></pre><p>结果<br><img src="//luoyefubuki.com/2020/01/30/java%E4%B8%ADlambda%E8%A1%A8%E8%BE%BE%E5%BC%8F%E7%9A%84%E4%BD%BF%E7%94%A8/6.jpg" alt="java中lambda表达式的使用"></p>
+<h1 id="什么是lambda表达式"><a href="#什么是lambda表达式" class="headerlink" title="什么是lambda表达式"></a>什么是lambda表达式</h1><p>好了，介绍完了一个使用lambda的场景，是不是感觉lambda写出来的代码很简洁。没错，这就是lambda表达式的一个首要作用，使代码变得十分简洁。<br>我们知道，java中的赋值操作，一般都是把基本数据类型和对象引用赋值给变量，但是在java8之后，我们可以把<strong>代码块</strong>赋值给一个变量，这个代码块就是一个lambda表达式。</p>
+<blockquote>
+<p>myLambdaInterface = s -&gt; StringOperate.鸡你太美String(s);</p>
+</blockquote>
+<p>此时又出现一个问题,java是强类型语言，那么这个变量是什么类型的，这个变量的类型是一个接口，而lambda表达式则是这个接口的实现。这种只有一个接口函数需要被实现的接口类型，就是人们常说的“函数式接口”。啊，鸡你太美！！！</p>
+<pre><code>/**
+ * 函数式接口
+ * @FunctionalInterface        只允许实现一个接口函数
+ */
+@FunctionalInterface
+public interface MyLambdaInterface {
+    /**
+     * 对字符串做同一件事情
+     * @param s
+     */
+    void doSameThing(String s);
+}</code></pre><p><img src="//luoyefubuki.com/2020/01/30/java%E4%B8%ADlambda%E8%A1%A8%E8%BE%BE%E5%BC%8F%E7%9A%84%E4%BD%BF%E7%94%A8/7.jpg" alt="java中lambda表达式的使用"></p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/支付宝支付.png">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/微信支付.png">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2019/09/08/自己的云服务器/" class="archive-article-date">
-  	<time datetime="2019-09-08T06:17:21.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-08</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/09/08/自己的云服务器/">自己的云服务器</a>
-    </h1>
-  
+      
 
-        <div class="article-info info-on-right">
-          
-          
+      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/01/30/java中lambda表达式的使用/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2019/09/08/十分易懂的英语介词at-on-in用法区别/" class="archive-article-date">
-  	<time datetime="2019-09-08T02:03:07.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-08</time>
-</a>
+  <!-- ������City�氲װ���� -->
+<div id="lv-container" data-id="city" data-uid="MTAyMC80NTQ3Mi8yMTk4NA==">
+	<script type="text/javascript">
+   (function(d, s) {
+       var j, e = d.getElementsByTagName(s)[0];
+
+       if (typeof LivereTower === 'function') { return; }
+
+       j = d.createElement(s);
+       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+       j.async = true;
+
+       e.parentNode.insertBefore(j, e);
+   })(document, 'script');
+	</script>
+<noscript> Ϊ����ʹ�����������۹����뼤��JavaScript</noscript>
+</div>
+<!-- City�氲װ��������� -->
+  
+
+
+
+
+  
+<nav id="article-nav">
+  
+  
+    <a href="/2020/01/11/寻求蜕变之道之互联网时代创业失败者故事/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">寻求蜕变之道之互联网时代创业失败者故事</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/09/08/十分易懂的英语介词at-on-in用法区别/">十分易懂的英语介词at on in用法区别</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#为什么要出现lambda表达式"><span class="toc-number">2.</span> <span class="toc-text">为什么要出现lambda表达式</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#情景1"><span class="toc-number">2.1.</span> <span class="toc-text">情景1</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#情景2"><span class="toc-number">2.2.</span> <span class="toc-text">情景2</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#情景3"><span class="toc-number">2.3.</span> <span class="toc-text">情景3</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#情景4"><span class="toc-number">2.4.</span> <span class="toc-text">情景4</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#情景5-策略模式"><span class="toc-number">2.5.</span> <span class="toc-text">情景5 策略模式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#情景6-lambda表达式"><span class="toc-number">2.6.</span> <span class="toc-text">情景6 lambda表达式</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#什么是lambda表达式"><span class="toc-number">3.</span> <span class="toc-text">什么是lambda表达式</span></a></li></ol>
+                    </div>
+                </span>
+            </div>
         </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2019/09/08/Docker是啥/" class="archive-article-date">
-  	<time datetime="2019-09-08T01:37:26.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-08</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/09/08/Docker是啥/">Docker是啥</a>
-    </h1>
+        
+    </div>
+</aside>
+
+
+
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2019/09/04/数据结构到底怎么来的/" class="archive-article-date">
-  	<time datetime="2019-09-04T12:09:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-04</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/09/04/数据结构到底怎么来的/">数据结构到底怎么来的</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2019/09/03/为什么会有树这种数据结构/" class="archive-article-date">
-  	<time datetime="2019-09-03T12:06:53.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-03</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/09/03/为什么会有树这种数据结构/">为什么会有树这种数据结构</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2019/09/01/yilia主题添加访问量统计功能之修改不蒜子域名也没成功/" class="archive-article-date">
-  	<time datetime="2019-09-01T02:51:31.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-01</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/09/01/yilia主题添加访问量统计功能之修改不蒜子域名也没成功/">yilia主题添加访问量统计功能之修改不蒜子域名也没成功</a>
-    </h1>
+
+
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2019/08/31/英语短语come-on的用法/" class="archive-article-date">
-  	<time datetime="2019-08-31T01:04:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-31</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/08/31/英语短语come-on的用法/">英语短语come on的用法</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2019/08/29/JavaScript之window/" class="archive-article-date">
-  	<time datetime="2019-08-29T13:59:49.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-29</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/08/29/JavaScript之window/">JavaScript之window</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2019/08/28/时序数据库的简单介绍/" class="archive-article-date">
-  	<time datetime="2019-08-28T13:40:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-28</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/08/28/时序数据库的简单介绍/">时序数据库的简单介绍</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2019/08/27/物联网的简单介绍/" class="archive-article-date">
-  	<time datetime="2019-08-27T12:10:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-27</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/08/27/物联网的简单介绍/">物联网的简单介绍</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/archives/page/5/">&laquo; Prev</a><a class="page-number" href="/archives/">1</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/4/">4</a><a class="page-number" href="/archives/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/archives/page/7/">7</a><a class="page-number" href="/archives/page/8/">8</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/10/">10</a><a class="extend next" rel="next" href="/archives/page/7/">Next &raquo;</a>
-    </nav>
   
 
 
@@ -511,8 +672,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,

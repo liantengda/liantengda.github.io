@@ -178,6 +178,76 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-多路查找树之B+树" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/09/19/多路查找树之B+树/">多路查找树之B+树</a>
+    </h1>
+  
+
+        
+        
+<a href="/2019/09/19/多路查找树之B+树/" class="archive-article-date">
+  	<time datetime="2019-09-19T12:23:57.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-19</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="B-树的出现"><a href="#B-树的出现" class="headerlink" title="B+树的出现"></a>B+树的出现</h1><p>在了解B+树之前，首先需要了解B树是什么。<br><a href="//luoyefubuki.com/2019/09/19/多路查找树之B树/">多路查找树之B树</a><br>了解了B树，我们可以知道，B树解决了一个节点只能存取一个数据的问题，而且也解决了平衡二叉树高度不可控制的问题。<br>但是B树是有缺陷的。进行范围查询时，每读取一个节点都需要回溯到根部重新遍历，使得路径上的分支节点被多次读取，增加了磁盘I/O操作。而且，B树的每个节点都是Key-Value存储在一起的，而value部分也只是一个存储了数据的地址，所以每次比较key的时候，都会把value读取出来，增加了不必要的I/O，我们使用B树本来就是为了减少磁盘I/O的，所以仍然需要对其进行改进。<br>于是出现了B+树。<br><img src="//luoyefubuki.com/2019/09/19/%E5%A4%9A%E8%B7%AF%E6%9F%A5%E6%89%BE%E6%A0%91%E4%B9%8BB+%E6%A0%91/1.jpg" alt="多路查找树之B+树"></p>
+        
+          <a class="article-more-a" href="/2019/09/19/多路查找树之B+树/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/09/19/多路查找树之B+树/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-多路查找树之B树" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -771,76 +841,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2019/09/15/线索二叉树/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-完全二叉树" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/09/15/完全二叉树/">完全二叉树</a>
-    </h1>
-  
-
-        
-        
-<a href="/2019/09/15/完全二叉树/" class="archive-article-date">
-  	<time datetime="2019-09-15T06:01:35.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-15</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h1><p>对一棵有n个节点的二叉树按层序编号，如果编号为i（1&lt;=i&lt;=n）的节点与同样深度的满二叉树中编号为i的节点在二叉树中位置完全相同，则这棵树称为完全二叉树。</p>
-        
-          <a class="article-more-a" href="/2019/09/15/完全二叉树/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/09/15/完全二叉树/">展开全文 >></a>
         </p>
       
 
