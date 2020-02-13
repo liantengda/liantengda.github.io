@@ -6,22 +6,35 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>关系型数据库的数据操作之机构化查询语言SQL | 纷飞落叶的博客</title>
+  <title>关系型数据库的数据操作之结构化查询语言SQL | 纷飞落叶的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="初次邂逅SQL一开始遇到sql语句的时候，当然是心里有点害怕，才刚学完一门语言java，还没太懂呢，就又要学习一门新语言。于是自己网上百度找到一些讲解sql的视频，开始进入sql的学习。一开始使用的数据库管理系统是众所周知的mysql，光安装出错就废了一天的时间。但是当安装完，跟着视频登入mysql，再跟着show databases;感觉成就感十足。渐渐地，学着学着，就发现，写sql语句就跟写英">
 <meta property="og:type" content="article">
-<meta property="og:title" content="关系型数据库的数据操作之机构化查询语言SQL">
+<meta property="og:title" content="关系型数据库的数据操作之结构化查询语言SQL">
 <meta property="og:url" content="http://yoursite.com/2020/02/13/关系型数据库的数据操作之结构化查询语言SQL/index.html">
 <meta property="og:site_name" content="纷飞落叶的博客">
 <meta property="og:description" content="初次邂逅SQL一开始遇到sql语句的时候，当然是心里有点害怕，才刚学完一门语言java，还没太懂呢，就又要学习一门新语言。于是自己网上百度找到一些讲解sql的视频，开始进入sql的学习。一开始使用的数据库管理系统是众所周知的mysql，光安装出错就废了一天的时间。但是当安装完，跟着视频登入mysql，再跟着show databases;感觉成就感十足。渐渐地，学着学着，就发现，写sql语句就跟写英">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="http://luoyefubuki.com/2020/02/13/%E5%85%B3%E7%B3%BB%E5%9E%8B%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E6%95%B0%E6%8D%AE%E6%93%8D%E4%BD%9C%E4%B9%8B%E6%9C%BA%E6%9E%84%E5%8C%96%E6%9F%A5%E8%AF%A2%E8%AF%AD%E8%A8%80SQL/1.jpg">
-<meta property="og:image" content="http://luoyefubuki.com/2020/02/13/%E5%85%B3%E7%B3%BB%E5%9E%8B%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E6%95%B0%E6%8D%AE%E6%93%8D%E4%BD%9C%E4%B9%8B%E6%9C%BA%E6%9E%84%E5%8C%96%E6%9F%A5%E8%AF%A2%E8%AF%AD%E8%A8%80SQL/2.jpg">
-<meta property="og:updated_time" content="2020-02-13T08:49:29.574Z">
+<meta property="og:image" content="http://luoyefubuki.com/2020/02/13/%E5%85%B3%E7%B3%BB%E5%9E%8B%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E6%95%B0%E6%8D%AE%E6%93%8D%E4%BD%9C%E4%B9%8B%E7%BB%93%E6%9E%84%E5%8C%96%E6%9F%A5%E8%AF%A2%E8%AF%AD%E8%A8%80SQL/1.jpg">
+<meta property="og:image" content="http://luoyefubuki.com/2020/02/13/%E5%85%B3%E7%B3%BB%E5%9E%8B%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E6%95%B0%E6%8D%AE%E6%93%8D%E4%BD%9C%E4%B9%8B%E7%BB%93%E6%9E%84%E5%8C%96%E6%9F%A5%E8%AF%A2%E8%AF%AD%E8%A8%80SQL/2.jpg">
+<meta property="og:image" content="http://luoyefubuki.com/2020/02/13/%E5%85%B3%E7%B3%BB%E5%9E%8B%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E6%95%B0%E6%8D%AE%E6%93%8D%E4%BD%9C%E4%B9%8B%E7%BB%93%E6%9E%84%E5%8C%96%E6%9F%A5%E8%AF%A2%E8%AF%AD%E8%A8%80SQL/3.jpg">
+<meta property="og:image" content="http://luoyefubuki.com/2020/02/13/%E5%85%B3%E7%B3%BB%E5%9E%8B%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E6%95%B0%E6%8D%AE%E6%93%8D%E4%BD%9C%E4%B9%8B%E7%BB%93%E6%9E%84%E5%8C%96%E6%9F%A5%E8%AF%A2%E8%AF%AD%E8%A8%80SQL/4.jpg">
+<meta property="og:image" content="http://luoyefubuki.com/2020/02/13/%E5%85%B3%E7%B3%BB%E5%9E%8B%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E6%95%B0%E6%8D%AE%E6%93%8D%E4%BD%9C%E4%B9%8B%E7%BB%93%E6%9E%84%E5%8C%96%E6%9F%A5%E8%AF%A2%E8%AF%AD%E8%A8%80SQL/8.jpg">
+<meta property="og:image" content="http://luoyefubuki.com/2020/02/13/%E5%85%B3%E7%B3%BB%E5%9E%8B%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E6%95%B0%E6%8D%AE%E6%93%8D%E4%BD%9C%E4%B9%8B%E7%BB%93%E6%9E%84%E5%8C%96%E6%9F%A5%E8%AF%A2%E8%AF%AD%E8%A8%80SQL/9.jpg">
+<meta property="og:image" content="http://luoyefubuki.com/2020/02/13/%E5%85%B3%E7%B3%BB%E5%9E%8B%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E6%95%B0%E6%8D%AE%E6%93%8D%E4%BD%9C%E4%B9%8B%E7%BB%93%E6%9E%84%E5%8C%96%E6%9F%A5%E8%AF%A2%E8%AF%AD%E8%A8%80SQL/5.jpg">
+<meta property="og:image" content="http://luoyefubuki.com/2020/02/13/%E5%85%B3%E7%B3%BB%E5%9E%8B%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E6%95%B0%E6%8D%AE%E6%93%8D%E4%BD%9C%E4%B9%8B%E7%BB%93%E6%9E%84%E5%8C%96%E6%9F%A5%E8%AF%A2%E8%AF%AD%E8%A8%80SQL/10.jpg">
+<meta property="og:image" content="http://luoyefubuki.com/2020/02/13/%E5%85%B3%E7%B3%BB%E5%9E%8B%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E6%95%B0%E6%8D%AE%E6%93%8D%E4%BD%9C%E4%B9%8B%E7%BB%93%E6%9E%84%E5%8C%96%E6%9F%A5%E8%AF%A2%E8%AF%AD%E8%A8%80SQL/11.jpg">
+<meta property="og:image" content="http://luoyefubuki.com/2020/02/13/%E5%85%B3%E7%B3%BB%E5%9E%8B%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E6%95%B0%E6%8D%AE%E6%93%8D%E4%BD%9C%E4%B9%8B%E7%BB%93%E6%9E%84%E5%8C%96%E6%9F%A5%E8%AF%A2%E8%AF%AD%E8%A8%80SQL/12.jpg">
+<meta property="og:image" content="http://luoyefubuki.com/2020/02/13/%E5%85%B3%E7%B3%BB%E5%9E%8B%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E6%95%B0%E6%8D%AE%E6%93%8D%E4%BD%9C%E4%B9%8B%E7%BB%93%E6%9E%84%E5%8C%96%E6%9F%A5%E8%AF%A2%E8%AF%AD%E8%A8%80SQL/13.jpg">
+<meta property="og:image" content="http://luoyefubuki.com/2020/02/13/%E5%85%B3%E7%B3%BB%E5%9E%8B%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E6%95%B0%E6%8D%AE%E6%93%8D%E4%BD%9C%E4%B9%8B%E7%BB%93%E6%9E%84%E5%8C%96%E6%9F%A5%E8%AF%A2%E8%AF%AD%E8%A8%80SQL/15.jpg">
+<meta property="og:image" content="http://luoyefubuki.com/2020/02/13/%E5%85%B3%E7%B3%BB%E5%9E%8B%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E6%95%B0%E6%8D%AE%E6%93%8D%E4%BD%9C%E4%B9%8B%E7%BB%93%E6%9E%84%E5%8C%96%E6%9F%A5%E8%AF%A2%E8%AF%AD%E8%A8%80SQL/14.jpg">
+<meta property="og:image" content="http://luoyefubuki.com/2020/02/13/%E5%85%B3%E7%B3%BB%E5%9E%8B%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E6%95%B0%E6%8D%AE%E6%93%8D%E4%BD%9C%E4%B9%8B%E7%BB%93%E6%9E%84%E5%8C%96%E6%9F%A5%E8%AF%A2%E8%AF%AD%E8%A8%80SQL/6.jpg">
+<meta property="og:image" content="http://luoyefubuki.com/2020/02/13/%E5%85%B3%E7%B3%BB%E5%9E%8B%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E6%95%B0%E6%8D%AE%E6%93%8D%E4%BD%9C%E4%B9%8B%E7%BB%93%E6%9E%84%E5%8C%96%E6%9F%A5%E8%AF%A2%E8%AF%AD%E8%A8%80SQL/7.jpg">
+<meta property="og:updated_time" content="2020-02-13T13:26:04.489Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="关系型数据库的数据操作之机构化查询语言SQL">
+<meta name="twitter:title" content="关系型数据库的数据操作之结构化查询语言SQL">
 <meta name="twitter:description" content="初次邂逅SQL一开始遇到sql语句的时候，当然是心里有点害怕，才刚学完一门语言java，还没太懂呢，就又要学习一门新语言。于是自己网上百度找到一些讲解sql的视频，开始进入sql的学习。一开始使用的数据库管理系统是众所周知的mysql，光安装出错就废了一天的时间。但是当安装完，跟着视频登入mysql，再跟着show databases;感觉成就感十足。渐渐地，学着学着，就发现，写sql语句就跟写英">
-<meta name="twitter:image" content="http://luoyefubuki.com/2020/02/13/%E5%85%B3%E7%B3%BB%E5%9E%8B%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E6%95%B0%E6%8D%AE%E6%93%8D%E4%BD%9C%E4%B9%8B%E6%9C%BA%E6%9E%84%E5%8C%96%E6%9F%A5%E8%AF%A2%E8%AF%AD%E8%A8%80SQL/1.jpg">
+<meta name="twitter:image" content="http://luoyefubuki.com/2020/02/13/%E5%85%B3%E7%B3%BB%E5%9E%8B%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E6%95%B0%E6%8D%AE%E6%93%8D%E4%BD%9C%E4%B9%8B%E7%BB%93%E6%9E%84%E5%8C%96%E6%9F%A5%E8%AF%A2%E8%AF%AD%E8%A8%80SQL/1.jpg">
   
     <link rel="alternative" href="/atom.xml" title="纷飞落叶的博客" type="application/atom+xml">
   
@@ -188,7 +201,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      关系型数据库的数据操作之机构化查询语言SQL
+      关系型数据库的数据操作之结构化查询语言SQL
     </h1>
   
 
@@ -207,7 +220,9 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="初次邂逅SQL"><a href="#初次邂逅SQL" class="headerlink" title="初次邂逅SQL"></a>初次邂逅SQL</h1><p>一开始遇到sql语句的时候，当然是心里有点害怕，才刚学完一门语言java，还没太懂呢，就又要学习一门新语言。于是自己网上百度找到一些讲解sql的视频，开始进入sql的学习。一开始使用的数据库管理系统是众所周知的mysql，光安装出错就废了一天的时间。但是当安装完，跟着视频登入mysql，再跟着show databases;感觉成就感十足。渐渐地，学着学着，就发现，写sql语句就跟写英语作文一样，我这里展示一条我写的挺长的sql语句：<br><strong>SQL语句</strong></p>
+        <h1 id="初次邂逅SQL"><a href="#初次邂逅SQL" class="headerlink" title="初次邂逅SQL"></a>初次邂逅SQL</h1><p>一开始遇到sql语句的时候，当然是心里有点害怕，才刚学完一门语言java，还没太懂呢，就又要学习一门新语言。于是自己网上百度找到一些讲解sql的视频，开始进入sql的学习。一开始使用的数据库管理系统是众所周知的mysql，光安装出错就废了一天的时间。但是当安装完，跟着视频登入mysql，再跟着show databases;感觉成就感十足。渐渐地，学着学着，就发现，写sql语句就跟写英语作文一样，我这里展示一条我写的挺长的sql语句：</p>
+<a id="more"></a>
+<p><strong>SQL语句</strong></p>
 <pre><code>select e.ENAME as &quot;员工姓名&quot;,e.SAL as &quot;员工薪资&quot;,e.JOB as &quot;员工职位&quot;,d.DNAME as &quot;部门名称&quot; 
 from (select DEPTNO, max(SAL) as maxsal from emp GROUP BY DEPTNO) t 
 join emp e on t.DEPTNO = e.DEPTNO 
@@ -219,7 +234,81 @@ ORDER BY e.DEPTNO;</code></pre><p>这条语句地大概意思就是，取得每�
 交 员工表 当t表的员工部门编号 和 员工表的部门编号相同时
 交 部门表 当t表的员工部门编号 和 部门表的部门编号相同时
 总条件 当前员工的薪资 和 部门最高薪资相同时
-排序 根据员工表的员工部门编号</code></pre><p> 大概给人一种感觉，我想要取一些数据，然后告诉计算机，去哪里取，取出什么来，什么条件的才取，取完之后给我按照什么方式展示。当我们把这句话输入命令行，告诉mysql这个数据库管理系统时，它就会给计算机翻译我们这条指令，根据提前设计好的规定，然后计算机帮我们找到硬盘里的数据，并在屏幕上显示出来。<br><strong>所有员工的信息</strong><br><img src="//luoyefubuki.com/2020/02/13/%E5%85%B3%E7%B3%BB%E5%9E%8B%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E6%95%B0%E6%8D%AE%E6%93%8D%E4%BD%9C%E4%B9%8B%E6%9C%BA%E6%9E%84%E5%8C%96%E6%9F%A5%E8%AF%A2%E8%AF%AD%E8%A8%80SQL/1.jpg" alt="关系型数据库的数据操作之机构化查询语言SQL"><br><strong>最后查询结果</strong><br><img src="//luoyefubuki.com/2020/02/13/%E5%85%B3%E7%B3%BB%E5%9E%8B%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E6%95%B0%E6%8D%AE%E6%93%8D%E4%BD%9C%E4%B9%8B%E6%9C%BA%E6%9E%84%E5%8C%96%E6%9F%A5%E8%AF%A2%E8%AF%AD%E8%A8%80SQL/2.jpg" alt="关系型数据库的数据操作之机构化查询语言SQL"></p>
+排序 根据员工表的员工部门编号</code></pre><p> 大概给人一种感觉，我想要取一些数据，然后告诉计算机，去哪里取，取出什么来，什么条件的才取，取完之后给我按照什么方式展示。当我们把这句话输入命令行，告诉mysql这个数据库管理系统时，它就会给计算机翻译我们这条指令，根据提前设计好的规定，然后计算机帮我们找到硬盘里的数据，并在屏幕上显示出来。<br><strong>所有员工的信息</strong><br><img src="//luoyefubuki.com/2020/02/13/%E5%85%B3%E7%B3%BB%E5%9E%8B%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E6%95%B0%E6%8D%AE%E6%93%8D%E4%BD%9C%E4%B9%8B%E7%BB%93%E6%9E%84%E5%8C%96%E6%9F%A5%E8%AF%A2%E8%AF%AD%E8%A8%80SQL/1.jpg" alt="关系型数据库的数据操作之结构化查询语言SQL"><br><strong>最后查询结果</strong><br><img src="//luoyefubuki.com/2020/02/13/%E5%85%B3%E7%B3%BB%E5%9E%8B%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E6%95%B0%E6%8D%AE%E6%93%8D%E4%BD%9C%E4%B9%8B%E7%BB%93%E6%9E%84%E5%8C%96%E6%9F%A5%E8%AF%A2%E8%AF%AD%E8%A8%80SQL/2.jpg" alt="关系型数据库的数据操作之结构化查询语言SQL"></p>
+<h1 id="SQL是什么"><a href="#SQL是什么" class="headerlink" title="SQL是什么"></a>SQL是什么</h1><p>前边我介绍过计算机中的数据库相关的知识。在介绍的时候说过，当我们想要雇佣一个管理员管理我们数据的时候，管理员首先肯定得知道我们的想法，才能帮我们办事，而SQL语句，就是我们给数据库管理系统下达命令的一种语言。通过使用sql语句，我们可以让mysql之类的数据库管理系统知道我们要干什么，然后对我们需要的数据进行一系列操作。并且，我们之前还说过，关系型数据库是建立在关系模型上的，所以SQL语句也是根据该怎么操作关系模型数据这种思路设计出来的。</p>
+<blockquote>
+<p>对数据库实现操作的是结构化查询语言（Structured Query Language,SQL），是关系数据库的标准语言，也是一个通用的、功能极强的关系数据库语言。</p>
+</blockquote>
+<h1 id="使用SQL语句对数据进行操纵"><a href="#使用SQL语句对数据进行操纵" class="headerlink" title="使用SQL语句对数据进行操纵"></a>使用SQL语句对数据进行操纵</h1><p>在关系模型中常用的关系操作包括，查询操作和插入、删除、修改操作两大部分。</p>
+<h2 id="数据定义"><a href="#数据定义" class="headerlink" title="数据定义"></a>数据定义</h2><p>sql对数据定义的操作<br><img src="//luoyefubuki.com/2020/02/13/%E5%85%B3%E7%B3%BB%E5%9E%8B%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E6%95%B0%E6%8D%AE%E6%93%8D%E4%BD%9C%E4%B9%8B%E7%BB%93%E6%9E%84%E5%8C%96%E6%9F%A5%E8%AF%A2%E8%AF%AD%E8%A8%80SQL/3.jpg" alt="关系型数据库的数据操作之结构化查询语言SQL"></p>
+<h2 id="SQL中的数据查询"><a href="#SQL中的数据查询" class="headerlink" title="SQL中的数据查询"></a>SQL中的数据查询</h2><p>工作中，数据查询用到的最多。基本命令就是<br>    <strong>select 你要查什么 from 从哪里查 where 你的查询条件 group by 分组 having 分组后的条件 order by 根据什么顺序显示 asc/desc 正序或者逆序展示</strong><br>一般为了清晰的表现出来，采用每当碰到一个关键词，就换行的方式。</p>
+<pre><code>select [all | distinct] &lt;目标列表达式&gt;[,&lt;目标列表达式&gt;]......
+from &lt;表明或试图名&gt;[,&lt;表明或试图名&gt;......]
+[where &lt;条件表达式&gt;]
+[group by&lt;列名1&gt;[having&lt;条件表达式&gt;]]
+[order by &lt;列名2&gt;[asc | desc]];</code></pre><p>例如，把我刚才的sql语句重新展示一遍：<br><img src="//luoyefubuki.com/2020/02/13/%E5%85%B3%E7%B3%BB%E5%9E%8B%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E6%95%B0%E6%8D%AE%E6%93%8D%E4%BD%9C%E4%B9%8B%E7%BB%93%E6%9E%84%E5%8C%96%E6%9F%A5%E8%AF%A2%E8%AF%AD%E8%A8%80SQL/4.jpg" alt="关系型数据库的数据操作之结构化查询语言SQL"></p>
+<h3 id="select后跟算术表达式"><a href="#select后跟算术表达式" class="headerlink" title="select后跟算术表达式"></a>select后跟算术表达式</h3><p>例如查询员工的日工资，一个月工时算21.75天。</p>
+<blockquote>
+<p>select ENAME,SAL/21.75 from emp;<br><img src="//luoyefubuki.com/2020/02/13/%E5%85%B3%E7%B3%BB%E5%9E%8B%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E6%95%B0%E6%8D%AE%E6%93%8D%E4%BD%9C%E4%B9%8B%E7%BB%93%E6%9E%84%E5%8C%96%E6%9F%A5%E8%AF%A2%E8%AF%AD%E8%A8%80SQL/8.jpg" alt="关系型数据库的数据操作之结构化查询语言SQL"></p>
+</blockquote>
+<h3 id="select-后跟聚合函数"><a href="#select-后跟聚合函数" class="headerlink" title="select 后跟聚合函数"></a>select 后跟聚合函数</h3><p>聚合函数一般跟随group by出现。查询每个部门的平均工资，其中avg就是一个聚合函数。</p>
+<blockquote>
+<p>select avg(SAL) from emp GROUP BY DEPTNO;<br><img src="//luoyefubuki.com/2020/02/13/%E5%85%B3%E7%B3%BB%E5%9E%8B%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E6%95%B0%E6%8D%AE%E6%93%8D%E4%BD%9C%E4%B9%8B%E7%BB%93%E6%9E%84%E5%8C%96%E6%9F%A5%E8%AF%A2%E8%AF%AD%E8%A8%80SQL/9.jpg" alt="关系型数据库的数据操作之结构化查询语言SQL"></p>
+</blockquote>
+<h3 id="where-后边跟查询条件"><a href="#where-后边跟查询条件" class="headerlink" title="where 后边跟查询条件"></a>where 后边跟查询条件</h3><p>如果我们要查询指定条件的元组可以通过where字句实现。常用的查询条件如下：<br><img src="//luoyefubuki.com/2020/02/13/%E5%85%B3%E7%B3%BB%E5%9E%8B%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E6%95%B0%E6%8D%AE%E6%93%8D%E4%BD%9C%E4%B9%8B%E7%BB%93%E6%9E%84%E5%8C%96%E6%9F%A5%E8%AF%A2%E8%AF%AD%E8%A8%80SQL/5.jpg" alt="关系型数据库的数据操作之结构化查询语言SQL"><br>查询薪资大于3000的员工。</p>
+<blockquote>
+<p>select * from emp where sal&gt;3000;<br><img src="//luoyefubuki.com/2020/02/13/%E5%85%B3%E7%B3%BB%E5%9E%8B%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E6%95%B0%E6%8D%AE%E6%93%8D%E4%BD%9C%E4%B9%8B%E7%BB%93%E6%9E%84%E5%8C%96%E6%9F%A5%E8%AF%A2%E8%AF%AD%E8%A8%80SQL/10.jpg" alt="关系型数据库的数据操作之结构化查询语言SQL"></p>
+</blockquote>
+<p>关系数据库管理系统执行该查询的一种可能过程是：<br><strong>对emp 表进行全表扫描，取出一个元组，检查该元组在sal列的值是否大于3000，如果大于，则取出该元组进行输出，否则跳过该元组，取下一个元组。重复该过程，直到处理完student表的所有元组。</strong></p>
+<h3 id="like-模糊查询"><a href="#like-模糊查询" class="headerlink" title="like 模糊查询"></a>like 模糊查询</h3><p>其中%代表任意长度的字符串,如查询名字以B开头的员工。</p>
+<blockquote>
+<p>select * from emp where ENAME like “B%”;</p>
+</blockquote>
+<p><img src="//luoyefubuki.com/2020/02/13/%E5%85%B3%E7%B3%BB%E5%9E%8B%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E6%95%B0%E6%8D%AE%E6%93%8D%E4%BD%9C%E4%B9%8B%E7%BB%93%E6%9E%84%E5%8C%96%E6%9F%A5%E8%AF%A2%E8%AF%AD%E8%A8%80SQL/11.jpg" alt="关系型数据库的数据操作之结构化查询语言SQL"></p>
+<p>其中，_表示单个字符。如查询以B开头的，名字只有两个字母的员工。</p>
+<blockquote>
+<p>select * from emp where ENAME like “B_”;</p>
+</blockquote>
+<p>escape表示谁是换码字符，比如以上两例中的符号被叫做通配符。如果员工名字里有通配符怎么办，那么就需要换码字符，告诉管理系统，此换码字符后边的符号不具有通配符的含义，应该原样输出。如下就会输出以ye_开头的员工信息。</p>
+<blockquote>
+<p>select * from emp where ENAME like “ye-_%” ESCAPE ‘-‘;</p>
+</blockquote>
+<p><img src="//luoyefubuki.com/2020/02/13/%E5%85%B3%E7%B3%BB%E5%9E%8B%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E6%95%B0%E6%8D%AE%E6%93%8D%E4%BD%9C%E4%B9%8B%E7%BB%93%E6%9E%84%E5%8C%96%E6%9F%A5%E8%AF%A2%E8%AF%AD%E8%A8%80SQL/12.jpg" alt="关系型数据库的数据操作之结构化查询语言SQL"></p>
+<h3 id="order-by"><a href="#order-by" class="headerlink" title="order by"></a>order by</h3><p>用户可以用order by 子句对查询结果按照一个或多个属性列的升序（asc）或降序（desc）排序，默认为升序。<br>按照主键进行降序排列。要注意的是，对于空值，排序时显示的次序，由具体系统实现来决定。</p>
+<blockquote>
+<p>select * from emp ORDER BY empno desc;</p>
+</blockquote>
+<p>查询结果中，按照薪资进行降序，而所有相同的薪资的数据的排序，按照入职时间进行升序排列。</p>
+<blockquote>
+<p>select * from emp ORDER BY sal desc,HIREDATE ASC;</p>
+</blockquote>
+<p><img src="//luoyefubuki.com/2020/02/13/%E5%85%B3%E7%B3%BB%E5%9E%8B%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E6%95%B0%E6%8D%AE%E6%93%8D%E4%BD%9C%E4%B9%8B%E7%BB%93%E6%9E%84%E5%8C%96%E6%9F%A5%E8%AF%A2%E8%AF%AD%E8%A8%80SQL/13.jpg" alt="关系型数据库的数据操作之结构化查询语言SQL"></p>
+<h3 id="group-by"><a href="#group-by" class="headerlink" title="group by"></a>group by</h3><p>group by子句将查询结果按某一列或多列的值分组，值相等的为一组。对查询结果分组的目的是为了细化聚集函数的作用对象，如果未对查询结果分组，聚集函数将作用于整个查询结果。分组后聚集函数将作用于每一个组，即每一组都有一个函数值。</p>
+<p><strong>聚合函数</strong><br>聚合函数对一组值执行计算并返回单一的值。</p>
+<pre><code>count(*) 统计元组的个数
+count([distinct|all]&lt;列名&gt;) 统计一列中值的个数
+sum([distinct|all]&lt;列名&gt;) 计算一列值的总和（此列必须为数值型）
+avg([distinct|all]&lt;列名&gt;) 计算一列值的平均值（此列必须为数值型）
+max([distinct|all]&lt;列名&gt;) 求一列值中的最大值
+min([distinct|all]&lt;列名&gt;) 求一列值中的最小值</code></pre><p>如果指定distinct短语，则表示在计算时要取消指定列中的重复值。如果不指定或指定all（默认值），则表示不取消重复值。</p>
+<p>查询每一个部门员工数量</p>
+<blockquote>
+<p>select DEPTNO,count(*) from emp GROUP BY DEPTNO;</p>
+</blockquote>
+<p><img src="//luoyefubuki.com/2020/02/13/%E5%85%B3%E7%B3%BB%E5%9E%8B%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E6%95%B0%E6%8D%AE%E6%93%8D%E4%BD%9C%E4%B9%8B%E7%BB%93%E6%9E%84%E5%8C%96%E6%9F%A5%E8%AF%A2%E8%AF%AD%E8%A8%80SQL/15.jpg" alt="关系型数据库的数据操作之结构化查询语言SQL"><br><strong>having</strong><br>如果分组后还要求按一定的条件对这些组进行筛选，最终只输出满足指定条件的组，则可以使用having短语指定筛选条件。<br>查询员工数量不少于5人的部门。</p>
+<blockquote>
+<p>select e.DEPTNO,d.DNAME,count(<em>) from emp e join dept d on e.DEPTNO = d.DEPTNO GROUP BY e.DEPTNO HAVING count(</em>)&gt;=5;</p>
+</blockquote>
+<p><img src="//luoyefubuki.com/2020/02/13/%E5%85%B3%E7%B3%BB%E5%9E%8B%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E6%95%B0%E6%8D%AE%E6%93%8D%E4%BD%9C%E4%B9%8B%E7%BB%93%E6%9E%84%E5%8C%96%E6%9F%A5%E8%AF%A2%E8%AF%AD%E8%A8%80SQL/14.jpg" alt="关系型数据库的数据操作之结构化查询语言SQL"></p>
+<h3 id="where-和-having-的区别"><a href="#where-和-having-的区别" class="headerlink" title="where 和 having 的区别"></a>where 和 having 的区别</h3><p>where子句与having短语的区别在于作用对象不同。where字句作用于基本表或者视图，从中选择满足条件的元组。having短语作用于组，从中选择满足条件的组。<br>比如先where</p>
+<blockquote>
+<p>select DEPTNO,avg(sal) from emp where sal&gt;1000 GROUP BY DEPTNO;</p>
+</blockquote>
+<p><img src="//luoyefubuki.com/2020/02/13/%E5%85%B3%E7%B3%BB%E5%9E%8B%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E6%95%B0%E6%8D%AE%E6%93%8D%E4%BD%9C%E4%B9%8B%E7%BB%93%E6%9E%84%E5%8C%96%E6%9F%A5%E8%AF%A2%E8%AF%AD%E8%A8%80SQL/6.jpg" alt="关系型数据库的数据操作之结构化查询语言SQL"><br>再group by</p>
+<blockquote>
+<p>select DEPTNO,avg(sal) from emp where sal&gt;1000 GROUP BY DEPTNO HAVING AVG(sal)&gt;2600;</p>
+</blockquote>
+<p><img src="//luoyefubuki.com/2020/02/13/%E5%85%B3%E7%B3%BB%E5%9E%8B%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E6%95%B0%E6%8D%AE%E6%93%8D%E4%BD%9C%E4%B9%8B%E7%BB%93%E6%9E%84%E5%8C%96%E6%9F%A5%E8%AF%A2%E8%AF%AD%E8%A8%80SQL/7.jpg" alt="关系型数据库的数据操作之结构化查询语言SQL"></p>
 
       
 
@@ -377,7 +466,7 @@ ORDER BY e.DEPTNO;</code></pre><p>这条语句地大概意思就是，取得每�
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#初次邂逅SQL"><span class="toc-number">1.</span> <span class="toc-text">初次邂逅SQL</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#初次邂逅SQL"><span class="toc-number">1.</span> <span class="toc-text">初次邂逅SQL</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#SQL是什么"><span class="toc-number">2.</span> <span class="toc-text">SQL是什么</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#使用SQL语句对数据进行操纵"><span class="toc-number">3.</span> <span class="toc-text">使用SQL语句对数据进行操纵</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#数据定义"><span class="toc-number">3.1.</span> <span class="toc-text">数据定义</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SQL中的数据查询"><span class="toc-number">3.2.</span> <span class="toc-text">SQL中的数据查询</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#select后跟算术表达式"><span class="toc-number">3.2.1.</span> <span class="toc-text">select后跟算术表达式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#select-后跟聚合函数"><span class="toc-number">3.2.2.</span> <span class="toc-text">select 后跟聚合函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#where-后边跟查询条件"><span class="toc-number">3.2.3.</span> <span class="toc-text">where 后边跟查询条件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#like-模糊查询"><span class="toc-number">3.2.4.</span> <span class="toc-text">like 模糊查询</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#order-by"><span class="toc-number">3.2.5.</span> <span class="toc-text">order by</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#group-by"><span class="toc-number">3.2.6.</span> <span class="toc-text">group by</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#where-和-having-的区别"><span class="toc-number">3.2.7.</span> <span class="toc-text">where 和 having 的区别</span></a></li></ol></li></ol></li></ol>
                     </div>
                 </span>
             </div>
