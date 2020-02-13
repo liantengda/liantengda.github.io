@@ -8,12 +8,12 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>关系型数据库的数据操作之结构化查询语言SQL | 纷飞落叶的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="初次邂逅SQL一开始遇到sql语句的时候，当然是心里有点害怕，才刚学完一门语言java，还没太懂呢，就又要学习一门新语言。于是自己网上百度找到一些讲解sql的视频，开始进入sql的学习。一开始使用的数据库管理系统是众所周知的mysql，光安装出错就废了一天的时间。但是当安装完，跟着视频登入mysql，再跟着show databases;感觉成就感十足。渐渐地，学着学着，就发现，写sql语句就跟写英">
+  <meta name="description" content="初次邂逅SQL一开始遇到sql语句的时候，心里有点害怕，才刚学完一门语言java，还没太懂呢，就又要学习一门新语言。于是自己网上百度找到一些讲解sql的视频，开始进入sql的学习。一开始使用的数据库管理系统是众所周知的mysql，光安装出错就废了一天的时间。但是当安装完，跟着视频登入mysql，再跟着show databases;感觉成就感十足。渐渐地，学着学着，就发现，写sql语句就跟写英语作文">
 <meta property="og:type" content="article">
 <meta property="og:title" content="关系型数据库的数据操作之结构化查询语言SQL">
 <meta property="og:url" content="http://yoursite.com/2020/02/13/关系型数据库的数据操作之结构化查询语言SQL/index.html">
 <meta property="og:site_name" content="纷飞落叶的博客">
-<meta property="og:description" content="初次邂逅SQL一开始遇到sql语句的时候，当然是心里有点害怕，才刚学完一门语言java，还没太懂呢，就又要学习一门新语言。于是自己网上百度找到一些讲解sql的视频，开始进入sql的学习。一开始使用的数据库管理系统是众所周知的mysql，光安装出错就废了一天的时间。但是当安装完，跟着视频登入mysql，再跟着show databases;感觉成就感十足。渐渐地，学着学着，就发现，写sql语句就跟写英">
+<meta property="og:description" content="初次邂逅SQL一开始遇到sql语句的时候，心里有点害怕，才刚学完一门语言java，还没太懂呢，就又要学习一门新语言。于是自己网上百度找到一些讲解sql的视频，开始进入sql的学习。一开始使用的数据库管理系统是众所周知的mysql，光安装出错就废了一天的时间。但是当安装完，跟着视频登入mysql，再跟着show databases;感觉成就感十足。渐渐地，学着学着，就发现，写sql语句就跟写英语作文">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://luoyefubuki.com/2020/02/13/%E5%85%B3%E7%B3%BB%E5%9E%8B%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E6%95%B0%E6%8D%AE%E6%93%8D%E4%BD%9C%E4%B9%8B%E7%BB%93%E6%9E%84%E5%8C%96%E6%9F%A5%E8%AF%A2%E8%AF%AD%E8%A8%80SQL/1.jpg">
 <meta property="og:image" content="http://luoyefubuki.com/2020/02/13/%E5%85%B3%E7%B3%BB%E5%9E%8B%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E6%95%B0%E6%8D%AE%E6%93%8D%E4%BD%9C%E4%B9%8B%E7%BB%93%E6%9E%84%E5%8C%96%E6%9F%A5%E8%AF%A2%E8%AF%AD%E8%A8%80SQL/2.jpg">
@@ -30,10 +30,10 @@
 <meta property="og:image" content="http://luoyefubuki.com/2020/02/13/%E5%85%B3%E7%B3%BB%E5%9E%8B%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E6%95%B0%E6%8D%AE%E6%93%8D%E4%BD%9C%E4%B9%8B%E7%BB%93%E6%9E%84%E5%8C%96%E6%9F%A5%E8%AF%A2%E8%AF%AD%E8%A8%80SQL/14.jpg">
 <meta property="og:image" content="http://luoyefubuki.com/2020/02/13/%E5%85%B3%E7%B3%BB%E5%9E%8B%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E6%95%B0%E6%8D%AE%E6%93%8D%E4%BD%9C%E4%B9%8B%E7%BB%93%E6%9E%84%E5%8C%96%E6%9F%A5%E8%AF%A2%E8%AF%AD%E8%A8%80SQL/6.jpg">
 <meta property="og:image" content="http://luoyefubuki.com/2020/02/13/%E5%85%B3%E7%B3%BB%E5%9E%8B%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E6%95%B0%E6%8D%AE%E6%93%8D%E4%BD%9C%E4%B9%8B%E7%BB%93%E6%9E%84%E5%8C%96%E6%9F%A5%E8%AF%A2%E8%AF%AD%E8%A8%80SQL/7.jpg">
-<meta property="og:updated_time" content="2020-02-13T13:39:39.723Z">
+<meta property="og:updated_time" content="2020-02-13T13:45:24.258Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="关系型数据库的数据操作之结构化查询语言SQL">
-<meta name="twitter:description" content="初次邂逅SQL一开始遇到sql语句的时候，当然是心里有点害怕，才刚学完一门语言java，还没太懂呢，就又要学习一门新语言。于是自己网上百度找到一些讲解sql的视频，开始进入sql的学习。一开始使用的数据库管理系统是众所周知的mysql，光安装出错就废了一天的时间。但是当安装完，跟着视频登入mysql，再跟着show databases;感觉成就感十足。渐渐地，学着学着，就发现，写sql语句就跟写英">
+<meta name="twitter:description" content="初次邂逅SQL一开始遇到sql语句的时候，心里有点害怕，才刚学完一门语言java，还没太懂呢，就又要学习一门新语言。于是自己网上百度找到一些讲解sql的视频，开始进入sql的学习。一开始使用的数据库管理系统是众所周知的mysql，光安装出错就废了一天的时间。但是当安装完，跟着视频登入mysql，再跟着show databases;感觉成就感十足。渐渐地，学着学着，就发现，写sql语句就跟写英语作文">
 <meta name="twitter:image" content="http://luoyefubuki.com/2020/02/13/%E5%85%B3%E7%B3%BB%E5%9E%8B%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E6%95%B0%E6%8D%AE%E6%93%8D%E4%BD%9C%E4%B9%8B%E7%BB%93%E6%9E%84%E5%8C%96%E6%9F%A5%E8%AF%A2%E8%AF%AD%E8%A8%80SQL/1.jpg">
   
     <link rel="alternative" href="/atom.xml" title="纷飞落叶的博客" type="application/atom+xml">
@@ -220,7 +220,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="初次邂逅SQL"><a href="#初次邂逅SQL" class="headerlink" title="初次邂逅SQL"></a>初次邂逅SQL</h1><p>一开始遇到sql语句的时候，当然是心里有点害怕，才刚学完一门语言java，还没太懂呢，就又要学习一门新语言。于是自己网上百度找到一些讲解sql的视频，开始进入sql的学习。一开始使用的数据库管理系统是众所周知的mysql，光安装出错就废了一天的时间。但是当安装完，跟着视频登入mysql，再跟着show databases;感觉成就感十足。渐渐地，学着学着，就发现，写sql语句就跟写英语作文一样，我这里展示一条我写的挺长的sql语句：</p>
+        <h1 id="初次邂逅SQL"><a href="#初次邂逅SQL" class="headerlink" title="初次邂逅SQL"></a>初次邂逅SQL</h1><p>一开始遇到sql语句的时候，心里有点害怕，才刚学完一门语言java，还没太懂呢，就又要学习一门新语言。于是自己网上百度找到一些讲解sql的视频，开始进入sql的学习。一开始使用的数据库管理系统是众所周知的mysql，光安装出错就废了一天的时间。但是当安装完，跟着视频登入mysql，再跟着show databases;感觉成就感十足。渐渐地，学着学着，就发现，写sql语句就跟写英语作文一样，我这里展示一条我写的挺长的sql语句：</p>
 <a id="more"></a>
 <p><strong>SQL语句</strong></p>
 <pre><code>select e.ENAME as &quot;员工姓名&quot;,e.SAL as &quot;员工薪资&quot;,e.JOB as &quot;员工职位&quot;,d.DNAME as &quot;部门名称&quot; 
