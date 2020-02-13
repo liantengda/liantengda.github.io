@@ -197,7 +197,20 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <h1 id="初次邂逅SQL"><a href="#初次邂逅SQL" class="headerlink" title="初次邂逅SQL"></a>初次邂逅SQL</h1><p>一开始遇到sql语句的时候，当然是心里有点害怕，才刚学完一门语言java，还没太懂呢，就又要学习一门新语言。于是自己网上百度找到一些讲解sql的视频，开始进入sql的学习。一开始使用的数据库管理系统是众所周知的mysql，光安装出错就废了一天的时间。但是当安装完，跟着视频登入mysql，再跟着show databases;感觉成就感十足。渐渐地，学着学着，就发现，写sql语句就跟写英语作文一样，我这里展示一条我写的挺长的sql语句：<br><strong>SQL语句</strong></p>
+<pre><code>select e.ENAME as &quot;员工姓名&quot;,e.SAL as &quot;员工薪资&quot;,e.JOB as &quot;员工职位&quot;,d.DNAME as &quot;部门名称&quot; 
+from (select DEPTNO, max(SAL) as maxsal from emp GROUP BY DEPTNO) t 
+join emp e on t.DEPTNO = e.DEPTNO 
+join dept d on t.DEPTNO=d.DEPTNO 
+where e.SAL = t.maxsal 
+ORDER BY e.DEPTNO;</code></pre><p>这条语句地大概意思就是，取得每个部门最高薪水人员地名字，薪资，职位以及其所在部门名称。这条语句并不能一开始就一口气写出来。<br><strong>设计思路</strong><br>首先我们根据题目，我们需要知道每个部门最高薪水是多少，然后我们根据查询到的最高薪水，再拿着每个部门最高的薪水去和每个相应部门的员工的薪水比对，如果找到了薪资和当前部门最高薪资一样的员工，那么就把他的名字，薪资，职位以及所在部门名称显示出来。<br><strong>汉语翻译</strong></p>
+<pre><code>查找 员工姓名，员工薪资，员工职位，员工所在部门名称
+从 t表（查找 员工部门编号，部门最高薪资 从 员工表 根据 员工部门编号分组）
+交 员工表 当t表的员工部门编号 和 员工表的部门编号相同时
+交 部门表 当t表的员工部门编号 和 部门表的部门编号相同时
+总条件 当前员工的薪资 和 部门最高薪资相同时
+排序 根据员工表的员工部门编号</code></pre><p> 大概给人一种感觉，我想要取一些数据，然后告诉计算机，去哪里取，取出什么来，什么条件的才取，取完之后给我按照什么方式展示。当我们把这句话输入命令行，告诉mysql这个数据库管理系统时，它就会给计算机翻译我们这条指令，根据提前设计好的规定，然后计算机帮我们找到硬盘里的数据，并在屏幕上显示出来。<br><strong>所有员工的信息</strong><br><img src="//luoyefubuki.com/2020/02/13/%E5%85%B3%E7%B3%BB%E5%9E%8B%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E6%95%B0%E6%8D%AE%E6%93%8D%E4%BD%9C%E4%B9%8B%E6%9C%BA%E6%9E%84%E5%8C%96%E6%9F%A5%E8%AF%A2%E8%AF%AD%E8%A8%80SQL/1.jpg" alt="关系型数据库的数据操作之机构化查询语言SQL"><br><strong>最后查询结果</strong><br><img src="//luoyefubuki.com/2020/02/13/%E5%85%B3%E7%B3%BB%E5%9E%8B%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E6%95%B0%E6%8D%AE%E6%93%8D%E4%BD%9C%E4%B9%8B%E6%9C%BA%E6%9E%84%E5%8C%96%E6%9F%A5%E8%AF%A2%E8%AF%AD%E8%A8%80SQL/2.jpg" alt="关系型数据库的数据操作之机构化查询语言SQL"></p>
+
       
 
       
