@@ -30,7 +30,7 @@
 <meta property="og:image" content="http://luoyefubuki.com/2020/02/13/%E5%85%B3%E7%B3%BB%E5%9E%8B%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E6%95%B0%E6%8D%AE%E6%93%8D%E4%BD%9C%E4%B9%8B%E7%BB%93%E6%9E%84%E5%8C%96%E6%9F%A5%E8%AF%A2%E8%AF%AD%E8%A8%80SQL/14.jpg">
 <meta property="og:image" content="http://luoyefubuki.com/2020/02/13/%E5%85%B3%E7%B3%BB%E5%9E%8B%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E6%95%B0%E6%8D%AE%E6%93%8D%E4%BD%9C%E4%B9%8B%E7%BB%93%E6%9E%84%E5%8C%96%E6%9F%A5%E8%AF%A2%E8%AF%AD%E8%A8%80SQL/6.jpg">
 <meta property="og:image" content="http://luoyefubuki.com/2020/02/13/%E5%85%B3%E7%B3%BB%E5%9E%8B%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E6%95%B0%E6%8D%AE%E6%93%8D%E4%BD%9C%E4%B9%8B%E7%BB%93%E6%9E%84%E5%8C%96%E6%9F%A5%E8%AF%A2%E8%AF%AD%E8%A8%80SQL/7.jpg">
-<meta property="og:updated_time" content="2020-02-13T13:34:53.820Z">
+<meta property="og:updated_time" content="2020-02-13T13:39:33.466Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="关系型数据库的数据操作之结构化查询语言SQL">
 <meta name="twitter:description" content="初次邂逅SQL一开始遇到sql语句的时候，当然是心里有点害怕，才刚学完一门语言java，还没太懂呢，就又要学习一门新语言。于是自己网上百度找到一些讲解sql的视频，开始进入sql的学习。一开始使用的数据库管理系统是众所周知的mysql，光安装出错就废了一天的时间。但是当安装完，跟着视频登入mysql，再跟着show databases;感觉成就感十足。渐渐地，学着学着，就发现，写sql语句就跟写英">
@@ -239,6 +239,7 @@ ORDER BY e.DEPTNO;</code></pre><p>这条语句地大概意思就是，取得每�
 <blockquote>
 <p>对数据库实现操作的是结构化查询语言（Structured Query Language,SQL），是关系数据库的标准语言，也是一个通用的、功能极强的关系数据库语言。</p>
 </blockquote>
+<p><a href="//luoyefubuki.com/2020/02/13/到底什么是关系型数据库及关系到底是啥/">到底什么是关系型数据库及关系到底是啥</a></p>
 <h1 id="使用SQL语句对数据进行操纵"><a href="#使用SQL语句对数据进行操纵" class="headerlink" title="使用SQL语句对数据进行操纵"></a>使用SQL语句对数据进行操纵</h1><p>在关系模型中常用的关系操作包括，查询操作和插入、删除、修改操作两大部分。</p>
 <h2 id="数据定义"><a href="#数据定义" class="headerlink" title="数据定义"></a>数据定义</h2><p>sql对数据定义的操作<br><img src="//luoyefubuki.com/2020/02/13/%E5%85%B3%E7%B3%BB%E5%9E%8B%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E6%95%B0%E6%8D%AE%E6%93%8D%E4%BD%9C%E4%B9%8B%E7%BB%93%E6%9E%84%E5%8C%96%E6%9F%A5%E8%AF%A2%E8%AF%AD%E8%A8%80SQL/3.jpg" alt="关系型数据库的数据操作之结构化查询语言SQL"></p>
 <h2 id="SQL中的数据查询"><a href="#SQL中的数据查询" class="headerlink" title="SQL中的数据查询"></a>SQL中的数据查询</h2><p>工作中，数据查询用到的最多。基本命令就是<br>    <strong>select 你要查什么 from 从哪里查 where 你的查询条件 group by 分组 having 分组后的条件 order by 根据什么顺序显示 asc/desc 正序或者逆序展示</strong><br>一般为了清晰的表现出来，采用每当碰到一个关键词，就换行的方式。</p>
@@ -259,7 +260,7 @@ from &lt;表明或试图名&gt;[,&lt;表明或试图名&gt;......]
 <blockquote>
 <p>select * from emp where sal&gt;3000;<br><img src="//luoyefubuki.com/2020/02/13/%E5%85%B3%E7%B3%BB%E5%9E%8B%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E6%95%B0%E6%8D%AE%E6%93%8D%E4%BD%9C%E4%B9%8B%E7%BB%93%E6%9E%84%E5%8C%96%E6%9F%A5%E8%AF%A2%E8%AF%AD%E8%A8%80SQL/10.jpg" alt="关系型数据库的数据操作之结构化查询语言SQL"></p>
 </blockquote>
-<p>关系数据库管理系统执行该查询的一种可能过程是：<br><strong>对emp 表进行全表扫描，取出一个元组，检查该元组在sal列的值是否大于3000，如果大于，则取出该元组进行输出，否则跳过该元组，取下一个元组。重复该过程，直到处理完student表的所有元组。</strong></p>
+<p>关系数据库管理系统执行该查询的一种可能过程是：<br><strong>对emp 表进行全表扫描，取出一个元组，检查该元组在sal列的值是否大于3000，如果大于，则取出该元组进行输出，否则跳过该元组，取下一个元组。重复该过程，直到处理完emp表的所有元组。</strong></p>
 <h3 id="like-模糊查询"><a href="#like-模糊查询" class="headerlink" title="like 模糊查询"></a>like 模糊查询</h3><p>其中%代表任意长度的字符串,如查询名字以B开头的员工。</p>
 <blockquote>
 <p>select * from emp where ENAME like “B%”;</p>
