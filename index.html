@@ -176,6 +176,122 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-关系型数据库之数据的完整性" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/02/14/关系型数据库之数据的完整性/">关系型数据库之数据的完整性</a>
+    </h1>
+  
+
+        
+        
+<a href="/2020/02/14/关系型数据库之数据的完整性/" class="archive-article-date">
+  	<time datetime="2020-02-14T00:41:03.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-02-14</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="数据完整性"><a href="#数据完整性" class="headerlink" title="数据完整性"></a>数据完整性</h2><p>在工作过一段时间后，返回来看以下的定义，感觉还是可以理解的。</p>
+<blockquote>
+<p>数据的完整性主要有三个方面：实体、参照、用户自定义。所以数据库完整性也是由这三个部分组成。这些完整性的就是指的是数据的正确性、相容性。正确性主要是指数据满足数据库管理系统的定义，而相容性指的是关系与关系之间数据的一致。</p>
+</blockquote>
+<p><strong>正确性</strong><br>我们先说正确性，概念中说，正确性是指我们的数据要满足数据库管理系统的定义。首先我在之前的文章讲过，关系型数据库是建立在关系模型上的，这个关系模型就是关系型数据库所依赖的数据结构，那么我们的数据一定要符合这种数据结构，才能被数据库管理系统正确的操作。反过来说就是，我们的数据要想存储在关系型数据库中，那么就要满足这些提前规定好的规则。例如，你定义了一张表，如下<br><img src="//luoyefubuki.com/2020/02/14/%E5%85%B3%E7%B3%BB%E5%9E%8B%E6%95%B0%E6%8D%AE%E5%BA%93%E4%B9%8B%E6%95%B0%E6%8D%AE%E7%9A%84%E5%AE%8C%E6%95%B4%E6%80%A7/1.jpg" alt="关系型数据库之数据的完整性"><br>建表语句如下：</p>
+<pre><code>CREATE TABLE `users` (
+  `id` int(11) NOT NULL,
+  `name` varchar(255) DEFAULT NULL,
+  `age` int(11) DEFAULT NULL,
+  `sex` tinyint(4) DEFAULT NULL,
+  `password` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;</code></pre><p>然后你插入数据的时候却这样写<br>insert into users (name,age,sex,password) values(‘张三’,25,’0’,’1234567890’);<br>于是就会报错，错误中指出，主键没有默认值，其实是因为我们插入的这条数据是没有主键的，而主键是一条记录的唯一标识，所以这就违反了users表定义的规则。而且在工作中，大家潜意识里默认，一个表肯定是需要主键的，及时我们没有定义主键，也需要找个字段当主键。比如再加个字段身份证号。<br><img src="//luoyefubuki.com/2020/02/14/%E5%85%B3%E7%B3%BB%E5%9E%8B%E6%95%B0%E6%8D%AE%E5%BA%93%E4%B9%8B%E6%95%B0%E6%8D%AE%E7%9A%84%E5%AE%8C%E6%95%B4%E6%80%A7/2.jpg" alt="关系型数据库之数据的完整性"><br><strong>相容性</strong><br>我们再说相容性，关系与关系之间数据的一致。在工作中，经常会遇到有关数据一致性的问题，</p>
+<h2 id="实体完整性"><a href="#实体完整性" class="headerlink" title="实体完整性"></a>实体完整性</h2><p>关系型数据库是依赖关系模型建立，而模型是从实体抽象出来的。比如我们这几天操作的员工表emp，对应的实体就是员工，而emp表就是由员工的信息抽象出来的一个关系。那么实体完整性就是指，一个表中主键（主码）的约束，也就是关系中的每一行都进行唯一性约束，每个实体都是唯一的。</p>
+<blockquote>
+<p>当我们使用，PRIMARY KEY短语定义了关系的主码后，每当我们对表插入一条数据或更新时，关系数据库管理系统都会对关系的实体完整性规则进行自动检查：<br>1、检查主码的值是否唯一，如果不唯一则拒绝插入或修改。<br>2、检查主码的各个属性是否为空（主码可以由多个属性进行组成），只要有一个为空就拒绝插入或修改，从而保证了实体完整性。</p>
+</blockquote>
+<p><strong>注</strong><br>值得注意的是，检查记录中的主码值的唯一方法就是进行全表扫描，而我们每一次对表的操作都会伴随着全表扫描，这将是一个非常耗时的操作。为了避免对基本表进行全表扫描，关系数据库管理系统一般都在主码上自动建立一个索引，通过索引查找基本表是否已经存在新的主码将大大提高效率。</p>
+<h2 id="参照完整性"><a href="#参照完整性" class="headerlink" title="参照完整性"></a>参照完整性</h2><p>我去，可算是搞到，关系与关系之间的约束了。此处参考其他文章</p>
+<p><strong>参照完整性指的是，关系与关系之间的约束，即表与表之间的约束。</strong></p>
+<blockquote>
+<p>举个简单的例子，有学生实体如：学生（学号、年龄、…） 课程实体：课程（课程编号、名称、代课老师…），上面两个表中的主键分别对应的是：学号，课程编号。现在我们要新建一个表，学生的成绩表，如：成绩（学号、课程编号、成绩…），成绩表中的主键就是学号和课程编号，因为其中的任意一个属性都不能唯一确定一个元组，而这两个属性的值分别来自学生表和课程表中的主键，也称这两个属性参照引用了另外两个表的主键，这两个属性也叫做外键，那么对其中一个表中的元组进行操作时，必须保证其涉及的另外的表的数据的完整，这成为参照完整性。参照完整性在CREATE TABLE中用FOREIGN KEY短语定义哪些列为外键。</p>
+</blockquote>
+<p><strong>外键</strong><br>这里又出来一个概念，外键。以我的理解来说，首先外键肯定是某个关系表的主键。比如在成绩表中，引入学生表的主键，和课程表的主键，这样做就是为了让学生表和课程表之间连接起来。那么这两个主键就是成绩表的外键。</p>
+<blockquote>
+<p>那进行什么操作，参照完整性会进行约束呢？<br>就上面的例子来说，有两种情况：<br>1、当我们在成绩表中增加修改外键时，导致在学生表或课程表中找不到与之对应的数据。<br>2、反过来，新增或者修改学生或课程表时，导致成绩表中的某些元组在另外两张表中找不到对应的元组。<br>如果我们定义了参照完整性约束，系统检测到违规操作，会如如何执行呢？<br>默认的执行是：拒绝，拒绝违反参照完整性的的新增以及更新操作。<br>我们也可以自定义其他的操作：级联操作（级联修改，级联删除）、设置为空值 这两种操作。</p>
+</blockquote>
+<h2 id="用户定义的完整性"><a href="#用户定义的完整性" class="headerlink" title="用户定义的完整性"></a>用户定义的完整性</h2><p>这个完整性指的是，除了系统帮助我们定义的一些硬性规则，我们还可以自己定义一些具体的数据需要满足什么规则。因为不同的用户有不同的需求，到这里，数据库管理系统就无能为力了，但是它赋予了我们一些自定义规则的权限。那么接下来的数据操作也需要按照我们定义的规则执行。</p>
+<blockquote>
+<p>用户定义的完整性就是针对某一具体应用的数据必须满足的语义要求。目前的关系数据库管理系统都提供了定义和检验这类完整性的机制，使用了和实体完整性、参照完整性相同的技术和方法来处理它们，而不必有应用程序承担这一功能。</p>
+</blockquote>
+<p>约束大致分为两类：属性上的约束条件、元组上的约束条件</p>
+<h3 id="属性上的约束"><a href="#属性上的约束" class="headerlink" title="属性上的约束"></a>属性上的约束</h3><p><strong>不允许为空</strong></p>
+<blockquote>
+<p>（1）不允许空值（not null）。<br>如：create table sc(<br>sno char(9) not null;//属性不允许取空值<br>cno char(4) not null;<br>primary key (sno,cno)<br>…<br>);</p>
+</blockquote>
+<p><strong>列值唯一</strong></p>
+<blockquote>
+<p>create table test(<br>id int;<br>name char(9) unique not null,//要求name列值唯一，且不能取空值<br>primary key (id)<br>);</p>
+</blockquote>
+<p><strong>使用check短语指定列值应该满足的条件</strong></p>
+<blockquote>
+<p>create table student(<br>sno char(9) primary key,//在列级别中定义主键，上面的例子都是在表级别中定义的主键<br>sex char(2) check(sex in (‘男’,’女’))//性别属性只允许男或女<br>age smallint check(age&gt;=0 and age&lt;=100)//年龄的取值范围是0到100<br>);</p>
+</blockquote>
+<p>如果操作数据的时候，违反了我们定义的规则，那么将报错。</p>
+<h3 id="元组上的约束"><a href="#元组上的约束" class="headerlink" title="元组上的约束"></a>元组上的约束</h3><p>元组上的约束条件与属性的约束条件类似，也是使用check短语进行操作，与之不同的是，元组级别的限制可以设置不同属性之间的取值的相互约束条件。<br>例如</p>
+<blockquote>
+<p>create table student(<br>sno char(9),<br>name char(8) not null,<br>sex char(2),<br>primary key (sno),<br>check (sex=’女’ or name not like ‘MS.%’)//定义了元组中name 与sex两列的约束条件<br>);//即要求如果性别是男的时候，其名字不能以MS.打头</p>
+</blockquote>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/02/14/关系型数据库之数据的完整性/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-关系型数据库的数据操作之结构化查询语言SQL" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -793,88 +909,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2020/01/05/不要成为一名程序员/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-寻求蜕变之道-穷爸爸与富爸爸作者采访语录1" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/01/04/寻求蜕变之道-穷爸爸与富爸爸作者采访语录1/">寻求蜕变之道-穷爸爸与富爸爸作者采访语录1</a>
-    </h1>
-  
-
-        
-        
-<a href="/2020/01/04/寻求蜕变之道-穷爸爸与富爸爸作者采访语录1/" class="archive-article-date">
-  	<time datetime="2020-01-04T05:46:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-01-04</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>最近学英语的过程中，看了不少有关如何赚钱的视频，虽然某种程度上是成功学和鸡汤，但是我从这些人的说话逻辑和方式上总结出了他们有一个共同的特点，他们知道的太多了。所以，我们不能够太过极端，对成功学和鸡汤嗤之以鼻，而是应该从中获取一些我们必须掌握的东西。以下内容来自对穷爸爸与富爸爸的作者，罗伯特 清崎的采访。</p>
-<div style="position: relative; width: 100%; height: 0; padding-bottom: 75%;"><iframe src="//player.bilibili.com/player.html?aid=59164780&cid=103116268&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" style="position: absolute; width: 100%; height: 100%; left: 0; top: 0;"> </iframe></div>
-        
-          <a class="article-more-a" href="/2020/01/04/寻求蜕变之道-穷爸爸与富爸爸作者采访语录1/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">寻求蜕变之道</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/01/04/寻求蜕变之道-穷爸爸与富爸爸作者采访语录1/">展开全文 >></a>
         </p>
       
 
