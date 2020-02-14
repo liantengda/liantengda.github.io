@@ -17,7 +17,7 @@
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://luoyefubuki.com/2020/02/14/%E5%85%B3%E7%B3%BB%E5%9E%8B%E6%95%B0%E6%8D%AE%E5%BA%93%E4%B9%8B%E6%95%B0%E6%8D%AE%E7%9A%84%E5%AE%8C%E6%95%B4%E6%80%A7/1.jpg">
 <meta property="og:image" content="http://luoyefubuki.com/2020/02/14/%E5%85%B3%E7%B3%BB%E5%9E%8B%E6%95%B0%E6%8D%AE%E5%BA%93%E4%B9%8B%E6%95%B0%E6%8D%AE%E7%9A%84%E5%AE%8C%E6%95%B4%E6%80%A7/2.jpg">
-<meta property="og:updated_time" content="2020-02-14T02:18:12.822Z">
+<meta property="og:updated_time" content="2020-02-14T02:22:11.702Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="关系型数据库之数据的完整性">
 <meta name="twitter:description" content="数据完整性在工作过一段时间后，返回来看以下的定义，感觉还是可以理解的。">
@@ -220,7 +220,7 @@
   `sex` tinyint(4) DEFAULT NULL,
   `password` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;</code></pre><p>然后你插入数据的时候却这样写<br>insert into users (name,age,sex,password) values(‘张三’,25,’0’,’1234567890’);<br>于是就会报错，错误中指出，主键没有默认值，其实是因为我们插入的这条数据是没有主键的，而主键是一条记录的唯一标识，所以这就违反了users表定义的规则。而且在工作中，大家潜意识里默认，一个表肯定是需要主键的，及时我们没有定义主键，也需要找个字段当主键。比如再加个字段身份证号。<br><img src="//luoyefubuki.com/2020/02/14/%E5%85%B3%E7%B3%BB%E5%9E%8B%E6%95%B0%E6%8D%AE%E5%BA%93%E4%B9%8B%E6%95%B0%E6%8D%AE%E7%9A%84%E5%AE%8C%E6%95%B4%E6%80%A7/2.jpg" alt="关系型数据库之数据的完整性"><br><strong>相容性</strong><br>我们再说相容性，关系与关系之间数据的一致。在工作中，经常会遇到有关数据一致性的问题，</p>
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;</code></pre><p>然后你插入数据的时候却这样写<br>insert into users (name,age,sex,password) values(‘张三’,25,’0’,’1234567890’);<br>于是就会报错，错误中指出，主键没有默认值，其实是因为我们插入的这条数据是没有主键的，而主键是一条记录的唯一标识，所以这就违反了users表定义的规则,NOT NULL,不能为空。而且在工作中，大家潜意识里默认，一个表肯定是需要主键的，及时我们没有定义主键，也需要找个字段当主键。比如再加个字段身份证号。<br><img src="//luoyefubuki.com/2020/02/14/%E5%85%B3%E7%B3%BB%E5%9E%8B%E6%95%B0%E6%8D%AE%E5%BA%93%E4%B9%8B%E6%95%B0%E6%8D%AE%E7%9A%84%E5%AE%8C%E6%95%B4%E6%80%A7/2.jpg" alt="关系型数据库之数据的完整性"><br><strong>相容性</strong><br>我们再说相容性，关系与关系之间数据的一致。在工作中，经常会遇到有关数据一致性的问题，</p>
 <h2 id="实体完整性"><a href="#实体完整性" class="headerlink" title="实体完整性"></a>实体完整性</h2><p>关系型数据库是依赖关系模型建立，而模型是从实体抽象出来的。比如我们这几天操作的员工表emp，对应的实体就是员工，而emp表就是由员工的信息抽象出来的一个关系。那么实体完整性就是指，一个表中主键（主码）的约束，也就是关系中的每一行都进行唯一性约束，每个实体都是唯一的。</p>
 <blockquote>
 <p>当我们使用，PRIMARY KEY短语定义了关系的主码后，每当我们对表插入一条数据或更新时，关系数据库管理系统都会对关系的实体完整性规则进行自动检查：<br>1、检查主码的值是否唯一，如果不唯一则拒绝插入或修改。<br>2、检查主码的各个属性是否为空（主码可以由多个属性进行组成），只要有一个为空就拒绝插入或修改，从而保证了实体完整性。</p>
