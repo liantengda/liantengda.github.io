@@ -6,15 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>纷飞落叶的博客</title>
+  <title>关系型数据库之范式是什么 | 纷飞落叶的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="纷飞落叶的博客">
-<meta property="og:url" content="http://yoursite.com/page/4/index.html">
+  <meta name="description" content="范式是什么终于总结到范式了。这几天在网上整合有关数据库范式的资料，最后尝试着用通俗易懂的话来解释下我对范式的理解。在这里我们先看一下官方定义  符合某一种级别的关系模式的集合，表示一个关系内部各属性之间的联系的合理化程度  一开始，还没有足够了解的时候，我发现这句话确实不那么好理解。可是经过最近几天的连续研究，我居然在写这篇文章的时候大概看懂了这句官方定义中的奥秘。 我的解释根据前几篇关于关系型数">
+<meta property="og:type" content="article">
+<meta property="og:title" content="关系型数据库之范式是什么">
+<meta property="og:url" content="http://yoursite.com/2020/02/15/关系型数据库之范式是什么/index.html">
 <meta property="og:site_name" content="纷飞落叶的博客">
+<meta property="og:description" content="范式是什么终于总结到范式了。这几天在网上整合有关数据库范式的资料，最后尝试着用通俗易懂的话来解释下我对范式的理解。在这里我们先看一下官方定义  符合某一种级别的关系模式的集合，表示一个关系内部各属性之间的联系的合理化程度  一开始，还没有足够了解的时候，我发现这句话确实不那么好理解。可是经过最近几天的连续研究，我居然在写这篇文章的时候大概看懂了这句官方定义中的奥秘。 我的解释根据前几篇关于关系型数">
 <meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2020-02-15T03:11:45.771Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="纷飞落叶的博客">
+<meta name="twitter:title" content="关系型数据库之范式是什么">
+<meta name="twitter:description" content="范式是什么终于总结到范式了。这几天在网上整合有关数据库范式的资料，最后尝试着用通俗易懂的话来解释下我对范式的理解。在这里我们先看一下官方定义  符合某一种级别的关系模式的集合，表示一个关系内部各属性之间的联系的合理化程度  一开始，还没有足够了解的时候，我发现这句话确实不那么好理解。可是经过最近几天的连续研究，我居然在写这篇文章的时候大概看懂了这句官方定义中的奥秘。 我的解释根据前几篇关于关系型数">
   
     <link rel="alternative" href="/atom.xml" title="纷飞落叶的博客" type="application/atom+xml">
   
@@ -174,35 +178,72 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-    <article id="post-手把手教你构造一棵红黑树-java代码" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+            <article id="post-关系型数据库之范式是什么" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/10/14/手把手教你构造一棵红黑树-java代码/">手把手教你构造一棵红黑树-java代码</a>
+    <h1 class="article-title" itemprop="name">
+      关系型数据库之范式是什么
     </h1>
   
 
         
         
-<a href="/2019/10/14/手把手教你构造一棵红黑树-java代码/" class="archive-article-date">
-  	<time datetime="2019-10-14T02:37:22.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-10-14</time>
+        <!-- 不蒜子统计 -->
+        <span id="busuanzi_container_page_pv" style='display:none' class="archive-article-date">
+              <i class="icon-smile icon"></i> 阅读数：<span id="busuanzi_value_page_pv"></span>次
+        </span>
+
+<a href="/2020/02/15/关系型数据库之范式是什么/" class="archive-article-date">
+  	<time datetime="2020-02-15T02:35:46.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-02-15</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="伪代码讲解"><a href="#伪代码讲解" class="headerlink" title="伪代码讲解"></a>伪代码讲解</h1><p>我们先从形象的树形结构讲解红黑树的构造过程。<br>如果我有一组数据{1，2，3，4，5，6，7，8，9，10，11，12，13，14，15，16，17，18}，从左到右，每个数字都是一个节点的值，我们先从简单的开始，节点值相同则覆盖的红黑树开始。当然这个例子里没有相同的节点值，那就更方便了。<br>差点忘了一点，每次插入节点时，首先假定插入的新节点是红色的。这个目前我的感觉是，每次插入的节点是红色，就会强迫红黑树进行平衡调节，此时违反了规则:<strong>父子节点不能同时为红色</strong>。这个规则被违反了可以递归解决。<br>而如果插入黑色节点，会违反规则:<strong>任何一个节点向下遍历到其子孙的叶子节点，所经过的黑节点个数必须相等。</strong>而解决这条规则的问题是很困难的。</p>
-        
-          <a class="article-more-a" href="/2019/10/14/手把手教你构造一棵红黑树-java代码/#more">more >></a>
-        
+        <h1 id="范式是什么"><a href="#范式是什么" class="headerlink" title="范式是什么"></a>范式是什么</h1><p>终于总结到范式了。这几天在网上整合有关数据库范式的资料，最后尝试着用通俗易懂的话来解释下我对范式的理解。<br>在这里我们先看一下<strong>官方定义</strong></p>
+<blockquote>
+<p>符合某一种级别的关系模式的集合，表示一个关系内部各属性之间的联系的合理化程度</p>
+</blockquote>
+<p>一开始，还没有足够了解的时候，我发现这句话确实不那么好理解。可是经过最近几天的连续研究，我居然在写这篇文章的时候大概看懂了这句官方定义中的奥秘。</p>
+<p><strong>我的解释</strong><br>根据前几篇关于关系型数据库的知识总结，我们可以知道，关系型数据库建立在关系模型上的，关系模型是由一组关系组成的，每个关系的数据结构就是我们平时看到的一张规范化二维表。所以，我们们来看下前半句<br><strong>符合某一种级别的关系模式的集合</strong>,这里特别需要注意“级别”这个词，这句话可以看出，范式是有级别的，例如第一范式（1NF），第二范式（2NF），第三范式（3NF），BCNF,既然是有级别的，那么我们肯定很好奇，这个级别到底是按照啥来划分，标准是啥。<br><strong>表示一个关系内部各个属性之间的联系的合理化程度</strong>,我们前边学过，一张表中，每一列就是一个属性，那么范式，就是表示你这张表创建完成后，每个属性之间的联系是否合理，也就是你这张表设计的到底合不合理。但是我们也知道，所有东西都不是完美的，没有人能一口气设计出一张合理的表格来，需要实践和经验去慢慢的改造这些表。随着表不断地被改造，那么它的合理化程度就会发生相应的变化，而这个合理化程度被人们分成了几个设计级别，而这个级别就是我们口中的范式。</p>
+
       
 
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/支付宝支付.png">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/微信支付.png">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
       
     </div>
     <div class="article-info article-info-index">
@@ -211,11 +252,58 @@
       
 
       
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/10/14/手把手教你构造一棵红黑树-java代码/">展开全文 >></a>
-        </p>
-      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/02/15/关系型数据库之范式是什么/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
       
       <div class="clearfix"></div>
     </div>
@@ -223,7 +311,40 @@
 </article>
 
 
+  
+  <!-- ������City�氲װ���� -->
+<div id="lv-container" data-id="city" data-uid="MTAyMC80NTQ3Mi8yMTk4NA==">
+	<script type="text/javascript">
+   (function(d, s) {
+       var j, e = d.getElementsByTagName(s)[0];
 
+       if (typeof LivereTower === 'function') { return; }
+
+       j = d.createElement(s);
+       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+       j.async = true;
+
+       e.parentNode.insertBefore(j, e);
+   })(document, 'script');
+	</script>
+<noscript> Ϊ����ʹ�����������۹����뼤��JavaScript</noscript>
+</div>
+<!-- City�氲װ��������� -->
+  
+
+
+
+
+  
+<nav id="article-nav">
+  
+  
+    <a href="/2020/02/14/关系型数据库之数据的完整性/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">关系型数据库之数据的完整性</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
 
 
 <aside class="wrap-side-operation">
@@ -239,647 +360,36 @@
         </div>
         
         
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-The-dirty-secret-of-capitalism-and-a-new-way-forward" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/10/02/The-dirty-secret-of-capitalism-and-a-new-way-forward/">The dirty secret of capitalism--and a new way forward</a>
-    </h1>
-  
-
-        
-        
-<a href="/2019/10/02/The-dirty-secret-of-capitalism-and-a-new-way-forward/" class="archive-article-date">
-  	<time datetime="2019-10-02T08:18:43.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-10-02</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>这是一篇英文演讲，主人公Nick Hanauer。</p>
-        
-          <a class="article-more-a" href="/2019/10/02/The-dirty-secret-of-capitalism-and-a-new-way-forward/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/10/02/The-dirty-secret-of-capitalism-and-a-new-way-forward/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#范式是什么"><span class="toc-number">1.</span> <span class="toc-text">范式是什么</span></a></li></ol>
+                    </div>
+                </span>
             </div>
         </div>
         
-        
     </div>
 </aside>
 
 
 
-
-  
-    <article id="post-linux检测内存系统运行状况" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/09/29/linux检测内存系统运行状况/">linux检测内存系统运行状况</a>
-    </h1>
   
 
-        
-        
-<a href="/2019/09/29/linux检测内存系统运行状况/" class="archive-article-date">
-  	<time datetime="2019-09-29T06:26:21.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-29</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="linux检测内存及系统运行状况的命令"><a href="#linux检测内存及系统运行状况的命令" class="headerlink" title="linux检测内存及系统运行状况的命令"></a>linux检测内存及系统运行状况的命令</h1><p>其实就和windows的任务管理器一样。可以查看内存使用，CPU使用率。只是windows有个图形化界面可以一目了然，linux还需要命令。</p>
-        
-          <a class="article-more-a" href="/2019/09/29/linux检测内存系统运行状况/#more">more >></a>
-        
-      
+  
+  
 
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/09/29/linux检测内存系统运行状况/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
+  
 
 
 
 
   
-    <article id="post-为什么会出现多路查找树" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/09/22/为什么会出现多路查找树/">为什么会出现多路查找树</a>
-    </h1>
-  
 
-        
-        
-<a href="/2019/09/22/为什么会出现多路查找树/" class="archive-article-date">
-  	<time datetime="2019-09-22T06:49:36.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-22</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="多路查找树出现的背景"><a href="#多路查找树出现的背景" class="headerlink" title="多路查找树出现的背景"></a>多路查找树出现的背景</h1><p>不论什么东西被创造，都是因为有人感觉到某件事很麻烦，需要一种东西去解决麻烦。<br>我们平时使用的数据库，数据都是存储在硬盘上的（数据量过大，内存装不下）。因此，当我们需要硬盘中的数据时，我们理所当然要去硬盘中定位到数据，然后取出来。磁盘读取数据是以盘块 (block) 为基本单位的，位于同一盘块中的所有数据都能被一次性全部读取出来。单就时间成本而言，读取物理地址连续的 1000 个字节，与读取单个字节几乎没有区别，磁盘IO主要花费都在寻找数据上。</p>
-        
-          <a class="article-more-a" href="/2019/09/22/为什么会出现多路查找树/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/09/22/为什么会出现多路查找树/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-没有看到文件打开，却显示文件夹正在使用，请关闭后重试，修改文件夹名不成功" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/09/22/没有看到文件打开，却显示文件夹正在使用，请关闭后重试，修改文件夹名不成功/">没有看到文件打开，却显示文件夹正在使用，请关闭后重试，修改文件夹名不成功</a>
-    </h1>
-  
-
-        
-        
-<a href="/2019/09/22/没有看到文件打开，却显示文件夹正在使用，请关闭后重试，修改文件夹名不成功/" class="archive-article-date">
-  	<time datetime="2019-09-22T03:15:44.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-22</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="问题出现"><a href="#问题出现" class="headerlink" title="问题出现"></a>问题出现</h1><p>我自己有个java整体的文件包，只要是我安装的有关java的软件，我都集中放到了我的F盘下边java engineer文件夹中管理。这两个单词中间有个空格，为我的java生涯带来了很大的麻烦。我本来不想理会这个事情的，我还有其他事情要做。可是我发现我实在忍受不了了。多少次向linux传文件，这个空格就是得不到认可。然后我修改又修改不了。因为这里面有比如 tomcat， nexus， svn， git之类的东西。如果你的这些软件它的服务是启动的，那么即使你没有打开文件夹，也会出现如下错误。</p>
-        
-          <a class="article-more-a" href="/2019/09/22/没有看到文件打开，却显示文件夹正在使用，请关闭后重试，修改文件夹名不成功/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/09/22/没有看到文件打开，却显示文件夹正在使用，请关闭后重试，修改文件夹名不成功/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-红黑树" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/09/19/红黑树/">红黑树</a>
-    </h1>
-  
-
-        
-        
-<a href="/2019/09/19/红黑树/" class="archive-article-date">
-  	<time datetime="2019-09-19T12:24:28.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-19</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="红黑树的出现"><a href="#红黑树的出现" class="headerlink" title="红黑树的出现"></a>红黑树的出现</h1><p>据说是因为AVL树（平衡二叉树）不好实现，然后出现了红黑树，容易用代码实现的平衡树。但是有好多人评论说这是胡诌。<br><img src="//luoyefubuki.com/2019/09/19/%E7%BA%A2%E9%BB%91%E6%A0%91/1.jpg" alt="红黑树"></p>
-        
-          <a class="article-more-a" href="/2019/09/19/红黑树/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/09/19/红黑树/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-多路查找树之B+树" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/09/19/多路查找树之B+树/">多路查找树之B+树</a>
-    </h1>
-  
-
-        
-        
-<a href="/2019/09/19/多路查找树之B+树/" class="archive-article-date">
-  	<time datetime="2019-09-19T12:23:57.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-19</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="B-树的出现"><a href="#B-树的出现" class="headerlink" title="B+树的出现"></a>B+树的出现</h1><p>在了解B+树之前，首先需要了解B树是什么。<br><a href="//luoyefubuki.com/2019/09/19/多路查找树之B树/">多路查找树之B树</a><br>了解了B树，我们可以知道，B树解决了一个节点只能存取一个数据的问题，而且也解决了平衡二叉树高度不可控制的问题。<br>但是B树是有缺陷的。进行范围查询时，每读取一个节点都需要回溯到根部重新遍历，使得路径上的分支节点被多次读取，增加了磁盘I/O操作。而且，B树的每个节点都是Key-Value存储在一起的，而value部分也只是一个存储了数据的地址，所以每次比较key的时候，都会把value读取出来，增加了不必要的I/O，我们使用B树本来就是为了减少磁盘I/O的，所以仍然需要对其进行改进。<br>于是出现了B+树。<br><img src="//luoyefubuki.com/2019/09/19/%E5%A4%9A%E8%B7%AF%E6%9F%A5%E6%89%BE%E6%A0%91%E4%B9%8BB+%E6%A0%91/1.jpg" alt="多路查找树之B+树"></p>
-        
-          <a class="article-more-a" href="/2019/09/19/多路查找树之B+树/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/09/19/多路查找树之B+树/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-多路查找树之B树" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/09/19/多路查找树之B树/">多路查找树之B树</a>
-    </h1>
-  
-
-        
-        
-<a href="/2019/09/19/多路查找树之B树/" class="archive-article-date">
-  	<time datetime="2019-09-19T12:23:29.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-19</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="B树的出现"><a href="#B树的出现" class="headerlink" title="B树的出现"></a>B树的出现</h1><p>在看这篇文章之前，如果不知道2-3树，和2-3-4树的小伙伴，可以先通过以下这两篇文章，理解一下B树的特例。对理解B树十分有帮助。<br><a href="//luoyefubuki.com/2019/09/19/多路查找树之2-3树/">多路查找树之2-3树</a> <a href="//luoyefubuki.com/2019/09/19/多路查找树之2-3-4树/">多路查找树之2-3-4树</a></p>
-        
-          <a class="article-more-a" href="/2019/09/19/多路查找树之B树/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/09/19/多路查找树之B树/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-多路查找树之2-3-4树" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/09/19/多路查找树之2-3-4树/">多路查找树之2-3-4树</a>
-    </h1>
-  
-
-        
-        
-<a href="/2019/09/19/多路查找树之2-3-4树/" class="archive-article-date">
-  	<time datetime="2019-09-19T12:22:59.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-19</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="2-3-4树出现的契机"><a href="#2-3-4树出现的契机" class="headerlink" title="2-3-4树出现的契机"></a>2-3-4树出现的契机</h1><p>前面我们分析了2-3树，今天来分析2-3-4树，为什么会有2-3-4树。其实2-3树和2-3-4树都是B树，区别就是2-3-4树添加了四节点。了解了2-3-4树，我们就知道B树就是2-3-……-n树。</p>
-        
-          <a class="article-more-a" href="/2019/09/19/多路查找树之2-3-4树/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/09/19/多路查找树之2-3-4树/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-多路查找树之2-3树" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/09/19/多路查找树之2-3树/">多路查找树之2-3树</a>
-    </h1>
-  
-
-        
-        
-<a href="/2019/09/19/多路查找树之2-3树/" class="archive-article-date">
-  	<time datetime="2019-09-19T12:21:46.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-19</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="出现的原因"><a href="#出现的原因" class="headerlink" title="出现的原因"></a>出现的原因</h1><p>我们前边学了二叉排序树，如果碰都的数据比较理想，{35，17，39，9，28，65}会长得像一棵树。如果碰到的数据，排序是单调变化的话，比如{9，17，28，35，39，65}可想而知，这棵树会变成一棵斜树，和链表没啥区别了。<br><img src="//luoyefubuki.com/2019/09/19/%E5%A4%9A%E8%B7%AF%E6%9F%A5%E6%89%BE%E6%A0%91%E4%B9%8B2-3%E6%A0%91/1.jpg" alt="多路查找树之2-3树"></p>
-        
-          <a class="article-more-a" href="/2019/09/19/多路查找树之2-3树/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/09/19/多路查找树之2-3树/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-  
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/3/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><a class="extend next" rel="next" href="/page/5/">Next &raquo;</a>
-    </nav>
   
 
 
@@ -915,8 +425,8 @@
     <script>
 	var yiliaConfig = {
 		mathjax: false,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
