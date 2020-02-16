@@ -8,21 +8,22 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>到底什么是关系型数据库及关系到底是啥 | 纷飞落叶的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="数据库是啥首先我们见名知意，就是存储数据的仓库。">
+  <meta name="description" content="写在前边为什么我会接触到数据库这个东西，那是我在学习java基础的时候，学到了JDBC这个地方，而这个JDBC就是能够让java语言和数据库之间通信的一种东西(API)。于是我就需要转战数据库了。然后就开始搜索各种有关数据库的东西，接着就是安装mysql，学习sql语句，然后当时并没有想太多，学完mysql之后，就开始和jdbc结合，用java操作数据库了。直到今天当我需要理解关系型数据库的时候，">
 <meta name="keywords" content="数据库基础">
 <meta property="og:type" content="article">
 <meta property="og:title" content="到底什么是关系型数据库及关系到底是啥">
 <meta property="og:url" content="http://yoursite.com/2020/02/13/到底什么是关系型数据库及关系到底是啥/index.html">
 <meta property="og:site_name" content="纷飞落叶的博客">
-<meta property="og:description" content="数据库是啥首先我们见名知意，就是存储数据的仓库。">
+<meta property="og:description" content="写在前边为什么我会接触到数据库这个东西，那是我在学习java基础的时候，学到了JDBC这个地方，而这个JDBC就是能够让java语言和数据库之间通信的一种东西(API)。于是我就需要转战数据库了。然后就开始搜索各种有关数据库的东西，接着就是安装mysql，学习sql语句，然后当时并没有想太多，学完mysql之后，就开始和jdbc结合，用java操作数据库了。直到今天当我需要理解关系型数据库的时候，">
 <meta property="og:locale" content="default">
+<meta property="og:image" content="http://luoyefubuki.com/2020/02/10/%E6%88%91%E7%9A%84%E8%A1%A8%E6%83%85%E5%8C%85/%E5%95%8A.jpg">
 <meta property="og:image" content="http://luoyefubuki.com/2020/02/13/%E5%88%B0%E5%BA%95%E4%BB%80%E4%B9%88%E6%98%AF%E5%85%B3%E7%B3%BB%E5%9E%8B%E6%95%B0%E6%8D%AE%E5%BA%93%E5%8F%8A%E5%85%B3%E7%B3%BB%E5%88%B0%E5%BA%95%E6%98%AF%E5%95%A5/1.jpg">
 <meta property="og:image" content="http://luoyefubuki.com/2020/02/13/%E5%88%B0%E5%BA%95%E4%BB%80%E4%B9%88%E6%98%AF%E5%85%B3%E7%B3%BB%E5%9E%8B%E6%95%B0%E6%8D%AE%E5%BA%93%E5%8F%8A%E5%85%B3%E7%B3%BB%E5%88%B0%E5%BA%95%E6%98%AF%E5%95%A5/2.jpg">
-<meta property="og:updated_time" content="2020-02-14T06:38:02.080Z">
+<meta property="og:updated_time" content="2020-02-16T03:16:57.380Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="到底什么是关系型数据库及关系到底是啥">
-<meta name="twitter:description" content="数据库是啥首先我们见名知意，就是存储数据的仓库。">
-<meta name="twitter:image" content="http://luoyefubuki.com/2020/02/13/%E5%88%B0%E5%BA%95%E4%BB%80%E4%B9%88%E6%98%AF%E5%85%B3%E7%B3%BB%E5%9E%8B%E6%95%B0%E6%8D%AE%E5%BA%93%E5%8F%8A%E5%85%B3%E7%B3%BB%E5%88%B0%E5%BA%95%E6%98%AF%E5%95%A5/1.jpg">
+<meta name="twitter:description" content="写在前边为什么我会接触到数据库这个东西，那是我在学习java基础的时候，学到了JDBC这个地方，而这个JDBC就是能够让java语言和数据库之间通信的一种东西(API)。于是我就需要转战数据库了。然后就开始搜索各种有关数据库的东西，接着就是安装mysql，学习sql语句，然后当时并没有想太多，学完mysql之后，就开始和jdbc结合，用java操作数据库了。直到今天当我需要理解关系型数据库的时候，">
+<meta name="twitter:image" content="http://luoyefubuki.com/2020/02/10/%E6%88%91%E7%9A%84%E8%A1%A8%E6%83%85%E5%8C%85/%E5%95%8A.jpg">
   
     <link rel="alternative" href="/atom.xml" title="纷飞落叶的博客" type="application/atom+xml">
   
@@ -208,7 +209,8 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="数据库是啥"><a href="#数据库是啥" class="headerlink" title="数据库是啥"></a>数据库是啥</h1><p>首先我们见名知意，就是存储数据的仓库。</p>
+        <h1 id="写在前边"><a href="#写在前边" class="headerlink" title="写在前边"></a>写在前边</h1><p>为什么我会接触到数据库这个东西，那是我在学习java基础的时候，学到了JDBC这个地方，而这个JDBC就是能够让java语言和数据库之间通信的一种东西(<a href="//luoyefubuki.com/2020/02/10/API是什么">API</a>)。于是我就需要转战数据库了。然后就开始搜索各种有关数据库的东西，接着就是安装mysql，学习sql语句，然后当时并没有想太多，学完mysql之后，就开始和jdbc结合，用java操作数据库了。直到今天当我需要理解关系型数据库的时候，我才发现我用了这么久的数据库原来是关系型数据库。<br><img src="//luoyefubuki.com/2020/02/10/%E6%88%91%E7%9A%84%E8%A1%A8%E6%83%85%E5%8C%85/%E5%95%8A.jpg" alt="我的表情包"></p>
+<h1 id="数据库是啥"><a href="#数据库是啥" class="headerlink" title="数据库是啥"></a>数据库是啥</h1><p>首先我们见名知意，就是存储数据的仓库。</p>
 <a id="more"></a>
 <h1 id="普通的数据仓库"><a href="#普通的数据仓库" class="headerlink" title="普通的数据仓库"></a>普通的数据仓库</h1><p>我们可以举个例子。如果我们都是计算机小白，根本不知道数据库这个概念。我们平时肯定会写日记啊，拍照啊，写材料啊，记单词啊之类的。我们一开始肯定是采用一些文件来记录下我们学习的过程与心得。比如，最低级的就用text记事本，或者写字板，再高级的下载个word或者wps什么的，来记录下来我们想要记录的东西，如果是图片或者视频文件，那么我们就创建一个文件夹，把他们放到里面。那么，这些记录下的东西不就是我们的数据吗，而这些文件不就相当于我们的一个小型数据仓库吗。这其实就是”数据库”。</p>
 <h1 id="计算机中的数据库"><a href="#计算机中的数据库" class="headerlink" title="计算机中的数据库"></a>计算机中的数据库</h1><p>我们这些数据文件肯定会放在自己分类的文件夹里面，喜欢整洁的人肯定会自己分类几个文件夹，比较随意的人就直接扔到桌面上。随着时间的延长，我们记录的数据越来越多，那么喜欢分类的人，文件夹层次也会越来越多，不喜欢分类的人，桌面肯定会变得一团乱麻，不堪入目，根本不知道文件存放到哪儿了。这个时候我们就有些人想着，能不能找个工具，帮我把这些文件管理起来，我想要啥数据，只需要告诉这个工具，它就可以帮我找到我想要的数据。这个工具就是计算机中所说的数据库。</p>
@@ -404,7 +406,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#数据库是啥"><span class="toc-number">1.</span> <span class="toc-text">数据库是啥</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#普通的数据仓库"><span class="toc-number">2.</span> <span class="toc-text">普通的数据仓库</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#计算机中的数据库"><span class="toc-number">3.</span> <span class="toc-text">计算机中的数据库</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#数据库管理系统"><span class="toc-number">4.</span> <span class="toc-text">数据库管理系统</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#计算机数据库和普通数据仓库的区别"><span class="toc-number">5.</span> <span class="toc-text">计算机数据库和普通数据仓库的区别</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#数据模型"><span class="toc-number">6.</span> <span class="toc-text">数据模型</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#以上小结"><span class="toc-number">7.</span> <span class="toc-text">以上小结</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#关系型数据库"><span class="toc-number">8.</span> <span class="toc-text">关系型数据库</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#关系模型"><span class="toc-number">8.1.</span> <span class="toc-text">关系模型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#所以关系是什么"><span class="toc-number">8.2.</span> <span class="toc-text">所以关系是什么</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#数据模型三要素"><span class="toc-number">8.3.</span> <span class="toc-text">数据模型三要素</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#总结"><span class="toc-number">9.</span> <span class="toc-text">总结</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#写在前边"><span class="toc-number">1.</span> <span class="toc-text">写在前边</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#数据库是啥"><span class="toc-number">2.</span> <span class="toc-text">数据库是啥</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#普通的数据仓库"><span class="toc-number">3.</span> <span class="toc-text">普通的数据仓库</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#计算机中的数据库"><span class="toc-number">4.</span> <span class="toc-text">计算机中的数据库</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#数据库管理系统"><span class="toc-number">5.</span> <span class="toc-text">数据库管理系统</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#计算机数据库和普通数据仓库的区别"><span class="toc-number">6.</span> <span class="toc-text">计算机数据库和普通数据仓库的区别</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#数据模型"><span class="toc-number">7.</span> <span class="toc-text">数据模型</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#以上小结"><span class="toc-number">8.</span> <span class="toc-text">以上小结</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#关系型数据库"><span class="toc-number">9.</span> <span class="toc-text">关系型数据库</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#关系模型"><span class="toc-number">9.1.</span> <span class="toc-text">关系模型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#所以关系是什么"><span class="toc-number">9.2.</span> <span class="toc-text">所以关系是什么</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#数据模型三要素"><span class="toc-number">9.3.</span> <span class="toc-text">数据模型三要素</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#总结"><span class="toc-number">10.</span> <span class="toc-text">总结</span></a></li></ol>
                     </div>
                 </span>
             </div>
