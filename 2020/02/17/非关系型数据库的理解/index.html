@@ -8,19 +8,19 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>非关系型数据库的理解 | 纷飞落叶的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="前言作为一个自学者，看到关系型数据库和非关系型数据库的时候，我整个人是懵逼，然后就想着了解一下关系型数据库和非关系型数据库的区别，结果直接掉到数据库这个大坑里面了。在整理完关系型数据库里面的基本概念之后，我忽然对关系型数据库的理解加深很多，所以这个时候来理解非关系型数据库，会变得更加容易吧。 回顾关系型数据库如果不考虑那些乱七八糟的抽象概念，关系型数据库就是存储了一堆二维表格的数据仓库，在这些二维">
+  <meta name="description" content="前言作为一个自学者，看到关系型数据库和非关系型数据库的时候，我整个人是懵逼，然后就想着了解一下关系型数据库和非关系型数据库的区别，结果直接掉到数据库这个大坑里面了。在整理完关系型数据库里面的基本概念之后，我忽然对关系型数据库的理解加深很多，所以这个时候来理解非关系型数据库，会变得更加容易吧。">
 <meta name="keywords" content="数据库基础">
 <meta property="og:type" content="article">
 <meta property="og:title" content="非关系型数据库的理解">
 <meta property="og:url" content="http://yoursite.com/2020/02/17/非关系型数据库的理解/index.html">
 <meta property="og:site_name" content="纷飞落叶的博客">
-<meta property="og:description" content="前言作为一个自学者，看到关系型数据库和非关系型数据库的时候，我整个人是懵逼，然后就想着了解一下关系型数据库和非关系型数据库的区别，结果直接掉到数据库这个大坑里面了。在整理完关系型数据库里面的基本概念之后，我忽然对关系型数据库的理解加深很多，所以这个时候来理解非关系型数据库，会变得更加容易吧。 回顾关系型数据库如果不考虑那些乱七八糟的抽象概念，关系型数据库就是存储了一堆二维表格的数据仓库，在这些二维">
+<meta property="og:description" content="前言作为一个自学者，看到关系型数据库和非关系型数据库的时候，我整个人是懵逼，然后就想着了解一下关系型数据库和非关系型数据库的区别，结果直接掉到数据库这个大坑里面了。在整理完关系型数据库里面的基本概念之后，我忽然对关系型数据库的理解加深很多，所以这个时候来理解非关系型数据库，会变得更加容易吧。">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://luoyefubuki.com/2020/02/17/%E9%9D%9E%E5%85%B3%E7%B3%BB%E5%9E%8B%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E7%90%86%E8%A7%A3/1.jpg">
-<meta property="og:updated_time" content="2020-02-17T02:38:05.555Z">
+<meta property="og:updated_time" content="2020-02-17T02:40:51.186Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="非关系型数据库的理解">
-<meta name="twitter:description" content="前言作为一个自学者，看到关系型数据库和非关系型数据库的时候，我整个人是懵逼，然后就想着了解一下关系型数据库和非关系型数据库的区别，结果直接掉到数据库这个大坑里面了。在整理完关系型数据库里面的基本概念之后，我忽然对关系型数据库的理解加深很多，所以这个时候来理解非关系型数据库，会变得更加容易吧。 回顾关系型数据库如果不考虑那些乱七八糟的抽象概念，关系型数据库就是存储了一堆二维表格的数据仓库，在这些二维">
+<meta name="twitter:description" content="前言作为一个自学者，看到关系型数据库和非关系型数据库的时候，我整个人是懵逼，然后就想着了解一下关系型数据库和非关系型数据库的区别，结果直接掉到数据库这个大坑里面了。在整理完关系型数据库里面的基本概念之后，我忽然对关系型数据库的理解加深很多，所以这个时候来理解非关系型数据库，会变得更加容易吧。">
 <meta name="twitter:image" content="http://luoyefubuki.com/2020/02/17/%E9%9D%9E%E5%85%B3%E7%B3%BB%E5%9E%8B%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E7%90%86%E8%A7%A3/1.jpg">
   
     <link rel="alternative" href="/atom.xml" title="纷飞落叶的博客" type="application/atom+xml">
@@ -208,6 +208,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>作为一个自学者，看到关系型数据库和非关系型数据库的时候，我整个人是懵逼，然后就想着了解一下关系型数据库和非关系型数据库的区别，结果直接掉到数据库这个大坑里面了。在整理完关系型数据库里面的基本概念之后，我忽然对关系型数据库的理解加深很多，所以这个时候来理解非关系型数据库，会变得更加容易吧。</p>
+<a id="more"></a>
 <h1 id="回顾关系型数据库"><a href="#回顾关系型数据库" class="headerlink" title="回顾关系型数据库"></a>回顾关系型数据库</h1><p>如果不考虑那些乱七八糟的抽象概念，关系型数据库就是存储了一堆二维表格的数据仓库，在这些二维表格中，每一行就是一个元组（我们平时所说的记录），类似于java中的一个实例对象，每一列就是一个属性（我们平时所说的字段），类似于java类中的属性。如下<br><img src="//luoyefubuki.com/2020/02/17/%E9%9D%9E%E5%85%B3%E7%B3%BB%E5%9E%8B%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E7%90%86%E8%A7%A3/1.jpg" alt="非关系型数据库的理解"></p>
 <p>那么这张表是怎么出来的呢，其实我们看到的上图这张表只是一个实例，那么是什么的实例的，是员工表的实例。其实我们在往这张表里添加数据之前，已经定义了这张表的表结构，而这张表是根据这个提前定义的表结构，按照定义的规则正确的塞入数据后产生的。如下</p>
 <pre><code>CREATE TABLE `emp` (
