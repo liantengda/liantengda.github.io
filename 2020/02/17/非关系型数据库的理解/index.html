@@ -6,15 +6,22 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>纷飞落叶的博客</title>
+  <title>非关系型数据库的理解 | 纷飞落叶的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="纷飞落叶的博客">
-<meta property="og:url" content="http://yoursite.com/page/3/index.html">
+  <meta name="description" content="前言作为一个自学者，看到关系型数据库和非关系型数据库的时候，我整个人是懵逼，然后就想着了解一下关系型数据库和非关系型数据库的区别，结果直接掉到数据库这个大坑里面了。在整理完关系型数据库里面的基本概念之后，我忽然对关系型数据库的理解加深很多，所以这个时候来理解非关系型数据库，会变得更加容易吧。 回顾关系型数据库如果不考虑那些乱七八糟的抽象概念，关系型数据库就是存储了一堆二维表格的数据仓库，在这些二维">
+<meta name="keywords" content="数据库基础">
+<meta property="og:type" content="article">
+<meta property="og:title" content="非关系型数据库的理解">
+<meta property="og:url" content="http://yoursite.com/2020/02/17/非关系型数据库的理解/index.html">
 <meta property="og:site_name" content="纷飞落叶的博客">
+<meta property="og:description" content="前言作为一个自学者，看到关系型数据库和非关系型数据库的时候，我整个人是懵逼，然后就想着了解一下关系型数据库和非关系型数据库的区别，结果直接掉到数据库这个大坑里面了。在整理完关系型数据库里面的基本概念之后，我忽然对关系型数据库的理解加深很多，所以这个时候来理解非关系型数据库，会变得更加容易吧。 回顾关系型数据库如果不考虑那些乱七八糟的抽象概念，关系型数据库就是存储了一堆二维表格的数据仓库，在这些二维">
 <meta property="og:locale" content="default">
+<meta property="og:image" content="http://luoyefubuki.com/2020/02/17/%E9%9D%9E%E5%85%B3%E7%B3%BB%E5%9E%8B%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E7%90%86%E8%A7%A3/1.jpg">
+<meta property="og:updated_time" content="2020-02-17T02:38:05.555Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="纷飞落叶的博客">
+<meta name="twitter:title" content="非关系型数据库的理解">
+<meta name="twitter:description" content="前言作为一个自学者，看到关系型数据库和非关系型数据库的时候，我整个人是懵逼，然后就想着了解一下关系型数据库和非关系型数据库的区别，结果直接掉到数据库这个大坑里面了。在整理完关系型数据库里面的基本概念之后，我忽然对关系型数据库的理解加深很多，所以这个时候来理解非关系型数据库，会变得更加容易吧。 回顾关系型数据库如果不考虑那些乱七八糟的抽象概念，关系型数据库就是存储了一堆二维表格的数据仓库，在这些二维">
+<meta name="twitter:image" content="http://luoyefubuki.com/2020/02/17/%E9%9D%9E%E5%85%B3%E7%B3%BB%E5%9E%8B%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E7%90%86%E8%A7%A3/1.jpg">
   
     <link rel="alternative" href="/atom.xml" title="纷飞落叶的博客" type="application/atom+xml">
   
@@ -174,48 +181,155 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-    <article id="post-nginx是用来做什么的" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+            <article id="post-非关系型数据库的理解" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/11/11/nginx是用来做什么的/">nginx是用来做什么的</a>
+    <h1 class="article-title" itemprop="name">
+      非关系型数据库的理解
     </h1>
   
 
         
         
-<a href="/2019/11/11/nginx是用来做什么的/" class="archive-article-date">
-  	<time datetime="2019-11-11T03:56:49.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-11</time>
+        <!-- 不蒜子统计 -->
+        <span id="busuanzi_container_page_pv" style='display:none' class="archive-article-date">
+              <i class="icon-smile icon"></i> 阅读数：<span id="busuanzi_value_page_pv"></span>次
+        </span>
+
+<a href="/2020/02/17/非关系型数据库的理解/" class="archive-article-date">
+  	<time datetime="2020-02-17T01:08:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-02-17</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="功能"><a href="#功能" class="headerlink" title="功能"></a>功能</h1><p>——反向代理</p>
-        
-          <a class="article-more-a" href="/2019/11/11/nginx是用来做什么的/#more">more >></a>
-        
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>作为一个自学者，看到关系型数据库和非关系型数据库的时候，我整个人是懵逼，然后就想着了解一下关系型数据库和非关系型数据库的区别，结果直接掉到数据库这个大坑里面了。在整理完关系型数据库里面的基本概念之后，我忽然对关系型数据库的理解加深很多，所以这个时候来理解非关系型数据库，会变得更加容易吧。</p>
+<h1 id="回顾关系型数据库"><a href="#回顾关系型数据库" class="headerlink" title="回顾关系型数据库"></a>回顾关系型数据库</h1><p>如果不考虑那些乱七八糟的抽象概念，关系型数据库就是存储了一堆二维表格的数据仓库，在这些二维表格中，每一行就是一个元组（我们平时所说的记录），类似于java中的一个实例对象，每一列就是一个属性（我们平时所说的字段），类似于java类中的属性。如下<br><img src="//luoyefubuki.com/2020/02/17/%E9%9D%9E%E5%85%B3%E7%B3%BB%E5%9E%8B%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E7%90%86%E8%A7%A3/1.jpg" alt="非关系型数据库的理解"></p>
+<p>那么这张表是怎么出来的呢，其实我们看到的上图这张表只是一个实例，那么是什么的实例的，是员工表的实例。其实我们在往这张表里添加数据之前，已经定义了这张表的表结构，而这张表是根据这个提前定义的表结构，按照定义的规则正确的塞入数据后产生的。如下</p>
+<pre><code>CREATE TABLE `emp` (
+  `EMPNO` int(4) NOT NULL COMMENT &apos;员工编号&apos;,
+  `ENAME` varchar(10) DEFAULT NULL COMMENT &apos;员工姓名&apos;,
+  `JOB` varchar(9) DEFAULT NULL COMMENT &apos;工作岗位&apos;,
+  `MGR` int(4) DEFAULT NULL COMMENT &apos;上级经理&apos;,
+  `HIREDATE` date DEFAULT NULL,
+  `SAL` double(7,2) DEFAULT NULL,
+  `COMM` double(7,2) DEFAULT NULL,
+  `DEPTNO` int(2) DEFAULT NULL,
+  PRIMARY KEY (`EMPNO`),
+  KEY `DEPTNO` (`DEPTNO`),
+  KEY `SAL` (`SAL`),
+  CONSTRAINT `emp_ibfk_1` FOREIGN KEY (`DEPTNO`) REFERENCES `dept` (`DEPTNO`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT=&apos;员工编号&apos;;</code></pre><p>这张员工表，在关系型数据库中被称为一个关系模式。而根据这个关系模式产生的实例二维表，被我们称为“关系”。此时我们借机引出关系型数据库最抽象的一个概念，那就是关系模型。关系型数据的概念就是由关系模型产生的。如果我们把数据表中的属性反映射回现实世界中，你会发现它就是一个活生生的模型。比如这张员工表，我们把员工编号，员工姓名，工作岗位，上级经理，入职日期，薪资水平，部门编号，这些字段在脑子里过一遍，是不是有一个员工的形象呈现在我们的脑子里，这就是现实模型，这个时候我们再把，（1001，张三，程序员，架构师，2018-8-8，20000，JS-1001），这几个字段在脑子里过一遍，是不是有个名字叫张三，入职两年，月薪20000的员工形象在闹钟浮现，这就对应员工模型的一个现实实例。而我们要把这些人的信息存储在数据库中，是不是得逆向，将现实模型抽象称数据模型，这其实有个术语，叫做数字化。而关系模型就是数据模型得一种。所以，依赖于关系模型建立得数据库就叫做关系型数据库。</p>
+<p># </p>
+
       
 
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/支付宝支付.png">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/微信支付.png">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
       
     </div>
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">数据库基础</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/11/11/nginx是用来做什么的/">展开全文 >></a>
-        </p>
-      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/02/17/非关系型数据库的理解/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
       
       <div class="clearfix"></div>
     </div>
@@ -223,7 +337,40 @@
 </article>
 
 
+  
+  <!-- ������City�氲װ���� -->
+<div id="lv-container" data-id="city" data-uid="MTAyMC80NTQ3Mi8yMTk4NA==">
+	<script type="text/javascript">
+   (function(d, s) {
+       var j, e = d.getElementsByTagName(s)[0];
 
+       if (typeof LivereTower === 'function') { return; }
+
+       j = d.createElement(s);
+       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+       j.async = true;
+
+       e.parentNode.insertBefore(j, e);
+   })(document, 'script');
+	</script>
+<noscript> Ϊ����ʹ�����������۹����뼤��JavaScript</noscript>
+</div>
+<!-- City�氲װ��������� -->
+  
+
+
+
+
+  
+<nav id="article-nav">
+  
+  
+    <a href="/2020/02/15/关系型数据库之范式是什么/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">关系型数据库之范式是什么</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
 
 
 <aside class="wrap-side-operation">
@@ -239,640 +386,36 @@
         </div>
         
         
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-spring中的注解大合集" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/11/05/spring中的注解大合集/">spring中的注解大合集</a>
-    </h1>
-  
-
-        
-        
-<a href="/2019/11/05/spring中的注解大合集/" class="archive-article-date">
-  	<time datetime="2019-11-05T08:51:43.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-05</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>本片文章只简单罗列spring中我所碰到的注解，同时简单介绍他们的作用和使用方法。</p>
-        
-          <a class="article-more-a" href="/2019/11/05/spring中的注解大合集/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/11/05/spring中的注解大合集/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#回顾关系型数据库"><span class="toc-number">2.</span> <span class="toc-text">回顾关系型数据库</span></a></li></ol>
+                    </div>
+                </span>
             </div>
         </div>
         
-        
     </div>
 </aside>
 
 
 
-
-  
-    <article id="post-初识flyway" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/11/05/初识flyway/">初识flyway</a>
-    </h1>
   
 
-        
-        
-<a href="/2019/11/05/初识flyway/" class="archive-article-date">
-  	<time datetime="2019-11-05T08:05:19.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-05</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="flyway是什么"><a href="#flyway是什么" class="headerlink" title="flyway是什么"></a>flyway是什么</h1><p>flyway是一个数据库版本控制工具。使用Flyway，用户可以从任意一个数据库版本迁移到最新版本，简单而且有效。</p>
-        
-          <a class="article-more-a" href="/2019/11/05/初识flyway/#more">more >></a>
-        
-      
+  
+  
 
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/11/05/初识flyway/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
+  
 
 
 
 
   
-    <article id="post-IDEA默认端口号63342" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/10/31/IDEA默认端口号63342/">IDEA默认端口号63342</a>
-    </h1>
-  
 
-        
-        
-<a href="/2019/10/31/IDEA默认端口号63342/" class="archive-article-date">
-  	<time datetime="2019-10-31T03:40:40.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-10-31</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="问题发现"><a href="#问题发现" class="headerlink" title="问题发现"></a>问题发现</h1><p>曾经有一天，我为了访问swagger，直接用浏览器打开了idea静态文件下的swagger目录下的index.xml。当时我以为swagger能用了，于是还进行了一些操作，居然还有接口。最后点来点去发现控制台根本没反应，然后我把swagger主页的url复制进行了百度，发现63342原来是idea的端口。忽然间恍然大悟。</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/10/31/IDEA默认端口号63342/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-为什么会有框架这种东西" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/10/29/为什么会有框架这种东西/">为什么会有框架这种东西</a>
-    </h1>
-  
-
-        
-        
-<a href="/2019/10/29/为什么会有框架这种东西/" class="archive-article-date">
-  	<time datetime="2019-10-29T01:50:38.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-10-29</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="问题来源"><a href="#问题来源" class="headerlink" title="问题来源"></a>问题来源</h1><p>本来自己是要分析spring的好处的。不过在分析过程中感觉自己很有必要再次回顾一下当初自学java时初次使用框架所体会到的惊喜和乐趣。</p>
-<h1 id="框架概念"><a href="#框架概念" class="headerlink" title="框架概念"></a>框架概念</h1><p>当初自己看视频的时候，讲师都这样解释框架，框架就是一种软件开发的半成品，也就是说，我们还未开发一个软件之前，框架已经帮助我们开发了一半了。实际开发中，很多框架已经帮我们做了不止一半的活。</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/10/29/为什么会有框架这种东西/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-总结自己的spring" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/10/24/总结自己的spring/">总结自己的spring</a>
-    </h1>
-  
-
-        
-        
-<a href="/2019/10/24/总结自己的spring/" class="archive-article-date">
-  	<time datetime="2019-10-24T12:01:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-10-24</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="初学spring实践"><a href="#初学spring实践" class="headerlink" title="初学spring实践"></a>初学spring实践</h1><p>我直接来从我第一次使用spring的时候开始，来看看spring到底简化了哪些过程。以下是我自学java时，全程自己手动编写的一个图书后台管理系统。虽然对于现在这个时代，已经很烂了，但是从我手动编写的整个过程恰好可以说明，框架都做了哪些事情。</p>
-        
-          <a class="article-more-a" href="/2019/10/24/总结自己的spring/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/10/24/总结自己的spring/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-乐观锁讲解" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/10/23/乐观锁讲解/">乐观锁讲解</a>
-    </h1>
-  
-
-        
-        
-<a href="/2019/10/23/乐观锁讲解/" class="archive-article-date">
-  	<time datetime="2019-10-23T03:40:23.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-10-23</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/10/23/乐观锁讲解/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-java中的可重入锁与不可重入锁" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/10/23/java中的可重入锁与不可重入锁/">java中的可重入锁与不可重入锁</a>
-    </h1>
-  
-
-        
-        
-<a href="/2019/10/23/java中的可重入锁与不可重入锁/" class="archive-article-date">
-  	<time datetime="2019-10-23T03:31:10.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-10-23</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="可重入锁"><a href="#可重入锁" class="headerlink" title="可重入锁"></a>可重入锁</h1><p>指的是同一线程的外层函数获取锁之后，内层函数可以直接再次获取该锁。那么这个锁就是可重入锁</p>
-<h1 id="先标记本问题"><a href="#先标记本问题" class="headerlink" title="先标记本问题"></a>先标记本问题</h1><p>如下为一篇大佬博客<br><a href="https://www.cnblogs.com/gxyandwmm/p/9387833.html" target="_blank" rel="noopener">https://www.cnblogs.com/gxyandwmm/p/9387833.html</a></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/10/23/java中的可重入锁与不可重入锁/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-npm的由来" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/10/21/npm的由来/">npm的由来</a>
-    </h1>
-  
-
-        
-        
-<a href="/2019/10/21/npm的由来/" class="archive-article-date">
-  	<time datetime="2019-10-21T10:11:45.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-10-21</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="问题由来"><a href="#问题由来" class="headerlink" title="问题由来"></a>问题由来</h1><p>以前自己也安装过自己的hexo博客，当时确实按照步骤，安装了什么git，node啥的。然后一直使用一个npm的命令，来安装一些东西。之后就使用hexo了，再也没有碰过npm这个命令。后来下载了一个vue的开源项目，但是文档说明，光下载完还不能用，还得进入项目目录。比如我的项目目录，</p>
-        
-          <a class="article-more-a" href="/2019/10/21/npm的由来/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/10/21/npm的由来/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-英语单词strawman的震惊用法" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/10/21/英语单词strawman的震惊用法/">英语单词strawman的震惊用法</a>
-    </h1>
-  
-
-        
-        
-<a href="/2019/10/21/英语单词strawman的震惊用法/" class="archive-article-date">
-  	<time datetime="2019-10-21T09:12:39.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-10-21</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="为什么是strawman"><a href="#为什么是strawman" class="headerlink" title="为什么是strawman"></a>为什么是strawman</h1><p>在读阮一峰的ECMAScript6入门时，碰到了如下一段话<br><img src="//luoyefubuki.com/2019/10/21/%E8%8B%B1%E8%AF%AD%E5%8D%95%E8%AF%8Dstrawman%E7%9A%84%E9%9C%87%E6%83%8A%E7%94%A8%E6%B3%95/1.jpg" alt="英语单词strawman的震惊用法"><br>由于自己的强迫症，看见英语单词就像记住它的意思。就进行了查询与分析。最后感觉这个词很有代表性。所以就写下了这篇随笔。</p>
-        
-          <a class="article-more-a" href="/2019/10/21/英语单词strawman的震惊用法/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/10/21/英语单词strawman的震惊用法/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-  
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/2/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><a class="extend next" rel="next" href="/page/4/">Next &raquo;</a>
-    </nav>
   
 
 
@@ -908,8 +451,8 @@
     <script>
 	var yiliaConfig = {
 		mathjax: false,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
