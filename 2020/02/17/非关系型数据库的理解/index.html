@@ -17,7 +17,7 @@
 <meta property="og:description" content="前言作为一个自学者，看到关系型数据库和非关系型数据库的时候，我整个人是懵逼，然后就想着了解一下关系型数据库和非关系型数据库的区别，结果直接掉到数据库这个大坑里面了。在整理完关系型数据库里面的基本概念之后，我忽然对关系型数据库的理解加深很多，所以这个时候来理解非关系型数据库，会变得更加容易吧。">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://luoyefubuki.com/2020/02/17/%E9%9D%9E%E5%85%B3%E7%B3%BB%E5%9E%8B%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E7%90%86%E8%A7%A3/1.jpg">
-<meta property="og:updated_time" content="2020-02-17T02:47:14.691Z">
+<meta property="og:updated_time" content="2020-02-17T02:54:55.366Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="非关系型数据库的理解">
 <meta name="twitter:description" content="前言作为一个自学者，看到关系型数据库和非关系型数据库的时候，我整个人是懵逼，然后就想着了解一下关系型数据库和非关系型数据库的区别，结果直接掉到数据库这个大坑里面了。在整理完关系型数据库里面的基本概念之后，我忽然对关系型数据库的理解加深很多，所以这个时候来理解非关系型数据库，会变得更加容易吧。">
@@ -224,8 +224,8 @@
   KEY `DEPTNO` (`DEPTNO`),
   KEY `SAL` (`SAL`),
   CONSTRAINT `emp_ibfk_1` FOREIGN KEY (`DEPTNO`) REFERENCES `dept` (`DEPTNO`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT=&apos;员工编号&apos;;</code></pre><p>这张员工表，在关系型数据库中被称为一个关系模式。而根据这个关系模式产生的实例二维表，被我们称为“关系”。此时我们借机引出关系型数据库最抽象的一个概念，那就是关系模型。关系型数据库的概念就是由关系模型产生的。如果我们把数据表中的属性反映射回现实世界中，你会发现它就是一个活生生的模型。比如这张员工表，我们把员工编号，员工姓名，工作岗位，上级经理，入职日期，薪资水平，部门编号，这些字段在脑子里过一遍，是不是有一个员工的形象呈现在我们的脑子里，这就是现实模型，这个时候我们再把，（1001，张三，程序员，架构师，2018-8-8，20000，JS-1001），这几个字段在脑子里过一遍，是不是有个名字叫张三，入职两年，月薪20000的员工形象在脑中浮现，这就对应员工模型的一个现实实例。而我们要把这些人的信息存储在数据库中，是不是得逆向，将现实模型抽象成数据模型，这其实有个术语，叫做数字化。而关系模型就是数据模型中的一种。而上边这种规范化的二维表格数据模型就是关系模型，关系模式和关系都是关系模型中的概念。最终得出了一个关系型数据库的定义： <strong>依赖于关系模型建立得数据库就叫做关系型数据库。</strong></p>
-<p># </p>
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT=&apos;员工编号&apos;;</code></pre><p>这张员工表，在关系型数据库中被称为一个关系模式。而根据这个关系模式产生的实例二维表，被我们称为“关系”。此时我们借机引出关系型数据库最抽象的一个概念，那就是关系模型。关系型数据库的概念就是由关系模型产生的。如果我们把数据表中的属性反映射回现实世界中，你会发现它就是一个活生生的模型。比如这张员工表，我们把员工编号，员工姓名，工作岗位，上级经理，入职日期，薪资水平，部门编号，这些字段在脑子里过一遍，是不是有一个员工的形象呈现在我们的脑子里，这就是现实模型，这个时候我们再把，（1001，张三，程序员，架构师，2018-8-8，20000，JS-1001），这几个字段在脑子里过一遍，是不是有个名字叫张三，入职两年，月薪20000的员工形象在脑中浮现，这就对应员工模型的一个现实实例。而我们要把这些人的信息存储在数据库中，是不是得逆向，将现实模型抽象成数据模型，这其实有个术语，叫做数字化。而关系模型就是数据模型中的一种。上边这种规范化的二维表格数据模型就是关系模型，关系模式和关系都是关系模型中的概念。最终得出了一个关系型数据库的定义： <strong>依赖于关系模型建立的数据库就叫做关系型数据库。</strong></p>
+<h1 id="为什么要出现非关系型数据库"><a href="#为什么要出现非关系型数据库" class="headerlink" title="为什么要出现非关系型数据库"></a>为什么要出现非关系型数据库</h1><p>既然世间万物都可以抽象成关系模型，那么一个关系型数据库不就可以满足我们的将现实世界抽象成数据模型存入数据库的需求了吗。为啥还要折腾出来这么个非关系型数据库。</p>
 
       
 
@@ -394,7 +394,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#回顾关系型数据库"><span class="toc-number">2.</span> <span class="toc-text">回顾关系型数据库</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#回顾关系型数据库"><span class="toc-number">2.</span> <span class="toc-text">回顾关系型数据库</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#为什么要出现非关系型数据库"><span class="toc-number">3.</span> <span class="toc-text">为什么要出现非关系型数据库</span></a></li></ol>
                     </div>
                 </span>
             </div>
