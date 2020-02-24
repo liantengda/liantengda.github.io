@@ -18,7 +18,7 @@
 <meta property="og:image" content="http://luoyefubuki.com/2020/02/24/java%E4%B8%AD%E7%9A%84%E5%85%B3%E9%94%AE%E5%AD%97%E4%B9%8Bfinal/1.jpg">
 <meta property="og:image" content="http://luoyefubuki.com/2020/02/24/java%E4%B8%AD%E7%9A%84%E5%85%B3%E9%94%AE%E5%AD%97%E4%B9%8Bfinal/2.jpg">
 <meta property="og:image" content="http://luoyefubuki.com/2020/02/24/java%E4%B8%AD%E7%9A%84%E5%85%B3%E9%94%AE%E5%AD%97%E4%B9%8Bfinal/3.jpg">
-<meta property="og:updated_time" content="2020-02-24T12:04:12.864Z">
+<meta property="og:updated_time" content="2020-02-24T12:06:02.120Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="java中的关键字之final">
 <meta name="twitter:description" content="前言已经工作一年多了，忽然间碰到一道网上的面试题，让你说出为什么java中的String是final修饰的。我当然是懵逼的，我好像工作中没怎么用过这个关键字，倒是经常翻看源码的时候能够看到它。然后我去看了下String类，发现果然前边有个修饰符final，而且我平时遇到这个关键词的时候也没有多想，感觉和我没太大关系，只要我能使用其API进行字符串操作就可以了。不过目前由于我在研究一些开源项目的源码">
@@ -208,7 +208,9 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>已经工作一年多了，忽然间碰到一道网上的面试题，让你说出为什么java中的String是final修饰的。我当然是懵逼的，我好像工作中没怎么用过这个关键字，倒是经常翻看源码的时候能够看到它。然后我去看了下String类，发现果然前边有个修饰符final，而且我平时遇到这个关键词的时候也没有多想，感觉和我没太大关系，只要我能使用其API进行字符串操作就可以了。不过目前由于我在研究一些开源项目的源码，经常能碰到final这个关键词，所以打算好好对其总结一番。<br><img src="//luoyefubuki.com/2020/02/24/java%E4%B8%AD%E7%9A%84%E5%85%B3%E9%94%AE%E5%AD%97%E4%B9%8Bfinal/1.jpg" alt="java中的关键字之final"></p>
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>已经工作一年多了，忽然间碰到一道网上的面试题，让你说出为什么java中的String是final修饰的。我当然是懵逼的，我好像工作中没怎么用过这个关键字，倒是经常翻看源码的时候能够看到它。然后我去看了下String类，发现果然前边有个修饰符final，而且我平时遇到这个关键词的时候也没有多想，感觉和我没太大关系，只要我能使用其API进行字符串操作就可以了。不过目前由于我在研究一些开源项目的源码，经常能碰到final这个关键词，所以打算好好对其总结一番。</p>
+<a id="more"></a>
+<p><img src="//luoyefubuki.com/2020/02/24/java%E4%B8%AD%E7%9A%84%E5%85%B3%E9%94%AE%E5%AD%97%E4%B9%8Bfinal/1.jpg" alt="java中的关键字之final"></p>
 <h1 id="final是啥意思"><a href="#final是啥意思" class="headerlink" title="final是啥意思"></a>final是啥意思</h1><p>其实如果我们的英语有个高中水平，我们都知道finally这个单词，就是最终地，最后的意思。也就是被final修饰了的东西，就是最终版本了，不能再改变。这个知识点大多数学习java的人都应该知道。</p>
 <h1 id="final有啥用处"><a href="#final有啥用处" class="headerlink" title="final有啥用处"></a>final有啥用处</h1><p>那么我们可以利用final的特性做些什么呢。</p>
 <h2 id="final实现常量"><a href="#final实现常量" class="headerlink" title="final实现常量"></a>final实现常量</h2><p>我们在写代码的时候，会碰到一些基本不会改变的数据，例如打印日志的成员，我们通常会这样写，直接将其变为整个类的常量，因为打印日志是一个统一的功能，有一个可以打印日志的成员就足够了。</p>

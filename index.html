@@ -197,45 +197,10 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>已经工作一年多了，忽然间碰到一道网上的面试题，让你说出为什么java中的String是final修饰的。我当然是懵逼的，我好像工作中没怎么用过这个关键字，倒是经常翻看源码的时候能够看到它。然后我去看了下String类，发现果然前边有个修饰符final，而且我平时遇到这个关键词的时候也没有多想，感觉和我没太大关系，只要我能使用其API进行字符串操作就可以了。不过目前由于我在研究一些开源项目的源码，经常能碰到final这个关键词，所以打算好好对其总结一番。<br><img src="//luoyefubuki.com/2020/02/24/java%E4%B8%AD%E7%9A%84%E5%85%B3%E9%94%AE%E5%AD%97%E4%B9%8Bfinal/1.jpg" alt="java中的关键字之final"></p>
-<h1 id="final是啥意思"><a href="#final是啥意思" class="headerlink" title="final是啥意思"></a>final是啥意思</h1><p>其实如果我们的英语有个高中水平，我们都知道finally这个单词，就是最终地，最后的意思。也就是被final修饰了的东西，就是最终版本了，不能再改变。这个知识点大多数学习java的人都应该知道。</p>
-<h1 id="final有啥用处"><a href="#final有啥用处" class="headerlink" title="final有啥用处"></a>final有啥用处</h1><p>那么我们可以利用final的特性做些什么呢。</p>
-<h2 id="final实现常量"><a href="#final实现常量" class="headerlink" title="final实现常量"></a>final实现常量</h2><p>我们在写代码的时候，会碰到一些基本不会改变的数据，例如打印日志的成员，我们通常会这样写，直接将其变为整个类的常量，因为打印日志是一个统一的功能，有一个可以打印日志的成员就足够了。</p>
-<blockquote>
-<p>private static final Logger logger = LoggerFactory.getLogger(XxlJobExecutor.class);<br>还有如下，比如设定过期时间，超时时间，这些时间对于整个系统来说是固定的，没有特例，都需要遵循。这种变量一般也直接使用final修饰变为常量。变为常量意味着将来你想改正这个值，就只需要修改一处，因为这就是最终版。<br><img src="//luoyefubuki.com/2020/02/24/java%E4%B8%AD%E7%9A%84%E5%85%B3%E9%94%AE%E5%AD%97%E4%B9%8Bfinal/2.jpg" alt="java中的关键字之final"></p>
-</blockquote>
-<p>有没有发现final一般都是和static一起出现的。static我们知道一般用来表示全局，属于类级别的，配合final使用就是全局常量了。不过有时候前边再加个private修饰，那么就只能在自己类的内部使用了，相当于自己类内部的全局常量。</p>
-<h2 id="final可以用来提前警示我们，防止将来踩坑"><a href="#final可以用来提前警示我们，防止将来踩坑" class="headerlink" title="final可以用来提前警示我们，防止将来踩坑"></a>final可以用来提前警示我们，防止将来踩坑</h2><p>被final修饰的实例变量必须要初始化，否则就会在编译阶段报错。<br><img src="//luoyefubuki.com/2020/02/24/java%E4%B8%AD%E7%9A%84%E5%85%B3%E9%94%AE%E5%AD%97%E4%B9%8Bfinal/3.jpg" alt="java中的关键字之final"></p>
-<p>需要加上构造函数，给实例成员初始化，才能通过编译。这样一来，每次我们构造这个对象的时候，name肯定会被赋予一个值，而不会等到后来代码量过大，已经不知道有没有给这个name赋值过。如果name值比较重要，而我们没有给其赋值，当我们需要用到它的时候，就会出现我们经常看到的异常NullPointException。<br><a href="//luoyefubuki.com/2020/02/24/java中的关键字之final/4.jpg">java中的关键字之final</a></p>
-<h2 id="final可以用来表示该方法为最终版，不允许再复写。"><a href="#final可以用来表示该方法为最终版，不允许再复写。" class="headerlink" title="final可以用来表示该方法为最终版，不允许再复写。"></a>final可以用来表示该方法为最终版，不允许再复写。</h2><p>我们知道子类继承父类的时候，如果重写了父类的方法，那么以后就只会调用子类重写完的方法，但是有的时候，有些方法我们希望只有父类拥有，子类不可重写它。这个时候，我们可能使用private就可以解决，但是有的方法我们又希望公开。所以这个时候用public final去修饰此方法，就可以达到这个目的。</p>
-<h2 id="从源头杜绝错误"><a href="#从源头杜绝错误" class="headerlink" title="从源头杜绝错误"></a>从源头杜绝错误</h2><p>其实这个作用在项目初期的时候不明显，可是一旦项目代码量逐渐庞大起来，就会有很多变量在使用的过程中发生改变。如果我们一开是就把那些不可改变的值规定成final常量，那么错误的源头就可以直接定位到了。因为这个值全程是无法改变的，要改变只能改变最初的这个位置。</p>
-<h1 id="回到String"><a href="#回到String" class="headerlink" title="回到String"></a>回到String</h1><p>因为String是我们工作中用到最多的一个核心类，所以我们还是从这个类入手学习final，获取的收益应该是比较高的。</p>
-<h2 id="为什么要把String设计成final"><a href="#为什么要把String设计成final" class="headerlink" title="为什么要把String设计成final"></a>为什么要把String设计成final</h2><p><strong>第一 不可被继承</strong> 首先我们知道一个类用final修饰，就表示这个类是最终版本，不可被继承。这样一来首先可以防止有些人继承String来写出另类String。<br><strong>第二 线程安全</strong> 接着就是大家都讨论的数据安全问题，为什么用final修饰了就变安全了呢。我们先回想一下什么情况下会造成数据不安全，那就是有多个线程同时对一个数据进行写操作时才会导致数据出问题。而经过final修饰的数据是无法进行改写操作的。虽然我们知道final修饰的引用变量只是表示，引用变量指向的对象不可改变，但是我们可以改变引用所指对象里面的数据啊。可是String类的底层是个char数组，而这个数组也是用final修饰的，所以创建完成后的String，其底层数组的指向也无法改变。这个时候你可能会说，那我直接定位到这个String底层的数组引用所指向的真实数组对象，去改里面的数组元素不就可以了。此处就不好意思了，这个底层数组除了用final修饰，还用了private修饰，哈哈哈哈哈，你怎么取过来呢。<br><a href="//luoyefubuki.com/2020/02/24/java中的关键字之final/5.jpg">java中的关键字之final</a><br>如下为String安全的示例</p>
-<pre><code>class Test{
-    //不可变的String
-    public static String appendStr(String s){
-    s+=&quot;bbb&quot;;
-    return s;
-    }
-    //可变的StringBuilder
-    public static StringBuilder appendSb(StringBuilder sb){
-    return sb.append(&quot;bbb&quot;);
-    }
-    public static void main(String[] args){
-    //String做参数
-    String s=new String(&quot;aaa&quot;);
-    String ns=Test.appendStr(s);
-    System.out.println(&quot;String aaa &gt;&gt;&gt; &quot;+s.toString());
-    //StringBuilder做参数
-    StringBuilder sb=new StringBuilder(&quot;aaa&quot;);
-    StringBuilder nsb=Test.appendSb(sb);
-    System.out.println(&quot;StringBuilder aaa &gt;&gt;&gt; &quot;+sb.toString());
-    }
-}
-//Output: 
-//String aaa &gt;&gt;&gt; aaa
-//StringBuilder aaa &gt;&gt;&gt; aaabbb</code></pre><p><strong>第三 字符串常量池</strong> 一般我们提前写好的代码中，如果有字符串，那么就会直接初始化到常量池中，这么一来，只要是同样的字符串，就直接把相应的引用变量指向这个字符串就可以了，这样一来，可以节省空间，提高效率，不用每次需要同一个字符串，还要进行new操作。但是使用常量池的前提就是String不可以改变，如果我在使用的途中，String的底层数组被改了，那么其他引用这个字符串的地方不就都被改了吗，那真是太可怕了。</p>
-
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>已经工作一年多了，忽然间碰到一道网上的面试题，让你说出为什么java中的String是final修饰的。我当然是懵逼的，我好像工作中没怎么用过这个关键字，倒是经常翻看源码的时候能够看到它。然后我去看了下String类，发现果然前边有个修饰符final，而且我平时遇到这个关键词的时候也没有多想，感觉和我没太大关系，只要我能使用其API进行字符串操作就可以了。不过目前由于我在研究一些开源项目的源码，经常能碰到final这个关键词，所以打算好好对其总结一番。</p>
+        
+          <a class="article-more-a" href="/2020/02/24/java中的关键字之final/#more">more >></a>
+        
       
 
       
