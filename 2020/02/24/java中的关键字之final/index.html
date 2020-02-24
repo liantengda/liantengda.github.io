@@ -18,7 +18,7 @@
 <meta property="og:image" content="http://luoyefubuki.com/2020/02/24/java%E4%B8%AD%E7%9A%84%E5%85%B3%E9%94%AE%E5%AD%97%E4%B9%8Bfinal/1.jpg">
 <meta property="og:image" content="http://luoyefubuki.com/2020/02/24/java%E4%B8%AD%E7%9A%84%E5%85%B3%E9%94%AE%E5%AD%97%E4%B9%8Bfinal/2.jpg">
 <meta property="og:image" content="http://luoyefubuki.com/2020/02/24/java%E4%B8%AD%E7%9A%84%E5%85%B3%E9%94%AE%E5%AD%97%E4%B9%8Bfinal/3.jpg">
-<meta property="og:updated_time" content="2020-02-24T12:07:49.296Z">
+<meta property="og:updated_time" content="2020-02-24T12:10:04.355Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="java中的关键字之final">
 <meta name="twitter:description" content="前言已经工作一年多了，忽然间碰到一道网上的面试题，让你说出为什么java中的String是final修饰的。我当然是懵逼的，我好像工作中没怎么用过这个关键字，倒是经常翻看源码的时候能够看到它。然后我去看了下String类，发现果然前边有个修饰符final，而且我平时遇到这个关键词的时候也没有多想，感觉和我没太大关系，只要我能使用其API进行字符串操作就可以了。不过目前由于我在研究一些开源项目的源码">
@@ -222,7 +222,7 @@
 <h2 id="final可以用来提前警示我们，防止将来踩坑"><a href="#final可以用来提前警示我们，防止将来踩坑" class="headerlink" title="final可以用来提前警示我们，防止将来踩坑"></a>final可以用来提前警示我们，防止将来踩坑</h2><p>被final修饰的实例变量必须要初始化，否则就会在编译阶段报错。<br><img src="//luoyefubuki.com/2020/02/24/java%E4%B8%AD%E7%9A%84%E5%85%B3%E9%94%AE%E5%AD%97%E4%B9%8Bfinal/3.jpg" alt="java中的关键字之final"></p>
 <p>需要加上构造函数，给实例成员初始化，才能通过编译。这样一来，每次我们构造这个对象的时候，name肯定会被赋予一个值，而不会等到后来代码量过大，已经不知道有没有给这个name赋值过。如果name值比较重要，而我们没有给其赋值，当我们需要用到它的时候，就会出现我们经常看到的异常NullPointException。<br><a href="//luoyefubuki.com/2020/02/24/java中的关键字之final/4.jpg">java中的关键字之final</a></p>
 <h2 id="final可以用来表示该方法为最终版，不允许再复写。"><a href="#final可以用来表示该方法为最终版，不允许再复写。" class="headerlink" title="final可以用来表示该方法为最终版，不允许再复写。"></a>final可以用来表示该方法为最终版，不允许再复写。</h2><p>我们知道子类继承父类的时候，如果重写了父类的方法，那么以后就只会调用子类重写完的方法，但是有的时候，有些方法我们希望只有父类拥有，子类不可重写它。这个时候，我们可能使用private就可以解决，但是有的方法我们又希望公开。所以这个时候用public final去修饰此方法，就可以达到这个目的。</p>
-<h2 id="从源头杜绝错误"><a href="#从源头杜绝错误" class="headerlink" title="从源头杜绝错误"></a>从源头杜绝错误</h2><p>其实这个作用在项目初期的时候不明显，可是一旦项目代码量逐渐庞大起来，就会有很多变量在使用的过程中发生改变。如果我们一开是就把那些不可改变的值规定成final常量，那么错误的源头就可以直接定位到了。因为这个值全程是无法改变的，要改变只能改变最初的这个位置。</p>
+<h2 id="从源头杜绝错误"><a href="#从源头杜绝错误" class="headerlink" title="从源头杜绝错误"></a>从源头杜绝错误</h2><p>其实这个作用在项目初期的时候不明显，可是一旦项目代码量逐渐庞大起来，就会有很多变量在使用的过程中发生改变。如果我们一开始就把那些不可改变的值规定成final常量，那么错误的源头就可以直接定位到了。因为这个值全程是无法改变的，要改变只能改变最初的这个位置。</p>
 <h1 id="回到String"><a href="#回到String" class="headerlink" title="回到String"></a>回到String</h1><p>因为String是我们工作中用到最多的一个核心类，所以我们还是从这个类入手学习final，获取的收益应该是比较高的。</p>
 <h2 id="为什么要把String设计成final"><a href="#为什么要把String设计成final" class="headerlink" title="为什么要把String设计成final"></a>为什么要把String设计成final</h2><p><strong>第一 不可被继承</strong> 首先我们知道一个类用final修饰，就表示这个类是最终版本，不可被继承。这样一来首先可以防止有些人继承String来写出另类String。<br><strong>第二 线程安全</strong> 接着就是大家都讨论的数据安全问题，为什么用final修饰了就变安全了呢。我们先回想一下什么情况下会造成数据不安全，那就是有多个线程同时对一个数据进行写操作时才会导致数据出问题。而经过final修饰的数据是无法进行改写操作的。虽然我们知道final修饰的引用变量只是表示，引用变量指向的对象不可改变，但是我们可以改变引用所指对象里面的数据啊。可是String类的底层是个char数组，而这个数组也是用final修饰的，所以创建完成后的String，其底层数组的指向也无法改变。这个时候你可能会说，那我直接定位到这个String底层的数组引用所指向的真实数组对象，去改里面的数组元素不就可以了。此处就不好意思了，这个底层数组除了用final修饰，还用了private修饰，哈哈哈哈哈，你怎么取过来呢。<br><a href="//luoyefubuki.com/2020/02/24/java中的关键字之final/5.jpg">java中的关键字之final</a><br>如下为String安全的示例</p>
 <pre><code>class Test{
