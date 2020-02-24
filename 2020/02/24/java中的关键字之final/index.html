@@ -18,7 +18,7 @@
 <meta property="og:image" content="http://luoyefubuki.com/2020/02/24/java%E4%B8%AD%E7%9A%84%E5%85%B3%E9%94%AE%E5%AD%97%E4%B9%8Bfinal/1.jpg">
 <meta property="og:image" content="http://luoyefubuki.com/2020/02/24/java%E4%B8%AD%E7%9A%84%E5%85%B3%E9%94%AE%E5%AD%97%E4%B9%8Bfinal/2.jpg">
 <meta property="og:image" content="http://luoyefubuki.com/2020/02/24/java%E4%B8%AD%E7%9A%84%E5%85%B3%E9%94%AE%E5%AD%97%E4%B9%8Bfinal/3.jpg">
-<meta property="og:updated_time" content="2020-02-24T12:06:02.120Z">
+<meta property="og:updated_time" content="2020-02-24T12:07:49.296Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="java中的关键字之final">
 <meta name="twitter:description" content="前言已经工作一年多了，忽然间碰到一道网上的面试题，让你说出为什么java中的String是final修饰的。我当然是懵逼的，我好像工作中没怎么用过这个关键字，倒是经常翻看源码的时候能够看到它。然后我去看了下String类，发现果然前边有个修饰符final，而且我平时遇到这个关键词的时候也没有多想，感觉和我没太大关系，只要我能使用其API进行字符串操作就可以了。不过目前由于我在研究一些开源项目的源码">
@@ -215,8 +215,9 @@
 <h1 id="final有啥用处"><a href="#final有啥用处" class="headerlink" title="final有啥用处"></a>final有啥用处</h1><p>那么我们可以利用final的特性做些什么呢。</p>
 <h2 id="final实现常量"><a href="#final实现常量" class="headerlink" title="final实现常量"></a>final实现常量</h2><p>我们在写代码的时候，会碰到一些基本不会改变的数据，例如打印日志的成员，我们通常会这样写，直接将其变为整个类的常量，因为打印日志是一个统一的功能，有一个可以打印日志的成员就足够了。</p>
 <blockquote>
-<p>private static final Logger logger = LoggerFactory.getLogger(XxlJobExecutor.class);<br>还有如下，比如设定过期时间，超时时间，这些时间对于整个系统来说是固定的，没有特例，都需要遵循。这种变量一般也直接使用final修饰变为常量。变为常量意味着将来你想改正这个值，就只需要修改一处，因为这就是最终版。<br><img src="//luoyefubuki.com/2020/02/24/java%E4%B8%AD%E7%9A%84%E5%85%B3%E9%94%AE%E5%AD%97%E4%B9%8Bfinal/2.jpg" alt="java中的关键字之final"></p>
+<p>private static final Logger logger = LoggerFactory.getLogger(XxlJobExecutor.class);</p>
 </blockquote>
+<p>还有如下，比如设定过期时间，超时时间，这些时间对于整个系统来说是固定的，没有特例，都需要遵循。这种变量一般也直接使用final修饰变为常量。变为常量意味着将来你想改正这个值，就只需要修改一处，因为这就是最终版。<br><img src="//luoyefubuki.com/2020/02/24/java%E4%B8%AD%E7%9A%84%E5%85%B3%E9%94%AE%E5%AD%97%E4%B9%8Bfinal/2.jpg" alt="java中的关键字之final"></p>
 <p>有没有发现final一般都是和static一起出现的。static我们知道一般用来表示全局，属于类级别的，配合final使用就是全局常量了。不过有时候前边再加个private修饰，那么就只能在自己类的内部使用了，相当于自己类内部的全局常量。</p>
 <h2 id="final可以用来提前警示我们，防止将来踩坑"><a href="#final可以用来提前警示我们，防止将来踩坑" class="headerlink" title="final可以用来提前警示我们，防止将来踩坑"></a>final可以用来提前警示我们，防止将来踩坑</h2><p>被final修饰的实例变量必须要初始化，否则就会在编译阶段报错。<br><img src="//luoyefubuki.com/2020/02/24/java%E4%B8%AD%E7%9A%84%E5%85%B3%E9%94%AE%E5%AD%97%E4%B9%8Bfinal/3.jpg" alt="java中的关键字之final"></p>
 <p>需要加上构造函数，给实例成员初始化，才能通过编译。这样一来，每次我们构造这个对象的时候，name肯定会被赋予一个值，而不会等到后来代码量过大，已经不知道有没有给这个name赋值过。如果name值比较重要，而我们没有给其赋值，当我们需要用到它的时候，就会出现我们经常看到的异常NullPointException。<br><a href="//luoyefubuki.com/2020/02/24/java中的关键字之final/4.jpg">java中的关键字之final</a></p>
