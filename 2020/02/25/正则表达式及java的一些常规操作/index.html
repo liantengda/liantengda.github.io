@@ -31,7 +31,11 @@
 <meta property="og:image" content="http://luoyefubuki.com/2020/02/25/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E5%8F%8Ajava%E7%9A%84%E4%B8%80%E4%BA%9B%E5%B8%B8%E8%A7%84%E6%93%8D%E4%BD%9C/14.jpg">
 <meta property="og:image" content="http://luoyefubuki.com/2020/02/25/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E5%8F%8Ajava%E7%9A%84%E4%B8%80%E4%BA%9B%E5%B8%B8%E8%A7%84%E6%93%8D%E4%BD%9C/15.jpg">
 <meta property="og:image" content="http://luoyefubuki.com/2020/02/25/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E5%8F%8Ajava%E7%9A%84%E4%B8%80%E4%BA%9B%E5%B8%B8%E8%A7%84%E6%93%8D%E4%BD%9C/16.jpg">
-<meta property="og:updated_time" content="2020-02-26T08:45:52.331Z">
+<meta property="og:image" content="http://luoyefubuki.com/2020/02/25/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E5%8F%8Ajava%E7%9A%84%E4%B8%80%E4%BA%9B%E5%B8%B8%E8%A7%84%E6%93%8D%E4%BD%9C/17.jpg">
+<meta property="og:image" content="http://luoyefubuki.com/2020/02/25/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E5%8F%8Ajava%E7%9A%84%E4%B8%80%E4%BA%9B%E5%B8%B8%E8%A7%84%E6%93%8D%E4%BD%9C/18.jpg">
+<meta property="og:image" content="http://luoyefubuki.com/2020/02/25/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E5%8F%8Ajava%E7%9A%84%E4%B8%80%E4%BA%9B%E5%B8%B8%E8%A7%84%E6%93%8D%E4%BD%9C/19.jpg">
+<meta property="og:image" content="http://luoyefubuki.com/2020/02/25/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E5%8F%8Ajava%E7%9A%84%E4%B8%80%E4%BA%9B%E5%B8%B8%E8%A7%84%E6%93%8D%E4%BD%9C/20.jpg">
+<meta property="og:updated_time" content="2020-02-26T10:45:40.746Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="正则表达式及java的一些常规操作">
 <meta name="twitter:description" content="前言最近在翻阅一个项目的源码时，碰到了一个验证身份证号是否合格的注解类，然后我当然也好奇，怎么才能检测出来身份证号合不合乎规定。于是看了一下大家都在用的校验方式，正则表达式。结果看的我是一脸懵逼，这都是什么玩意儿，这是人能看懂的东西吗。如下所示">
@@ -228,22 +232,39 @@
 </blockquote>
 <p>于是好奇心作祟，又研究了一天的正则表达式。</p>
 <h1 id="正则表达式是什么"><a href="#正则表达式是什么" class="headerlink" title="正则表达式是什么"></a>正则表达式是什么</h1><p>正则表达式其实是个字符串模板，只要能塞入这个模板的字符串，那么就能通过它的校验。既然有这种判断字符串符不符合我们的要求这种需求，那么我们也知道一定有那么个类，封装了一个方法，通过校验就能够返回true，通不过就返回false。JDK中就封装了有关正则表达式的类。等我们先把常用的一些符号认识完再进行实操。</p>
-<h1 id="正则表达式中的符号"><a href="#正则表达式中的符号" class="headerlink" title="正则表达式中的符号"></a>正则表达式中的符号</h1><h2 id="第一就是我们的普通字符"><a href="#第一就是我们的普通字符" class="headerlink" title="第一就是我们的普通字符"></a>第一就是我们的普通字符</h2><p>字母、数字、汉字、下划线、以及没有特殊定义的标点符 号，都是“普通字符”。比如，a就匹配a，b就匹配b，逗号就匹配逗号。所以，当我们学完正则表达式之后，知道了那些特殊字符的含义，反而容易忘记其实普通字符也能加入表达式进行匹配筛选。如下图所示：<br><img src="//luoyefubuki.com/2020/02/25/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E5%8F%8Ajava%E7%9A%84%E4%B8%80%E4%BA%9B%E5%B8%B8%E8%A7%84%E6%93%8D%E4%BD%9C/1.jpg" alt="正则表达式及java的一些常规操作"></p>
-<h2 id="第二就是那些普通的转义字符"><a href="#第二就是那些普通的转义字符" class="headerlink" title="第二就是那些普通的转义字符"></a>第二就是那些普通的转义字符</h2><p>我们都知道\t代表制表符，就是我们经常打字的时候使用的tab键敲出来字符，这类字符前边都需要一个斜杠来代表他们没有特殊含义，例如想要表示^,就必须加上斜杠，^，不然将会称为正则表达式里面的特殊字符，带有特殊含义。如下图所示。<br><img src="//luoyefubuki.com/2020/02/25/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E5%8F%8Ajava%E7%9A%84%E4%B8%80%E4%BA%9B%E5%B8%B8%E8%A7%84%E6%93%8D%E4%BD%9C/2.jpg" alt="正则表达式及java的一些常规操作"></p>
-<h2 id="第三就是标准字符集合——开始特殊"><a href="#第三就是标准字符集合——开始特殊" class="headerlink" title="第三就是标准字符集合——开始特殊"></a>第三就是标准字符集合——开始特殊</h2><p>从这类字符开始，我们将介绍正则表达式里面那些令人眼花缭乱的字符，学完这些特殊字符集合之后就不再那么眼花缭乱了。<br>标准字符集合，通常可以用来匹配一类字符，比如我想要拿到字符串里面所有的数字，我想要拿到空格，制表符，换行符这些空白字符等，大佬们已经规定好了一些字符来代表它们。如下<br><img src="//luoyefubuki.com/2020/02/25/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E5%8F%8Ajava%E7%9A%84%E4%B8%80%E4%BA%9B%E5%B8%B8%E8%A7%84%E6%93%8D%E4%BD%9C/3.jpg" alt="正则表达式及java的一些常规操作"></p>
-<h2 id="第四就是自定义字符集合"><a href="#第四就是自定义字符集合" class="headerlink" title="第四就是自定义字符集合"></a>第四就是自定义字符集合</h2><p>自定义，自定义，很明显就是我们已经在用以上那三类字符开始写符合自己要求的表达式了。如下，加了中括号，表示我们可以匹配里面任意 <strong>单个字符</strong>，而且有一个很常见的写法，a-z，就是指从a到z的小写字符里面都可以匹配，相当于26个小写英文都包括在内了。<br><img src="//luoyefubuki.com/2020/02/25/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E5%8F%8Ajava%E7%9A%84%E4%B8%80%E4%BA%9B%E5%B8%B8%E8%A7%84%E6%93%8D%E4%BD%9C/4.jpg" alt="正则表达式及java的一些常规操作"><br><strong>注意</strong><br>正则表达式的特殊符号，被包含到中括号中，则失去特殊意义，除了 ^,-之外。<br>标准字符集合，如果被包含于中括号，也基本上失效了。（这里我还不清出特例）如下就表示找出字符串中的数字，小数点，横杠被斜杠转义了，所以匹配横杠，加号。<br><img src="//luoyefubuki.com/2020/02/25/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E5%8F%8Ajava%E7%9A%84%E4%B8%80%E4%BA%9B%E5%B8%B8%E8%A7%84%E6%93%8D%E4%BD%9C/5.jpg" alt="正则表达式及java的一些常规操作"></p>
-<h2 id="第五令人一时无法接受的量词"><a href="#第五令人一时无法接受的量词" class="headerlink" title="第五令人一时无法接受的量词"></a>第五令人一时无法接受的量词</h2><p>量词，量词，就是表示数量的词。以上的例子我们发现，每次匹配完的结果都是单个字符，没有啥实际意义。如下，看上去也感觉不到啥神奇的地方。<br><img src="//luoyefubuki.com/2020/02/25/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E5%8F%8Ajava%E7%9A%84%E4%B8%80%E4%BA%9B%E5%B8%B8%E8%A7%84%E6%93%8D%E4%BD%9C/6.jpg" alt="正则表达式及java的一些常规操作"></p>
-<p>有了量词的参与，那么结果就会让我们眼前一亮。理解下表，我们可以这样理解，没有逗号的，那么就是匹配符合要求的字符N次，这里我需要着重讲解下什么叫匹配N次，我一开始就是这里不明白，也没人能很快讲明白，我原本以为是就这么匹配N次就完事了，其实就是匹配一次，当前字符串长度+1，然后连续匹配N次都通过匹配，那么就把当前这个长度为N的字符串作为匹配结果显示，一旦中途匹配不成功，那么就放弃这段字符串，接着往下匹配。如下图所示。<br><img src="//luoyefubuki.com/2020/02/25/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E5%8F%8Ajava%E7%9A%84%E4%B8%80%E4%BA%9B%E5%B8%B8%E8%A7%84%E6%93%8D%E4%BD%9C/7.jpg" alt="正则表达式及java的一些常规操作"></p>
-<p>然后有逗号的，逗号左边就是最少应该匹配几次，逗号右边就是最多应该匹配几个。这里就引出了正则表达式最难理解概念， <strong>贪婪模式：如果可以匹配到最多的，那么就选择最多的。非贪婪模式则反之，匹配的越少越好。</strong>，而正则表达式默认为贪婪模式，如下图解释。<br><img src="//luoyefubuki.com/2020/02/25/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E5%8F%8Ajava%E7%9A%84%E4%B8%80%E4%BA%9B%E5%B8%B8%E8%A7%84%E6%93%8D%E4%BD%9C/8.jpg" alt="正则表达式及java的一些常规操作"></p>
-<p>加号的应用，最少的有这么一个字符<br><img src="//luoyefubuki.com/2020/02/25/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E5%8F%8Ajava%E7%9A%84%E4%B8%80%E4%BA%9B%E5%B8%B8%E8%A7%84%E6%93%8D%E4%BD%9C/9.jpg" alt="正则表达式及java的一些常规操作"></p>
-<p>星号表示范围比较大<br><img src="//luoyefubuki.com/2020/02/25/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E5%8F%8Ajava%E7%9A%84%E4%B8%80%E4%BA%9B%E5%B8%B8%E8%A7%84%E6%93%8D%E4%BD%9C/10.jpg" alt="正则表达式及java的一些常规操作"></p>
-<p>问号最难理解<br><img src="//luoyefubuki.com/2020/02/25/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E5%8F%8Ajava%E7%9A%84%E4%B8%80%E4%BA%9B%E5%B8%B8%E8%A7%84%E6%93%8D%E4%BD%9C/11.jpg" alt="正则表达式及java的一些常规操作"></p>
-<h2 id="第六字符边界"><a href="#第六字符边界" class="headerlink" title="第六字符边界"></a>第六字符边界</h2><p>这个比较好理解，如下<br><img src="//luoyefubuki.com/2020/02/25/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E5%8F%8Ajava%E7%9A%84%E4%B8%80%E4%BA%9B%E5%B8%B8%E8%A7%84%E6%93%8D%E4%BD%9C/12.jpg" alt="正则表达式及java的一些常规操作"></p>
-<p>比如我要匹配一个单词html。<br><img src="//luoyefubuki.com/2020/02/25/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E5%8F%8Ajava%E7%9A%84%E4%B8%80%E4%BA%9B%E5%B8%B8%E8%A7%84%E6%93%8D%E4%BD%9C/13.jpg" alt="正则表达式及java的一些常规操作"></p>
-<h2 id="第七选择符和分组"><a href="#第七选择符和分组" class="headerlink" title="第七选择符和分组"></a>第七选择符和分组</h2><p>这个就很类似与我们的java了，一个竖杠表示或者，意思就是两边都可以选，只要能符合左右任何一边就可以验证通过。比如身份证号有15位的，有18位的，这个时候我们就需要准备两种情况，中间用竖杠分开区分。括号就和java中的也一样，包起来的就是当一个单位看待。<br><img src="//luoyefubuki.com/2020/02/25/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E5%8F%8Ajava%E7%9A%84%E4%B8%80%E4%BA%9B%E5%B8%B8%E8%A7%84%E6%93%8D%E4%BD%9C/14.jpg" alt="正则表达式及java的一些常规操作"></p>
-<p>使用括号分组<br><img src="//luoyefubuki.com/2020/02/25/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E5%8F%8Ajava%E7%9A%84%E4%B8%80%E4%BA%9B%E5%B8%B8%E8%A7%84%E6%93%8D%E4%BD%9C/15.jpg" alt="正则表达式及java的一些常规操作"></p>
-<p>第二个分组<br><img src="//luoyefubuki.com/2020/02/25/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E5%8F%8Ajava%E7%9A%84%E4%B8%80%E4%BA%9B%E5%B8%B8%E8%A7%84%E6%93%8D%E4%BD%9C/16.jpg" alt="正则表达式及java的一些常规操作"></p>
-<h1 id="实操解析"><a href="#实操解析" class="headerlink" title="实操解析"></a>实操解析</h1><p>接下来我们就拿身份证的正则表达式举个例子吧。如下<br>大家都知道，java中的双引号里面某些字符前需要加转义字符斜杠来维持其愿意，所以以下\d前都加了转义字符。</p>
+<h1 id="正则表达式中的符号"><a href="#正则表达式中的符号" class="headerlink" title="正则表达式中的符号"></a>正则表达式中的符号</h1><h2 id="第一就是我们的普通字符"><a href="#第一就是我们的普通字符" class="headerlink" title="第一就是我们的普通字符"></a>第一就是我们的普通字符</h2><p>字母、数字、汉字、下划线、以及没有特殊定义的标点符 号，都是“普通字符”。比如，a就匹配a，b就匹配b，逗号就匹配逗号。所以，当我们学完正则表达式之后，知道了那些特殊字符的含义，反而容易忘记其实普通字符也能加入表达式进行匹配筛选。如下图所示：</p>
+<p><img src="//luoyefubuki.com/2020/02/25/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E5%8F%8Ajava%E7%9A%84%E4%B8%80%E4%BA%9B%E5%B8%B8%E8%A7%84%E6%93%8D%E4%BD%9C/1.jpg" alt="正则表达式及java的一些常规操作"></p>
+<h2 id="第二就是那些普通的转义字符"><a href="#第二就是那些普通的转义字符" class="headerlink" title="第二就是那些普通的转义字符"></a>第二就是那些普通的转义字符</h2><p>我们都知道\t代表制表符，就是我们经常打字的时候使用的tab键敲出来字符，这类字符前边都需要一个斜杠来代表他们没有特殊含义，例如想要表示^,就必须加上斜杠，^，不然将会称为正则表达式里面的特殊字符，带有特殊含义。如下图所示。</p>
+<p><img src="//luoyefubuki.com/2020/02/25/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E5%8F%8Ajava%E7%9A%84%E4%B8%80%E4%BA%9B%E5%B8%B8%E8%A7%84%E6%93%8D%E4%BD%9C/2.jpg" alt="正则表达式及java的一些常规操作"></p>
+<h2 id="第三就是标准字符集合——开始特殊"><a href="#第三就是标准字符集合——开始特殊" class="headerlink" title="第三就是标准字符集合——开始特殊"></a>第三就是标准字符集合——开始特殊</h2><p>从这类字符开始，我们将介绍正则表达式里面那些令人眼花缭乱的字符，学完这些特殊字符集合之后就不再那么眼花缭乱了。<br>标准字符集合，通常可以用来匹配一类字符，比如我想要拿到字符串里面所有的数字，我想要拿到空格，制表符，换行符这些空白字符等，大佬们已经规定好了一些字符来代表它们。如下</p>
+<p><img src="//luoyefubuki.com/2020/02/25/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E5%8F%8Ajava%E7%9A%84%E4%B8%80%E4%BA%9B%E5%B8%B8%E8%A7%84%E6%93%8D%E4%BD%9C/3.jpg" alt="正则表达式及java的一些常规操作"></p>
+<h2 id="第四就是自定义字符集合"><a href="#第四就是自定义字符集合" class="headerlink" title="第四就是自定义字符集合"></a>第四就是自定义字符集合</h2><p>自定义，自定义，很明显就是我们已经在用以上那三类字符开始写符合自己要求的表达式了。如下，加了中括号，表示我们可以匹配里面任意 <strong>单个字符</strong>，而且有一个很常见的写法，a-z，就是指从a到z的小写字符里面都可以匹配，相当于26个小写英文都包括在内了。</p>
+<p><img src="//luoyefubuki.com/2020/02/25/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E5%8F%8Ajava%E7%9A%84%E4%B8%80%E4%BA%9B%E5%B8%B8%E8%A7%84%E6%93%8D%E4%BD%9C/4.jpg" alt="正则表达式及java的一些常规操作"></p>
+<p><strong>注意</strong><br>正则表达式的特殊符号，被包含到中括号中，则失去特殊意义，除了 ^,-之外。<br>标准字符集合，如果被包含于中括号，也基本上失效了。（这里我还不清出特例）如下就表示找出字符串中的数字，小数点，横杠被斜杠转义了，所以匹配横杠，加号。</p>
+<p><img src="//luoyefubuki.com/2020/02/25/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E5%8F%8Ajava%E7%9A%84%E4%B8%80%E4%BA%9B%E5%B8%B8%E8%A7%84%E6%93%8D%E4%BD%9C/5.jpg" alt="正则表达式及java的一些常规操作"></p>
+<h2 id="第五令人一时无法接受的量词"><a href="#第五令人一时无法接受的量词" class="headerlink" title="第五令人一时无法接受的量词"></a>第五令人一时无法接受的量词</h2><p>量词，量词，就是表示数量的词。以上的例子我们发现，每次匹配完的结果都是单个字符，没有啥实际意义。如下，看上去也感觉不到啥神奇的地方。</p>
+<p><img src="//luoyefubuki.com/2020/02/25/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E5%8F%8Ajava%E7%9A%84%E4%B8%80%E4%BA%9B%E5%B8%B8%E8%A7%84%E6%93%8D%E4%BD%9C/6.jpg" alt="正则表达式及java的一些常规操作"></p>
+<p>有了量词的参与，那么结果就会让我们眼前一亮。理解下表，我们可以这样理解，没有逗号的，那么就是匹配符合要求的字符N次，这里我需要着重讲解下什么叫匹配N次，我一开始就是这里不明白，也没人能很快讲明白，我原本以为是就这么匹配N次就完事了，其实就是匹配一次，当前字符串长度+1，然后连续匹配N次都通过匹配，那么就把当前这个长度为N的字符串作为匹配结果显示，一旦中途匹配不成功，那么就放弃这段字符串，接着往下匹配。如下图所示。</p>
+<p><img src="//luoyefubuki.com/2020/02/25/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E5%8F%8Ajava%E7%9A%84%E4%B8%80%E4%BA%9B%E5%B8%B8%E8%A7%84%E6%93%8D%E4%BD%9C/7.jpg" alt="正则表达式及java的一些常规操作"></p>
+<p>然后有逗号的，逗号左边就是最少应该匹配几次，逗号右边就是最多应该匹配几个。这里就引出了正则表达式最难理解概念， <strong>贪婪模式：如果可以匹配到最多的，那么就选择最多的。非贪婪模式则反之，匹配的越少越好。</strong>，而正则表达式默认为贪婪模式，如下图解释。</p>
+<p><img src="//luoyefubuki.com/2020/02/25/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E5%8F%8Ajava%E7%9A%84%E4%B8%80%E4%BA%9B%E5%B8%B8%E8%A7%84%E6%93%8D%E4%BD%9C/8.jpg" alt="正则表达式及java的一些常规操作"></p>
+<p>加号的应用，最少的有这么一个字符</p>
+<p><img src="//luoyefubuki.com/2020/02/25/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E5%8F%8Ajava%E7%9A%84%E4%B8%80%E4%BA%9B%E5%B8%B8%E8%A7%84%E6%93%8D%E4%BD%9C/9.jpg" alt="正则表达式及java的一些常规操作"></p>
+<p>星号表示范围比较大</p>
+<p><img src="//luoyefubuki.com/2020/02/25/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E5%8F%8Ajava%E7%9A%84%E4%B8%80%E4%BA%9B%E5%B8%B8%E8%A7%84%E6%93%8D%E4%BD%9C/10.jpg" alt="正则表达式及java的一些常规操作"></p>
+<p>问号最难理解</p>
+<p><img src="//luoyefubuki.com/2020/02/25/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E5%8F%8Ajava%E7%9A%84%E4%B8%80%E4%BA%9B%E5%B8%B8%E8%A7%84%E6%93%8D%E4%BD%9C/11.jpg" alt="正则表达式及java的一些常规操作"></p>
+<h2 id="第六字符边界"><a href="#第六字符边界" class="headerlink" title="第六字符边界"></a>第六字符边界</h2><p>这个比较好理解，如下</p>
+<p><img src="//luoyefubuki.com/2020/02/25/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E5%8F%8Ajava%E7%9A%84%E4%B8%80%E4%BA%9B%E5%B8%B8%E8%A7%84%E6%93%8D%E4%BD%9C/12.jpg" alt="正则表达式及java的一些常规操作"></p>
+<p>比如我要匹配一个单词html。</p>
+<p><img src="//luoyefubuki.com/2020/02/25/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E5%8F%8Ajava%E7%9A%84%E4%B8%80%E4%BA%9B%E5%B8%B8%E8%A7%84%E6%93%8D%E4%BD%9C/13.jpg" alt="正则表达式及java的一些常规操作"></p>
+<h2 id="第七选择符和分组"><a href="#第七选择符和分组" class="headerlink" title="第七选择符和分组"></a>第七选择符和分组</h2><p>这个就很类似与我们的java了，一个竖杠表示或者，意思就是两边都可以选，只要能符合左右任何一边就可以验证通过。比如身份证号有15位的，有18位的，这个时候我们就需要准备两种情况，中间用竖杠分开区分。括号就和java中的也一样，包起来的就是当一个单位看待。</p>
+<p><img src="//luoyefubuki.com/2020/02/25/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E5%8F%8Ajava%E7%9A%84%E4%B8%80%E4%BA%9B%E5%B8%B8%E8%A7%84%E6%93%8D%E4%BD%9C/14.jpg" alt="正则表达式及java的一些常规操作"></p>
+<p>使用括号分组</p>
+<p><img src="//luoyefubuki.com/2020/02/25/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E5%8F%8Ajava%E7%9A%84%E4%B8%80%E4%BA%9B%E5%B8%B8%E8%A7%84%E6%93%8D%E4%BD%9C/15.jpg" alt="正则表达式及java的一些常规操作"></p>
+<p>第二个分组</p>
+<p><img src="//luoyefubuki.com/2020/02/25/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E5%8F%8Ajava%E7%9A%84%E4%B8%80%E4%BA%9B%E5%B8%B8%E8%A7%84%E6%93%8D%E4%BD%9C/16.jpg" alt="正则表达式及java的一些常规操作"></p>
+<h1 id="实操解析"><a href="#实操解析" class="headerlink" title="实操解析"></a>实操解析</h1><p>接下来我们就拿身份证的正则表达式举个例子吧。如下<br>大家都知道，java中的双引号里面某些字符前需要加转义字符斜杠来维持其愿意，所以以下\d前都加了转义字符。不过我发现用markdown发布之后，居然也直接变正常了，自动帮转成正常的了。</p>
 <blockquote>
 <p>@Pattern(regexp = “(^[1-9]\d{5}(19|([23]\d))\d{2}((0[1-9])|(10|11|12))(([0-2][1-9])|10|20|30|31)\d{3}[0-9Xx]$)|(^[1-9]\d{5}\d{2}((0[1-9])|(10|11|12))(([0-2][1-9])|10|20|30|31)\d{2}[0-9Xx]$)”)</p>
 </blockquote>
@@ -255,7 +276,145 @@
 <blockquote>
 <p>15位身份证号排列顺序从左到右依次为：6位数字地址编码，6位数字出生日期编码，2位出生顺序编号，1位性别标号（奇数为男性，偶数为女性）。<br>18位身份证号由十七位数字本体码和一位校验码组成。排列顺序从左至右依次为：6位数字地址编码，8位数字出生日期编码，3位数字顺序码和1位数字校验码。<br>例如    142631 19960616 461 2<br>最简单的规则：长度等于15位或18位<br>追加规则：数字地址编码要有效，如 110106这种地址编码是有效的，但010018是无效的，因为每两位代表一级编码，表示所在省、市、县，省编码不会以0开头，00不可能是有效的市编码<br>追加规则：日期要有效。像19880331就是无效的，3月不会有31号<br>追加规则：日期要考虑闰年<br>还有18位后面追加字母的也得判断</p>
 </blockquote>
-<p><strong>解析步骤</strong><br>1 所以我们先看有 <strong>两个小括号</strong>，分为 <strong>两个大组</strong>，中间用 <strong>竖杠</strong>隔开，表示一组是15位身份证验证表达式，一组是18位身份证验证表达式。解析完我们就知道哪个是18位了。<br>2 然后一开始我们发现有个^，表示必须以什么开头的意思，边界字符，中括号里面是1-9，意思就是必须是1-9这里面的数字开头，也就是不能以0开头。<br>3 杠d然后花括号里面是5，这不就是一个标准字符，表示整数，一个量词，表示5个。那么就是紧接着5个整数的意思。<br>4 然后接下来应该到了年份，一个小括号里面有个竖杠，表示分成两份，而且后面（[23]杠d）被括到了一起，所以前边19就成了一个整体，因为竖杠后边两位成了一个组。所以这个组里面我们得出19可以，2几可以，3几也可以。<br>5 然后接着杠d{2}表示两个整数，那么和第4步结合，就是19几几年，或者2几几几年，或者3几几几年。<br>6 接着是月份了，我们可以看到（）里面有好多杠，不过10，11，12月份被分为一组，而前边个位数月份当然是以0开头，而后边以为当然是从1到9里面选了。<br>7 接着是日了。我们可能看到（）里面括了好多，先是看杠，可以看出来10，20，30，31和前面[0-2][1-9]取或，那么日期第一位先是从0-2取，因为除了31和30，不可能再有超过3的了，第二位1-9里面取，因为10，20，30已经给我们准备好了。<br>8 接着是三个整数，再加上一个0到9的整数或者Xx里面随机一个，一共四个整数。所以我们可以看出来这是个18位身份证。而且日期里面有个小bug，2月份也有了30，31号。<br>9 既然知道左边是18位的，我们再看15位的，一开始六个数排版一模一样。以1开头，加五个整数。<br>10 然后年份直接是两个整数，其实15位的默认为19几几，所以这两位代表这里的几几。<br>11 月份日期一模一样，最后只有两个整数加上一个末尾数。不过网上说15位身份证没有以Xx结尾的，最后一位单数表示男性，双数表示女性。看来这正则表达式直接复制过来有bug啊，果然是没有技术容易被人忽悠。</p>
+<p><strong>解析步骤</strong><br>1 所以我们先看有 <strong>两个小括号</strong>，分为 <strong>两个大组</strong>，中间用 <strong>竖杠</strong>隔开，表示一组是15位身份证验证表达式，一组是18位身份证验证表达式。解析完我们就知道哪个是18位了。<br>2 然后一开始我们发现有个 <strong>^</strong>，表示 <strong>必须以什么开头</strong>的意思， <strong>边界字符</strong>，中括号里面是1-9，意思就是必须是1-9这里面的数字开头，也就是不能以0开头。<br>3 <strong>\d</strong> 然后花括号里面是5，这不就是一个 <strong>标准字符</strong>，表示整数，一个 <strong>量词</strong>，表示5个。那么就是紧接着5个整数的意思。<br>4 然后接下来应该到了年份，一个小括号里面有个 <strong>|</strong>，表示分成两份，而且后面 <strong>（[23]杠d）</strong> 被 <strong>括到了一起</strong>，所以 <strong>前边19</strong> 就成了 <strong>一个整体</strong>，因为竖杠后边两位成了一个组。所以这个组里面我们得出19可以，2几可以，3几也可以。<br>5 然后接着杠d{2}表示两个整数，那么和第4步结合，就是19几几年，或者2几几几年，或者3几几几年。<br>6 接着是月份了，我们可以看到 <strong>（）</strong>里面有好多 <strong>|</strong>，不过10，11，12月份被分为一组，而个位数月份的第一位就是一个0 <strong>普通字符</strong>，代表此处只能为0，而后边一位用 <strong>中括号</strong>， <strong>[1-9]</strong>,意思就是从1到9里面选了。<br>7 接着是日了。我们可能看到 <strong>（）</strong>里面括了好多，先是看 <strong>|</strong>，可以看出来10，20，30，31和前面[0-2][1-9]取或，那么日期第一位先是从0-2取，因为除了31和30，不可能再有超过3的了，第二位1-9里面取，因为10，20，30已经给我们准备好了。<br>8 接着是三个整数，再加上一个0到9的整数或者Xx里面随机一个，一共四个整数。所以我们可以看出来这是个18位身份证。而且日期里面有个小bug，所有的月份都有30和31号。<br>9 既然知道左边是18位的，我们再看15位的，一开始六个数排版一模一样。以1开头，加五个整数。<br>10 然后年份直接是两个整数，其实15位的默认为19几几，所以这两位代表这里的几几。<br>11 月份日期一模一样，最后只有两个整数加上一个末尾数。不过网上说15位身份证没有以Xx结尾的，最后一位单数表示男性，双数表示女性。看来这正则表达式直接复制过来有bug啊，果然是没有技术容易被人忽悠。</p>
+<p>我们可以直接用正则表达式软件测试几组，如下</p>
+<p><img src="//luoyefubuki.com/2020/02/25/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E5%8F%8Ajava%E7%9A%84%E4%B8%80%E4%BA%9B%E5%B8%B8%E8%A7%84%E6%93%8D%E4%BD%9C/17.jpg" alt="正则表达式及java的一些常规操作"></p>
+<h1 id="使用JDK中包装的Pattern来操作正则"><a href="#使用JDK中包装的Pattern来操作正则" class="headerlink" title="使用JDK中包装的Pattern来操作正则"></a>使用JDK中包装的Pattern来操作正则</h1><p>工具代码如下：</p>
+<pre><code>public class RegexUtil {
+    /**
+     * 检测身份证号合不合乎规范
+     * @param IDCard  待检测身份证号码
+     * @return
+     */
+    public static String checkIDCard(String IDCard){
+    String regex = &quot;(^[1-9]\\d{5}(19|([23]\\d))\\d{2}((0[1-9])|(10|11|12))(([0-2][1-9])|10|20|30|31)\\d{3}[0-9Xx]$)|(^[1-9]\\d{5}\\d{2}((0[1-9])|(10|11|12))(([0-2][1-9])|10|20|30|31)\\d{2}[0-9Xx]$)&quot;;
+    Pattern compile = Pattern.compile(regex);
+    Matcher matcher = compile.matcher(IDCard);
+    if(matcher.find()){
+        return &quot;身份证号---&gt;&quot;+IDCard+&quot;合乎规范&quot;;
+    }else {
+        return &quot;身份证号---&gt;&quot;+IDCard+&quot;不合乎规范&quot;;
+    }
+    }
+}</code></pre><p>测试代码如下：</p>
+<pre><code>public class TestRegex {
+    public static void main(String[] args) {
+    String IdCard1 = &quot;187654199608312671&quot;;
+    String IdCard2 = &quot;147861199505684371&quot;;
+    String check1 = RegexUtil.checkIDCard(IdCard1);
+    String check2 = RegexUtil.checkIDCard(IdCard2);
+    System.out.println(check1);
+    System.out.println(check2);
+    }
+}</code></pre><p>结果如下：</p>
+<p><img src="//luoyefubuki.com/2020/02/25/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E5%8F%8Ajava%E7%9A%84%E4%B8%80%E4%BA%9B%E5%B8%B8%E8%A7%84%E6%93%8D%E4%BD%9C/18.jpg" alt="正则表达式及java的一些常规操作"></p>
+<h1 id="Pattern中的一些方法"><a href="#Pattern中的一些方法" class="headerlink" title="Pattern中的一些方法"></a>Pattern中的一些方法</h1><p>一开始接触Pattern真的挺懵逼的，看了半天才把以下函数看懂。</p>
+<h2 id="group函数"><a href="#group函数" class="headerlink" title="group函数"></a>group函数</h2><p>group函数，就是帮助我们分理出正则表达式匹配结果中（）分组所匹配的各个小组结果。其中group（）和group（0）的意思大致相同，都是最大分组。如下</p>
+<pre><code>public class RegexUtil {
+    /**
+     * 检测身份证号合不合乎规范
+     * @param IDCard  待检测身份证号码
+     * @return
+     */
+    public static String checkIDCard(String IDCard){
+    String regex = &quot;(^[1-9]\\d{5}(19|([23]\\d))\\d{2}((0[1-9])|(10|11|12))(([0-2][1-9])|10|20|30|31)\\d{3}[0-9Xx]$)|(^[1-9]\\d{5}\\d{2}((0[1-9])|(10|11|12))(([0-2][1-9])|10|20|30|31)\\d{2}[0-9Xx]$)&quot;;
+    Pattern compile = Pattern.compile(regex);
+    Matcher matcher = compile.matcher(IDCard);
+    if(matcher.find()){
+        System.out.println(&quot;分组个数---》&quot;+matcher.groupCount()+&quot;个&quot;);
+        System.out.println(&quot;最大分组---》&quot;+matcher.group());
+        System.out.println(&quot;最大分组---》&quot;+matcher.group(0));
+        for(int i=1;i&lt;matcher.groupCount();i++){
+        System.out.println(&quot;分组&quot;+i+&quot;---&gt;&quot;+matcher.group(i));
+        }
+        return &quot;身份证号---&gt;&quot;+IDCard+&quot;合乎规范&quot;;
+    }else {
+        return &quot;身份证号---&gt;&quot;+IDCard+&quot;不合乎规范&quot;;
+    }
+    }
+}</code></pre><p>测试类</p>
+<pre><code>public class TestRegex {
+    public static void main(String[] args) {
+    String IdCard1 = &quot;187654199608312671&quot;;
+    String IdCard2 = &quot;147861199505684371&quot;;
+    String check1 = RegexUtil.checkIDCard(IdCard1);
+    String check2 = RegexUtil.checkIDCard(IdCard2);
+    System.out.println(check1);
+    System.out.println(check2);
+    }
+}</code></pre><p>测试结果如下，我有点困惑了，这个分组1是不是表示18位身份证那个大括号呢？</p>
+<p><img src="//luoyefubuki.com/2020/02/25/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E5%8F%8Ajava%E7%9A%84%E4%B8%80%E4%BA%9B%E5%B8%B8%E8%A7%84%E6%93%8D%E4%BD%9C/19.jpg" alt="正则表达式及java的一些常规操作"></p>
+<h2 id="find方法"><a href="#find方法" class="headerlink" title="find方法"></a>find方法</h2><p>如果我们去匹配一大段文章里面同一类东西呢。那样就不止如上身份证那样，一会只匹配一个了。可能会匹配出多个符合正则表达式的结果。如下，我们匹配博客园读取过来的源代码中，所有的超链接。<br>我们可以看到以下代码，里面有个内部类，只是为了方便，不想在创建其他类了，才写到了这里。其中getHtml方法是获取网页源代码的，这里获取的博客园的。printMatchResult方法是打印匹配结果的，主要就是这个打印结果的方法里面，有个find方法。按照官方注释，就是找到下一匹配成功的结果。这样就可以循环下去，知道最后一个。</p>
+<pre><code>/**
+ * 正则表达式中的几个符号
+ * + 表示{1，}起码一个
+ * ？表示（0，1）最多一个
+ * * 表示{0，}不出现或者任意次数
+ */
+public class TestRegex {
+    public static void main(String[] args) {
+    String html = HttpGetUtil.getHtml();
+    String reg = &quot;href=\&quot;.+?\&quot;&quot;;
+    HttpGetUtil.printMatchResult(html,reg);
+    }
+}
+/**
+ * 一个内部类
+ */
+class HttpGetUtil{
+//虚拟的http请求客户端
+public static final CloseableHttpClient httpClient = HttpClients.createDefault();
+//响应对象
+public static  CloseableHttpResponse response = null;
+    /**
+     * 获取网页源代码
+     * @return
+     */
+    public static String getHtml(){
+    HttpGet get = new HttpGet(&quot;http://www.cnblogs.com/&quot;);
+    get.addHeader(&quot;Content-type&quot;, &quot;application/x-www-form-urlencoded&quot;);
+    get.addHeader(&quot;Content-length&quot;,&quot;0&quot;);
+    get.addHeader(&quot;accept&quot;, &quot;application/json&quot;);
+    get.addHeader(&quot;User-Agent&quot;, &quot;Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.7.6)&quot;);
+    //发起httpClient请求
+    System.out.println(&quot;准备发起请求&quot;);
+    try {
+        response = httpClient.execute(get);
+    } catch (IOException e) {
+        e.printStackTrace();
+    }
+    //获取请求返回的对象
+    HttpEntity entity = response.getEntity();
+    String entityStr = null;
+    //生成响应体内容
+    if(entity != null){
+        try {
+          entityStr = EntityUtils.toString(entity,&quot;UTF-8&quot;);
+        } catch (IOException e) {
+        e.printStackTrace();
+        }
+    }
+    return entityStr;
+    }
+    /**
+     * 根据正则表达式打印源代码中指定的字符串
+     * @param html 待匹配源代码
+     * @param reg 要求的正则表达式
+     * @return
+     */
+    public static void printMatchResult(String html,String reg){
+    int count = 0;
+    ArrayList&lt;Article&gt; articles = new ArrayList&lt;&gt;();
+    Pattern pattern = Pattern.compile(reg);
+    Matcher matcher = pattern.matcher(html);
+    while (matcher.find()){ //居然是个游标
+        System.out.println(matcher.group());//取出每次找到的匹配结果
+        count++;
+    }
+    System.out.println(&quot;一共有多少个这样的字符串&quot;+count);
+    }
+}</code></pre><p>打印结果为如下：</p>
+<p><img src="//luoyefubuki.com/2020/02/25/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E5%8F%8Ajava%E7%9A%84%E4%B8%80%E4%BA%9B%E5%B8%B8%E8%A7%84%E6%93%8D%E4%BD%9C/20.jpg" alt="正则表达式及java的一些常规操作"></p>
 
       
 
@@ -413,7 +572,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#正则表达式是什么"><span class="toc-number">2.</span> <span class="toc-text">正则表达式是什么</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#正则表达式中的符号"><span class="toc-number">3.</span> <span class="toc-text">正则表达式中的符号</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#第一就是我们的普通字符"><span class="toc-number">3.1.</span> <span class="toc-text">第一就是我们的普通字符</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#第二就是那些普通的转义字符"><span class="toc-number">3.2.</span> <span class="toc-text">第二就是那些普通的转义字符</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#第三就是标准字符集合——开始特殊"><span class="toc-number">3.3.</span> <span class="toc-text">第三就是标准字符集合——开始特殊</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#第四就是自定义字符集合"><span class="toc-number">3.4.</span> <span class="toc-text">第四就是自定义字符集合</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#第五令人一时无法接受的量词"><span class="toc-number">3.5.</span> <span class="toc-text">第五令人一时无法接受的量词</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#第六字符边界"><span class="toc-number">3.6.</span> <span class="toc-text">第六字符边界</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#第七选择符和分组"><span class="toc-number">3.7.</span> <span class="toc-text">第七选择符和分组</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#实操解析"><span class="toc-number">4.</span> <span class="toc-text">实操解析</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#正则表达式是什么"><span class="toc-number">2.</span> <span class="toc-text">正则表达式是什么</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#正则表达式中的符号"><span class="toc-number">3.</span> <span class="toc-text">正则表达式中的符号</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#第一就是我们的普通字符"><span class="toc-number">3.1.</span> <span class="toc-text">第一就是我们的普通字符</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#第二就是那些普通的转义字符"><span class="toc-number">3.2.</span> <span class="toc-text">第二就是那些普通的转义字符</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#第三就是标准字符集合——开始特殊"><span class="toc-number">3.3.</span> <span class="toc-text">第三就是标准字符集合——开始特殊</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#第四就是自定义字符集合"><span class="toc-number">3.4.</span> <span class="toc-text">第四就是自定义字符集合</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#第五令人一时无法接受的量词"><span class="toc-number">3.5.</span> <span class="toc-text">第五令人一时无法接受的量词</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#第六字符边界"><span class="toc-number">3.6.</span> <span class="toc-text">第六字符边界</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#第七选择符和分组"><span class="toc-number">3.7.</span> <span class="toc-text">第七选择符和分组</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#实操解析"><span class="toc-number">4.</span> <span class="toc-text">实操解析</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#使用JDK中包装的Pattern来操作正则"><span class="toc-number">5.</span> <span class="toc-text">使用JDK中包装的Pattern来操作正则</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Pattern中的一些方法"><span class="toc-number">6.</span> <span class="toc-text">Pattern中的一些方法</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#group函数"><span class="toc-number">6.1.</span> <span class="toc-text">group函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#find方法"><span class="toc-number">6.2.</span> <span class="toc-text">find方法</span></a></li></ol></li></ol>
                     </div>
                 </span>
             </div>
